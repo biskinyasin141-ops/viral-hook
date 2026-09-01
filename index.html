@@ -3,35 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViralPulse - Gerçek Yapay Zeka Viral Kanca Üreticisi</title>
+    <title>ViralPulse - Pro AI Viral Hook Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col items-center justify-center p-4">
 
     <div class="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl">
         <div class="text-center mb-6">
-            <span class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v3.0 AI</span>
+            <span class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v4.0 PRO</span>
             <h1 class="text-2xl font-black mt-2 tracking-tight">Algoritmayı Hackle 🚀</h1>
-            <p class="text-zinc-400 text-sm mt-1">Fikrini yaz, yapay zeka senin için tamamen özgün ve patlama yapacak kancayı kursun.</p>
+            <p class="text-zinc-400 text-sm mt-1">Nişini seç, fikrini yaz, milyonluk kancalar cebine gelsin.</p>
         </div>
 
         <div class="space-y-4">
             <div>
-                <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">İçerik Konun / Fikrin nedir?</label>
-                <input type="text" id="ideaInput" placeholder="Örn: Evde kahve yapmanın sırrı..." class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 text-sm">
+                <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Hedef Platform & Format</label>
+                <select id="platformSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 text-sm">
+                    <option value="tiktok">TikTok / Reels (Hızlı & Çarpıcı)</option>
+                    <option value="youtube">YouTube Başlığı (Merak Uyandıran)</option>
+                    <option value="twitter">X / Twitter Postu (Tartışma Yaratan)</option>
+                    <option value="sales">Satış & Dönüşüm Metni</option>
+                </select>
             </div>
 
-            <button onclick="generateAIBasedHook()" id="generateBtn" class="w-full bg-red-600 hover:bg-red-500 font-bold py-3 rounded-xl transition-all shadow-lg shadow-red-600/30 text-sm">
-                Yapay Zeka ile Üret 🔥
+            <div>
+                <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">İçerik Konun / Fikrin nedir?</label>
+                <input type="text" id="ideaInput" placeholder="Örn: Kahve yapma taktikleri..." class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 text-sm">
+            </div>
+
+            <button onclick="generateProHook()" id="generateBtn" class="w-full bg-red-600 hover:bg-red-500 font-bold py-3 rounded-xl transition-all shadow-lg shadow-red-600/30 text-sm">
+                Pro Kancaları Üret 🔥
             </button>
         </div>
 
         <div id="resultArea" class="mt-6 hidden">
-            <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Üretilen Özel Viral Kanca:</label>
+            <div class="flex justify-between items-center mb-1">
+                <label class="block text-xs font-semibold text-zinc-400 uppercase">Üretilen Viral Kanca:</label>
+                <button onclick="copyHook()" id="copyBtn" class="text-xs text-red-400 hover:text-red-300 font-semibold hidden">📋 Kopyala</button>
+            </div>
+            
             <div id="hookOutput" class="bg-zinc-800 border border-zinc-700 rounded-xl p-4 text-sm text-zinc-200 mb-3"></div>
             
             <div id="lockSection" class="bg-zinc-800/50 border border-zinc-700/50 rounded-xl p-4 text-center">
-                <p id="lockText" class="text-xs text-zinc-300 mb-3">Daha fazla kanca üretmek için bu aracı <span class="text-red-400 font-bold">1 arkadaşınla</span> paylaşmalısın! (<span id="shareCount">0</span>/1)</p>
+                <p id="lockText" class="text-xs text-zinc-300 mb-3">Sınırsız ve gelişmiş kancalar üretmek için bu aracı <span class="text-red-400 font-bold">1 arkadaşınla</span> paylaşmalısın! (<span id="shareCount">0</span>/1)</p>
                 <button onclick="handleShare()" class="w-full bg-blue-600 hover:bg-blue-500 font-bold py-2.5 rounded-xl transition-all text-xs flex items-center justify-center gap-2">
                     📢 WhatsApp'ta Paylaş & Kilidi Aç
                 </button>
@@ -41,9 +55,12 @@
 
     <script>
         let isUnlocked = false;
+        let lastGeneratedText = "";
 
-        async function generateAIBasedHook() {
+        function generateProHook() {
             const idea = document.getElementById('ideaInput').value.trim();
+            const platform = document.getElementById('platformSelect').value;
+
             if(!idea) {
                 alert("Önce bir fikir yaz dostum!");
                 return;
@@ -51,37 +68,63 @@
 
             const resultArea = document.getElementById('resultArea');
             const hookOutput = document.getElementById('hookOutput');
+            const copyBtn = document.getElementById('copyBtn');
             
             resultArea.classList.remove('hidden');
 
             if(!isUnlocked) {
-                hookOutput.innerHTML = `🔒 <b>"${idea}"</b> için harika bir kanca hazırlandı ama kilitli! Devam etmek için paylaşmalısın.`;
+                copyBtn.classList.add('hidden');
+                hookOutput.innerHTML = `🔒 <b>"${idea}"</b> için Pro kancalar hazırlandı ancak kilitli! Devam etmek için paylaşmalısın.`;
                 return;
             }
 
-            hookOutput.innerHTML = "⏳ Yapay zeka senin konun için özel kancalar tasarlıyor...";
+            hookOutput.innerHTML = "⏳ Yapay zeka motoru analiz ediyor...";
+            copyBtn.classList.add('hidden');
 
-            try {
-                // Ücretsiz ve anahtarsız akıllı yapay zeka mantığı (Serverless API simülasyonu yerine akıllı dinamik harmanlayıcı)
-                setTimeout(() => {
-                    const dynamicHooks = [
-                        `Kimsenin bilmediği o gerçek: ${idea} konusunda herkes yanlış biliyor çünkü...`,
-                        `Gece 3'te keşfettim: ${idea} ile ilgili bu detayı duyan şok oluyor!`,
-                        `Sektörün gizlediği büyük sır: ${idea} patlatmak istiyorsanız tam olarak bunu yapmalısınız.`,
-                        `Direkt sonuca gidelim: ${idea} ile ilgili en etkili strateji tam olarak budur.`
+            setTimeout(() => {
+                let templates = [];
+
+                if(platform === 'tiktok') {
+                    templates = [
+                        `Durdur şu videoyu! ${idea} hakkında bildiğin her şeyi unut, çünkü gerçeği açıklıyorum:`,
+                        `99% insanın ${idea} konusunda yaptığı o gizli hata seni geride tutuyor...`,
+                        `Kimseye söylemediğim o ${idea} taktiği ile ilk günden patladım:`
                     ];
-                    const selectedHook = dynamicHooks[Math.floor(Math.random() * dynamicHooks.length)];
-                    hookOutput.innerText = selectedHook;
-                }, 800);
+                } else if(platform === 'youtube') {
+                    templates = [
+                        `Neden Herkes ${idea} Konusunda Yanılıyor? (Büyük Gerçek)`,
+                        `Sıfırdan Zirveye: ${idea} İçin Asla Yapmamanız Gerekenler`,
+                        `${idea} Hakkında Bilmeniz Gereken Tek ve Kesin Çözüm`
+                    ];
+                } else if(platform === 'twitter') {
+                    templates = [
+                        `İnsanlar ${idea} konusunun bu kadar basite indirgenebileceğini kabul etmek istemiyor. İpliklerini pazara çıkarıyorum 🧵`,
+                        `Son 1 aydır ${idea} üzerinde çalışıyorum. Çıkardığım 3 acı verici ders:`
+                    ];
+                } else {
+                    templates = [
+                        `Eğer ${idea} ile vakit kaybediyorsan, bu metni okumak hayatını değiştirecek.`,
+                        `Bugün ${idea} standardını kökten değiştirecek o gizli formülü açıklıyorum.`
+                    ];
+                }
 
-            } catch (error) {
-                hookOutput.innerText = "Bir hata oluştu, tekrar dene!";
-            }
+                lastGeneratedText = templates[Math.floor(Math.random() * templates.length)];
+                hookOutput.innerText = lastGeneratedText;
+                copyBtn.classList.remove('hidden');
+            }, 600);
+        }
+
+        function copyHook() {
+            if(!lastGeneratedText) return;
+            navigator.clipboard.writeText(lastGeneratedText);
+            const copyBtn = document.getElementById('copyBtn');
+            copyBtn.innerText = "✅ Kopyalandı!";
+            setTimeout(() => { copyBtn.innerText = "📋 Kopyala"; }, 1500);
         }
 
         function handleShare() {
             const siteUrl = window.location.href;
-            const text = encodeURIComponent("Bu yapay zeka aracı doğrudan konuya özel kancalar üretiyor, mutlaka dene: " + siteUrl);
+            const text = encodeURIComponent("Algoritmayı alt üst eden bu profesyonel viral kanca üreticisini kesinlikle denemelisin: " + siteUrl);
             
             navigator.clipboard.writeText(window.location.href);
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
@@ -90,7 +133,8 @@
             isUnlocked = true;
             
             setTimeout(() => {
-                document.getElementById('lockSection').innerHTML = '<p class="text-xs text-green-400 font-bold">🎉 Kilit Açıldı! Artık yazdığın her konuya özel kanca alabilirsin.</p>';
+                document.getElementById('lockSection').innerHTML = '<p class="text-xs text-green-400 font-bold">🎉 Kilit Açıldı! Artık sınırsız pro kanca üretebilirsin.</p>';
+                generateProHook();
             }, 800);
         }
     </script>
