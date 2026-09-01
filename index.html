@@ -3,49 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViralPulse - Pro AI Viral Hook Generator</title>
+    <title>ViralPulse - Ultimate Pro Hook Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col items-center justify-center p-4">
 
     <div class="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl">
         <div class="text-center mb-6">
-            <span class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v4.0 PRO</span>
-            <h1 class="text-2xl font-black mt-2 tracking-tight">Algoritmayı Hackle 🚀</h1>
-            <p class="text-zinc-400 text-sm mt-1">Nişini seç, fikrini yaz, milyonluk kancalar cebine gelsin.</p>
+            <span class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v6.0 PRO</span>
+            <h1 class="text-2xl font-black mt-2 tracking-tight">Algoritmayı Tamamen Hackle 🚀</h1>
+            <p class="text-zinc-400 text-sm mt-1">Sınırsız kombinasyon, ton ve geçmiş hafızasıyla profesyonel kanca stüdyosu.</p>
         </div>
 
         <div class="space-y-4">
             <div>
-                <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Hedef Platform & Format</label>
+                <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Hedef Platform</label>
                 <select id="platformSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 text-sm">
-                    <option value="tiktok">TikTok / Reels (Hızlı & Çarpıcı)</option>
-                    <option value="youtube">YouTube Başlığı (Merak Uyandıran)</option>
-                    <option value="twitter">X / Twitter Postu (Tartışma Yaratan)</option>
+                    <option value="tiktok">TikTok / Reels / Shorts (Hızlı & Çarpıcı)</option>
+                    <option value="youtube">YouTube Başlığı (Tıklama Odaklı)</option>
+                    <option value="twitter">X / Twitter (Tartışma Yaratan Thread)</option>
                     <option value="sales">Satış & Dönüşüm Metni</option>
                 </select>
             </div>
 
-            <div>
-                <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">İçerik Konun / Fikrin nedir?</label>
-                <input type="text" id="ideaInput" placeholder="Örn: Kahve yapma taktikleri..." class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 text-sm">
+            <div class="grid grid-cols-2 gap-2">
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Anlatım Tonu</label>
+                    <select id="toneSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-3 text-white focus:outline-none focus:border-red-500 text-xs">
+                        <option value="mystery">Gizemli 🕵️‍♂️</option>
+                        <option value="aggressive">Sarsıcı 🔥</option>
+                        <option value="success">Başarı 📈</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Kanca Yapısı</label>
+                    <select id="styleSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-3 text-white focus:outline-none focus:border-red-500 text-xs">
+                        <option value="short">Kısa & Vurucu</option>
+                        <option value="story">Hikaye / İtiraf</option>
+                    </select>
+                </div>
             </div>
 
-            <button onclick="generateProHook()" id="generateBtn" class="w-full bg-red-600 hover:bg-red-500 font-bold py-3 rounded-xl transition-all shadow-lg shadow-red-600/30 text-sm">
-                Pro Kancaları Üret 🔥
+            <div>
+                <div class="flex justify-between items-center mb-1">
+                    <label class="block text-xs font-semibold text-zinc-400 uppercase">İçerik Konun / Fikrin nedir?</label>
+                    <button onclick="fillRandomIdea()" class="text-[10px] text-red-400 hover:text-red-300">💡 Rastgele Fikir</button>
+                </div>
+                <input type="text" id="ideaInput" placeholder="Örn: Evde pasif gelir elde etmek..." class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 text-sm">
+            </div>
+
+            <button onclick="generateUltimateHook()" id="generateBtn" class="w-full bg-red-600 hover:bg-red-500 font-bold py-3 rounded-xl transition-all shadow-lg shadow-red-600/30 text-sm">
+                Pro Kancaları Üret ⚡
             </button>
         </div>
 
         <div id="resultArea" class="mt-6 hidden">
             <div class="flex justify-between items-center mb-1">
-                <label class="block text-xs font-semibold text-zinc-400 uppercase">Üretilen Viral Kanca:</label>
-                <button onclick="copyHook()" id="copyBtn" class="text-xs text-red-400 hover:text-red-300 font-semibold hidden">📋 Kopyala</button>
+                <label class="block text-xs font-semibold text-zinc-400 uppercase">Üretilen Son Kanca:</label>
+                <button onclick="copyCurrentHook()" id="copyBtn" class="text-xs text-red-400 hover:text-red-300 font-semibold hidden">📋 Kopyala</button>
             </div>
             
-            <div id="hookOutput" class="bg-zinc-800 border border-zinc-700 rounded-xl p-4 text-sm text-zinc-200 mb-3"></div>
+            <div id="hookOutput" class="bg-zinc-800 border border-zinc-700 rounded-xl p-4 text-sm text-zinc-200 mb-4"></div>
+            
+            <!-- Geçmiş Hafızası Alanı -->
+            <div id="historySection" class="mb-4 hidden">
+                <label class="block text-xs font-semibold text-zinc-400 uppercase mb-2">📜 Önceki Üretimler (Geçmiş):</label>
+                <div id="historyList" class="space-y-2 max-h-40 overflow-y-auto pr-1"></div>
+            </div>
             
             <div id="lockSection" class="bg-zinc-800/50 border border-zinc-700/50 rounded-xl p-4 text-center">
-                <p id="lockText" class="text-xs text-zinc-300 mb-3">Sınırsız ve gelişmiş kancalar üretmek için bu aracı <span class="text-red-400 font-bold">1 arkadaşınla</span> paylaşmalısın! (<span id="shareCount">0</span>/1)</p>
+                <p id="lockText" class="text-xs text-zinc-300 mb-3">Sınırsız ve geçmiş hafızalı mod için aracı <span class="text-red-400 font-bold">1 arkadaşınla</span> paylaşmalısın! (<span id="shareCount">0</span>/1)</p>
                 <button onclick="handleShare()" class="w-full bg-blue-600 hover:bg-blue-500 font-bold py-2.5 rounded-xl transition-all text-xs flex items-center justify-center gap-2">
                     📢 WhatsApp'ta Paylaş & Kilidi Aç
                 </button>
@@ -55,14 +82,185 @@
 
     <script>
         let isUnlocked = false;
-        let lastGeneratedText = "";
+        let currentText = "";
+        let historyArray = [];
 
-        function generateProHook() {
+        const sampleIdeas = [
+            "Sıfırdan e-ticaret kurmak",
+            "Yapay zeka ile para kazanmak",
+            "Erken kalkma alışkanlığı kazanmak",
+            "Sosyal medyada organik büyümek",
+            "Evde spor yaparak kilo vermek"
+        ];
+
+        function fillRandomIdea() {
+            const random = sampleIdeas[Math.floor(Math.random() * sampleIdeas.length)];
+            document.getElementById('ideaInput').value = random;
+        }
+
+        const hookDatabase = {
+            tiktok: {
+                mystery: {
+                    short: [
+                        "Bunu kimseye söylememem gerekiyordu ama {idea} hakkındaki bu sır patladı:",
+                        "Gece yarısı fark ettiğim o detay: {idea} olayını kökten değiştiriyor.",
+                        "Sektörün saklamaya çalıştığı {idea} gerçeği nihayet ortaya çıktı:"
+                    ],
+                    story: [
+                        "Kimse bana inanmamıştı ama {idea} konusunda bu taktiği denediğim an her şey değişti.",
+                        "Yıllardır yanlış bildiğimiz o {idea} yanılgısını bir arkadaşım sayesinde fark ettim...",
+                        "Bunu yapana kadar {idea} konusunda hep kaybediyordum, ta ki o gizli yöntemi bulana dek:"
+                    ]
+                },
+                aggressive: {
+                    short: [
+                        "Hala {idea} hakkında bu hatayı yapıyorsanız, kaybetmeye mahkumsunuz.",
+                        "Kimse sizinle bunu konuşmak istemiyor ama {idea} konusunda tamamen körsünüz.",
+                        "Uyanın! {idea} gerçeğini görmezden geldiğiniz sürece asla başaramayacaksınız."
+                    ],
+                    story: [
+                        "İnsanların {idea} yüzünden binlerce dolar batırmasını izlemekten bıktım. Gerçek şu:",
+                        "Bana sürekli {idea} hakkında neden böyle sert konuştuğumu soruyorlar. Çünkü:",
+                        "Çoğu insan {idea} konusunda tembel olduğu için asla zirveye çıkamayacak. Kanıtlıyorum:"
+                    ]
+                },
+                success: {
+                    short: [
+                        "Sıfırdan zirveye: {idea} sayesinde hayatımı değiştiren o tek formül.",
+                        "Günde sadece 10 dakikayla {idea} alanında nasıl zirveye çıkarsın?",
+                        "Milyonlar izlenen videoların arkasındaki {idea} sırrı tam olarak bu:"
+                    ],
+                    story: [
+                        "Hiç param yokken {idea} ile başladım ve 6 ayda hayatım tamamen tersine döndü. İşte o yol:",
+                        "Bana {idea} konusunda en çok kazandıran o tek stratejiyi bugüne kadar kimse anlatmamıştı:",
+                        "Eğer {idea} ile başarmak istiyorsanız, zenginlerin kullandığı şu adımı izlemelisiniz:"
+                    ]
+                }
+            },
+            youtube: {
+                mystery: {
+                    short: [
+                        "Neden Hiç Kimse {idea} Konusunda Bu Gerçeği Konuşmuyor?",
+                        "Gizli Dosya: {idea} Hakkında Bildiğiniz Her Şey Yalandı",
+                        "Sonunda Çözüldü: {idea} Gizemini Aralıyoruz"
+                    ],
+                    story: [
+                        "1 Yıl Boyunca {idea} Üzerinde Çalıştım ve Karşılaştığım Manzara Şoke Etti",
+                        "Bunu Öğrendikten Sonra {idea} Hakkında Hiçbir Şey Eskisi Gibi Olmayacak",
+                        "Uzmanların Sizden Sakladığı O Büyük {idea} İtirafı"
+                    ]
+                },
+                aggressive: {
+                    short: [
+                        "{idea} İçin Bu Aptalca Hatayı Yapmayı Bırakın Artık!",
+                        "Neden {idea} Konusunda Sürekli Başarısız Oluyorsunuz?",
+                        "{idea} Yalanları: Kimlerin Cebi Doluyor?"
+                    ],
+                    story: [
+                        "{idea} Sektöründeki Büyük Dolandırıcılığı İfşa Ediyorum (İzlemeden Geçmeyin)",
+                        "Neden Çoğu İnsan {idea} Konusunda Asla Başarılı Olamayacak?",
+                        "{idea} Hakkında Bilmeniz Gereken En Acı Verici Gerçekler"
+                    ]
+                },
+                success: {
+                    short: [
+                        "Adım Adım Rehber: {idea} ile Nasıl Zirveye Çıkılır?",
+                        "En Etkili {idea} Stratejisi (Kanıtlanmış Sonuçlar)",
+                        "Sıfırdan Başlayanlar İçin Kesin Çözümlü {idea} Eğitimi"
+                    ],
+                    story: [
+                        "Sıfırdan Başlayarak {idea} ile Nasıl Zengin Oldum? (Tüm Adımlar)",
+                        "30 Günde {idea} Konusunda Uzmanlaşmanın Kesin ve Kanıtlanmış Yolu",
+                        "En Başarılı İsimlerin Kullandığı {idea} Taktikleri (Açıklandı)"
+                    ]
+                }
+            },
+            twitter: {
+                mystery: {
+                    short: [
+                        "Son 1 yıldır {idea} üzerinde çalışıyorum. Kimsenin fark etmediği o detay 🧵",
+                        "Bunu öğrendikten sonra {idea} hakkında her şey değişti. Not alın:",
+                        "Herkesin atladığı ama {idea} sürecini 10 kat hızlandıran anahtar:"
+                    ],
+                    story: [
+                        "Geçen hafta {idea} üzerine yaptığım bir deney tüm teorilerimi alt üst etti. İpliklerini pazara çıkarıyorum 🧵",
+                        "Beni {idea} konusunda tamamen şoke eden o konuşmayı ve detaylarını paylaşıyorum:",
+                        "Kimsenin paylaşmaya cesaret edemediği {idea} arşivini açıyorum. Kaydedin 🧵"
+                    ]
+                },
+                aggressive: {
+                    short: [
+                        "Çoğu insan {idea} konusunu yanlış anlıyor çünkü temelleri berbat 🧵",
+                        "{idea} hakkında size anlatılan büyük yalanlar listesi. Hazırsanız başlayalım:",
+                        "Zamanınızı {idea} ile harcamayı bırakın. Sizi mahveden o temel yanlış:"
+                    ],
+                    story: [
+                        "İnsanların {idea} konusunda nasıl kandırıldığını adım adım anlatacağım. Kafanız açılacak 🧵",
+                        "Piyasadaki 'uzman' kisvesi altındaki kişilerin {idea} hakkında anlattığı safsatalar:",
+                        "Bu iğrenç {idea} döngüsünden çıkmazsanız asla kazanamayacaksınız. Gerçekler 🧵"
+                    ]
+                },
+                success: {
+                    short: [
+                        "{idea} standardını kökten değiştirecek 5 altın kuralı derledim 🧵",
+                        "Sadece 30 günde {idea} alanında nasıl uzmanlaşırsınız? Rehber:",
+                        "Başarılı insanların {idea} konusunda kullandığı gizli kılavuz:"
+                    ],
+                    story: [
+                        "Bugüne kadar {idea} alanında öğrendiğim en değerli 10 dersi ve taktiği derledim 🧵",
+                        "Sıfırdan zirveye {idea} yolculuğumda bana milyonlar kazandıran thread:",
+                        "Herkesin aradığı o {idea} büyüme modelini ve aşamalarını tek tek açıklıyorum 🧵"
+                    ]
+                }
+            },
+            sales: {
+                mystery: {
+                    short: [
+                        "Eğer {idea} için doğru zamanı bekliyorsanız, o an aslında tam olarak şimdi.",
+                        "Piyasadaki en güçlü {idea} alternatifini keşfetmeye hazır mısınız?",
+                        "Rakiplerinizin asla öğrenmesini istemediği {idea} dönüşüm sırrı."
+                    ],
+                    story: [
+                        "Geçen ay {idea} modelini değiştiren bir müşteri sayesinde ciromuzu 3 katına çıkardık. O sır:",
+                        "İnsanlar {idea} için binlerce lira harcarken bizim keşfettiğimiz o kestirme yol:",
+                        "Piyasada sessizce milyonlar kazanan markaların {idea} için uyguladığı o gizli formül:"
+                    ]
+                },
+                aggressive: {
+                    short: [
+                        "{idea} için para saçmayı bırakın. Gerçekten işe yarayan tek sistem bu.",
+                        "Eski yöntemlerle {idea} yapmaya çalışarak sadece vakit kaybediyorsunuz.",
+                        "Zirvedekiler {idea} için bu stratejiyi kullanıyor, siz neden arkada kalıyorsunuz?"
+                    ],
+                    story: [
+                        "Eski tip {idea} stratejileriyle şirketini batıran o 3 büyük hatayı inceliyoruz:",
+                        "Piyasada {idea} satmaya çalışanların sizden gizlediği o acı maliyet tablosu:",
+                        "Rakipleriniz {idea} alanında sizi ezip geçmeden önce yüzleşmeniz gereken gerçekler:"
+                    ]
+                },
+                success: {
+                    short: [
+                        "{idea} ile satışlarınızı ve etkileşiminizi patlatacak kanıtlanmış formül.",
+                        "Dönüşüm oranlarını alt üst eden {idea} mimarisiyle tanışın.",
+                        "Sürdürülebilir büyüme için {idea} alanındaki en karlı yatırım."
+                    ],
+                    story: [
+                        "Doğru {idea} kurgusuyla 30 günde dönüşümleri nasıl patlattığımızın tam vaka analizi:",
+                        "Sıfırdan kurduğumuz {idea} sistemiyle binlerce müşteriye nasıl ulaştık?",
+                        "Pazarda lider olmak isteyenler için {idea} odaklı kusursuz büyüme planı:"
+                    ]
+                }
+            }
+        };
+
+        function generateUltimateHook() {
             const idea = document.getElementById('ideaInput').value.trim();
             const platform = document.getElementById('platformSelect').value;
+            const tone = document.getElementById('toneSelect').value;
+            const style = document.getElementById('styleSelect').value;
 
             if(!idea) {
-                alert("Önce bir fikir yaz dostum!");
+                alert("Önce bir fikir yaz dostum veya 'Rastgele Fikir' butonuna bas!");
                 return;
             }
 
@@ -78,53 +276,62 @@
                 return;
             }
 
-            hookOutput.innerHTML = "⏳ Yapay zeka motoru analiz ediyor...";
+            hookOutput.innerHTML = "⏳ Yapay zeka havuzu taranıyor ve metin harmanlanıyor...";
             copyBtn.classList.add('hidden');
 
             setTimeout(() => {
-                let templates = [];
-
-                if(platform === 'tiktok') {
-                    templates = [
-                        `Durdur şu videoyu! ${idea} hakkında bildiğin her şeyi unut, çünkü gerçeği açıklıyorum:`,
-                        `99% insanın ${idea} konusunda yaptığı o gizli hata seni geride tutuyor...`,
-                        `Kimseye söylemediğim o ${idea} taktiği ile ilk günden patladım:`
-                    ];
-                } else if(platform === 'youtube') {
-                    templates = [
-                        `Neden Herkes ${idea} Konusunda Yanılıyor? (Büyük Gerçek)`,
-                        `Sıfırdan Zirveye: ${idea} İçin Asla Yapmamanız Gerekenler`,
-                        `${idea} Hakkında Bilmeniz Gereken Tek ve Kesin Çözüm`
-                    ];
-                } else if(platform === 'twitter') {
-                    templates = [
-                        `İnsanlar ${idea} konusunun bu kadar basite indirgenebileceğini kabul etmek istemiyor. İpliklerini pazara çıkarıyorum 🧵`,
-                        `Son 1 aydır ${idea} üzerinde çalışıyorum. Çıkardığım 3 acı verici ders:`
-                    ];
-                } else {
-                    templates = [
-                        `Eğer ${idea} ile vakit kaybediyorsan, bu metni okumak hayatını değiştirecek.`,
-                        `Bugün ${idea} standardını kökten değiştirecek o gizli formülü açıklıyorum.`
-                    ];
-                }
-
-                lastGeneratedText = templates[Math.floor(Math.random() * templates.length)];
-                hookOutput.innerText = lastGeneratedText;
+                const pool = hookDatabase[platform][tone][style];
+                const rawTemplate = pool[Math.floor(Math.random() * pool.length)];
+                
+                currentText = rawTemplate.replace(/{idea}/g, `"${idea}"`);
+                
+                hookOutput.innerText = currentText;
                 copyBtn.classList.remove('hidden');
+
+                // Geçmişe ekle
+                addToHistory(currentText);
             }, 600);
         }
 
-        function copyHook() {
-            if(!lastGeneratedText) return;
-            navigator.clipboard.writeText(lastGeneratedText);
+        function addToHistory(text) {
+            if(!historyArray.includes(text)) {
+                historyArray.unshift(text); // En başa ekle
+                if(historyArray.length > 5) historyArray.pop(); // Maksimum 5 tut
+            }
+            updateHistoryUI();
+        }
+
+        function updateHistoryUI() {
+            const historySection = document.getElementById('historySection');
+            const historyList = document.getElementById('historyList');
+            
+            if(historyArray.length > 0 && isUnlocked) {
+                historySection.classList.remove('hidden');
+                historyList.innerHTML = historyArray.map((item, index) => `
+                    <div class="bg-zinc-800/80 border border-zinc-700 rounded-lg p-2.5 text-xs text-zinc-300 flex justify-between items-center gap-2">
+                        <span class="truncate">${item}</span>
+                        <button onclick="copySpecific('${item.replace(/'/g, "\\'")}')" class="text-red-400 hover:text-red-300 whitespace-nowrap font-semibold">📋 Kopyala</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function copyCurrentHook() {
+            if(!currentText) return;
+            navigator.clipboard.writeText(currentText);
             const copyBtn = document.getElementById('copyBtn');
             copyBtn.innerText = "✅ Kopyalandı!";
             setTimeout(() => { copyBtn.innerText = "📋 Kopyala"; }, 1500);
         }
 
+        function copySpecific(text) {
+            navigator.clipboard.writeText(text);
+            alert("Kanca panoya kopyalandı! 🚀");
+        }
+
         function handleShare() {
             const siteUrl = window.location.href;
-            const text = encodeURIComponent("Algoritmayı alt üst eden bu profesyonel viral kanca üreticisini kesinlikle denemelisin: " + siteUrl);
+            const text = encodeURIComponent("Algoritmayı alt üst eden bu profesyonel viral kanca stüdyosunu kesinlikle denemelisin: " + siteUrl);
             
             navigator.clipboard.writeText(window.location.href);
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
@@ -133,8 +340,8 @@
             isUnlocked = true;
             
             setTimeout(() => {
-                document.getElementById('lockSection').innerHTML = '<p class="text-xs text-green-400 font-bold">🎉 Kilit Açıldı! Artık sınırsız pro kanca üretebilirsin.</p>';
-                generateProHook();
+                document.getElementById('lockSection').innerHTML = '<p class="text-xs text-green-400 font-bold">🎉 Kilit Açıldı! Sınırsız üretim ve geçmiş hafızası aktif.</p>';
+                generateUltimateHook();
             }, 800);
         }
     </script>
