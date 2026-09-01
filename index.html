@@ -10,7 +10,7 @@
 
     <div class="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl">
         <div class="text-center mb-6">
-            <span class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v2.0</span>
+            <span class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v2.1</span>
             <h1 class="text-2xl font-black mt-2 tracking-tight">Algoritmayı Hackle 🚀</h1>
             <p class="text-zinc-400 text-sm mt-1">Fikrini yaz, milyonlara ulaşan kancayı yapay zeka saniyeler içinde patratsın.</p>
         </div>
@@ -28,15 +28,20 @@
 
         <div id="resultArea" class="mt-6 hidden">
             <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Üretilen Viral Kanca:</label>
-            <div id="hookOutput" class="bg-zinc-800 border border-zinc-700 rounded-xl p-4 text-sm text-zinc-200"></div>
+            <div id="hookOutput" class="bg-zinc-800 border border-zinc-700 rounded-xl p-4 text-sm text-zinc-200 mb-3"></div>
             
-            <button onclick="shareAndUnlock()" class="w-full mt-3 bg-blue-600 hover:bg-blue-500 font-bold py-2.5 rounded-xl transition-all text-xs flex items-center justify-center gap-2">
-                📢 Devam Etmek İçin Paylaş (Viral Döngü)
-            </button>
+            <div id="lockSection" class="bg-zinc-800/50 border border-zinc-700/50 rounded-xl p-4 text-center">
+                <p id="lockText" class="text-xs text-zinc-300 mb-3">Daha fazla kanca üretmek için bu aracı <span class="text-red-400 font-bold">1 arkadaşınla</span> paylaşmalısın! (<span id="shareCount">0</span>/1)</p>
+                <button onclick="handleShare()" class="w-full bg-blue-600 hover:bg-blue-500 font-bold py-2.5 rounded-xl transition-all text-xs flex items-center justify-center gap-2">
+                    📢 WhatsApp'ta Paylaş & Kilidi Aç
+                </button>
+            </div>
         </div>
     </div>
 
     <script>
+        let isUnlocked = false;
+
         function generateViralHook() {
             const idea = document.getElementById('ideaInput').value;
             if(!idea) {
@@ -44,21 +49,40 @@
                 return;
             }
 
+            if(!isUnlocked) {
+                document.getElementById('resultArea').classList.remove('hidden');
+                document.getElementById('hookOutput').innerText = "🔒 " + idea + " için kanca hazır ama kilitli! Devam etmek için paylaşmalısın.";
+                return;
+            }
+
             const hooks = [
                 "99% insan bu hatayı yaptığı için asla büyüemiyor...",
-                "Bunu öğrendikten sonra içerik üretme bitti.",
-                "Kimsenin sana söylemediği o gizli 3 adımlı sır:"
+                "Bunu öğrendikten sonra içerik üretme bitti: ",
+                "Kimsenin sana söylemediği o gizli 3 adımlı sır: "
             ];
-            const randomHook = hooks[Math.floor(Math.random() * hooks.length)] + " (" + idea + ")";
+            const randomHook = hooks[Math.floor(Math.random() * hooks.length)] + " [" + idea + "]";
             
             document.getElementById('hookOutput').innerText = randomHook;
             document.getElementById('resultArea').classList.remove('hidden');
         }
 
-        function shareAndUnlock() {
-            const text = encodeURIComponent("Bu yapay zeka aracı TikTok algoritmalarını alt üst ediyor! Kesinlikle denemelisin:");
-            window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
-            alert("Harika! Paylaşım algılandı, yeni hakların aktifleşti! 🚀");
+        function handleShare() {
+            const siteUrl = window.location.href;
+            const text = encodeURIComponent("Bu yapay zeka aracı TikTok algoritmalarını alt üst ediyor, mutlaka dene: " + siteUrl);
+            
+            // Panoya kopyala
+            navigator.clipboard.writeText(window.location.href);
+
+            // WhatsApp'ı aç
+            window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+
+            // Kilidi aç
+            document.getElementById('shareCount').innerText = "1";
+            isUnlocked = true;
+            
+            setTimeout(() => {
+                document.getElementById('lockSection').innerHTML = '<p class="text-xs text-green-400 font-bold">🎉 Kilit Açıldı! Artık sınırsız kanca üretebilirsin.</p>';
+            }, 800);
         }
     </script>
 </body>
