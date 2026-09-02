@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViralPulse - Infinity Matrix Studio</title>
+    <title>ViralPulse - Pro Analyzer Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body id="bodyBg" class="bg-black text-white min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-500">
@@ -18,12 +18,19 @@
         </div>
 
         <div class="text-center mb-6">
-            <span id="badgeColor" class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v9.1 VERIFIED</span>
+            <span id="badgeColor" class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v10.0 PRO ANALYZER</span>
             <h1 class="text-2xl font-black mt-2 tracking-tight">Algoritmayı Tamamen Hackle 🚀</h1>
-            <p class="text-zinc-400 text-sm mt-1">100.000+ dinamik varyasyon ve akıllı paylaşım doğrulaması.</p>
+            <p class="text-zinc-400 text-sm mt-1">Sınırsız matris üretimi ve AI Kanca Performans Analizcisi.</p>
         </div>
 
-        <div class="space-y-4">
+        <!-- Sekme Geçiş Butonları -->
+        <div class="grid grid-cols-2 gap-2 mb-4 bg-zinc-800/80 p-1 rounded-xl border border-zinc-700">
+            <button onclick="switchTab('generator')" id="genTabBtn" class="py-2 text-xs font-bold rounded-lg bg-red-600 text-white transition-all">⚡ Kanca Üretici</button>
+            <button onclick="switchTab('analyzer')" id="analyzerTabBtn" class="py-2 text-xs font-semibold rounded-lg text-zinc-400 hover:text-white transition-all">🎯 Kanca Test Et</button>
+        </div>
+
+        <!-- 1. SEKME: KANCA ÜRETİCİ -->
+        <div id="generatorSection" class="space-y-4">
             <div>
                 <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Hedef Platform</label>
                 <select id="platformSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none text-sm">
@@ -66,15 +73,30 @@
             </button>
         </div>
 
+        <!-- 2. SEKME: KANCA ANALİZ EDİCİ -->
+        <div id="analyzerSection" class="space-y-4 hidden">
+            <div>
+                <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Kendi Kancanı Test Et</label>
+                <textarea id="customHookInput" placeholder="Yazdığın kanca cümlesini buraya yapıştır..." class="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 text-sm text-zinc-200 focus:outline-none resize-none h-24"></textarea>
+            </div>
+            <button onclick="analyzeCustomHook()" id="analyzeBtn" class="w-full bg-blue-600 hover:bg-blue-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm">
+                Dopamin Puanını Hesapla 🎯
+            </button>
+        </div>
+
+        <!-- SONUÇ ALANI -->
         <div id="resultArea" class="mt-6 hidden">
             <!-- Viral Skor Göstergesi -->
             <div id="scoreBox" class="mb-3 bg-zinc-800/80 border border-zinc-700 rounded-xl p-2.5 flex justify-between items-center text-xs">
-                <span class="text-zinc-400 font-semibold">🔥 Tahmini Viral Etki Skoru:</span>
+                <span id="scoreLabelText" class="text-zinc-400 font-semibold">🔥 Tahmini Viral Etki Skoru:</span>
                 <span id="viralScoreText" class="text-green-400 font-black">--</span>
             </div>
 
+            <!-- Analiz Geri Bildirim Notu -->
+            <div id="analysisFeedback" class="mb-3 bg-blue-950/40 border border-blue-900/50 rounded-xl p-3 text-xs text-blue-300 hidden"></div>
+
             <div class="flex justify-between items-center mb-1">
-                <label class="block text-xs font-semibold text-zinc-400 uppercase">Üretilen Benzersiz Kanca:</label>
+                <label class="block text-xs font-semibold text-zinc-400 uppercase" id="outputLabel">Üretilen Benzersiz Kanca:</label>
                 <div class="flex gap-2">
                     <button onclick="speakCurrentHook()" id="speakBtn" class="text-xs text-blue-400 hover:text-blue-300 font-semibold hidden" title="Sesli Dinle">🔊 Dinle</button>
                     <button onclick="saveToFavorites()" id="favBtn" class="text-xs text-yellow-400 hover:text-yellow-300 font-semibold hidden" title="Favorilere Ekle">⭐ Favorile</button>
@@ -106,7 +128,7 @@
             </div>
 
             <div id="lockSection" class="bg-zinc-800/50 border border-zinc-700/50 rounded-xl p-4 text-center">
-                <p id="lockText" class="text-xs text-zinc-300 mb-3">Sınırsız matris için aracı <span class="text-red-400 font-bold">WhatsApp'ta paylaşmalısın</span>.</p>
+                <p id="lockText" class="text-xs text-zinc-300 mb-3">Sınırsız matris ve analizör için aracı <span class="text-red-400 font-bold">WhatsApp'ta paylaşmalısın</span>.</p>
                 <button id="shareBtn" onclick="handleShare()" class="w-full bg-blue-600 hover:bg-blue-500 font-bold py-2.5 rounded-xl transition-all text-xs flex items-center justify-center gap-2">
                     📢 WhatsApp'ta Paylaş & Kilidi Aç
                 </button>
@@ -117,7 +139,7 @@
     <script>
         let isUnlocked = false;
         let historyArray = [];
-        let favoritesArray = JSON.parse(localStorage.getItem('viralFavoritesInfinity')) || [];
+        let favoritesArray = JSON.parse(localStorage.getItem('viralFavoritesPro')) || [];
         let currentTagsText = "";
 
         const sampleIdeas = [
@@ -137,22 +159,45 @@
             renderFavorites();
         };
 
+        function switchTab(tab) {
+            const genSec = document.getElementById('generatorSection');
+            const anaSec = document.getElementById('analyzerSection');
+            const genBtn = document.getElementById('genTabBtn');
+            const anaBtn = document.getElementById('analyzerTabBtn');
+
+            if(tab === 'generator') {
+                genSec.classList.remove('hidden');
+                anaSec.classList.add('hidden');
+                genBtn.className = "py-2 text-xs font-bold rounded-lg bg-red-600 text-white transition-all";
+                anaBtn.className = "py-2 text-xs font-semibold rounded-lg text-zinc-400 hover:text-white transition-all";
+            } else {
+                genSec.classList.add('hidden');
+                anaSec.classList.remove('hidden');
+                anaBtn.className = "py-2 text-xs font-bold rounded-lg bg-blue-600 text-white transition-all";
+                genBtn.className = "py-2 text-xs font-semibold rounded-lg text-zinc-400 hover:text-white transition-all";
+            }
+        }
+
         function setTheme(theme) {
             const body = document.getElementById('bodyBg');
             const btn = document.getElementById('generateBtn');
+            const anaBtn = document.getElementById('analyzeBtn');
             const badge = document.getElementById('badgeColor');
 
             if(theme === 'purple') {
                 body.className = "bg-purple-950 text-white min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-500";
                 btn.className = "w-full bg-purple-600 hover:bg-purple-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm";
+                anaBtn.className = "w-full bg-purple-600 hover:bg-purple-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm";
                 badge.className = "bg-purple-500/10 text-purple-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider";
             } else if(theme === 'green') {
                 body.className = "bg-zinc-950 text-white min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-500";
                 btn.className = "w-full bg-emerald-600 hover:bg-emerald-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm";
+                anaBtn.className = "w-full bg-emerald-600 hover:bg-emerald-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm";
                 badge.className = "bg-emerald-500/10 text-emerald-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider";
             } else {
                 body.className = "bg-black text-white min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-500";
                 btn.className = "w-full bg-red-600 hover:bg-red-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm";
+                anaBtn.className = "w-full bg-blue-600 hover:bg-blue-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm";
                 badge.className = "bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider";
             }
         }
@@ -234,7 +279,11 @@
             const viralScoreText = document.getElementById('viralScoreText');
             const tagSection = document.getElementById('tagSection');
             const tagOutput = document.getElementById('tagOutput');
+            const analysisFeedback = document.getElementById('analysisFeedback');
+            const outputLabel = document.getElementById('outputLabel');
             
+            analysisFeedback.classList.add('hidden');
+            outputLabel.innerText = "Üretilen Benzersiz Kanca:";
             resultArea.classList.remove('hidden');
 
             if(!isUnlocked) {
@@ -242,12 +291,12 @@
                 speakBtn.classList.add('hidden');
                 favBtn.classList.add('hidden');
                 tagSection.classList.add('hidden');
-                hookOutput.value = `🔒 "${idea}" için Infinity matrisi hazırlandı ancak kilitli! Devam etmek için paylaşmalısın.`;
+                hookOutput.value = `🔒 "${idea}" için matris hazırlandı ancak kilitli! Devam etmek için paylaşmalısın.`;
                 viralScoreText.innerText = "Kilitli 🔒";
                 return;
             }
 
-            hookOutput.value = "⏳ Infinity Matrisi 100k+ kombinasyonu tarıyor...";
+            hookOutput.value = "⏳ Infinity Matrisi tarıyor...";
             copyBtn.classList.add('hidden');
             speakBtn.classList.add('hidden');
             favBtn.classList.add('hidden');
@@ -283,7 +332,66 @@
                 viralScoreText.innerText = `%${randomScore} Viral Potansiyel 🔥`;
 
                 addToHistory(finalResult);
-            }, 500);
+            }, 400);
+        }
+
+        function analyzeCustomHook() {
+            const customHook = document.getElementById('customHookInput').value.trim();
+            if(!customHook) {
+                alert("Lütfen test etmek istediğin kancayı kutuya yaz!");
+                return;
+            }
+
+            const resultArea = document.getElementById('resultArea');
+            const hookOutput = document.getElementById('hookOutput');
+            const copyBtn = document.getElementById('copyBtn');
+            const speakBtn = document.getElementById('speakBtn');
+            const favBtn = document.getElementById('favBtn');
+            const viralScoreText = document.getElementById('viralScoreText');
+            const tagSection = document.getElementById('tagSection');
+            const analysisFeedback = document.getElementById('analysisFeedback');
+            const outputLabel = document.getElementById('outputLabel');
+
+            resultArea.classList.remove('hidden');
+
+            if(!isUnlocked) {
+                copyBtn.classList.add('hidden');
+                speakBtn.classList.add('hidden');
+                favBtn.classList.add('hidden');
+                tagSection.classList.add('hidden');
+                analysisFeedback.classList.add('hidden');
+                hookOutput.value = `🔒 Kanca analizi için aracı kilitli! Devam etmek için paylaşmalısın.`;
+                viralScoreText.innerText = "Kilitli 🔒";
+                return;
+            }
+
+            hookOutput.value = customHook;
+            outputLabel.innerText = "Test Edilen Kancanız:";
+            copyBtn.classList.remove('hidden');
+            speakBtn.classList.remove('hidden');
+            favBtn.classList.remove('hidden');
+            tagSection.classList.add('hidden'); // Kendi kancasında hashtag otomatik üretilmez
+
+            // Basit kelime uzunluğu ve merak unsuru analizi simülasyonu
+            let score = 70;
+            let feedbackText = "💡 **Analiz Raporu:** Cümle uzunluğu ideal ancak merak unsuru biraz daha artırılabilir.";
+            
+            if(customHook.length < 15) {
+                score = 65;
+                feedbackText = "⚠️ **Uyarı:** Kancanız çok kısa. İzleyicide merak uyandırmak için biraz daha detay ekleyebilirsiniz.";
+            } else if(customHook.includes("çünkü") || customHook.includes("gizli") || customHook.includes("asla") || customHook.includes("neden")) {
+                score = 92;
+                feedbackText = "🚀 **Mükemmel!** Cümleniz güçlü merak tetikleyicileri (gizli/neden/asla) içeriyor. İzleyiciyi tutma oranı çok yüksek!";
+            } else {
+                score = 84;
+                feedbackText = "📈 **İyi İş:** Akıcı bir anlatım var. İlk 3 saniyede ses tonunuzla desteklerseniz harika iş yapar.";
+            }
+
+            viralScoreText.innerText = `%${score} Dopamin Puanı 🎯`;
+            analysisFeedback.innerHTML = feedbackText;
+            analysisFeedback.classList.remove('hidden');
+
+            addToHistory(customHook);
         }
 
         function addToHistory(text) {
@@ -310,7 +418,7 @@
             const text = document.getElementById('hookOutput').value;
             if(!text || favoritesArray.includes(text)) return;
             favoritesArray.unshift(text);
-            localStorage.setItem('viralFavoritesInfinity', JSON.stringify(favoritesArray));
+            localStorage.setItem('viralFavoritesPro', JSON.stringify(favoritesArray));
             renderFavorites();
             alert("⭐ Favorilere eklendi!");
         }
@@ -331,7 +439,7 @@
 
         function removeFavorite(index) {
             favoritesArray.splice(index, 1);
-            localStorage.setItem('viralFavoritesInfinity', JSON.stringify(favoritesArray));
+            localStorage.setItem('viralFavoritesPro', JSON.stringify(favoritesArray));
             renderFavorites();
         }
 
@@ -346,7 +454,7 @@
 
         function copyTags() {
             if(!currentTagsText) return;
-            navigator.navigator?.clipboard?.writeText(currentTagsText) || navigator.clipboard.writeText(currentTagsText);
+            navigator.clipboard.writeText(currentTagsText);
             alert("Etiketler panoya kopyalandı! 🏷️");
         }
 
@@ -365,13 +473,11 @@
 
         function handleShare() {
             const siteUrl = window.location.href;
-            const text = encodeURIComponent("100k+ varyasyon üreten bu sınırsız viral kanca stüdyosunu kesinlikle denemelisin: " + siteUrl);
+            const text = encodeURIComponent("100k+ matris ve AI kanca analizcisi barındıran bu aracı kesinlikle denemelisin: " + siteUrl);
             
-            // WhatsApp'ı aç
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
 
             const shareBtn = document.getElementById('shareBtn');
-            const lockText = document.getElementById('lockText');
             
             shareBtn.disabled = true;
             shareBtn.className = "w-full bg-zinc-700 text-zinc-400 font-bold py-2.5 rounded-xl text-xs cursor-not-allowed";
@@ -386,7 +492,7 @@
                 } else {
                     clearInterval(timer);
                     isUnlocked = true;
-                    document.getElementById('lockSection').innerHTML = '<p class="text-xs text-green-400 font-bold">🎉 Doğrulandı ve Kilit Açıldı! Sınırsız matris aktif.</p>';
+                    document.getElementById('lockSection').innerHTML = '<p class="text-xs text-green-400 font-bold">🎉 Doğrulandı! Sınırsız matris ve analizör aktif.</p>';
                     generateUltimateHook();
                 }
             }, 1000);
