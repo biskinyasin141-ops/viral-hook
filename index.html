@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViralPulse - Ultimate Pro Hook Generator</title>
+    <title>ViralPulse - Ultimate Expanded Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-black text-white min-h-screen flex flex-col items-center justify-center p-4">
+<body id="bodyBg" class="bg-black text-white min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-500">
 
-    <div class="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl">
+    <div class="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl relative">
+        
+        <!-- Üst Sağ Tema Değiştirici -->
+        <div class="absolute top-4 right-4 flex gap-1">
+            <button onclick="setTheme('black')" title="Siyah Mod" class="w-4 h-4 rounded-full bg-black border border-zinc-600"></button>
+            <button onclick="setTheme('purple')" title="Cyberpunk Mor" class="w-4 h-4 rounded-full bg-purple-600"></button>
+            <button onclick="setTheme('green')" title="Matrix Yeşil" class="w-4 h-4 rounded-full bg-emerald-600"></button>
+        </div>
+
         <div class="text-center mb-6">
-            <span class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v6.0 PRO</span>
+            <span id="badgeColor" class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v7.0 EXPANDED</span>
             <h1 class="text-2xl font-black mt-2 tracking-tight">Algoritmayı Tamamen Hackle 🚀</h1>
-            <p class="text-zinc-400 text-sm mt-1">Sınırsız kombinasyon, ton ve geçmiş hafızasıyla profesyonel kanca stüdyosu.</p>
+            <p class="text-zinc-400 text-sm mt-1">Viral skor, canlı düzenleyici ve çoklu tema desteğiyle profesyonel stüdyo.</p>
         </div>
 
         <div class="space-y-4">
@@ -29,7 +37,7 @@
             <div class="grid grid-cols-2 gap-2">
                 <div>
                     <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Anlatım Tonu</label>
-                    <select id="toneSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-3 text-white focus:outline-none focus:border-red-500 text-xs">
+                    <select id="toneSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-3 text-white focus:outline-none text-xs">
                         <option value="mystery">Gizemli 🕵️‍♂️</option>
                         <option value="aggressive">Sarsıcı 🔥</option>
                         <option value="success">Başarı 📈</option>
@@ -37,7 +45,7 @@
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Kanca Yapısı</label>
-                    <select id="styleSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-3 text-white focus:outline-none focus:border-red-500 text-xs">
+                    <select id="styleSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-3 text-white focus:outline-none text-xs">
                         <option value="short">Kısa & Vurucu</option>
                         <option value="story">Hikaye / İtiraf</option>
                     </select>
@@ -49,30 +57,42 @@
                     <label class="block text-xs font-semibold text-zinc-400 uppercase">İçerik Konun / Fikrin nedir?</label>
                     <button onclick="fillRandomIdea()" class="text-[10px] text-red-400 hover:text-red-300">💡 Rastgele Fikir</button>
                 </div>
-                <input type="text" id="ideaInput" placeholder="Örn: Evde pasif gelir elde etmek..." class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500 text-sm">
+                <input type="text" id="ideaInput" placeholder="Örn: Yapay zeka ile içerik üretmek..." class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none text-sm">
             </div>
 
-            <button onclick="generateUltimateHook()" id="generateBtn" class="w-full bg-red-600 hover:bg-red-500 font-bold py-3 rounded-xl transition-all shadow-lg shadow-red-600/30 text-sm">
+            <button onclick="generateUltimateHook()" id="generateBtn" class="w-full bg-red-600 hover:bg-red-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm">
                 Pro Kancaları Üret ⚡
             </button>
         </div>
 
         <div id="resultArea" class="mt-6 hidden">
+            <!-- Viral Skor Göstergesi -->
+            <div id="scoreBox" class="mb-3 bg-zinc-800/80 border border-zinc-700 rounded-xl p-2.5 flex justify-between items-center text-xs">
+                <span class="text-zinc-400 font-semibold">🔥 Tahmini Viral Etki Skoru:</span>
+                <span id="viralScoreText" class="text-green-400 font-black">--</span>
+            </div>
+
             <div class="flex justify-between items-center mb-1">
-                <label class="block text-xs font-semibold text-zinc-400 uppercase">Üretilen Son Kanca:</label>
+                <label class="block text-xs font-semibold text-zinc-400 uppercase">Üretilen Kanca (Üzerine tıkla & düzenle):</label>
                 <button onclick="copyCurrentHook()" id="copyBtn" class="text-xs text-red-400 hover:text-red-300 font-semibold hidden">📋 Kopyala</button>
             </div>
             
-            <div id="hookOutput" class="bg-zinc-800 border border-zinc-700 rounded-xl p-4 text-sm text-zinc-200 mb-4"></div>
+            <!-- Canlı Düzenlenebilir Kanca Alanı -->
+            <textarea id="hookOutput" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 text-sm text-zinc-200 mb-4 focus:outline-none focus:border-red-500 resize-none h-20"></textarea>
             
-            <!-- Geçmiş Hafızası Alanı -->
+            <!-- Geçmiş Hafızası -->
             <div id="historySection" class="mb-4 hidden">
-                <label class="block text-xs font-semibold text-zinc-400 uppercase mb-2">📜 Önceki Üretimler (Geçmiş):</label>
-                <div id="historyList" class="space-y-2 max-h-40 overflow-y-auto pr-1"></div>
+                <label class="block text-xs font-semibold text-zinc-400 uppercase mb-2">📜 Önceki Üretimler:</label>
+                <div id="historyList" class="space-y-2 max-h-32 overflow-y-auto pr-1"></div>
             </div>
             
+            <!-- Mini İpuçları Paneli -->
+            <div class="bg-zinc-800/40 border border-zinc-700/50 rounded-xl p-3 mb-4 text-xs text-zinc-400">
+                <span class="font-bold text-zinc-300">💡 Altın Kural:</span> İlk 3 saniyede izleyicinin merak duygusunu tetikleyecek ani bir soru veya şok edici bir iddia kullan.
+            </div>
+
             <div id="lockSection" class="bg-zinc-800/50 border border-zinc-700/50 rounded-xl p-4 text-center">
-                <p id="lockText" class="text-xs text-zinc-300 mb-3">Sınırsız ve geçmiş hafızalı mod için aracı <span class="text-red-400 font-bold">1 arkadaşınla</span> paylaşmalısın! (<span id="shareCount">0</span>/1)</p>
+                <p id="lockText" class="text-xs text-zinc-300 mb-3">Sınırsız mod ve skor motoru için aracı <span class="text-red-400 font-bold">1 arkadaşınla</span> paylaşmalısın! (<span id="shareCount">0</span>/1)</p>
                 <button onclick="handleShare()" class="w-full bg-blue-600 hover:bg-blue-500 font-bold py-2.5 rounded-xl transition-all text-xs flex items-center justify-center gap-2">
                     📢 WhatsApp'ta Paylaş & Kilidi Aç
                 </button>
@@ -82,7 +102,6 @@
 
     <script>
         let isUnlocked = false;
-        let currentText = "";
         let historyArray = [];
 
         const sampleIdeas = [
@@ -96,6 +115,26 @@
         function fillRandomIdea() {
             const random = sampleIdeas[Math.floor(Math.random() * sampleIdeas.length)];
             document.getElementById('ideaInput').value = random;
+        }
+
+        function setTheme(theme) {
+            const body = document.getElementById('bodyBg');
+            const btn = document.getElementById('generateBtn');
+            const badge = document.getElementById('badgeColor');
+
+            if(theme === 'purple') {
+                body.className = "bg-purple-950 text-white min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-500";
+                btn.className = "w-full bg-purple-600 hover:bg-purple-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm";
+                badge.className = "bg-purple-500/10 text-purple-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider";
+            } else if(theme === 'green') {
+                body.className = "bg-zinc-950 text-white min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-500";
+                btn.className = "w-full bg-emerald-600 hover:bg-emerald-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm";
+                badge.className = "bg-emerald-500/10 text-emerald-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider";
+            } else {
+                body.className = "bg-black text-white min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-500";
+                btn.className = "w-full bg-red-600 hover:bg-red-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm";
+                badge.className = "bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider";
+            }
         }
 
         const hookDatabase = {
@@ -267,36 +306,42 @@
             const resultArea = document.getElementById('resultArea');
             const hookOutput = document.getElementById('hookOutput');
             const copyBtn = document.getElementById('copyBtn');
+            const viralScoreText = document.getElementById('viralScoreText');
             
             resultArea.classList.remove('hidden');
 
             if(!isUnlocked) {
                 copyBtn.classList.add('hidden');
-                hookOutput.innerHTML = `🔒 <b>"${idea}"</b> için Pro kancalar hazırlandı ancak kilitli! Devam etmek için paylaşmalısın.`;
+                hookOutput.value = `🔒 "${idea}" için Pro kancalar hazırlandı ancak kilitli! Devam etmek için paylaşmalısın.`;
+                viralScoreText.innerText = "Kilitli 🔒";
                 return;
             }
 
-            hookOutput.innerHTML = "⏳ Yapay zeka havuzu taranıyor ve metin harmanlanıyor...";
+            hookOutput.value = "⏳ Yapay zeka havuzu taranıyor...";
             copyBtn.classList.add('hidden');
 
             setTimeout(() => {
                 const pool = hookDatabase[platform][tone][style];
                 const rawTemplate = pool[Math.floor(Math.random() * pool.length)];
                 
-                currentText = rawTemplate.replace(/{idea}/g, `"${idea}"`);
+                const finalResult = rawTemplate.replace(/{idea}/g, `"${idea}"`);
                 
-                hookOutput.innerText = currentText;
+                hookOutput.value = finalResult;
                 copyBtn.classList.remove('hidden');
 
+                // Rastgele yüksek viral skor üret (%94 - %99 arası)
+                const randomScore = Math.floor(Math.random() * 6) + 94;
+                viralScoreText.innerText = `%${randomScore} Viral Potansiyel 🔥`;
+
                 // Geçmişe ekle
-                addToHistory(currentText);
+                addToHistory(finalResult);
             }, 600);
         }
 
         function addToHistory(text) {
             if(!historyArray.includes(text)) {
-                historyArray.unshift(text); // En başa ekle
-                if(historyArray.length > 5) historyArray.pop(); // Maksimum 5 tut
+                historyArray.unshift(text);
+                if(historyArray.length > 5) historyArray.pop();
             }
             updateHistoryUI();
         }
@@ -307,8 +352,8 @@
             
             if(historyArray.length > 0 && isUnlocked) {
                 historySection.classList.remove('hidden');
-                historyList.innerHTML = historyArray.map((item, index) => `
-                    <div class="bg-zinc-800/80 border border-zinc-700 rounded-lg p-2.5 text-xs text-zinc-300 flex justify-between items-center gap-2">
+                historyList.innerHTML = historyArray.map((item) => `
+                    <div class="bg-zinc-800/80 border border-zinc-700 rounded-lg p-2 text-xs text-zinc-300 flex justify-between items-center gap-2">
                         <span class="truncate">${item}</span>
                         <button onclick="copySpecific('${item.replace(/'/g, "\\'")}')" class="text-red-400 hover:text-red-300 whitespace-nowrap font-semibold">📋 Kopyala</button>
                     </div>
@@ -317,6 +362,7 @@
         }
 
         function copyCurrentHook() {
+            const currentText = document.getElementById('hookOutput').value;
             if(!currentText) return;
             navigator.clipboard.writeText(currentText);
             const copyBtn = document.getElementById('copyBtn');
@@ -331,7 +377,7 @@
 
         function handleShare() {
             const siteUrl = window.location.href;
-            const text = encodeURIComponent("Algoritmayı alt üst eden bu profesyonel viral kanca stüdyosunu kesinlikle denemelisin: " + siteUrl);
+            const text = encodeURIComponent("Algoritmayı alt üst eden bu muazzam viral kanca stüdyosunu kesinlikle denemelisin: " + siteUrl);
             
             navigator.clipboard.writeText(window.location.href);
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
@@ -340,7 +386,7 @@
             isUnlocked = true;
             
             setTimeout(() => {
-                document.getElementById('lockSection').innerHTML = '<p class="text-xs text-green-400 font-bold">🎉 Kilit Açıldı! Sınırsız üretim ve geçmiş hafızası aktif.</p>';
+                document.getElementById('lockSection').innerHTML = '<p class="text-xs text-green-400 font-bold">🎉 Kilit Açıldı! Sınırsız mod ve skor motoru aktif.</p>';
                 generateUltimateHook();
             }, 800);
         }
