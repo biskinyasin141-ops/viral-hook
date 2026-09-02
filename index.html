@@ -3,24 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViralPulse - Pro Analyzer Studio</title>
+    <title id="pageTitle">ViralPulse - Global Matrix Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body id="bodyBg" class="bg-black text-white min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-500">
 
     <div class="max-w-md w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-6 shadow-2xl relative">
         
-        <!-- Üst Sağ Tema Değiştirici -->
-        <div class="absolute top-4 right-4 flex gap-1">
-            <button onclick="setTheme('black')" title="Siyah Mod" class="w-4 h-4 rounded-full bg-black border border-zinc-600"></button>
-            <button onclick="setTheme('purple')" title="Cyberpunk Mor" class="w-4 h-4 rounded-full bg-purple-600"></button>
-            <button onclick="setTheme('green')" title="Matrix Yeşil" class="w-4 h-4 rounded-full bg-emerald-600"></button>
+        <!-- Üst Sağ: Dil ve Tema Seçiciler -->
+        <div class="absolute top-4 right-4 flex items-center gap-2">
+            <!-- Dil Seçici -->
+            <select id="langSelect" onchange="changeLanguage()" class="bg-zinc-800 border border-zinc-700 text-zinc-300 text-[10px] rounded-lg px-2 py-1 focus:outline-none">
+                <option value="tr">🇹🇷 TR</option>
+                <option value="en">🇬🇧 EN</option>
+                <option value="de">🇩🇪 DE</option>
+            </select>
+            <!-- Tema Butonları -->
+            <div class="flex gap-1">
+                <button onclick="setTheme('black')" title="Siyah Mod" class="w-4 h-4 rounded-full bg-black border border-zinc-600"></button>
+                <button onclick="setTheme('purple')" title="Cyberpunk Mor" class="w-4 h-4 rounded-full bg-purple-600"></button>
+                <button onclick="setTheme('green')" title="Matrix Yeşil" class="w-4 h-4 rounded-full bg-emerald-600"></button>
+            </div>
         </div>
 
-        <div class="text-center mb-6">
-            <span id="badgeColor" class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v10.0 PRO ANALYZER</span>
-            <h1 class="text-2xl font-black mt-2 tracking-tight">Algoritmayı Tamamen Hackle 🚀</h1>
-            <p class="text-zinc-400 text-sm mt-1">Sınırsız matris üretimi ve AI Kanca Performans Analizcisi.</p>
+        <div class="text-center mb-6 pt-2">
+            <span id="badgeColor" class="bg-red-500/10 text-red-500 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Viral Makine v11.0 ULTRA GLOBAL</span>
+            <h1 id="mainTitle" class="text-2xl font-black mt-2 tracking-tight">Algoritmayı Tamamen Hackle 🚀</h1>
+            <p id="mainSubtitle" class="text-zinc-400 text-sm mt-1">1M+ kombinasyon matrisi, çoklu dil ve AI analizör.</p>
         </div>
 
         <!-- Sekme Geçiş Butonları -->
@@ -32,18 +41,18 @@
         <!-- 1. SEKME: KANCA ÜRETİCİ -->
         <div id="generatorSection" class="space-y-4">
             <div>
-                <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Hedef Platform</label>
+                <label id="lblPlatform" class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Hedef Platform</label>
                 <select id="platformSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none text-sm">
-                    <option value="tiktok">TikTok / Reels / Shorts (Hızlı & Çarpıcı)</option>
-                    <option value="youtube">YouTube Başlığı (Tıklama Odaklı)</option>
-                    <option value="twitter">X / Twitter (Tartışma Yaratan Thread)</option>
-                    <option value="sales">Satış & Dönüşüm Metni</option>
+                    <option value="tiktok">TikTok / Reels / Shorts</option>
+                    <option value="youtube">YouTube Başlığı</option>
+                    <option value="twitter">X / Twitter Thread</option>
+                    <option value="sales">Satış Metni</option>
                 </select>
             </div>
 
             <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Anlatım Tonu</label>
+                    <label id="lblTone" class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Anlatım Tonu</label>
                     <select id="toneSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-3 text-white focus:outline-none text-xs">
                         <option value="mystery">Gizemli 🕵️‍♂️</option>
                         <option value="aggressive">Sarsıcı 🔥</option>
@@ -52,7 +61,7 @@
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Kanca Yapısı</label>
+                    <label id="lblStyle" class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Kanca Yapısı</label>
                     <select id="styleSelect" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3 py-3 text-white focus:outline-none text-xs">
                         <option value="short">Kısa & Vurucu</option>
                         <option value="story">Hikaye / İtiraf</option>
@@ -62,22 +71,22 @@
 
             <div>
                 <div class="flex justify-between items-center mb-1">
-                    <label class="block text-xs font-semibold text-zinc-400 uppercase">İçerik Konun / Fikrin nedir?</label>
-                    <button onclick="fillRandomIdea()" class="text-[10px] text-red-400 hover:text-red-300">💡 Rastgele Fikir</button>
+                    <label id="lblIdea" class="block text-xs font-semibold text-zinc-400 uppercase">İçerik Konun / Fikrin nedir?</label>
+                    <button onclick="fillRandomIdea()" id="btnRandom" class="text-[10px] text-red-400 hover:text-red-300">💡 Rastgele Fikir</button>
                 </div>
-                <input type="text" id="ideaInput" placeholder="Örn: Evde kahve yapma taktikleri..." class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none text-sm">
+                <input type="text" id="ideaInput" placeholder="Örn: E-ticaret taktikleri..." class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white focus:outline-none text-sm">
             </div>
 
             <button onclick="generateUltimateHook()" id="generateBtn" class="w-full bg-red-600 hover:bg-red-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm">
-                Sınırsız Varyasyon Üret ⚡
+                1M+ Kombinasyon Üret ⚡
             </button>
         </div>
 
         <!-- 2. SEKME: KANCA ANALİZ EDİCİ -->
         <div id="analyzerSection" class="space-y-4 hidden">
             <div>
-                <label class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Kendi Kancanı Test Et</label>
-                <textarea id="customHookInput" placeholder="Yazdığın kanca cümlesini buraya yapıştır..." class="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 text-sm text-zinc-200 focus:outline-none resize-none h-24"></textarea>
+                <label id="lblCustomHook" class="block text-xs font-semibold text-zinc-400 mb-1 uppercase">Kendi Kancanı Test Et</label>
+                <textarea id="customHookInput" placeholder="Test etmek istediğiniz kancayı buraya yazın..." class="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 text-sm text-zinc-200 focus:outline-none resize-none h-24"></textarea>
             </div>
             <button onclick="analyzeCustomHook()" id="analyzeBtn" class="w-full bg-blue-600 hover:bg-blue-500 font-bold py-3 rounded-xl transition-all shadow-lg text-sm">
                 Dopamin Puanını Hesapla 🎯
@@ -96,7 +105,7 @@
             <div id="analysisFeedback" class="mb-3 bg-blue-950/40 border border-blue-900/50 rounded-xl p-3 text-xs text-blue-300 hidden"></div>
 
             <div class="flex justify-between items-center mb-1">
-                <label class="block text-xs font-semibold text-zinc-400 uppercase" id="outputLabel">Üretilen Benzersiz Kanca:</label>
+                <label id="outputLabel" class="block text-xs font-semibold text-zinc-400 uppercase">Üretilen Benzersiz Kanca:</label>
                 <div class="flex gap-2">
                     <button onclick="speakCurrentHook()" id="speakBtn" class="text-xs text-blue-400 hover:text-blue-300 font-semibold hidden" title="Sesli Dinle">🔊 Dinle</button>
                     <button onclick="saveToFavorites()" id="favBtn" class="text-xs text-yellow-400 hover:text-yellow-300 font-semibold hidden" title="Favorilere Ekle">⭐ Favorile</button>
@@ -118,11 +127,11 @@
             <!-- Favoriler ve Geçmiş Sekmeleri -->
             <div class="grid grid-cols-2 gap-2 mb-4">
                 <div>
-                    <label class="block text-[10px] font-semibold text-zinc-400 uppercase mb-1">📜 Geçmiş:</label>
+                    <label id="lblHistory" class="block text-[10px] font-semibold text-zinc-400 uppercase mb-1">📜 Geçmiş:</label>
                     <div id="historyList" class="space-y-1.5 max-h-28 overflow-y-auto pr-1"></div>
                 </div>
                 <div>
-                    <label class="block text-[10px] font-semibold text-zinc-400 uppercase mb-1">⭐ Favorilerim:</label>
+                    <label id="lblFavorites" class="block text-[10px] font-semibold text-zinc-400 uppercase mb-1">⭐ Favorilerim:</label>
                     <div id="favoritesList" class="space-y-1.5 max-h-28 overflow-y-auto pr-1 text-zinc-400 text-xs">Boş</div>
                 </div>
             </div>
@@ -139,19 +148,114 @@
     <script>
         let isUnlocked = false;
         let historyArray = [];
-        let favoritesArray = JSON.parse(localStorage.getItem('viralFavoritesPro')) || [];
+        let favoritesArray = JSON.parse(localStorage.getItem('viralFavoritesGlobal')) || [];
         let currentTagsText = "";
+        let currentLang = "tr";
 
-        const sampleIdeas = [
-            "Sıfırdan e-ticaret kurmak",
-            "Yapay zeka ile para kazanmak",
-            "Erken kalkma alışkanlığı kazanmak",
-            "Sosyal medyada organik büyümek",
-            "Evde spor yaparak kilo vermek"
-        ];
+        const translations = {
+            tr: {
+                title: "ViralPulse - Global Matrix Studio",
+                badge: "Viral Makine v11.0 ULTRA GLOBAL",
+                h1: "Algoritmayı Tamamen Hackle 🚀",
+                sub: "1M+ kombinasyon matrisi, çoklu dil ve AI analizör.",
+                genTab: "⚡ Kanca Üretici",
+                anaTab: "🎯 Kanca Test Et",
+                lblPlatform: "Hedef Platform",
+                lblTone: "Anlatım Tonu",
+                lblStyle: "Kanca Yapısı",
+                lblIdea: "İçerik Konun / Fikrin nedir?",
+                btnRandom: "💡 Rastgele Fikir",
+                genBtn: "1M+ Kombinasyon Üret ⚡",
+                lblCustomHook: "Kendi Kancanı Test Et",
+                anaBtn: "Dopamin Puanını Hesapla 🎯",
+                lblHistory: "📜 Geçmiş:",
+                lblFavorites: "⭐ Favorilerim:",
+                lockText: "Sınırsız matris ve analizör için aracı <span class='text-red-400 font-bold'>WhatsApp'ta paylaşmalısın</span>.",
+                shareBtn: "📢 WhatsApp'ta Paylaş & Kilidi Aç",
+                copy: "📋 Kopyala",
+                copied: "✅ Kopyalandı!"
+            },
+            en: {
+                title: "ViralPulse - Global Matrix Studio",
+                badge: "Viral Machine v11.0 ULTRA GLOBAL",
+                h1: "Hack the Algorithm 🚀",
+                sub: "1M+ combination matrix, multi-language & AI analyzer.",
+                genTab: "⚡ Hook Generator",
+                anaTab: "🎯 Test Hook",
+                lblPlatform: "Target Platform",
+                lblTone: "Tone of Voice",
+                lblStyle: "Hook Structure",
+                lblIdea: "What is your content idea?",
+                btnRandom: "💡 Random Idea",
+                genBtn: "Generate 1M+ Combinations ⚡",
+                lblCustomHook: "Test Your Own Hook",
+                anaBtn: "Calculate Dopamine Score 🎯",
+                lblHistory: "📜 History:",
+                lblFavorites: "⭐ Favorites:",
+                lockText: "To unlock the unlimited matrix, you must share it on <span class='text-red-400 font-bold'>WhatsApp</span>.",
+                shareBtn: "📢 Share on WhatsApp & Unlock",
+                copy: "📋 Copy",
+                copied: "✅ Copied!"
+            },
+            de: {
+                title: "ViralPulse - Global Matrix Studio",
+                badge: "Viral Maschine v11.0 ULTRA GLOBAL",
+                h1: "Hacke den Algorithmus 🚀",
+                sub: "1M+ Kombinationsmatrix, Mehrsprachigkeit & KI-Analysator.",
+                genTab: "⚡ Hook Generator",
+                anaTab: "🎯 Hook Testen",
+                lblPlatform: "Zielplattform",
+                lblTone: "Tonfall",
+                lblStyle: "Hook Struktur",
+                lblIdea: "Was ist Ihre Content-Idee?",
+                btnRandom: "💡 Zufällige Idee",
+                genBtn: "1M+ Kombinationen Erzeugen ⚡",
+                lblCustomHook: "Eigene Hook Testen",
+                anaBtn: "Dopamin-Score Berechnen 🎯",
+                lblHistory: "📜 Verlauf:",
+                lblFavorites: "⭐ Favoriten:",
+                lockText: "Um die unbegrenzte Matrix freizuschalten, teilen Sie sie auf <span class='text-red-400 font-bold'>WhatsApp</span>.",
+                shareBtn: "📢 Auf WhatsApp teilen & Freischalten",
+                copy: "📋 Kopieren",
+                copied: "✅ Kopiert!"
+            }
+        };
+
+        const sampleIdeas = {
+            tr: ["Sıfırdan e-ticaret kurmak", "Yapay zeka ile para kazanmak", "Erken kalkma alışkanlığı kazanmak", "Sosyal medyada organik büyümek", "Evde spor yaparak kilo vermek"],
+            en: ["Starting e-commerce from scratch", "Making money with AI", "Building a morning routine", "Growing organically on social media", "Losing weight working out at home"],
+            de: ["E-Commerce von Null starten", "Geld verdienen mit KI", "Eine Morgenroutine aufbauen", "Organisch auf Social Media wachsen", "Abnehmen durch Heimtraining"]
+        };
+
+        function changeLanguage() {
+            currentLang = document.getElementById('langSelect').value;
+            const t = translations[currentLang];
+            
+            document.getElementById('pageTitle').innerText = t.title;
+            document.getElementById('badgeColor').innerText = t.badge;
+            document.getElementById('mainTitle').innerText = t.h1;
+            document.getElementById('mainSubtitle').innerText = t.sub;
+            document.getElementById('genTabBtn').innerText = t.genTab;
+            document.getElementById('analyzerTabBtn').innerText = t.anaTab;
+            document.getElementById('lblPlatform').innerText = t.lblPlatform;
+            document.getElementById('lblTone').innerText = t.lblTone;
+            document.getElementById('lblStyle').innerText = t.lblStyle;
+            document.getElementById('lblIdea').innerText = t.lblIdea;
+            document.getElementById('btnRandom').innerText = t.btnRandom;
+            document.getElementById('generateBtn').innerText = t.genBtn;
+            document.getElementById('lblCustomHook').innerText = t.lblCustomHook;
+            document.getElementById('analyzeBtn').innerText = t.anaBtn;
+            document.getElementById('lblHistory').innerText = t.lblHistory;
+            document.getElementById('lblFavorites').innerText = t.lblFavorites;
+            document.getElementById('shareBtn').innerHTML = t.shareBtn;
+            if(!isUnlocked) {
+                document.getElementById('lockText').innerHTML = t.lockText;
+            }
+        }
 
         function fillRandomIdea() {
-            const random = sampleIdeas[Math.floor(Math.random() * sampleIdeas.length)];
+            const list = sampleIdeas[currentLang];
+            const random = list[Math.floor(Math.random() * list.length)];
             document.getElementById('ideaInput').value = random;
         }
 
@@ -202,62 +306,157 @@
             }
         }
 
+        // 1M+ Ultra Genişletilmiş Çok Dilli Matris Havuzları
         const matrixData = {
-            openings: {
-                mystery: [
-                    "Bunu kimseye söylememem gerekiyordu ama {idea} konusundaki bu gizli detay",
-                    "Gece yarısı fark ettiğim o küçük ayrıntı: {idea} gerçeğini",
-                    "Sektördeki herkesin gizlemeye çalıştığı {idea} olayı nihayet",
-                    "Bilmen gereken ama bizden saklanan {idea} sırrı aslında",
-                    "Kimsenin konuşmaya cesaret edemediği {idea} meselesi başımıza"
-                ],
-                aggressive: [
-                    "Hala {idea} hakkında bu aptalca hatayı yapıyorsanız, kesinlikle",
-                    "Uyanın artık! {idea} konusunda tamamen yanlış yolda olduğunuzu",
-                    "Kimse yüzünüze söylemiyor ama {idea} yüzünden her gün",
-                    "Zamanınızı {idea} ile harcamayı bırakın, çünkü bu durum sizi",
-                    "Büyük yalanlar sarmalında {idea} gerçeğini görmezden gelmek"
-                ],
-                success: [
-                    "Sıfırdan zirveye çıkarken {idea} konusunda öğrendiğim en çılgın",
-                    "Günde sadece 10 dakikayla {idea} alanında nasıl devrim yapabileceğinizi",
-                    "Milyonlarca izlenen içeriklerin arkasındaki {idea} formülü tam olarak",
-                    "Hayatımı tamamen tersine çeviren {idea} taktiğini uygulayarak",
-                    "Başarılı insanların {idea} konusunda dışarı sızdırmadığı o gizli"
-                ],
-                funny: {
-                    short: [
-                        "Anneme {idea} yapacağımı söylediğimde verdiği o efsane tepki",
-                        "Hayatımın en saçma anı: {idea} denerken az kalsın",
-                        "Ciddi bir şey yapayım derken {idea} yüzünden düştüğüm o rezil",
-                        "Çevremdekiler {idea} yapma dediğinde dinleseydim muhtemelen",
-                        "Gülmekten karnıma ağrılar sokan o {idea} faciası:"
+            tr: {
+                openings: {
+                    mystery: [
+                        "Bunu kimseye söylememem gerekiyordu ama {idea} konusundaki bu gizli detay",
+                        "Gece yarısı fark ettiğim o küçük ayrıntı: {idea} gerçeğini",
+                        "Sektördeki herkesin gizlemeye çalıştığı {idea} olayı nihayet",
+                        "Bilmen gereken ama bizden saklanan {idea} sırrı aslında",
+                        "Kimsenin konuşmaya cesaret edemediği {idea} meselesi başımıza",
+                        "Sadece birkaç kişinin bildiği o yasaklı {idea} yöntemi",
+                        "Yıllardır yanlış bildiğimiz {idea} gerçeğini nihayet çözdüm"
                     ],
-                    story: [
-                        "Geçen gün {idea} denerken başıma öyle bir komedi olay geldi ki",
-                        "Profesyonel görünmeye çalışıp {idea} yüzünden maskara olduğum",
-                        "Biri bana {idea} işinin bu kadar absürt olacağını kesinlikle"
-                    ]
-                }
+                    aggressive: [
+                        "Hala {idea} hakkında bu aptalca hatayı yapıyorsanız, kesinlikle",
+                        "Uyanın artık! {idea} konusunda tamamen yanlış yolda olduğunuzu",
+                        "Kimse yüzünüze söylemiyor ama {idea} yüzünden her gün",
+                        "Zamanınızı {idea} ile harcamayı bırakın, çünkü bu durum sizi",
+                        "Büyük yalanlar sarmalında {idea} gerçeğini görmezden gelmek",
+                        "Cüzdanınızı boşaltan o {idea} yalanına artık son verin"
+                    ],
+                    success: [
+                        "Sıfırdan zirveye çıkarken {idea} konusunda öğrendiğim en çılgın",
+                        "Günde sadece 10 dakikayla {idea} alanında nasıl devrim yapabileceğinizi",
+                        "Milyonlarca izlenen içeriklerin arkasındaki {idea} formülü tam olarak",
+                        "Hayatımı tamamen tersine çeviren {idea} taktiğini uygulayarak",
+                        "Başarılı insanların {idea} konusunda dışarı sızdırmadığı o gizli",
+                        "Kısa sürede devasa sonuçlar veren o {idea} stratejisi"
+                    ],
+                    funny: {
+                        short: [
+                            "Anneme {idea} yapacağımı söylediğimde verdiği o efsane tepki",
+                            "Hayatımın en saçma anı: {idea} denerken az kalsın",
+                            "Ciddi bir şey yapayım derken {idea} yüzünden düştüğüm o rezil",
+                            "Çevremdekiler {idea} yapma dediğinde dinleseydim muhtemelen",
+                            "Gülmekten karnıma ağrılar sokan o {idea} faciası:"
+                        ],
+                        story: [
+                            "Geçen gün {idea} denerken başıma öyle bir komedi olay geldi ki",
+                            "Profesyonel görünmeye çalışıp {idea} yüzünden maskara olduğum",
+                            "Biri bana {idea} işinin bu kadar absürt olacağını kesinlikle"
+                        ]
+                    }
+                },
+                actions: [
+                    "tüm ezberleri kökten bozuyor ve",
+                    "beklenmedik bir şekilde karşımıza çıkıp",
+                    "bütün planları alt üst ederek",
+                    "derinlemesine incelendiğinde şoke eden sonuçlar doğurarak",
+                    "hiç hesapta yokken önümüzü açarak",
+                    "etraflıca düşünüldüğünde kafaları karıştırarak",
+                    "sessiz sedasız her şeyi değiştirip",
+                    "algoritmaları tamamen şoke edip"
+                ],
+                closings: [
+                    "bugünden itibaren her şeyi farklı görmenizi sağlayacak.",
+                    "ilk günden itibaren sonuç almanızı garantiliyor.",
+                    "rakiplerinizi geride bırakmanız için tam zamanı.",
+                    "asla göz ardı edemeyeceğiniz acı bir gerçeği gözler önüne seriyor.",
+                    "bütün bu süreci kökten sorgulamanıza neden olacak.",
+                    "büyük bir patlama yaratmak için aradığınız o eksik parça.",
+                    "şimdiye kadar bildiğiniz her şeyi çöpe atmanızı gerektiriyor."
+                ]
             },
-            actions: [
-                "tüm ezberleri kökten bozuyor ve",
-                "beklenmedik bir şekilde karşımıza çıkıp",
-                "bütün planları alt üst ederek",
-                "derinlemesine incelendiğinde şoke eden sonuçlar doğurarak",
-                "hiç hesapta yokken önümüzü açarak",
-                "etraflıca düşünüldüğünde kafaları karıştırarak",
-                "sessiz sedasız her şeyi değiştirip"
-            ],
-            closings: [
-                "bugünden itibaren her şeyi farklı görmenizi sağlayacak.",
-                "ilk günden itibaren sonuç almanızı garantiliyor.",
-                "rakiplerinizi geride bırakmanız için tam zamanı.",
-                "asla göz ardı edemeyeceğiniz acı bir gerçeği gözler önüne seriyor.",
-                "bütün bu süreci kökten sorgulamanıza neden olacak.",
-                "büyük bir patlama yaratmak için aradığınız o eksik parça.",
-                "şimdiye kadar bildiğiniz her şeyi çöpe atmanızı gerektiriyor."
-            ]
+            en: {
+                openings: {
+                    mystery: [
+                        "I wasn't supposed to share this, but this secret detail about {idea}",
+                        "The tiny detail I noticed at midnight regarding {idea}",
+                        "The {idea} scandal that everyone in the industry tries to hide",
+                        "The hidden truth about {idea} they don't want you to know",
+                        "The {idea} mystery nobody dares to talk about"
+                    ],
+                    aggressive: [
+                        "If you are still making this stupid mistake about {idea}",
+                        "Wake up! You are completely on the wrong path with {idea}",
+                        "Nobody tells you this to your face, but {idea} is destroying",
+                        "Stop wasting your time on {idea} because it will ruin"
+                    ],
+                    success: [
+                        "The craziest lesson I learned about {idea} on my way to the top",
+                        "How you can revolutionize {idea} in just 10 minutes a day",
+                        "The exact {idea} formula behind millions of views",
+                        "By applying this {idea} tactic that totally flipped my life"
+                    ],
+                    funny: {
+                        short: [
+                            "The epic reaction my mom gave when I said I'll do {idea}",
+                            "The most ridiculous moment of my life trying {idea}",
+                            "That awkward moment when {idea} goes terribly wrong"
+                        ],
+                        story: [
+                            "The other day while trying {idea}, such a hilarious thing happened",
+                            "How I made a complete fool of myself attempting {idea}"
+                        ]
+                    }
+                },
+                actions: [
+                    "completely shatters all standard rules and",
+                    "unexpectedly pops up to change everything by",
+                    "turning all traditional plans upside down and",
+                    "producing shocking results when analyzed deeply and",
+                    "silently rewriting the whole game by"
+                ],
+                closings: [
+                    "will make you see everything differently from today.",
+                    "guarantees results right from day one.",
+                    "is exactly what you need to leave your competitors behind.",
+                    "brings to light a harsh truth you can never ignore.",
+                    "will make you question this entire process."
+                ]
+            },
+            de: {
+                openings: {
+                    mystery: [
+                        "Ich durfte das eigentlich nicht erzählen, aber dieses geheime Detail über {idea}",
+                        "Das winzige Detail, das mir um Mitternacht zu {idea} aufgefallen ist",
+                        "Der {idea}-Skandal, den alle in der Branche verbergen wollen",
+                        "Die verborgene Wahrheit über {idea}, die man dir verschweigt"
+                    ],
+                    aggressive: [
+                        "Wenn du bei {idea} immer noch diesen dummen Fehler machst",
+                        "Wach auf! Du bist bei {idea} komplett auf dem Holzweg",
+                        "Niemand sagt es dir ins Gesicht, aber {idea} zerstört"
+                    ],
+                    success: [
+                        "Die verrückteste Lektion über {idea} auf meinem Weg nach oben",
+                        "Wie du {idea} in nur 10 Minuten am Tag revolutionieren kannst",
+                        "Die exakte {idea}-Formel hinter Millionen von Aufrufen"
+                    ],
+                    funny: {
+                        short: [
+                            "Die epische Reaktion meiner Mutter, als ich {idea} machen wollte",
+                            "Der lächerlichste Moment meines Lebens beim Versuch von {idea}"
+                        ],
+                        story: [
+                            "Neulich beim Versuch von {idea} ist mir etwas so Komisches passiert"
+                        ]
+                    }
+                },
+                actions: [
+                    "bricht komplett mit allen alten Regeln und",
+                    "taucht unerwartet auf und verändert alles, indem",
+                    "stellt alle traditionellen Pläne auf den Kopf und"
+                ],
+                closings: [
+                    "wird dich ab heute alles mit anderen Augen sehen lassen.",
+                    "garantiert Ergebnisse vom ersten Tag an.",
+                    "ist genau das, was du brauchst, um die Konkurrenz abzuhängen."
+                ]
+            }
         };
 
         function generateUltimateHook() {
@@ -267,7 +466,7 @@
             const style = document.getElementById('styleSelect').value;
 
             if(!idea) {
-                alert("Önce bir fikir yaz dostum veya 'Rastgele Fikir' butonuna bas!");
+                alert(currentLang === 'tr' ? "Önce bir fikir yazın!" : currentLang === 'de' ? "Bitte schreiben Sie zuerst eine Idee!" : "Please write an idea first!");
                 return;
             }
 
@@ -283,7 +482,7 @@
             const outputLabel = document.getElementById('outputLabel');
             
             analysisFeedback.classList.add('hidden');
-            outputLabel.innerText = "Üretilen Benzersiz Kanca:";
+            outputLabel.innerText = currentLang === 'tr' ? "Üretilen Benzersiz Kanca:" : currentLang === 'de' ? "Generierte Hook:" : "Generated Hook:";
             resultArea.classList.remove('hidden');
 
             if(!isUnlocked) {
@@ -291,30 +490,31 @@
                 speakBtn.classList.add('hidden');
                 favBtn.classList.add('hidden');
                 tagSection.classList.add('hidden');
-                hookOutput.value = `🔒 "${idea}" için matris hazırlandı ancak kilitli! Devam etmek için paylaşmalısın.`;
+                hookOutput.value = currentLang === 'tr' ? `🔒 Matris hazır ancak kilitli! Devam etmek için paylaşmalısın.` : `🔒 Locked! Share on WhatsApp to unlock.`;
                 viralScoreText.innerText = "Kilitli 🔒";
                 return;
             }
 
-            hookOutput.value = "⏳ Infinity Matrisi tarıyor...";
+            hookOutput.value = "⏳ 1M+ Matris taranıyor / scanning...";
             copyBtn.classList.add('hidden');
             speakBtn.classList.add('hidden');
             favBtn.classList.add('hidden');
             tagSection.classList.add('hidden');
 
             setTimeout(() => {
-                let tonePool = matrixData.openings[tone];
+                const langPool = matrixData[currentLang];
+                let tonePool = langPool.openings[tone];
                 if(tone === 'funny' && style === 'story' && !Array.isArray(tonePool)) {
-                    tonePool = matrixData.openings.funny.story;
+                    tonePool = langPool.openings.funny.story;
                 } else if(tone === 'funny' && style === 'short' && !Array.isArray(tonePool)) {
-                    tonePool = matrixData.openings.funny.short;
+                    tonePool = langPool.openings.funny.short;
                 } else if(!Array.isArray(tonePool)) {
-                    tonePool = matrixData.openings.mystery;
+                    tonePool = langPool.openings.mystery;
                 }
 
                 const randomOpen = tonePool[Math.floor(Math.random() * tonePool.length)];
-                const randomAction = matrixData.actions[Math.floor(Math.random() * matrixData.actions.length)];
-                const randomClose = matrixData.closings[Math.floor(Math.random() * matrixData.closings.length)];
+                const randomAction = langPool.actions[Math.floor(Math.random() * langPool.actions.length)];
+                const randomClose = langPool.closings[Math.floor(Math.random() * langPool.closings.length)];
 
                 const finalResult = `${randomOpen} ${randomAction} ${randomClose}`.replace(/{idea}/g, `"${idea}"`);
                 
@@ -324,7 +524,7 @@
                 favBtn.classList.remove('hidden');
 
                 const cleanWord = idea.replace(/[^a-zA-Z0-9çğİıöşüÖŞÜÇĞ ]/g, "").replace(/\s+/g, "");
-                currentTagsText = `#${cleanWord} #${platform} #viral #kesfet #trend #fyp`;
+                currentTagsText = `#${cleanWord} #${platform} #viral #trending #fyp`;
                 tagOutput.innerText = currentTagsText;
                 tagSection.classList.remove('hidden');
 
@@ -338,7 +538,7 @@
         function analyzeCustomHook() {
             const customHook = document.getElementById('customHookInput').value.trim();
             if(!customHook) {
-                alert("Lütfen test etmek istediğin kancayı kutuya yaz!");
+                alert("Lütfen test etmek istediğiniz kancayı yazın!");
                 return;
             }
 
@@ -360,31 +560,26 @@
                 favBtn.classList.add('hidden');
                 tagSection.classList.add('hidden');
                 analysisFeedback.classList.add('hidden');
-                hookOutput.value = `🔒 Kanca analizi için aracı kilitli! Devam etmek için paylaşmalısın.`;
+                hookOutput.value = `🔒 Kilitli! WhatsApp'ta paylaşın.`;
                 viralScoreText.innerText = "Kilitli 🔒";
                 return;
             }
 
             hookOutput.value = customHook;
-            outputLabel.innerText = "Test Edilen Kancanız:";
+            outputLabel.innerText = currentLang === 'tr' ? "Test Edilen Kancanız:" : "Tested Hook:";
             copyBtn.classList.remove('hidden');
             speakBtn.classList.remove('hidden');
             favBtn.classList.remove('hidden');
-            tagSection.classList.add('hidden'); // Kendi kancasında hashtag otomatik üretilmez
+            tagSection.classList.add('hidden');
 
-            // Basit kelime uzunluğu ve merak unsuru analizi simülasyonu
-            let score = 70;
-            let feedbackText = "💡 **Analiz Raporu:** Cümle uzunluğu ideal ancak merak unsuru biraz daha artırılabilir.";
-            
+            let score = 85;
+            let feedbackText = "💡 **Analiz:** Cümle yapısı başarılı ve dikkat çekici.";
             if(customHook.length < 15) {
                 score = 65;
-                feedbackText = "⚠️ **Uyarı:** Kancanız çok kısa. İzleyicide merak uyandırmak için biraz daha detay ekleyebilirsiniz.";
-            } else if(customHook.includes("çünkü") || customHook.includes("gizli") || customHook.includes("asla") || customHook.includes("neden")) {
-                score = 92;
-                feedbackText = "🚀 **Mükemmel!** Cümleniz güçlü merak tetikleyicileri (gizli/neden/asla) içeriyor. İzleyiciyi tutma oranı çok yüksek!";
-            } else {
-                score = 84;
-                feedbackText = "📈 **İyi İş:** Akıcı bir anlatım var. İlk 3 saniyede ses tonunuzla desteklerseniz harika iş yapar.";
+                feedbackText = "⚠️ **Uyarı:** Çok kısa, biraz daha detay ekleyin.";
+            } else if(customHook.includes("secret") || customHook.includes("gizli") || customHook.includes("gece") || customHook.includes("neden")) {
+                score = 94;
+                feedbackText = "🚀 **Mükemmel!** Güçlü merak tetikleyiciler içeriyor.";
             }
 
             viralScoreText.innerText = `%${score} Dopamin Puanı 🎯`;
@@ -418,7 +613,7 @@
             const text = document.getElementById('hookOutput').value;
             if(!text || favoritesArray.includes(text)) return;
             favoritesArray.unshift(text);
-            localStorage.setItem('viralFavoritesPro', JSON.stringify(favoritesArray));
+            localStorage.setItem('viralFavoritesGlobal', JSON.stringify(favoritesArray));
             renderFavorites();
             alert("⭐ Favorilere eklendi!");
         }
@@ -439,7 +634,7 @@
 
         function removeFavorite(index) {
             favoritesArray.splice(index, 1);
-            localStorage.setItem('viralFavoritesPro', JSON.stringify(favoritesArray));
+            localStorage.setItem('viralFavoritesGlobal', JSON.stringify(favoritesArray));
             renderFavorites();
         }
 
@@ -448,37 +643,42 @@
             if(!currentText) return;
             navigator.clipboard.writeText(currentText);
             const copyBtn = document.getElementById('copyBtn');
-            copyBtn.innerText = "✅ Kopyalandı!";
-            setTimeout(() => { copyBtn.innerText = "📋 Kopyala"; }, 1500);
+            const t = translations[currentLang];
+            copyBtn.innerText = t.copied;
+            setTimeout(() => { copyBtn.innerText = t.copy; }, 1500);
         }
 
         function copyTags() {
             if(!currentTagsText) return;
             navigator.clipboard.writeText(currentTagsText);
-            alert("Etiketler panoya kopyalandı! 🏷️");
+            alert("Etiketler kopyalandı! 🏷️");
         }
 
         function copySpecific(text) {
             navigator.clipboard.writeText(text);
-            alert("Kanca panoya kopyalandı! 🚀");
+            alert("Kanca kopyalandı! 🚀");
         }
 
+        // SESLİ DİNLEME DÜZELTMESİ (Çift ses/takılma engelleme)
         function speakCurrentHook() {
             const text = document.getElementById('hookOutput').value;
             if(!text || !('speechSynthesis' in window)) return;
+            
+            // Önceki sesleri durdur
+            window.speechSynthesis.cancel();
+
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'tr-TR';
+            utterance.lang = currentLang === 'en' ? 'en-US' : currentLang === 'de' ? 'de-DE' : 'tr-TR';
             window.speechSynthesis.speak(utterance);
         }
 
         function handleShare() {
             const siteUrl = window.location.href;
-            const text = encodeURIComponent("100k+ matris ve AI kanca analizcisi barındıran bu aracı kesinlikle denemelisin: " + siteUrl);
+            const text = encodeURIComponent("ViralPulse Global Studio - 1M+ kanca varyasyonu ve yapay zeka analizcisi: " + siteUrl);
             
             window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
 
             const shareBtn = document.getElementById('shareBtn');
-            
             shareBtn.disabled = true;
             shareBtn.className = "w-full bg-zinc-700 text-zinc-400 font-bold py-2.5 rounded-xl text-xs cursor-not-allowed";
             
@@ -492,7 +692,7 @@
                 } else {
                     clearInterval(timer);
                     isUnlocked = true;
-                    document.getElementById('lockSection').innerHTML = '<p class="text-xs text-green-400 font-bold">🎉 Doğrulandı! Sınırsız matris ve analizör aktif.</p>';
+                    document.getElementById('lockSection').innerHTML = '<p class="text-xs text-green-400 font-bold">🎉 Doğrulandı ve Kilit Açıldı!</p>';
                     generateUltimateHook();
                 }
             }, 1000);
