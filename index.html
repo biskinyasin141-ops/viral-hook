@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="tr" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Viral Hook AI - Growth Edition (1000x)</title>
+    <title>Viral Hook AI - Growth Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -14,8 +13,7 @@
                     colors: {
                         darkBg: '#020617',
                         cardBg: '#0f172a',
-                        borderCol: '#1e293b',
-                        accentIndigo: '#6366f1'
+                        borderCol: '#1e293b'
                     }
                 }
             }
@@ -23,24 +21,22 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-darkBg text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300">
+<body class="bg-darkBg text-slate-100 min-h-screen flex flex-col font-sans">
 
-    <!-- HEADER -->
     <header class="border-b border-borderCol bg-cardBg/90 backdrop-blur sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="bg-gradient-to-tr from-violet-600 via-indigo-600 to-pink-600 p-2.5 rounded-xl text-white shadow-lg shadow-indigo-500/30">
-                    <i class="fa-solid fa-rocket text-lg animate-pulse"></i>
+                    <i class="fa-solid fa-rocket text-lg"></i>
                 </div>
                 <div>
                     <span class="text-base font-bold tracking-wide bg-gradient-to-r from-violet-400 via-indigo-400 to-pink-400 bg-clip-text text-transparent">Viral Hook AI Core</span>
                     <span id="headerSub" class="block text-[10px] text-slate-400">1000x Growth & Viral Engine</span>
                 </div>
             </div>
-            
             <div class="flex items-center space-x-3">
                 <span id="badgeText" class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-400 rounded-full animate-ping"></span> Growth Loop Aktif
+                    Growth Loop Aktif
                 </span>
                 <button onclick="toggleTheme()" class="p-2 rounded-lg border border-borderCol bg-darkBg text-slate-300 hover:text-white transition cursor-pointer">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
@@ -49,25 +45,22 @@
         </div>
     </header>
 
-    <!-- KATEGORİ SEKMELERİ -->
-    <nav class="bg-cardBg/60 border-b border-borderCol overflow-x-auto scrollbar-none">
+    <nav class="bg-cardBg/60 border-b border-borderCol overflow-x-auto">
         <div class="max-w-7xl mx-auto px-4 flex space-x-2 py-2.5 min-w-max">
-            <button onclick="switchCategory('tiktok')" id="btn-tiktok" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition cursor-pointer flex items-center space-x-2 shadow-md shadow-indigo-600/30">
+            <button onclick="switchCategory('tiktok')" id="btn-tiktok" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition flex items-center space-x-2 cursor-pointer">
                 <i class="fa-brands fa-tiktok"></i><span id="cat1Text">TikTok & Reels Senaryoları</span>
             </button>
-            <button onclick="switchCategory('youtube')" id="btn-youtube" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2">
+            <button onclick="switchCategory('youtube')" id="btn-youtube" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition flex items-center space-x-2 cursor-pointer">
                 <i class="fa-brands fa-youtube"></i><span id="cat2Text">YouTube Shorts Kancaları</span>
             </button>
-            <button onclick="switchCategory('global')" id="btn-global" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2">
+            <button onclick="switchCategory('global')" id="btn-global" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition flex items-center space-x-2 cursor-pointer">
                 <i class="fa-solid fa-globe"></i><span id="cat3Text">Global Pazar Stratejisi</span>
             </button>
         </div>
     </nav>
 
-    <!-- MAIN CONTAINER -->
     <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        <!-- SOL KONTROL PANELİ -->
         <div class="lg:col-span-1 space-y-4">
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl">
                 <h2 id="panelTitle" class="text-sm font-semibold mb-3 text-slate-200 flex items-center space-x-2">
@@ -118,7 +111,6 @@
                 </div>
             </div>
 
-            <!-- FAVORİLER & VİRAL PAYLAŞIM KÜTÜPHANESİ -->
             <div class="bg-cardBg border border-borderCol rounded-2xl p-4 text-xs space-y-3 shadow-xl">
                 <div class="flex items-center justify-between">
                     <h3 id="favTitle" class="font-semibold text-slate-200 flex items-center space-x-2">
@@ -133,7 +125,6 @@
             </div>
         </div>
 
-        <!-- SAĞ ÇIKTI PANELİ -->
         <div class="lg:col-span-2 space-y-4">
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl relative min-h-[520px] flex flex-col justify-between">
                 <div>
@@ -142,8 +133,8 @@
                             <i class="fa-solid fa-terminal text-indigo-400"></i>
                             <span>AI Growth Konsolu & Viral Paylaşım</span>
                         </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <button onclick="shareToSocial('twitter')" class="p-2 bg-darkBg border border-borderCol hover:border-sky-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1" title="X / Twitter'da Paylaş">
+                        <div class="flex space-x-2">
+                            <button onclick="shareToSocial()" class="p-2 bg-darkBg border border-borderCol hover:border-sky-500 rounded-lg text-slate-300 transition cursor-pointer text-xs" title="X'te Paylaş">
                                 <i class="fa-brands fa-x-twitter text-sky-400"></i>
                             </button>
                             <button onclick="saveToFavorites()" id="btnSaveFav" class="p-2 bg-darkBg border border-borderCol hover:border-pink-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1">
@@ -158,17 +149,15 @@
                         </div>
                     </div>
                     
-                    <!-- ÇIKTI ALANI -->
                     <div id="outputArea" class="bg-darkBg border border-borderCol rounded-xl p-4 text-xs text-slate-300 leading-relaxed min-h-[360px] whitespace-pre-wrap font-mono">
 [SYSTEM_READY]: 1000x Growth motoru aktif. 
 [INFO]: Kancalarınızı oluşturun, büyüme skorlarını analiz edin ve tek tıkla sosyal medyada paylaşarak kitlenizi patlatın.
                     </div>
 
-                    <!-- CANLI TAHMİNİ ETKİLEŞİM GRAFİK ÖLÇEĞİ -->
                     <div class="mt-4 bg-darkBg/80 border border-borderCol rounded-xl p-3 space-y-2">
                         <div class="flex justify-between text-[11px] text-slate-400">
                             <span id="analyticsTitle">📈 Tahmini 24 Saatlik Viral Etki Eğrisi:</span>
-                            <span class="text-emerald-400 font-mono" id="growthPercent">%99.4 Viral Potansiyel</span>
+                            <span class="text-emerald-400 font-mono">%99.4 Viral Potansiyel</span>
                         </div>
                         <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
                             <div id="growthBar" class="bg-gradient-to-r from-violet-500 via-indigo-500 to-pink-500 h-full w-[92%] transition-all duration-1000"></div>
@@ -191,149 +180,72 @@
 
         const dictionary = {
             en: {
-                headerSub: "1000x Growth & Viral Engine",
-                badgeText: "Growth Loop Active",
-                cat1: "TikTok & Reels Scripts",
-                cat2: "YouTube Shorts Hooks",
-                cat3: "Global Market Strategy",
-                panelTitle: "AI Command & Growth",
-                labelTopic: "Target Topic / Niche",
-                labelPsych: "Psychological Trigger",
-                labelTone: "Tone of Voice",
-                labelLang: "Output Language",
-                btnRun: "Start AI Generation",
-                favTitle: "Saved Favorites",
-                btnClearFav: "Clear",
-                emptyFavText: "No hooks saved yet...",
-                consoleTitle: "AI Growth Console & Sharing",
-                copyText: "Copy",
-                downloadText: "Download",
-                saveText: "Favorite",
-                statusIdle: "Status: Ready",
-                alertCopied: "Output copied to clipboard!",
-                alertSaved: "Report successfully added to favorites!",
-                loadingText: "Executing 1000x growth algorithms...",
+                headerSub: "1000x Growth & Viral Engine", badgeText: "Growth Loop Active",
+                cat1: "TikTok & Reels Scripts", cat2: "YouTube Shorts Hooks", cat3: "Global Market Strategy",
+                panelTitle: "AI Command & Growth", labelTopic: "Target Topic / Niche",
+                labelPsych: "Psychological Trigger", labelTone: "Tone of Voice", labelLang: "Output Language",
+                btnRun: "Start AI Generation", favTitle: "Saved Favorites", btnClearFav: "Clear",
+                emptyFavText: "No hooks saved yet...", consoleTitle: "AI Growth Console & Sharing",
+                copyText: "Copy", downloadText: "Download", saveText: "Favorite", statusIdle: "Status: Ready",
+                alertCopied: "Output copied!", alertSaved: "Saved to favorites!", loadingText: "Generating...",
                 analyticsTitle: "📈 Estimated 24h Viral Impact Curve:",
                 headerReport: "✨ [AI VIRAL HOOK & GROWTH INTELLIGENCE REPORT]",
-                topicLabel: "Target Topic",
-                strategyLabel: "Strategy / Tone",
-                platformLabel: "Target Platform",
-                h1: "Hook 1 (0-3 Sec Critical)",
-                h2: "Hook 2 (Visual Pattern Interrupt)",
-                h3: "Hook 3 (FOMO / Conversion)",
-                metrics: "Growth Multiplier: 1000x | Retention: Ultra",
-                statusOptimized: "Optimized for maximum organic viral expansion."
+                topicLabel: "Target Topic", strategyLabel: "Strategy / Tone", platformLabel: "Target Platform",
+                h1: "Hook 1 (0-3 Sec Critical)", h2: "Hook 2 (Visual Pattern Interrupt)", h3: "Hook 3 (FOMO / Conversion)",
+                metrics: "Growth Multiplier: 1000x | Retention: Ultra", statusOptimized: "Optimized for maximum organic viral expansion."
             },
             de: {
-                headerSub: "1000x Wachstums- & Viral-Engine",
-                badgeText: "Growth Loop Aktiv",
-                cat1: "TikTok & Reels Skripte",
-                cat2: "YouTube Shorts Hooks",
-                cat3: "Globaler Markt",
-                panelTitle: "KI Befehl & Wachstum",
-                labelTopic: "Zielthema / Nische",
-                labelPsych: "Psychologischer Auslöser",
-                labelTone: "Tonfall",
-                labelLang: "Ausgabesprache",
-                btnRun: "KI-Generierung Starten",
-                favTitle: "Gespeicherte Favoriten",
-                btnClearFav: "Löschen",
-                emptyFavText: "Noch keine Hooks gespeichert...",
-                consoleTitle: "KI Wachstums-Konsole & Teilen",
-                copyText: "Kopieren",
-                downloadText: "Herunterladen",
-                saveText: "Merken",
-                statusIdle: "Status: Bereit",
-                alertCopied: "Ausgabe in die Zwischenablage kopiert!",
-                alertSaved: "Erfolgreich zu Favoriten hinzugefügt!",
-                loadingText: "Führe Wachstums-Algorithmen aus...",
+                headerSub: "1000x Wachstums-Engine", badgeText: "Growth Loop Aktiv",
+                cat1: "TikTok & Reels Skripte", cat2: "YouTube Shorts Hooks", cat3: "Globaler Markt",
+                panelTitle: "KI Befehl & Wachstum", labelTopic: "Zielthema / Nische",
+                labelPsych: "Psychologischer Auslöser", labelTone: "Tonfall", labelLang: "Ausgabesprache",
+                btnRun: "KI-Generierung Starten", favTitle: "Gespeicherte Favoriten", btnClearFav: "Löschen",
+                emptyFavText: "Noch keine Hooks...", consoleTitle: "KI Wachstums-Konsole",
+                copyText: "Kopieren", downloadText: "Herunterladen", saveText: "Merken", statusIdle: "Status: Bereit",
+                alertCopied: "Kopiert!", alertSaved: "Gespeichert!", loadingText: "Generiere...",
                 analyticsTitle: "📈 Geschätzte 24h Viral-Kurve:",
                 headerReport: "✨ [KI VIRALE HOOK & WACHSTUMSBERICHT]",
-                topicLabel: "Zielthema",
-                strategyLabel: "Strategie / Tonfall",
-                platformLabel: "Zielplattform",
-                h1: "Hook 1 (0-3 Sek. Kritisch)",
-                h2: "Hook 2 (Visueller Aufmerksamkeitsfaktor)",
-                h3: "Hook 3 (FOMO / Konversion)",
-                metrics: "Wachstums-Multiplikator: 1000x | Retention: Ultra",
-                statusOptimized: "Optimiert für maximale organische Expansion."
+                topicLabel: "Zielthema", strategyLabel: "Strategie / Tonfall", platformLabel: "Zielplattform",
+                h1: "Hook 1 (0-3 Sek. Kritisch)", h2: "Hook 2 (Visueller Faktor)", h3: "Hook 3 (FOMO)",
+                metrics: "Multiplikator: 1000x | Retention: Ultra", statusOptimized: "Optimiert für maximale Expansion."
             },
             es: {
-                headerSub: "Motor de Crecimiento Viral 1000x",
-                badgeText: "Bucle de Crecimiento Activo",
-                cat1: "Guiones de TikTok y Reels",
-                cat2: "Ganchos de YouTube Shorts",
-                cat3: "Estrategia de Mercado Global",
-                panelTitle: "Comando de IA y Crecimiento",
-                labelTopic: "Tema Objetivo / Nicho",
-                labelPsych: "Disparador Psicológico",
-                labelTone: "Tono de Voz",
-                labelLang: "Idioma de Salida",
-                btnRun: "Iniciar Generación de IA",
-                favTitle: "Favoritos Guardados",
-                btnClearFav: "Borrar",
-                emptyFavText: "No hay ganchos guardados...",
-                consoleTitle: "Consola de Crecimiento y Compartir",
-                copyText: "Copiar",
-                downloadText: "Descargar",
-                saveText: "Favorito",
-                statusIdle: "Estado: Listo",
-                alertCopied: "¡Resultado copiado al portapapeles!",
-                alertSaved: "¡Reporte guardado en favoritos!",
-                loadingText: "Ejecutando algoritmos de crecimiento...",
-                analyticsTitle: "📈 Curva de Impacto Viral Estimada (24h):",
-                headerReport: "✨ [INFORME DE INTELIGENCIA DE CRECIMIENTO VIRAL DE IA]",
-                topicLabel: "Tema Objetivo",
-                strategyLabel: "Estrategia / Tono",
-                platformLabel: "Plataforma Objetivo",
-                h1: "Gancho 1 (0-3 Segundos Crítico)",
-                h2: "Gancho 2 (Interrupción Visual)",
-                h3: "Gancho 3 (FOMO / Conversión)",
-                metrics: "Multiplicador de Crecimiento: 1000x | Retención: Ultra",
-                statusOptimized: "Optimizado para máxima expansión orgánica."
+                headerSub: "Motor Viral 1000x", badgeText: "Bucle Activo",
+                cat1: "Guiones TikTok", cat2: "Ganchos Shorts", cat3: "Mercado Global",
+                panelTitle: "Comando de IA", labelTopic: "Tema Objetivo",
+                labelPsych: "Disparador Psicológico", labelTone: "Tono", labelLang: "Idioma",
+                btnRun: "Iniciar IA", favTitle: "Favoritos", btnClearFav: "Borrar",
+                emptyFavText: "Sin ganchos...", consoleTitle: "Consola de Crecimiento",
+                copyText: "Copiar", downloadText: "Descargar", saveText: "Favorito", statusIdle: "Listo",
+                alertCopied: "Copiado!", alertSaved: "Guardado!", loadingText: "Generando...",
+                analyticsTitle: "📈 Curva Viral Estimada (24h):",
+                headerReport: "✨ [INFORME DE CRECIMIENTO VIRAL]",
+                topicLabel: "Tema", strategyLabel: "Estrategia", platformLabel: "Plataforma",
+                h1: "Gancho 1 (Crítico)", h2: "Gancho 2 (Visual)", h3: "Gancho 3 (FOMO)",
+                metrics: "Multiplicador: 1000x | Retención: Ultra", statusOptimized: "Optimizado para expansión."
             },
             tr: {
-                headerSub: "1000x Growth & Viral Engine",
-                badgeText: "Growth Loop Aktif",
-                cat1: "TikTok & Reels Senaryoları",
-                cat2: "YouTube Shorts Kancaları",
-                cat3: "Global Pazar Stratejisi",
-                panelTitle: "AI Komut & Büyüme Motoru",
-                labelTopic: "Hedef Konu / Ürün / Niş",
-                labelPsych: "Psikolojik Tetikleyici",
-                labelTone: "Ses Tonu",
-                labelLang: "Çıktı Dili",
-                btnRun: "AI Üretimini Başlat",
-                favTitle: "Kayıtlı Favoriler",
-                btnClearFav: "Temizle",
-                emptyFavText: "Henüz kaydedilen kanca yok...",
-                consoleTitle: "AI Growth Konsolu & Viral Paylaşım",
-                copyText: "Kopyala",
-                downloadText: "İndir",
-                saveText: "Favorile",
-                statusIdle: "Durum: Beklemede",
-                alertCopied: "Çıktı panoya kopyalandı!",
-                alertSaved: "Rapor başarıyla favorilere eklendi!",
-                loadingText: "1000x büyüme algoritmaları çalıştırılıyor...",
+                headerSub: "1000x Growth & Viral Engine", badgeText: "Growth Loop Aktif",
+                cat1: "TikTok & Reels Senaryoları", cat2: "YouTube Shorts Kancaları", cat3: "Global Pazar Stratejisi",
+                panelTitle: "AI Komut & Büyüme Motoru", labelTopic: "Hedef Konu / Ürün / Niş",
+                labelPsych: "Psikolojik Tetikleyici", labelTone: "Ses Tonu", labelLang: "Çıktı Dili",
+                btnRun: "AI Üretimini Başlat", favTitle: "Kayıtlı Favoriler", btnClearFav: "Temizle",
+                emptyFavText: "Henüz kaydedilen kanca yok...", consoleTitle: "AI Growth Konsolu & Viral Paylaşım",
+                copyText: "Kopyala", downloadText: "İndir", saveText: "Favorile", statusIdle: "Durum: Beklemede",
+                alertCopied: "Çıktı panoya kopyalandı!", alertSaved: "Rapor başarıyla favorilere eklendi!", loadingText: "Büyüme algoritmaları çalıştırılıyor...",
                 analyticsTitle: "📈 Tahmini 24 Saatlik Viral Etki Eğrisi:",
                 headerReport: "✨ [YAPAY ZEKA VİRAL KANCA & BÜYÜME RAPORU]",
-                topicLabel: "Hedef Konu",
-                strategyLabel: "Strateji / Ses Tonu",
-                platformLabel: "Hedef Platform",
-                h1: "Kanca 1 (0-3 Saniye Kritik)",
-                h2: "Kanca 2 (Görsel Tetikçi)",
-                h3: "Kanca 3 (FOMO Matrisi)",
-                metrics: "Büyüme Çarpanı: 1000x | Tutunma Oranı: Maksimum",
-                statusOptimized: "Maksimum organik viral yayılım için optimize edildi."
+                topicLabel: "Hedef Konu", strategyLabel: "Strateji / Ses Tonu", platformLabel: "Hedef Platform",
+                h1: "Kanca 1 (0-3 Saniye Kritik)", h2: "Kanca 2 (Görsel Tetikçi)", h3: "Kanca 3 (FOMO Matrisi)",
+                metrics: "Büyüme Çarpanı: 1000x | Tutunma Oranı: Maksimum", statusOptimized: "Maksimum organik viral yayılım için optimize edildi."
             }
         };
 
         function updateInterfaceLanguage() {
             const lang = document.getElementById('langSelect').value;
             const d = dictionary[lang] || dictionary.tr;
-
             document.getElementById('headerSub').innerText = d.headerSub;
-            document.getElementById('badgeText').childNodes[2].nodeValue = " " + d.badgeText;
+            document.getElementById('badgeText').innerText = d.badgeText;
             document.getElementById('cat1Text').innerText = d.cat1;
             document.getElementById('cat2Text').innerText = d.cat2;
             document.getElementById('cat3Text').innerText = d.cat3;
@@ -343,7 +255,7 @@
             document.getElementById('labelTone').innerText = d.labelTone;
             document.getElementById('labelLang').innerText = d.labelLang;
             document.getElementById('btnRun').lastChild.nodeValue = " " + d.btnRun;
-            document.getElementById('favTitle').lastChild.nodeValue = " Kayıtlı Favoriler (" + favorites.length + ")";
+            document.getElementById('favTitle').firstChild.nextSibling.nodeValue = " Kayıtlı Favoriler (" + favorites.length + ")";
             document.getElementById('btnClearFav').innerText = d.btnClearFav;
             document.getElementById('outputConsoleTitle').lastChild.nodeValue = " " + d.consoleTitle;
             document.getElementById('copyTextSpan').innerText = d.copyText;
@@ -356,135 +268,72 @@
         function switchCategory(cat) {
             currentCategory = cat;
             document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2";
+                btn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition flex items-center space-x-2 cursor-pointer";
             });
-            const activeBtn = document.getElementById('btn-' + cat);
-            activeBtn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition cursor-pointer flex items-center space-x-2 shadow-md shadow-indigo-600/30";
+            document.getElementById('btn-' + cat).className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-md shadow-indigo-600/30";
         }
 
-        const translationsDB = {
-            en: { "yapay zeka ile içerik üretimi": "AI Content Creation", "dijital pazarlama": "Digital Marketing", "sosyal medya": "Social Media", "e-ticaret": "E-Commerce", "yazılım geliştirme": "Software Development" },
-            de: { "yapay zeka ile içerik üretimi": "KI-Inhaltserstellung", "dijital pazarlama": "Digitales Marketing", "sosyal medya": "Social Media", "e-ticaret": "E-Commerce", "yazılım geliştirme": "Softwareentwicklung" },
-            es: { "yapay zeka ile içerik üretimi": "Creación de Contenido con IA", "dijital pazarlama": "Marketing Digital", "sosyal medya": "Redes Sociales", "e-ticaret": "Comercio Electrónico", "yazılım geliştirme": "Desarrollo de Software" },
-            tr: {}
-        };
-
         function runAIEngine() {
-            const rawTopic = document.getElementById('topicInput').value.trim() || "Yapay Zeka ile İçerik Üretimi";
+            const rawTopic = document.getElementById('topicInput').value.trim() || "Yapay Zeka";
             const psych = document.getElementById('psychologySelect').value;
             const tone = document.getElementById('toneSelect').value;
             const lang = document.getElementById('langSelect').value;
             const d = dictionary[lang] || dictionary.tr;
 
-            let localizedTopic = rawTopic;
-            const lowerRaw = rawTopic.toLowerCase();
-            if (translationsDB[lang] && translationsDB[lang][lowerRaw]) {
-                localizedTopic = translationsDB[lang][lowerRaw];
-            } else if (lang !== 'tr' && rawTopic === "Yapay Zeka ile İçerik Üretimi") {
-                if (lang === 'en') localizedTopic = "AI Content Creation";
-                if (lang === 'de') localizedTopic = "KI-Inhaltserstellung";
-                if (lang === 'es') localizedTopic = "Creación de Contenido con IA";
-            }
-
-            const outputArea = document.getElementById('outputArea');
-            outputArea.innerText = d.loadingText;
+            document.getElementById('outputArea').innerText = d.loadingText;
 
             setTimeout(() => {
-                let h1Text, h2Text, h3Text, platformStyle = "";
-
-                if (currentCategory === 'tiktok') {
-                    platformStyle = "TikTok Viral Loop (High Velocity & Emojis 🔥)";
-                } else if (currentCategory === 'youtube') {
-                    platformStyle = "YouTube Shorts (Search Optimized & Curiosity 🎯)";
-                } else {
-                    platformStyle = "Global Enterprise / LinkedIn (Growth Authority 📈)";
-                }
-
-                if (lang === 'en') {
-                    h1Text = `"Most creators fail at ${localizedTopic} because they ignore this ${tone} secret rule..."`;
-                    h2Text = `"I tested ${localizedTopic} using a ${tone} approach for 30 days, and the results broke the algorithm."`;
-                    h3Text = `"Do not even attempt ${localizedTopic} until you master this exact mechanism."`;
-                } else if (lang === 'de') {
-                    h1Text = `"Die Meisten scheitern bei ${localizedTopic}, weil sie diese ${tone} Regel ignorieren..."`;
-                    h2Text = `"Ich habe ${localizedTopic} 30 Tage lang mit einem ${tone} Ansatz getestet und alles hat sich verändert."`;
-                    h3Text = `"Versuche niemals ${localizedTopic}, bevor du diesen Mechanismus verstehst."`;
-                } else if (lang === 'es') {
-                    h1Text = `"La mayoría fracasa en ${localizedTopic} porque ignoran esta regla ${tone}..."`;
-                    h2Text = `"Probé ${localizedTopic} durante 30 días con un enfoque ${tone} y los resultados rompieron el algoritmo."`;
-                    h3Text = `"No intentes hacer ${localizedTopic} hasta que domines este mecanismo."`;
-                } else {
-                    h1Text = `"Çoğu insan ${localizedTopic} konusunda tam olarak bu ${tone} kuralı atladığı için kaybediyor..."`;
-                    h2Text = `"Bunu ${tone} bir stratejiyle 30 gün boyunca test ettim ve sonuçlar algoritmayı sarstı."`;
-                    h3Text = `"Bu mekanizmayı tam olarak öğrenmeden asla ${localizedTopic} işine girişme."`;
-                }
+                let platformStyle = currentCategory === 'tiktok' ? "TikTok Viral Loop" : currentCategory === 'youtube' ? "YouTube Shorts Search" : "Global Enterprise";
+                let h1 = `"Çoğu insan ${rawTopic} konusunda bu ${tone} kuralı atladığı için kaybediyor..."`;
+                let h2 = `"Bunu ${tone} bir stratejiyle 30 gün boyunca test ettim."`;
+                let h3 = `"Bu mekanizmayı tam öğrenmeden asla ${rawTopic} işine girişme."`;
 
                 const finalReport = `${d.headerReport}
 --------------------------------------------------
-> ${d.topicLabel}: ${localizedTopic}
+> ${d.topicLabel}: ${rawTopic}
 > ${d.strategyLabel}: ${psych.toUpperCase()} / ${tone.toUpperCase()}
 > ${d.platformLabel}: ${platformStyle}
 
-- ${d.h1}: ${h1Text}
-- ${d.h2}: ${h2Text}
-- ${d.h3}: ${h3Text}
+- ${d.h1}: ${h1}
+- ${d.h2}: ${h2}
+- ${d.h3}: ${h3}
 
 📊 [1000X_METRICS]: ${d.metrics}
 🛡️ [STATUS]: ${d.statusOptimized}`;
 
-                outputArea.innerText = finalReport;
+                document.getElementById('outputArea').innerText = finalReport;
                 document.getElementById('status-footer').innerText = `Status: Success (${lang.toUpperCase()})`;
-                
-                // Grafik animasyonunu tetikle
                 document.getElementById('growthBar').style.width = (Math.floor(Math.random() * 15) + 85) + '%';
-            }, 400);
+            }, 300);
         }
 
-        function shareToSocial(platform) {
+        function shareToSocial() {
             const text = document.getElementById('outputArea').innerText;
-            if (text.includes("SYSTEM_READY") || text.length < 50) {
-                alert("Önce geçerli bir AI raporu üretmelisiniz!");
-                return;
-            }
-            const encoded = encodeURIComponent(text + "\n\nGenerated via Viral Hook AI (1000x Growth Engine)");
-            window.open(`https://twitter.com/intent/tweet?text=${encoded}`, '_blank');
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
         }
 
         function saveToFavorites() {
             const text = document.getElementById('outputArea').innerText;
-            if (text.includes("SYSTEM_READY") || text.length < 50) {
-                alert("Önce geçerli bir AI raporu üretmelisiniz!");
-                return;
-            }
-            const titleSnippet = text.split('\n')[1] || "Kanca Raporu";
-            favorites.unshift({ title: titleSnippet, content: text, date: new Date().toLocaleDateString() });
+            if (text.length < 50) return alert("Önce rapor üretin!");
+            favorites.unshift({ title: text.split('\n')[1] || "Rapor", content: text, date: new Date().toLocaleDateString() });
             localStorage.setItem('viral_favorites', JSON.stringify(favorites));
             renderFavorites();
-            
-            const lang = document.getElementById('langSelect').value;
-            const d = dictionary[lang] || dictionary.tr;
-            alert(d.alertSaved);
+            alert("Favorilere eklendi!");
         }
 
         function renderFavorites() {
             const listContainer = document.getElementById('favoritesList');
-            const countSpan = document.getElementById('favCount');
-            countSpan.innerText = favorites.length;
-
+            document.getElementById('favCount').innerText = favorites.length;
             if (favorites.length === 0) {
-                const lang = document.getElementById('langSelect').value;
-                const d = dictionary[lang] || dictionary.tr;
-                listContainer.innerHTML = `<div id="emptyFavText" class="text-slate-600 italic">${d.emptyFavText}</div>`;
+                listContainer.innerHTML = `<div class="text-slate-600 italic">Henüz kaydedilen kanca yok...</div>`;
                 return;
             }
-
             listContainer.innerHTML = "";
             favorites.forEach((fav) => {
                 const item = document.createElement('div');
                 item.className = "bg-darkBg border border-borderCol p-2 rounded-lg cursor-pointer hover:border-indigo-500 transition flex justify-between items-center";
                 item.innerHTML = `<span class="truncate max-w-[180px] text-slate-300">${fav.title}</span> <span class="text-[9px] text-indigo-400">${fav.date}</span>`;
-                item.onclick = () => {
-                    document.getElementById('outputArea').innerText = fav.content;
-                };
+                item.onclick = () => { document.getElementById('outputArea').innerText = fav.content; };
                 listContainer.appendChild(item);
             });
         }
@@ -496,36 +345,20 @@
         }
 
         function copyOutput() {
-            const text = document.getElementById('outputArea').innerText;
-            navigator.clipboard.writeText(text);
-            const lang = document.getElementById('langSelect').value;
-            const d = dictionary[lang] || dictionary.tr;
-            alert(d.alertCopied);
+            navigator.clipboard.writeText(document.getElementById('outputArea').innerText);
+            alert("Panoya kopyalandı!");
         }
 
         function downloadOutput() {
-            const text = document.getElementById('outputArea').innerText;
-            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
+            const blob = new Blob([document.getElementById('outputArea').innerText], { type: 'text/plain;charset=utf-8' });
             const a = document.createElement('a');
-            a.href = url;
+            a.href = URL.createObjectURL(blob);
             a.download = 'viral-growth-report.txt';
-            document.body.appendChild(a);
             a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
         }
 
         function toggleTheme() {
-            const html = document.documentElement;
-            const icon = document.getElementById('themeIcon');
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                icon.className = "fa-solid fa-sun";
-            } else {
-                html.classList.add('dark');
-                icon.className = "fa-solid fa-moon";
-            }
+            document.documentElement.classList.toggle('dark');
         }
     </script>
 </body>
