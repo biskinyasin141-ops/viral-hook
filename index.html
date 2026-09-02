@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="tr" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Viral Hook AI - Ultimate SaaS Edition</title>
+    <title id="pageTitle">Viral Hook AI - Growth Edition (1000x)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -24,21 +25,22 @@
 </head>
 <body class="bg-darkBg text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300">
 
+    <!-- HEADER -->
     <header class="border-b border-borderCol bg-cardBg/90 backdrop-blur sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="bg-gradient-to-tr from-violet-600 via-indigo-600 to-pink-600 p-2.5 rounded-xl text-white shadow-lg shadow-indigo-500/30">
-                    <i class="fa-solid fa-bolt-lightning text-lg animate-bounce"></i>
+                    <i class="fa-solid fa-rocket text-lg animate-pulse"></i>
                 </div>
                 <div>
                     <span class="text-base font-bold tracking-wide bg-gradient-to-r from-violet-400 via-indigo-400 to-pink-400 bg-clip-text text-transparent">Viral Hook AI Core</span>
-                    <span id="headerSub" class="block text-[10px] text-slate-400">Ultimate SaaS Neural Engine</span>
+                    <span id="headerSub" class="block text-[10px] text-slate-400">1000x Growth & Viral Engine</span>
                 </div>
             </div>
             
             <div class="flex items-center space-x-3">
                 <span id="badgeText" class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-400 rounded-full animate-ping"></span> A/B Test & Favoriler Aktif
+                    <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-400 rounded-full animate-ping"></span> Growth Loop Aktif
                 </span>
                 <button onclick="toggleTheme()" class="p-2 rounded-lg border border-borderCol bg-darkBg text-slate-300 hover:text-white transition cursor-pointer">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
@@ -47,6 +49,7 @@
         </div>
     </header>
 
+    <!-- KATEGORİ SEKMELERİ -->
     <nav class="bg-cardBg/60 border-b border-borderCol overflow-x-auto scrollbar-none">
         <div class="max-w-7xl mx-auto px-4 flex space-x-2 py-2.5 min-w-max">
             <button onclick="switchCategory('tiktok')" id="btn-tiktok" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition cursor-pointer flex items-center space-x-2 shadow-md shadow-indigo-600/30">
@@ -61,13 +64,15 @@
         </div>
     </nav>
 
+    <!-- MAIN CONTAINER -->
     <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
+        <!-- SOL KONTROL PANELİ -->
         <div class="lg:col-span-1 space-y-4">
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl">
                 <h2 id="panelTitle" class="text-sm font-semibold mb-3 text-slate-200 flex items-center space-x-2">
                     <i class="fa-solid fa-sliders text-indigo-400"></i>
-                    <span>AI Komut & Optimizasyon</span>
+                    <span>AI Komut & Büyüme Motoru</span>
                 </h2>
                 
                 <div class="space-y-3.5">
@@ -113,6 +118,7 @@
                 </div>
             </div>
 
+            <!-- FAVORİLER & VİRAL PAYLAŞIM KÜTÜPHANESİ -->
             <div class="bg-cardBg border border-borderCol rounded-2xl p-4 text-xs space-y-3 shadow-xl">
                 <div class="flex items-center justify-between">
                     <h3 id="favTitle" class="font-semibold text-slate-200 flex items-center space-x-2">
@@ -127,15 +133,19 @@
             </div>
         </div>
 
+        <!-- SAĞ ÇIKTI PANELİ -->
         <div class="lg:col-span-2 space-y-4">
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl relative min-h-[520px] flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3">
                         <h3 id="outputConsoleTitle" class="text-sm font-semibold text-slate-200 flex items-center space-x-2">
                             <i class="fa-solid fa-terminal text-indigo-400"></i>
-                            <span>AI Çıktı & A/B Simülatör Konsolu</span>
+                            <span>AI Growth Konsolu & Viral Paylaşım</span>
                         </h3>
-                        <div class="flex space-x-2">
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="shareToSocial('twitter')" class="p-2 bg-darkBg border border-borderCol hover:border-sky-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1" title="X / Twitter'da Paylaş">
+                                <i class="fa-brands fa-x-twitter text-sky-400"></i>
+                            </button>
                             <button onclick="saveToFavorites()" id="btnSaveFav" class="p-2 bg-darkBg border border-borderCol hover:border-pink-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1">
                                 <i class="fa-solid fa-bookmark text-pink-400"></i><span id="saveTextSpan">Favorile</span>
                             </button>
@@ -148,15 +158,27 @@
                         </div>
                     </div>
                     
-                    <div id="outputArea" class="bg-darkBg border border-borderCol rounded-xl p-4 text-xs text-slate-300 leading-relaxed min-h-[400px] whitespace-pre-wrap font-mono">
-[SYSTEM_READY]: A/B Simülatör ve Favori motoru devrede. 
-[INFO]: Kancaları üretin, A/B skorlarını analiz edin ve beğendiklerinizi favorilere kaydedin.
+                    <!-- ÇIKTI ALANI -->
+                    <div id="outputArea" class="bg-darkBg border border-borderCol rounded-xl p-4 text-xs text-slate-300 leading-relaxed min-h-[360px] whitespace-pre-wrap font-mono">
+[SYSTEM_READY]: 1000x Growth motoru aktif. 
+[INFO]: Kancalarınızı oluşturun, büyüme skorlarını analiz edin ve tek tıkla sosyal medyada paylaşarak kitlenizi patlatın.
+                    </div>
+
+                    <!-- CANLI TAHMİNİ ETKİLEŞİM GRAFİK ÖLÇEĞİ -->
+                    <div class="mt-4 bg-darkBg/80 border border-borderCol rounded-xl p-3 space-y-2">
+                        <div class="flex justify-between text-[11px] text-slate-400">
+                            <span id="analyticsTitle">📈 Tahmini 24 Saatlik Viral Etki Eğrisi:</span>
+                            <span class="text-emerald-400 font-mono" id="growthPercent">%99.4 Viral Potansiyel</span>
+                        </div>
+                        <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div id="growthBar" class="bg-gradient-to-r from-violet-500 via-indigo-500 to-pink-500 h-full w-[92%] transition-all duration-1000"></div>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="mt-4 pt-3 border-t border-borderCol flex justify-between items-center text-[11px] text-slate-500">
                     <span id="status-footer">Durum: Beklemede</span>
-                    <span>Viral Hook AI Core v2026</span>
+                    <span>Viral Hook AI Core (Growth Edition)</span>
                 </div>
             </div>
         </div>
@@ -165,18 +187,16 @@
     <script>
         let currentCategory = 'tiktok';
         let favorites = JSON.parse(localStorage.getItem('viral_favorites')) || [];
-
-        // Sayfa açıldığında favorileri yükle
         renderFavorites();
 
         const dictionary = {
             en: {
-                headerSub: "Ultimate SaaS Neural Engine",
-                badgeText: "A/B Test & Favorites Active",
+                headerSub: "1000x Growth & Viral Engine",
+                badgeText: "Growth Loop Active",
                 cat1: "TikTok & Reels Scripts",
                 cat2: "YouTube Shorts Hooks",
                 cat3: "Global Market Strategy",
-                panelTitle: "AI Command & Optimization",
+                panelTitle: "AI Command & Growth",
                 labelTopic: "Target Topic / Niche",
                 labelPsych: "Psychological Trigger",
                 labelTone: "Tone of Voice",
@@ -185,31 +205,32 @@
                 favTitle: "Saved Favorites",
                 btnClearFav: "Clear",
                 emptyFavText: "No hooks saved yet...",
-                consoleTitle: "AI Output & A/B Simulator",
+                consoleTitle: "AI Growth Console & Sharing",
                 copyText: "Copy",
                 downloadText: "Download",
                 saveText: "Favorite",
                 statusIdle: "Status: Ready",
                 alertCopied: "Output copied to clipboard!",
                 alertSaved: "Report successfully added to favorites!",
-                loadingText: "Running A/B test simulation & generating...",
-                headerReport: "✨ [AI VIRAL HOOK & A/B INTELLIGENCE REPORT]",
+                loadingText: "Executing 1000x growth algorithms...",
+                analyticsTitle: "📈 Estimated 24h Viral Impact Curve:",
+                headerReport: "✨ [AI VIRAL HOOK & GROWTH INTELLIGENCE REPORT]",
                 topicLabel: "Target Topic",
                 strategyLabel: "Strategy / Tone",
-                platformLabel: "Optimized Platform",
+                platformLabel: "Target Platform",
                 h1: "Hook 1 (0-3 Sec Critical)",
                 h2: "Hook 2 (Visual Pattern Interrupt)",
                 h3: "Hook 3 (FOMO / Conversion)",
-                metrics: "Viral A/B Score: %99.8 | Scroll-Stop Power: Ultra",
-                statusOptimized: "Optimized for maximum retention."
+                metrics: "Growth Multiplier: 1000x | Retention: Ultra",
+                statusOptimized: "Optimized for maximum organic viral expansion."
             },
             de: {
-                headerSub: "Ultimate SaaS Neuronale Engine",
-                badgeText: "A/B Test & Favoriten Aktiv",
+                headerSub: "1000x Wachstums- & Viral-Engine",
+                badgeText: "Growth Loop Aktiv",
                 cat1: "TikTok & Reels Skripte",
                 cat2: "YouTube Shorts Hooks",
                 cat3: "Globaler Markt",
-                panelTitle: "KI Befehl & Optimierung",
+                panelTitle: "KI Befehl & Wachstum",
                 labelTopic: "Zielthema / Nische",
                 labelPsych: "Psychologischer Auslöser",
                 labelTone: "Tonfall",
@@ -218,31 +239,32 @@
                 favTitle: "Gespeicherte Favoriten",
                 btnClearFav: "Löschen",
                 emptyFavText: "Noch keine Hooks gespeichert...",
-                consoleTitle: "KI-Ausgabe & A/B Simulator",
+                consoleTitle: "KI Wachstums-Konsole & Teilen",
                 copyText: "Kopieren",
                 downloadText: "Herunterladen",
                 saveText: "Merken",
                 statusIdle: "Status: Bereit",
                 alertCopied: "Ausgabe in die Zwischenablage kopiert!",
                 alertSaved: "Erfolgreich zu Favoriten hinzugefügt!",
-                loadingText: "Führe A/B-Test-Simulation aus...",
-                headerReport: "✨ [KI VIRALE HOOK & A/B INTELLIGENZBERICHT]",
+                loadingText: "Führe Wachstums-Algorithmen aus...",
+                analyticsTitle: "📈 Geschätzte 24h Viral-Kurve:",
+                headerReport: "✨ [KI VIRALE HOOK & WACHSTUMSBERICHT]",
                 topicLabel: "Zielthema",
                 strategyLabel: "Strategie / Tonfall",
-                platformLabel: "Optimierte Plattform",
+                platformLabel: "Zielplattform",
                 h1: "Hook 1 (0-3 Sek. Kritisch)",
                 h2: "Hook 2 (Visueller Aufmerksamkeitsfaktor)",
                 h3: "Hook 3 (FOMO / Konversion)",
-                metrics: "Viraler A/B-Wert: %99.8 | Scroll-Stop Power: Ultra",
-                statusOptimized: "Optimiert für maximale Retention."
+                metrics: "Wachstums-Multiplikator: 1000x | Retention: Ultra",
+                statusOptimized: "Optimiert für maximale organische Expansion."
             },
             es: {
-                headerSub: "Motor Neural SaaS Último",
-                badgeText: "Prueba A/B y Favoritos Activos",
+                headerSub: "Motor de Crecimiento Viral 1000x",
+                badgeText: "Bucle de Crecimiento Activo",
                 cat1: "Guiones de TikTok y Reels",
                 cat2: "Ganchos de YouTube Shorts",
                 cat3: "Estrategia de Mercado Global",
-                panelTitle: "Comando de IA y Optimización",
+                panelTitle: "Comando de IA y Crecimiento",
                 labelTopic: "Tema Objetivo / Nicho",
                 labelPsych: "Disparador Psicológico",
                 labelTone: "Tono de Voz",
@@ -251,30 +273,32 @@
                 favTitle: "Favoritos Guardados",
                 btnClearFav: "Borrar",
                 emptyFavText: "No hay ganchos guardados...",
-                consoleTitle: "Salida de IA y Simulador A/B",
+                consoleTitle: "Consola de Crecimiento y Compartir",
                 copyText: "Copiar",
                 downloadText: "Descargar",
                 saveText: "Favorito",
                 statusIdle: "Estado: Listo",
                 alertCopied: "¡Resultado copiado al portapapeles!",
-                loadingText: "Ejecutando simulación de prueba A/B...",
-                headerReport: "✨ [INFORME DE INTELIGENCIA DE GANCHOS Y A/B DE IA]",
+                alertSaved: "¡Reporte guardado en favoritos!",
+                loadingText: "Ejecutando algoritmos de crecimiento...",
+                analyticsTitle: "📈 Curva de Impacto Viral Estimada (24h):",
+                headerReport: "✨ [INFORME DE INTELIGENCIA DE CRECIMIENTO VIRAL DE IA]",
                 topicLabel: "Tema Objetivo",
                 strategyLabel: "Estrategia / Tono",
-                platformLabel: "Plataforma Optimizada",
+                platformLabel: "Plataforma Objetivo",
                 h1: "Gancho 1 (0-3 Segundos Crítico)",
                 h2: "Gancho 2 (Interrupción Visual)",
                 h3: "Gancho 3 (FOMO / Conversión)",
-                metrics: "Puntuación A/B Viral: %99.8 | Poder de Detención: Ultra",
-                statusOptimized: "Optimizado para máxima retención."
+                metrics: "Multiplicador de Crecimiento: 1000x | Retención: Ultra",
+                statusOptimized: "Optimizado para máxima expansión orgánica."
             },
             tr: {
-                headerSub: "Ultimate SaaS Neural Engine",
-                badgeText: "A/B Test & Favoriler Aktif",
+                headerSub: "1000x Growth & Viral Engine",
+                badgeText: "Growth Loop Aktif",
                 cat1: "TikTok & Reels Senaryoları",
                 cat2: "YouTube Shorts Kancaları",
                 cat3: "Global Pazar Stratejisi",
-                panelTitle: "AI Komut & Optimizasyon",
+                panelTitle: "AI Komut & Büyüme Motoru",
                 labelTopic: "Hedef Konu / Ürün / Niş",
                 labelPsych: "Psikolojik Tetikleyici",
                 labelTone: "Ses Tonu",
@@ -283,23 +307,24 @@
                 favTitle: "Kayıtlı Favoriler",
                 btnClearFav: "Temizle",
                 emptyFavText: "Henüz kaydedilen kanca yok...",
-                consoleTitle: "AI Çıktı & A/B Simülatör Konsolu",
+                consoleTitle: "AI Growth Konsolu & Viral Paylaşım",
                 copyText: "Kopyala",
                 downloadText: "İndir",
                 saveText: "Favorile",
                 statusIdle: "Durum: Beklemede",
                 alertCopied: "Çıktı panoya kopyalandı!",
                 alertSaved: "Rapor başarıyla favorilere eklendi!",
-                loadingText: "A/B test simülasyonu çalıştırılıyor...",
-                headerReport: "✨ [YAPAY ZEKA VİRAL KANCA & A/B TEST RAPORU]",
+                loadingText: "1000x büyüme algoritmaları çalıştırılıyor...",
+                analyticsTitle: "📈 Tahmini 24 Saatlik Viral Etki Eğrisi:",
+                headerReport: "✨ [YAPAY ZEKA VİRAL KANCA & BÜYÜME RAPORU]",
                 topicLabel: "Hedef Konu",
                 strategyLabel: "Strateji / Ses Tonu",
                 platformLabel: "Hedef Platform",
                 h1: "Kanca 1 (0-3 Saniye Kritik)",
                 h2: "Kanca 2 (Görsel Tetikçi)",
                 h3: "Kanca 3 (FOMO Matrisi)",
-                metrics: "Viral A/B Skoru: %99.8 | Kaydırma Durdurma: Mükemmel",
-                statusOptimized: "Yüksek etkileşim ve akış için optimize edildi."
+                metrics: "Büyüme Çarpanı: 1000x | Tutunma Oranı: Maksimum",
+                statusOptimized: "Maksimum organik viral yayılım için optimize edildi."
             }
         };
 
@@ -325,9 +350,183 @@
             document.getElementById('downloadTextSpan').innerText = d.downloadText;
             document.getElementById('saveTextSpan').innerText = d.saveText;
             document.getElementById('status-footer').innerText = d.statusIdle;
+            document.getElementById('analyticsTitle').innerText = d.analyticsTitle;
         }
 
         function switchCategory(cat) {
             currentCategory = cat;
             document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition curso
+                btn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2";
+            });
+            const activeBtn = document.getElementById('btn-' + cat);
+            activeBtn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition cursor-pointer flex items-center space-x-2 shadow-md shadow-indigo-600/30";
+        }
+
+        const translationsDB = {
+            en: { "yapay zeka ile içerik üretimi": "AI Content Creation", "dijital pazarlama": "Digital Marketing", "sosyal medya": "Social Media", "e-ticaret": "E-Commerce", "yazılım geliştirme": "Software Development" },
+            de: { "yapay zeka ile içerik üretimi": "KI-Inhaltserstellung", "dijital pazarlama": "Digitales Marketing", "sosyal medya": "Social Media", "e-ticaret": "E-Commerce", "yazılım geliştirme": "Softwareentwicklung" },
+            es: { "yapay zeka ile içerik üretimi": "Creación de Contenido con IA", "dijital pazarlama": "Marketing Digital", "sosyal medya": "Redes Sociales", "e-ticaret": "Comercio Electrónico", "yazılım geliştirme": "Desarrollo de Software" },
+            tr: {}
+        };
+
+        function runAIEngine() {
+            const rawTopic = document.getElementById('topicInput').value.trim() || "Yapay Zeka ile İçerik Üretimi";
+            const psych = document.getElementById('psychologySelect').value;
+            const tone = document.getElementById('toneSelect').value;
+            const lang = document.getElementById('langSelect').value;
+            const d = dictionary[lang] || dictionary.tr;
+
+            let localizedTopic = rawTopic;
+            const lowerRaw = rawTopic.toLowerCase();
+            if (translationsDB[lang] && translationsDB[lang][lowerRaw]) {
+                localizedTopic = translationsDB[lang][lowerRaw];
+            } else if (lang !== 'tr' && rawTopic === "Yapay Zeka ile İçerik Üretimi") {
+                if (lang === 'en') localizedTopic = "AI Content Creation";
+                if (lang === 'de') localizedTopic = "KI-Inhaltserstellung";
+                if (lang === 'es') localizedTopic = "Creación de Contenido con IA";
+            }
+
+            const outputArea = document.getElementById('outputArea');
+            outputArea.innerText = d.loadingText;
+
+            setTimeout(() => {
+                let h1Text, h2Text, h3Text, platformStyle = "";
+
+                if (currentCategory === 'tiktok') {
+                    platformStyle = "TikTok Viral Loop (High Velocity & Emojis 🔥)";
+                } else if (currentCategory === 'youtube') {
+                    platformStyle = "YouTube Shorts (Search Optimized & Curiosity 🎯)";
+                } else {
+                    platformStyle = "Global Enterprise / LinkedIn (Growth Authority 📈)";
+                }
+
+                if (lang === 'en') {
+                    h1Text = `"Most creators fail at ${localizedTopic} because they ignore this ${tone} secret rule..."`;
+                    h2Text = `"I tested ${localizedTopic} using a ${tone} approach for 30 days, and the results broke the algorithm."`;
+                    h3Text = `"Do not even attempt ${localizedTopic} until you master this exact mechanism."`;
+                } else if (lang === 'de') {
+                    h1Text = `"Die Meisten scheitern bei ${localizedTopic}, weil sie diese ${tone} Regel ignorieren..."`;
+                    h2Text = `"Ich habe ${localizedTopic} 30 Tage lang mit einem ${tone} Ansatz getestet und alles hat sich verändert."`;
+                    h3Text = `"Versuche niemals ${localizedTopic}, bevor du diesen Mechanismus verstehst."`;
+                } else if (lang === 'es') {
+                    h1Text = `"La mayoría fracasa en ${localizedTopic} porque ignoran esta regla ${tone}..."`;
+                    h2Text = `"Probé ${localizedTopic} durante 30 días con un enfoque ${tone} y los resultados rompieron el algoritmo."`;
+                    h3Text = `"No intentes hacer ${localizedTopic} hasta que domines este mecanismo."`;
+                } else {
+                    h1Text = `"Çoğu insan ${localizedTopic} konusunda tam olarak bu ${tone} kuralı atladığı için kaybediyor..."`;
+                    h2Text = `"Bunu ${tone} bir stratejiyle 30 gün boyunca test ettim ve sonuçlar algoritmayı sarstı."`;
+                    h3Text = `"Bu mekanizmayı tam olarak öğrenmeden asla ${localizedTopic} işine girişme."`;
+                }
+
+                const finalReport = `${d.headerReport}
+--------------------------------------------------
+> ${d.topicLabel}: ${localizedTopic}
+> ${d.strategyLabel}: ${psych.toUpperCase()} / ${tone.toUpperCase()}
+> ${d.platformLabel}: ${platformStyle}
+
+- ${d.h1}: ${h1Text}
+- ${d.h2}: ${h2Text}
+- ${d.h3}: ${h3Text}
+
+📊 [1000X_METRICS]: ${d.metrics}
+🛡️ [STATUS]: ${d.statusOptimized}`;
+
+                outputArea.innerText = finalReport;
+                document.getElementById('status-footer').innerText = `Status: Success (${lang.toUpperCase()})`;
+                
+                // Grafik animasyonunu tetikle
+                document.getElementById('growthBar').style.width = (Math.floor(Math.random() * 15) + 85) + '%';
+            }, 400);
+        }
+
+        function shareToSocial(platform) {
+            const text = document.getElementById('outputArea').innerText;
+            if (text.includes("SYSTEM_READY") || text.length < 50) {
+                alert("Önce geçerli bir AI raporu üretmelisiniz!");
+                return;
+            }
+            const encoded = encodeURIComponent(text + "\n\nGenerated via Viral Hook AI (1000x Growth Engine)");
+            window.open(`https://twitter.com/intent/tweet?text=${encoded}`, '_blank');
+        }
+
+        function saveToFavorites() {
+            const text = document.getElementById('outputArea').innerText;
+            if (text.includes("SYSTEM_READY") || text.length < 50) {
+                alert("Önce geçerli bir AI raporu üretmelisiniz!");
+                return;
+            }
+            const titleSnippet = text.split('\n')[1] || "Kanca Raporu";
+            favorites.unshift({ title: titleSnippet, content: text, date: new Date().toLocaleDateString() });
+            localStorage.setItem('viral_favorites', JSON.stringify(favorites));
+            renderFavorites();
+            
+            const lang = document.getElementById('langSelect').value;
+            const d = dictionary[lang] || dictionary.tr;
+            alert(d.alertSaved);
+        }
+
+        function renderFavorites() {
+            const listContainer = document.getElementById('favoritesList');
+            const countSpan = document.getElementById('favCount');
+            countSpan.innerText = favorites.length;
+
+            if (favorites.length === 0) {
+                const lang = document.getElementById('langSelect').value;
+                const d = dictionary[lang] || dictionary.tr;
+                listContainer.innerHTML = `<div id="emptyFavText" class="text-slate-600 italic">${d.emptyFavText}</div>`;
+                return;
+            }
+
+            listContainer.innerHTML = "";
+            favorites.forEach((fav) => {
+                const item = document.createElement('div');
+                item.className = "bg-darkBg border border-borderCol p-2 rounded-lg cursor-pointer hover:border-indigo-500 transition flex justify-between items-center";
+                item.innerHTML = `<span class="truncate max-w-[180px] text-slate-300">${fav.title}</span> <span class="text-[9px] text-indigo-400">${fav.date}</span>`;
+                item.onclick = () => {
+                    document.getElementById('outputArea').innerText = fav.content;
+                };
+                listContainer.appendChild(item);
+            });
+        }
+
+        function clearFavorites() {
+            favorites = [];
+            localStorage.removeItem('viral_favorites');
+            renderFavorites();
+        }
+
+        function copyOutput() {
+            const text = document.getElementById('outputArea').innerText;
+            navigator.clipboard.writeText(text);
+            const lang = document.getElementById('langSelect').value;
+            const d = dictionary[lang] || dictionary.tr;
+            alert(d.alertCopied);
+        }
+
+        function downloadOutput() {
+            const text = document.getElementById('outputArea').innerText;
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'viral-growth-report.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = "fa-solid fa-sun";
+            } else {
+                html.classList.add('dark');
+                icon.className = "fa-solid fa-moon";
+            }
+        }
+    </script>
+</body>
+</html>
