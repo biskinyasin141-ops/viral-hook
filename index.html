@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">ViralPulse Pro - Global Content Studio</title>
+    <title id="pageTitle">ViralPulse Pro - Ultimate Content Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -42,9 +42,9 @@
         </div>
 
         <div class="text-center mb-6 pt-2">
-            <span id="badgeColor" class="bg-red-500/10 text-red-500 text-[11px] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider border border-red-500/20">ViralPulse Pro Studio v13.0</span>
+            <span id="badgeColor" class="bg-red-500/10 text-red-500 text-[11px] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider border border-red-500/20">ViralPulse Pro Studio v14.0</span>
             <h1 id="mainTitle" class="text-2xl font-black mt-3 tracking-tight">Algoritmayı Tamamen Hackle 🚀</h1>
-            <p id="mainSubtitle" class="text-zinc-400 text-xs mt-1">A/B Testi, Kapak Yazısı Önerileri, Süre Ölçer ve Yapay Zeka Stüdyosu.</p>
+            <p id="mainSubtitle" class="text-zinc-400 text-xs mt-1">Yönetmen Notları, A/B Testi, Akıllı Ses Motoru ve Yapay Zeka Stüdyosu.</p>
         </div>
 
         <!-- Sekmeler -->
@@ -88,11 +88,12 @@
                     </select>
                 </div>
                 <div>
-                    <label id="lblStyle" class="block text-[11px] font-bold text-zinc-400 mb-1.5 uppercase tracking-wider">Kanca Yapısı</label>
-                    <select id="styleSelect" class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-3 py-3 text-zinc-200 focus:outline-none focus:border-red-500 text-xs">
-                        <option value="short">Ultra Kısa & Vurucu</option>
-                        <option value="story">Hikaye / İtiraf Modu</option>
-                    </select>
+                    <!-- Kanca Şiddeti / Dopamin Slider -->
+                    <div class="flex justify-between items-center mb-1.5">
+                        <label class="block text-[11px] font-bold text-zinc-400 uppercase tracking-wider">Dopamin Şiddeti</label>
+                        <span id="intensityVal" class="text-[11px] text-red-400 font-bold">%95</span>
+                    </div>
+                    <input type="range" id="intensitySlider" min="50" max="100" value="95" oninput="document.getElementById('intensityVal').innerText = '%' + this.value" class="w-full accent-red-500 bg-zinc-950 cursor-pointer h-10">
                 </div>
             </div>
 
@@ -145,15 +146,24 @@
                 <span id="viralScoreText" class="text-emerald-400 font-black text-sm">--</span>
             </div>
 
-            <!-- Video Okuma Süresi ve Kapak Yazısı Özellikleri -->
+            <!-- Yönetmen Notu ve Okuma Süresi / Kapak Özellikleri -->
             <div class="grid grid-cols-2 gap-2">
                 <div class="bg-zinc-950/60 border border-zinc-800 rounded-xl p-2.5 flex items-center justify-between text-[11px]">
-                    <span id="lblReadTime" class="text-zinc-400 font-medium">⏱️ Okuma Süresi:</span>
-                    <span id="readTimeText" class="text-cyan-400 font-bold">~2.1 sn (İdeal)</span>
+                    <span class="text-zinc-400 font-medium">⏱️ Okuma Süresi:</span>
+                    <span id="readTimeText" class="text-cyan-400 font-bold">~2.1 sn</span>
                 </div>
                 <div class="bg-zinc-950/60 border border-zinc-800 rounded-xl p-2.5 flex items-center justify-between text-[11px]">
-                    <span id="lblThumbnail" class="text-zinc-400 font-medium">🖼️ Kapak Yazısı:</span>
-                    <span id="thumbnailText" class="text-amber-400 font-bold truncate max-w-[120px]">Şok Edici Gerçek!</span>
+                    <span class="text-zinc-400 font-medium">🖼️ Kapak Yazısı:</span>
+                    <span id="thumbnailText" class="text-amber-400 font-bold truncate max-w-[120px]">Şok Edici!</span>
+                </div>
+            </div>
+
+            <!-- Yeni: Yönetmen Sahne Notu -->
+            <div class="bg-purple-950/30 border border-purple-900/40 rounded-2xl p-3 text-[11px] text-purple-300 flex items-start gap-2">
+                <span>🎬</span>
+                <div>
+                    <span class="font-bold block text-purple-400">Yönetmen Sahne Notu (İlk 3 Saniye):</span>
+                    <span id="directorNoteText">Kameraya hafifçe yaklaş, göz teması kur ve cümlenin sonunda hafifçe gülümse.</span>
                 </div>
             </div>
 
@@ -163,7 +173,7 @@
                 <label id="outputLabel" class="block text-[11px] font-bold text-zinc-400 uppercase tracking-wider">Üretilen Kanca:</label>
                 <div class="flex items-center gap-2">
                     <span id="charCount" class="text-[10px] text-zinc-500">0 karakter</span>
-                    <button onclick="speakCurrentHook()" id="speakBtn" class="text-xs text-blue-400 hover:text-blue-300 font-bold flex items-center gap-1 cursor-pointer" title="Sesli Dinle">🔊 Dinle</button>
+                    <button onclick="toggleSpeech()" id="speakBtn" class="text-xs text-blue-400 hover:text-blue-300 font-bold flex items-center gap-1 cursor-pointer" title="Dinle / Durdur">🔊 Dinle</button>
                     <button onclick="saveToFavorites()" id="favBtn" class="text-xs text-yellow-400 hover:text-yellow-300 font-bold flex items-center gap-1 cursor-pointer" title="Favorile">⭐ Favorile</button>
                     <button onclick="copyCurrentHook()" id="copyBtn" class="text-xs text-red-400 hover:text-red-300 font-bold cursor-pointer">📋 Kopyala</button>
                 </div>
@@ -211,51 +221,34 @@
         let favoritesArray = JSON.parse(localStorage.getItem('viralFavoritesPro')) || [];
         let currentTagsText = "";
         let currentLang = "tr";
+        let isSpeaking = false;
 
         const translations = {
             tr: { 
-                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v13.0", h1: "Algoritmayı Tamamen Hackle 🚀", sub: "A/B Testi, Kapak Yazısı Önerileri, Süre Ölçer ve Yapay Zeka Stüdyosu.", 
-                genTab: "⚡ Üretici", abTab: "🔬 A/B Test", anaTab: "🎯 Analiz Et", lblPlatform: "Hedef Platform", lblFormula: "Formül Kitaplığı", lblTone: "Anlatım Tonu", lblStyle: "Kanca Yapısı", lblIdea: "İçerik Konun / Nişin Nedir?", 
+                title: "ViralPulse Pro - Ultimate Studio", badge: "ViralPulse Pro Studio v14.0", h1: "Algoritmayı Tamamen Hackle 🚀", sub: "Yönetmen Notları, A/B Testi, Akıllı Ses Motoru ve Yapay Zeka Stüdyosu.", 
+                genTab: "⚡ Üretici", abTab: "🔬 A/B Test", anaTab: "🎯 Analiz Et", lblPlatform: "Hedef Platform", lblFormula: "Formül Kitaplığı", lblTone: "Anlatım Tonu", lblIdea: "İçerik Konun / Nişin Nedir?", 
                 placeholderIdea: "Örn: E-ticaret, motivasyon, yazılım...", btnRandom: "💡 Rastgele Fikir", genBtn: "Pro Matrisi Çalıştır ⚡", abDesc: "Aynı fikir için iki farklı kanca üretip CTR oranlarını test edin.", abBtn: "A/B Simülasyonunu Başlat 🔬",
                 lblCustomHook: "Kendi Kancanı Test Et", placeholderHook: "Analiz edilmesini istediğin kancayı buraya yapıştır...", anaBtn: "Yapay Zeka Analizini Başlat 🎯", 
-                scoreLabel: "🔥 Tahmini Viral Etki Skoru:", outputLabel: "Üretilen Kanca:", speak: "🔊 Dinle", fav: "⭐ Favorile", copy: "📋 Kopyala", copied: "✅ Kopyalandı!", 
+                scoreLabel: "🔥 Tahmini Viral Etki Skoru:", outputLabel: "Üretilen Kanca:", speak: "🔊 Dinle", stopSpeak: "⏹️ Durdur", fav: "⭐ Favorile", copy: "📋 Kopyala", copied: "✅ Kopyalandı!", 
                 lblTagsTitle: "# Optimizasyon Etiketleri:", btnCopyTags: "📋 Etiketleri Kopyala", lblHistory: "📜 Geçmiş:", lblFavorites: "⭐ Favorilerim:", emptyFav: "Henüz favori yok",
                 lockText: "Sınırsız matris motoru kilidini açmak için aracı WhatsApp'ta paylaş:", shareBtn: "📢 WhatsApp'ta Paylaş & Kilidi Kaldır",
                 alertIdea: "Lütfen bir fikir veya niş yazın!", alertHook: "Lütfen analiz edilecek metni yazın!", favAdded: "⭐ Favorilere eklendi!", tagsCopied: "Etiketler kopyalandı! 🏷️", copiedText: "Metin panoya kopyalandı! 🚀", unlockedMsg: "🎉 Teşekkürler! Sınırsız Pro Motor başarıyla aktif edildi."
             },
             en: { 
-                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v13.0", h1: "Hack the Algorithm 🚀", sub: "A/B Testing, Thumbnail Ideas, Timer & AI Studio.", 
-                genTab: "⚡ Generator", abTab: "🔬 A/B Test", anaTab: "🎯 Test Hook", lblPlatform: "Target Platform", lblFormula: "Formula Library", lblTone: "Tone of Voice", lblStyle: "Hook Structure", lblIdea: "What is your content idea/niche?", 
+                title: "ViralPulse Pro - Ultimate Studio", badge: "ViralPulse Pro Studio v14.0", h1: "Hack the Algorithm 🚀", sub: "Director Notes, A/B Testing, Smart Audio Engine & AI Studio.", 
+                genTab: "⚡ Generator", abTab: "🔬 A/B Test", anaTab: "🎯 Test Hook", lblPlatform: "Target Platform", lblFormula: "Formula Library", lblTone: "Tone of Voice", lblIdea: "What is your content idea/niche?", 
                 placeholderIdea: "e.g., E-commerce, motivation, software...", btnRandom: "💡 Random Idea", genBtn: "Run Pro Matrix ⚡", abDesc: "Generate two hooks and compare their simulated CTR performance.", abBtn: "Start A/B Simulation 🔬",
                 lblCustomHook: "Test Your Own Hook", placeholderHook: "Paste the hook you want to analyze here...", anaBtn: "Start AI Analysis 🎯", 
-                scoreLabel: "🔥 Estimated Viral Impact Score:", outputLabel: "Generated Hook:", speak: "🔊 Listen", fav: "⭐ Favorite", copy: "📋 Copy", copied: "✅ Copied!", 
+                scoreLabel: "🔥 Estimated Viral Impact Score:", outputLabel: "Generated Hook:", speak: "🔊 Listen", stopSpeak: "⏹️ Stop", fav: "⭐ Favorite", copy: "📋 Copy", copied: "✅ Copied!", 
                 lblTagsTitle: "# Optimization Tags:", btnCopyTags: "📋 Copy Tags", lblHistory: "📜 History:", lblFavorites: "⭐ Favorites:", emptyFav: "No favorites yet",
                 lockText: "Share on WhatsApp to unlock the unlimited matrix engine:", shareBtn: "📢 Share on WhatsApp & Unlock",
                 alertIdea: "Please write an idea or niche!", alertHook: "Please enter a hook to analyze!", favAdded: "⭐ Added to favorites!", tagsCopied: "Tags copied! 🏷️", copiedText: "Text copied to clipboard! 🚀", unlockedMsg: "🎉 Thank you! Unlimited Pro Engine successfully activated."
             },
-            de: { 
-                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v13.0", h1: "Hacke den Algorithmus 🚀", sub: "A/B-Tests, Thumbnail-Ideen, Timer & KI-Studio.", 
-                genTab: "⚡ Generator", abTab: "🔬 A/B-Test", anaTab: "🎯 Testen", lblPlatform: "Zielplattform", lblFormula: "Formel-Bibliothek", lblTone: "Tonfall", lblStyle: "Struktur", lblIdea: "Content-Idee?", 
-                placeholderIdea: "z.B. E-Commerce...", btnRandom: "💡 Zufällige Idee", genBtn: "Pro Matrix Starten ⚡", abDesc: "Zwei Hooks vergleichen.", abBtn: "A/B Test Starten 🔬",
-                lblCustomHook: "Eigene Hook Testen", placeholderHook: "Hook einfügen...", anaBtn: "KI-Analyse Starten 🎯", 
-                scoreLabel: "🔥 Viral-Score:", outputLabel: "Generierte Hook:", speak: "🔊 Anhören", fav: "⭐ Favorit", copy: "📋 Kopieren", copied: "✅ Kopiert!", 
-                lblTagsTitle: "# Tags:", btnCopyTags: "📋 Kopieren", lblHistory: "📜 Verlauf:", lblFavorites: "⭐ Favoriten:", emptyFav: "Keine Favoriten",
-                lockText: "Freischalten via WhatsApp:", shareBtn: "📢 Auf WhatsApp Teilen",
-                alertIdea: "Idee eingeben!", alertHook: "Hook eingeben!", favAdded: "⭐ Hinzugefügt!", tagsCopied: "Kopiert!", copiedText: "Kopiert!", unlockedMsg: "Freigeschaltet!"
-            },
-            az: { 
-                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v13.0", h1: "Alqoritmi Hack Et 🚀", sub: "A/B Test, Kapak Öneriləri və Süni İntellekt.", 
-                genTab: "⚡ Yaradıcı", abTab: "🔬 A/B Test", anaTab: "🎯 Analiz", lblPlatform: "Platforma", lblFormula: "Formul Kitabxanası", lblTone: "Ton", lblStyle: "Struktur", lblIdea: "İdeyanız nədir?", 
-                placeholderIdea: "Məs: E-ticarət...", btnRandom: "💡 Təsadüfi İdeya", genBtn: "Pro Matrisi İşə Sal ⚡", abDesc: "İki qarmağı müqayisə edin.", abBtn: "A/B Testini Başlat 🔬",
-                lblCustomHook: "Öz Qarmağını Test Et", placeholderHook: "Qarmağı bura yazın...", anaBtn: "Analiz Et 🎯", 
-                scoreLabel: "🔥 Viral Hesab:", outputLabel: "Qarmaq:", speak: "🔊 Dinlə", fav: "⭐ Seçilmiş", copy: "📋 Kopyala", copied: "✅ Kopyalandı!", 
-                lblTagsTitle: "# Etiketlər:", btnCopyTags: "📋 Kopyala", lblHistory: "📜 Keçmiş:", lblFavorites: "⭐ Seçilmişlər:", emptyFav: "Boş",
-                lockText: "Kilidi açmaq üçün WhatsApp-da paylaşın:", shareBtn: "📢 WhatsApp-da Paylaş",
-                alertIdea: "İdeya yazın!", alertHook: "Qarmaq daxil edin!", favAdded: "⭐ Əlavə edildi!", tagsCopied: "Koplandı!", copiedText: "Kopyalandı!", unlockedMsg: "Aktiv edildi!"
-            },
-            fr: { title: "ViralPulse Pro", badge: "v13.0 PRO", h1: "Piratage d'Algorithme 🚀", sub: "A/B Test & IA.", genTab: "⚡ Générateur", abTab: "🔬 A/B Test", anaTab: "🎯 Test", lblPlatform: "Plateforme", lblFormula: "Formule", lblTone: "Ton", lblStyle: "Structure", lblIdea: "Idée ?", placeholderIdea: "ex: E-commerce...", btnRandom: "💡 Aléatoire", genBtn: "Lancer ⚡", abDesc: "Test A/B", abBtn: "Tester 🔬", lblCustomHook: "Tester", placeholderHook: "Collez...", anaBtn: "Analyser 🎯", scoreLabel: "🔥 Score :", outputLabel: "Hook :", speak: "🔊", fav: "⭐", copy: "📋", copied: "✅", lblTagsTitle: "# Tags :", btnCopyTags: "📋", lblHistory: "📜", lblFavorites: "⭐", emptyFav: "Vide", lockText: "Partagez sur WhatsApp :", shareBtn: "📢 Partager", alertIdea: "Écrivez !", alertHook: "Entrez !", favAdded: "⭐ Ajouté !", tagsCopied: "Copié !", copiedText: "Copié !", unlockedMsg: "Déverrouillé !" },
-            es: { title: "ViralPulse Pro", badge: "v13.0 PRO", h1: "Hackea el Algoritmo 🚀", sub: "A/B Test e IA.", genTab: "⚡ Generador", abTab: "🔬 A/B Test", anaTab: "🎯 Analizador", lblPlatform: "Plataforma", lblFormula: "Fórmula", lblTone: "Tono", lblStyle: "Estructura", lblIdea: "¿Idea?", placeholderIdea: "ej: E-commerce...", btnRandom: "💡 Idea", genBtn: "Ejecutar ⚡", abDesc: "Test A/B", abBtn: "Probar 🔬", lblCustomHook: "Prueba", placeholderHook: "Pega...", anaBtn: "Analizar 🎯", scoreLabel: "🔥 Puntuación:", outputLabel: "Gancho:", speak: "🔊", fav: "⭐", copy: "📋", copied: "✅", lblTagsTitle: "# Etiquetas:", btnCopyTags: "📋", lblHistory: "📜", lblFavorites: "⭐", emptyFav: "Vacío", lockText: "Comparte en WhatsApp:", shareBtn: "📢 Compartir", alertIdea: "¡Escribe!", alertHook: "¡Ingresa!", favAdded: "⭐ ¡Añadido!", tagsCopied: "¡Copiado!", copiedText: "¡Copiado!", unlockedMsg: "¡Desbloqueado!" },
-            ru: { title: "ViralPulse Pro", badge: "v13.0 PRO", h1: "Взломай Алгоритм 🚀", sub: "A/B Тест и ИИ.", genTab: "⚡ Генератор", abTab: "🔬 A/B Тест", anaTab: "🎯 Тест", lblPlatform: "Платформа", lblFormula: "Формула", lblTone: "Тон", lblStyle: "Структура", lblIdea: "Идея?", placeholderIdea: "пример...", btnRandom: "💡 Случай", genBtn: "Запуск ⚡", abDesc: "A/B тест", abBtn: "Тест 🔬", lblCustomHook: "Хук", placeholderHook: "Вставьте...", anaBtn: "Анализ 🎯", scoreLabel: "🔥 Оценка:", outputLabel: "Хук:", speak: "🔊", fav: "⭐", copy: "📋", copied: "✅", lblTagsTitle: "# Теги:", btnCopyTags: "📋", lblHistory: "📜", lblFavorites: "⭐", emptyFav: "Пусто", lockText: "Поделитесь в WhatsApp:", shareBtn: "📢 Поделиться", alertIdea: "Введите идею!", alertHook: "Введите хук!", favAdded: "⭐ Добавлено!", tagsCopied: "Скопировано!", copiedText: "Скопировано!", unlockedMsg: "Разблокировано!" }
+            de: { title: "ViralPulse Pro", badge: "v14.0 PRO", h1: "Hacke den Algorithmus 🚀", sub: "KI-Studio & Notizen.", genTab: "⚡ Generator", abTab: "🔬 A/B-Test", anaTab: "🎯 Testen", lblPlatform: "Plattform", lblFormula: "Formel", lblTone: "Tonfall", lblIdea: "Idee?", placeholderIdea: "z.B. E-Commerce...", btnRandom: "💡 Zufall", genBtn: "Starten ⚡", abDesc: "A/B Test", abBtn: "Start 🔬", lblCustomHook: "Eigene Hook", placeholderHook: "Einfügen...", anaBtn: "Analyse 🎯", scoreLabel: "🔥 Score:", outputLabel: "Hook:", speak: "🔊 Anhören", stopSpeak: "⏹️ Stopp", fav: "⭐", copy: "📋", copied: "✅", lblTagsTitle: "# Tags:", btnCopyTags: "📋", lblHistory: "📜", lblFavorites: "⭐", emptyFav: "Leer", lockText: "WhatsApp Share:", shareBtn: "📢 Teilen", alertIdea: "Idee eingeben!", alertHook: "Hook eingeben!", favAdded: "⭐ Hinzugefügt!", tagsCopied: "Kopiert!", copiedText: "Kopiert!", unlockedMsg: "Freigeschaltet!" },
+            az: { title: "ViralPulse Pro", badge: "v14.0 PRO", h1: "Alqoritmi Hack Et 🚀", sub: "Rejissor Qeydləri və Sİ.", genTab: "⚡ Yaradıcı", abTab: "🔬 A/B Test", anaTab: "🎯 Analiz", lblPlatform: "Platforma", lblFormula: "Formul", lblTone: "Ton", lblIdea: "İdeya?", placeholderIdea: "Məs: E-ticarət...", btnRandom: "💡 Təsadüfi", genBtn: "Başlat ⚡", abDesc: "A/B Test", abBtn: "Başlat 🔬", lblCustomHook: "Test Et", placeholderHook: "Yazın...", anaBtn: "Analiz 🎯", scoreLabel: "🔥 Hesab:", outputLabel: "Qarmaq:", speak: "🔊 Dinlə", stopSpeak: "⏹️ Dayandır", fav: "⭐", copy: "📋", copied: "✅", lblTagsTitle: "# Etiketlər:", btnCopyTags: "📋", lblHistory: "📜", lblFavorites: "⭐", emptyFav: "Boş", lockText: "Kilidi aç:", shareBtn: "📢 Paylaş", alertIdea: "İdeya yazın!", alertHook: "Qarmaq yazın!", favAdded: "⭐ Əlavə edildi!", tagsCopied: "Kopyalandı!", copiedText: "Kopyalandı!", unlockedMsg: "Aktiv edildi!" },
+            fr: { title: "ViralPulse Pro", badge: "v14.0 PRO", h1: "Piratage 🚀", sub: "Studio IA.", genTab: "⚡ Générateur", abTab: "🔬 A/B Test", anaTab: "🎯 Test", lblPlatform: "Plateforme", lblFormula: "Formule", lblTone: "Ton", lblIdea: "Idée ?", placeholderIdea: "ex...", btnRandom: "💡", genBtn: "Lancer ⚡", abDesc: "A/B", abBtn: "Test 🔬", lblCustomHook: "Test", placeholderHook: "Collez...", anaBtn: "Analyser 🎯", scoreLabel: "🔥 Score :", outputLabel: "Hook :", speak: "🔊", stopSpeak: "⏹️ Stop", fav: "⭐", copy: "📋", copied: "✅", lblTagsTitle: "# Tags :", btnCopyTags: "📋", lblHistory: "📜", lblFavorites: "⭐", emptyFav: "Vide", lockText: "Partager :", shareBtn: "📢 Partager", alertIdea: "Écrivez !", alertHook: "Entrez !", favAdded: "⭐", tagsCopied: "Copié !", copiedText: "Copié !", unlockedMsg: "Déverrouillé !" },
+            es: { title: "ViralPulse Pro", badge: "v14.0 PRO", h1: "Hackea 🚀", sub: "Estudio IA.", genTab: "⚡ Generador", abTab: "🔬 A/B Test", anaTab: "🎯 Analizador", lblPlatform: "Plataforma", lblFormula: "Fórmula", lblTone: "Tono", lblIdea: "¿Idea?", placeholderIdea: "ej...", btnRandom: "💡", genBtn: "Ejecutar ⚡", abDesc: "A/B", abBtn: "Probar 🔬", lblCustomHook: "Prueba", placeholderHook: "Pega...", anaBtn: "Analizar 🎯", scoreLabel: "🔥 Puntuación:", outputLabel: "Gancho:", speak: "🔊", stopSpeak: "⏹️ Parar", fav: "⭐", copy: "📋", copied: "✅", lblTagsTitle: "# Etiquetas:", btnCopyTags: "📋", lblHistory: "📜", lblFavorites: "⭐", emptyFav: "Vacío", lockText: "Compartir:", shareBtn: "📢 Compartir", alertIdea: "¡Escribe!", alertHook: "¡Ingresa!", favAdded: "⭐", tagsCopied: "¡Copiado!", copiedText: "¡Copiado!", unlockedMsg: "¡Desbloqueado!" },
+            ru: { title: "ViralPulse Pro", badge: "v14.0 PRO", h1: "Взломай 🚀", sub: "ИИ Студия.", genTab: "⚡ Генератор", abTab: "🔬 A/B Тест", anaTab: "🎯 Тест", lblPlatform: "Платформа", lblFormula: "Формула", lblTone: "Тон", lblIdea: "Идея?", placeholderIdea: "пример...", btnRandom: "💡", genBtn: "Запуск ⚡", abDesc: "A/B", abBtn: "Тест 🔬", lblCustomHook: "Хук", placeholderHook: "Вставьте...", anaBtn: "Анализ 🎯", scoreLabel: "🔥 Оценка:", outputLabel: "Хук:", speak: "🔊", stopSpeak: "⏹️ Стоп", fav: "⭐", copy: "📋", copied: "✅", lblTagsTitle: "# Теги:", btnCopyTags: "📋", lblHistory: "📜", lblFavorites: "⭐", emptyFav: "Пусто", lockText: "Поделиться:", shareBtn: "📢 Поделиться", alertIdea: "Введите идею!", alertHook: "Введите хук!", favAdded: "⭐", tagsCopied: "Скопировано!", copiedText: "Скопировано!", unlockedMsg: "Разблокировано!" }
         };
 
         const sampleIdeas = {
@@ -266,6 +259,21 @@
             fr: ["E-commerce", "Argent avec l'IA", "Routine matinale", "Croissance réseaux"],
             es: ["E-commerce", "Dinero con IA", "Rutina matutina", "Crecimiento en redes"],
             ru: ["Электронная коммерция", "Деньги с ИИ", "Утренняя рутина", "Рост в соцсетях"]
+        };
+
+        const directorNotesList = {
+            tr: [
+                "Kameraya hafifçe yaklaş, göz teması kur ve cümlenin sonunda hafifçe gülümse.",
+                "Cümleye başlarken şaşırmış bir ifade takın, ortasında ses tonunu alçaltarak gizem yarat.",
+                "Kollarını bağla, kendinden emin bir duruşla doğrudan izleyicinin gözünün içine bak.",
+                "Hafif alaycı bir gülümsemeyle başla ve hızla konunun en vurucu yerine geç."
+            ],
+            en: [
+                "Lean slightly into the camera, make eye contact, and smile at the end.",
+                "Start with a surprised look, lower your voice in the middle to build mystery.",
+                "Cross your arms with a confident posture and look straight into the viewer's eyes.",
+                "Start with a slight smirk and quickly jump to the punchline."
+            ]
         };
 
         function changeLanguage() {
@@ -282,7 +290,6 @@
             document.getElementById('lblPlatform').innerText = t.lblPlatform;
             document.getElementById('lblFormula').innerText = t.lblFormula;
             document.getElementById('lblTone').innerText = t.lblTone;
-            document.getElementById('lblStyle').innerText = t.lblStyle;
             document.getElementById('lblIdea').innerText = t.lblIdea;
             document.getElementById('ideaInput').placeholder = t.placeholderIdea;
             document.getElementById('btnRandom').innerText = t.btnRandom;
@@ -294,7 +301,9 @@
             document.getElementById('analyzeBtn').innerText = t.anaBtn;
             document.getElementById('scoreLabelText').innerText = t.scoreLabel;
             document.getElementById('outputLabel').innerText = t.outputLabel;
-            document.getElementById('speakBtn').innerText = t.speak;
+            
+            updateSpeakButtonLabel();
+            
             document.getElementById('favBtn').innerText = t.fav;
             document.getElementById('copyBtn').innerText = t.copy;
             document.getElementById('lblTagsTitle').innerText = t.lblTagsTitle;
@@ -307,6 +316,14 @@
                 document.getElementById('lockText').innerText = t.lockText;
             }
             renderFavorites();
+        }
+
+        function updateSpeakButtonLabel() {
+            const t = translations[currentLang] || translations['en'];
+            const btn = document.getElementById('speakBtn');
+            if(btn) {
+                btn.innerText = isSpeaking ? (t.stopSpeak || "⏹️ Durdur") : (t.speak || "🔊 Dinle");
+            }
         }
 
         function fillRandomIdea() {
@@ -406,6 +423,7 @@
             const idea = document.getElementById('ideaInput').value.trim();
             const platform = document.getElementById('platformSelect').value;
             const formula = document.getElementById('formulaSelect').value;
+            const intensity = document.getElementById('intensitySlider').value;
             const t = translations[currentLang] || translations['en'];
 
             if(!idea) {
@@ -434,12 +452,16 @@
             hookOutput.value = finalHook;
             updateCharCountAndMetrics(finalHook, idea);
 
+            // Yönetmen Notu Atama
+            const notes = directorNotesList[currentLang] || directorNotesList['en'];
+            document.getElementById('directorNoteText').innerText = notes[Math.floor(Math.random() * notes.length)];
+
             const cleanWord = idea.replace(/[^a-zA-Z0-9]/g, "");
             currentTagsText = `#${cleanWord} #${platform} #viral #foryou #trending`;
             tagOutput.innerText = currentTagsText;
             tagSection.classList.remove('hidden');
 
-            viralScoreText.innerText = `%${Math.floor(Math.random() * 6) + 94} Viral Güç 🔥`;
+            viralScoreText.innerText = `%${intensity} Viral Güç 🔥`;
             addToHistory(finalHook);
         }
 
@@ -447,7 +469,6 @@
             const charText = currentLang === 'tr' ? 'karakter' : currentLang === 'de' ? 'Zeichen' : 'chars';
             document.getElementById('charCount').innerText = `${text.length} ${charText}`;
 
-            // Okuma süresi hesaplama (Ortalama insan okuma hızı: saniyede 15 karakter)
             const seconds = (text.length / 15).toFixed(1);
             const readTimeEl = document.getElementById('readTimeText');
             if(seconds <= 3.5) {
@@ -458,7 +479,6 @@
                 readTimeEl.className = "text-amber-400 font-bold";
             }
 
-            // Kapak yazısı önerisi üret
             const words = idea.split(' ');
             const thumb = words.length > 1 ? `${words[0]} ${words[1]} Gerçeği!` : `${idea} Şoku!`;
             document.getElementById('thumbnailText').innerText = thumb;
@@ -519,7 +539,7 @@
             tagSection.classList.add('hidden');
 
             let score = 91;
-            let report = "💡 **AI Psikoloji Raporu:** Metin güçlü bir merak kancası (`curiosity gap`) barındırıyor.";
+            let report = "💡 **AI Psikoloji Raporu:** Metin güçlü bir merak kancası barındırıyor.";
             
             if(customHook.length < 20) {
                 score = 68;
@@ -628,18 +648,22 @@
             alert(t.copiedText);
         }
 
-        function speakCurrentHook() {
-            const text = document.getElementById('hookOutput').value;
-            if(!text) return;
-            
+        // Sesli Okuma - Toggle (Aç/Kapat / Durdur) Sistemi
+        function toggleSpeech() {
             if (!('speechSynthesis' in window)) {
                 alert("Tarayıcınız ses sentezini desteklemiyor.");
                 return;
             }
 
-            window.speechSynthesis.cancel();
+            const text = document.getElementById('hookOutput').value;
+            if(!text) return;
 
-            setTimeout(() => {
+            if (isSpeaking) {
+                window.speechSynthesis.cancel();
+                isSpeaking = false;
+                updateSpeakButtonLabel();
+            } else {
+                window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.rate = 1.0;
                 utterance.pitch = 1.0;
@@ -647,8 +671,20 @@
                 const langMap = { tr: 'tr-TR', en: 'en-US', de: 'de-DE', fr: 'fr-FR', es: 'es-ES', ru: 'ru-RU', az: 'az-AZ' };
                 utterance.lang = langMap[currentLang] || 'tr-TR';
 
+                utterance.onend = function() {
+                    isSpeaking = false;
+                    updateSpeakButtonLabel();
+                };
+
+                utterance.onerror = function() {
+                    isSpeaking = false;
+                    updateSpeakButtonLabel();
+                };
+
+                isSpeaking = true;
+                updateSpeakButtonLabel();
                 window.speechSynthesis.speak(utterance);
-            }, 50);
+            }
         }
 
         function handleRealWhatsAppShare() {
