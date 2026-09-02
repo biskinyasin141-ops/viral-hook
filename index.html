@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viral Hook - World Class AI Suite 1000+</title>
+    <title>Viral Hook - Freemium AI Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -32,19 +32,16 @@
                     <i class="fa-solid fa-microchip text-lg"></i>
                 </div>
                 <div>
-                    <span class="text-base font-bold tracking-wide bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Viral Hook AI Prime</span>
-                    <span class="block text-[10px] text-slate-400">1000+ Quantum Modules Active</span>
+                    <span class="text-base font-bold tracking-wide bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Viral Hook AI</span>
+                    <span class="block text-[10px] text-slate-400">Free & Pro Hybrid Edition</span>
                 </div>
             </div>
             
             <div class="flex items-center space-x-3">
-                <select id="langSelect" onchange="changeLanguage()" class="bg-darkBg border border-borderCol text-xs rounded-lg px-2.5 py-1.5 text-slate-300 focus:outline-none focus:border-indigo-500 cursor-pointer">
-                    <option value="tr">Türkçe (TR)</option>
-                    <option value="en">English (EN)</option>
-                    <option value="es">Español (ES)</option>
-                    <option value="de">Deutsch (DE)</option>
-                    <option value="fr">Français (FR)</option>
-                </select>
+                <button onclick="openCheckout()" class="bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-slate-950 font-bold px-3.5 py-1.5 rounded-lg text-xs shadow-lg shadow-yellow-500/20 transition flex items-center space-x-1.5 cursor-pointer">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>PRO'YA GEÇ ($4.99)</span>
+                </button>
 
                 <button onclick="toggleTheme()" class="p-2 rounded-lg border border-borderCol bg-darkBg text-slate-300 hover:text-white transition cursor-pointer">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
@@ -53,23 +50,21 @@
         </div>
     </header>
 
-    <!-- 10 KATEGORİ SEKMESİ (1000+ MODÜL) -->
+    <!-- SEKMELER (ÜCRETSİZ vs PRO) -->
     <nav class="bg-cardBg/60 border-b border-borderCol overflow-x-auto scrollbar-none">
         <div class="max-w-7xl mx-auto px-4 flex space-x-2 py-2.5 min-w-max">
-            <button onclick="switchTab(0)" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition cursor-pointer flex items-center space-x-2 shadow-md shadow-indigo-600/30"><i class="fa-solid fa-brain"></i><span>1. AI Kanca & Story (1-100)</span></button>
-            <button onclick="switchTab(1)" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2"><i class="fa-solid fa-chart-line"></i><span>2. SEO & Algoritma (101-200)</span></button>
-            <button onclick="switchTab(2)" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2"><i class="fa-solid fa-clock"></i><span>3. Takvim & Otomasyon (201-300)</span></button>
-            <button onclick="switchTab(3)" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2"><i class="fa-solid fa-headphones"></i><span>4. Ses & TTS Stüdyo (301-400)</span></button>
-            <button onclick="switchTab(4)" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2"><i class="fa-solid fa-bolt-lightning"></i><span>5. Toplu Batch İşlem (401-500)</span></button>
-            <button onclick="switchTab(5)" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2"><i class="fa-solid fa-gauge"></i><span>6. Analitik & Skor (501-600)</span></button>
-            <button onclick="switchTab(6)" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2"><i class="fa-solid fa-earth-europe"></i><span>7. Küresel Çeviri (601-700)</span></button>
-            <button onclick="switchTab(7)" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2"><i class="fa-solid fa-palette"></i><span>8. Tasarım & Görsel (701-800)</span></button>
-            <button onclick="switchTab(8)" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2"><i class="fa-solid fa-wallet"></i><span>9. Pazarlama & Gelir (801-900)</span></button>
-            <button onclick="switchTab(9)" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2"><i class="fa-solid fa-terminal"></i><span>10. Geliştirici & Sistem (901-1000+)</span></button>
+            <button onclick="switchTab('free')" id="btnFree" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition cursor-pointer flex items-center space-x-2 shadow-md shadow-indigo-600/30">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Ücretsiz Kanca Motoru (Modül 1-50)</span>
+            </button>
+            <button onclick="switchTab('pro')" id="btnPro" class="tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-yellow-400 hover:bg-yellow-500/10 transition cursor-pointer flex items-center space-x-2">
+                <i class="fa-solid fa-lock"></i>
+                <span>PRO 1000+ Otomasyon & Çeviri (Kilitli)</span>
+            </button>
         </div>
     </nav>
 
-    <!-- MAIN GRID CONTAINER -->
+    <!-- MAIN CONTAINER -->
     <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         <!-- SOL KONTROL PANELİ -->
@@ -77,201 +72,146 @@
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl">
                 <h2 class="text-sm font-semibold mb-3 text-slate-200 flex items-center space-x-2">
                     <i class="fa-solid fa-sliders text-indigo-400"></i>
-                    <span>Quantum Engine Kontrolleri</span>
+                    <span>İçerik Parametreleri</span>
                 </h2>
                 
                 <div class="space-y-3.5">
                     <div>
-                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Konu / Niş / Hedef Anahtar Kelime</label>
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Konu / Niş / Hedef Kelime</label>
                         <input type="text" id="topicInput" value="Yapay Zeka ile Dijital Zenginlik" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-100">
                     </div>
 
                     <div>
-                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Hedef Sosyal Medya Platformu</label>
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Hedef Platform</label>
                         <select id="platformSelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-100">
-                            <option value="tiktok">TikTok & Instagram Reels (Algoritma Odaklı)</option>
-                            <option value="youtube">YouTube Shorts (Yüksek Retention)</option>
-                            <option value="twitter">X / Twitter Thread Zincirleri</option>
-                            <option value="linkedin">LinkedIn Kurumsal Büyüme</option>
+                            <option value="tiktok">TikTok & Instagram Reels</option>
+                            <option value="youtube">YouTube Shorts</option>
                         </select>
                     </div>
 
-                    <div>
-                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Yapay Zeka Yaratıcılık Modu</label>
-                        <select id="modeSelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-100">
-                            <option value="viral">Ultra Viral & Agresif Kanca (%99 Etki)</option>
-                            <option value="story">Derin Storytelling & Dramatik Kurgu</option>
-                            <option value="educational">Eğitici & Bilgilendirici Otorite Modu</option>
-                            <option value="mizahi">Mizahi & Eğlence Odaklı Komedi Modu</option>
-                        </select>
-                    </div>
-
-                    <button onclick="runQuantumEngine()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-medium py-3 rounded-xl shadow-lg shadow-indigo-600/30 transition flex items-center justify-center space-x-2 cursor-pointer text-xs">
-                        <i class="fa-solid fa-microchip text-sm"></i>
-                        <span>1000+ Modülü Aynı Anda Çalıştır</span>
+                    <button onclick="runEngine()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-medium py-3 rounded-xl shadow-lg shadow-indigo-600/30 transition flex items-center justify-center space-x-2 cursor-pointer text-xs">
+                        <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
+                        <span id="actionBtnText">Ücretsiz İçerik Üret</span>
                     </button>
                 </div>
             </div>
 
-            <!-- AKTİF KATEGORİ MODÜL LİSTESİ -->
-            <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl">
-                <h3 id="categoryHeader" class="text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-3">Modül Havuzu</h3>
-                <div id="toolListContainer" class="grid grid-cols-1 gap-2 text-xs max-h-64 overflow-y-auto pr-1">
-                    <!-- Dinamik dolacak -->
+            <!-- ÖZELLİK KARŞILAŞTIRMA KUTUSU -->
+            <div class="bg-cardBg border border-borderCol rounded-2xl p-4 text-xs space-y-3 shadow-xl">
+                <h3 class="font-semibold text-slate-200 flex items-center space-x-2">
+                    <i class="fa-solid fa-scale-balanced text-indigo-400"></i>
+                    <span>Sürüm Özellikleri</span>
+                </h3>
+                <div class="space-y-2 text-[11px] text-slate-300">
+                    <div class="flex items-center justify-between pb-1.5 border-b border-borderCol">
+                        <span>Temel Kanca Üreticisi</span>
+                        <span class="text-green-400 font-bold">Ücretsiz</span>
+                    </div>
+                    <div class="flex items-center justify-between pb-1.5 border-b border-borderCol">
+                        <span>Standart Hashtag Grupları</span>
+                        <span class="text-green-400 font-bold">Ücretsiz</span>
+                    </div>
+                    <div class="flex items-center justify-between pb-1.5 border-b border-borderCol">
+                        <span>30 Günlük Otomatik İçerik Fabrikası</span>
+                        <span class="text-yellow-400 font-bold"><i class="fa-solid fa-lock"></i> PRO</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span>20 Dilde Küresel Çeviri & Analitik</span>
+                        <span class="text-yellow-400 font-bold"><i class="fa-solid fa-lock"></i> PRO</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- SAĞ ÇIKTI VE RAPOR PANELİ -->
+        <!-- SAĞ ÇIKTI PANELİ -->
         <div class="lg:col-span-2 space-y-4">
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl relative min-h-[520px] flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-sm font-semibold text-slate-200 flex items-center space-x-2">
-                            <i class="fa-solid fa-file-lines text-indigo-400"></i>
-                            <span>Quantum AI Üretim ve Analiz Raporu</span>
-                        </h3>
-                        <div class="flex space-x-2">
-                            <button onclick="speakText()" class="p-2 bg-darkBg border border-borderCol hover:border-indigo-500 rounded-lg text-slate-300 transition cursor-pointer text-xs" title="Seslendir">
-                                <i class="fa-solid fa-volume-high"></i>
-                            </button>
-                            <button onclick="copyOutput()" class="p-2 bg-darkBg border border-borderCol hover:border-indigo-500 rounded-lg text-slate-300 transition cursor-pointer text-xs" title="Kopyala">
-                                <i class="fa-solid fa-copy"></i>
-                            </button>
-                        </div>
+                        <h3 id="outputTitle" class="text-sm font-semibold text-slate-200">Ücretsiz Üretim ve Kanca Raporu</h3>
+                        <button onclick="copyOutput()" class="p-2 bg-darkBg border border-borderCol hover:border-indigo-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1">
+                            <i class="fa-solid fa-copy"></i><span>Kopyala</span>
+                        </button>
                     </div>
                     <div id="outputArea" class="bg-darkBg border border-borderCol rounded-xl p-4 text-xs text-slate-300 leading-relaxed min-h-[400px] whitespace-pre-wrap font-mono">
-Sol taraftan konunuzu, platformunuzu ve yapay zeka modunuzu seçip "1000+ Modülü Aynı Anda Çalıştır" butonuna basarak dünyadaki en gelişmiş yapay zeka sistemleriyle yarışacak düzeyde optimize edilmiş çok katmanlı içerik ekosistemini anında oluşturun.
+Sol taraftan konunuzu seçip "Ücretsiz İçerik Üret" butonuna basarak ilk kancalarınızı anında oluşturabilirsiniz.
+
+Tüm 1000+ modülün, toplu içerik fabrikasının ve küresel çeviri özelliklerinin kilidini açmak için sağ üstteki **"PRO'YA GEÇ"** butonunu kullanabilirsiniz!
                     </div>
                 </div>
                 
                 <div class="mt-4 pt-3 border-t border-borderCol flex justify-between items-center text-[11px] text-slate-500">
-                    <span id="status-text">Durum: 1000+ Quantum Modül Hazır ve Bekliyor</span>
-                    <span>Viral Hook AI Prime v2026.9</span>
+                    <span id="status-text">Durum: Ücretsiz Sürüm Aktif (Modül 1-50)</span>
+                    <span>Viral Hook AI v2026</span>
                 </div>
             </div>
         </div>
     </main>
 
     <script>
-        // 1000+ Özelliği Temsil Eden Detaylı Modül Havuzu
-        const categories = [
-            {
-                title: "1. AI Kanca & Storytelling (Modül 1 - 100)",
-                tools: [
-                    "1-15. Ultra Scroll-Stopper Psikolojik Kanca Üreticisi",
-                    "16-35. Üç Perde Yapılı Sinematik Storytelling Motoru",
-                    "36-55. Algoritmik Merak ve Açık Döngü (Open Loop) Kurgusu",
-                    "56-75. Rakip Analizi ve Tersine Mühendislik Algoritması",
-                    "76-100. Call-to-Action (CTA) Dönüşüm Tetikleyici Matrisi"
-                ]
-            },
-            {
-                title: "2. SEO & Algoritma Optimizasyonu (Modül 101 - 200)",
-                tools: [
-                    "101-125. Niş Bazlı Mega Hashtag ve Trend Grubu Oluşturucu",
-                    "126-150. Semantik Anahtar Kelime ve Yoğunluk Analizcisi",
-                    "151-175. TikTok & Reels Arama Motoru Optimizasyonu (SEO)",
-                    "176-200. YouTube Shorts ve X Thread Algoritma Uyumluluğu"
-                ]
-            },
-            {
-                title: "3. Takvim, Zamanlama & Otomasyon (Modül 201 - 300)",
-                tools: [
-                    "201-225. Küresel Kitle Aktiflik Saati ve Zaman Dilimi Hesaplayıcı",
-                    "226-250. 30 Günlük Otomatik Seri İçerik Matrisi (Content Grid)",
-                    "251-275. Sezonluk, Bayram ve Gündem Kampanya Planlayıcısı",
-                    "276-300. Tarayıcı Bildirimli Canlı Yayın ve Paylaşım Hatırlatıcısı"
-                ]
-            },
-            {
-                title: "4. Ses, Medya & TTS Stüdyosu (Modül 301 - 400)",
-                tools: [
-                    "301-325. 20+ Dilde Çok Dilli Doğal Seslendirme Motoru (TTS)",
-                    "326-350. Ses Tonu Hızı, Pitch ve Duygu Vurgusu Ayarları",
-                    "351-375. Zaman Damgalı Otomatik Altyazı (SRT) Çıktı Üreticisi",
-                    "376-400. Arka Plan Müzik, SFX Öneri ve Ses Kayıt Not Defteri"
-                ]
-            },
-            {
-                title: "5. Toplu Batch İşlem Araçları (Modül 401 - 500)",
-                tools: [
-                    "401-425. Tek Tıkla 30 Günlük Seri İçerik Üretim Fabrikası",
-                    "426-450. Toplu Metin Temizleme, Boşluk ve Emoji Düzenleyici",
-                    "451-475. JSON, CSV ve TXT Formatında Gelişmiş Dışa Aktarım",
-                    "476-500. Sınırsız Geçmiş Geri Al / İleri Al ve Arşiv Sistemi"
-                ]
-            },
-            {
-                title: "6. Analitik & Skorlama Motoru (Modül 501 - 600)",
-                tools: [
-                    "501-525. Quantum Viral Potansiyel Skorlama Matrisi (%0 - %100)",
-                    "526-550. İzleyici Tutma Oranı (Retention) Tahmin Simülatörü",
-                    "551-575. Topluluk Kuralları ve Telif Risk Analizcisi",
-                    "576-600. Kelime Bazlı Etkileşim ve Okunabilirlik Testi"
-                ]
-            },
-            {
-                title: "7. Küresel Çeviri & Yerelleştirme (Modül 601 - 700)",
-                tools: [
-                    "601-625. 20 Dünya Dili Arasında Eşzamanlı Bağlam Çevirisi",
-                    "626-650. Kültürel Deyim ve Yerelleştirme (Localization) Filtresi",
-                    "651-675. Çift Dilli Karşılaştırmalı Çalışma ve Senkron Ekranı",
-                    "676-700. Küresel Trend Kelime Sözlüğü ve Kanca Kütüphanesi"
-                ]
-            },
-            {
-                title: "8. Tasarım & Görsel Fikir Panoları (Modül 701 - 800)",
-                tools: [
-                    "701-725. Kapak Fotoğrafı (Thumbnail) Vurucu Metin Fabrikası",
-                    "726-750. Renk Psikolojisi ve Dönüşüm Odaklı Kombinasyon Rehberi",
-                    "751-775. Video Sahne Çerçeve (Storyboard) Tasarım Planlayıcısı",
-                    "776-800. Marka Kılavuzu (Brand Kit) ve Filigran Yerleşimleri"
-                ]
-            },
-            {
-                title: "9. Pazarlama & Monetizasyon (Modül 801 - 900)",
-                tools: [
-                    "801-825. Sponsorlu Marka İş Birliği ve PR Metin Üreticisi",
-                    "826-850. Affiliate (Ortaklık) Pazarlama Satış Kancaları",
-                    "851-875. Yeni Ürün Lansmanı ve Satış Hunisi (Funnel) Senaryoları",
-                    "876-900. E-posta Bülteni ve Sadık Topluluk Bağlılık Metinleri"
-                ]
-            },
-            {
-                title: "10. Geliştirici & Sistem Ekosistemi (Modül 901 - 1000+)",
-                tools: [
-                    "901-925. Dikkati Dağıtan Her Şeyi Gizleyen Zen Odak Modu",
-                    "926-950. Özel Klavye Kısayolları ve Gelişmiş Hotkey Tanımlama",
-                    "951-975. Tarayıcı Otomatik Kayıt ve Yerel JSON Yedekleme",
-                    "976-1000+. Çevrimdışı (Offline) Çalışma ve Quantum Sağlık Paneli"
-                ]
+        let currentMode = 'free';
+
+        function switchTab(mode) {
+            currentMode = mode;
+            const btnFree = document.getElementById('btnFree');
+            const btnPro = document.getElementById('btnPro');
+            const actionBtnText = document.getElementById('actionBtnText');
+            const outputTitle = document.getElementById('outputTitle');
+            const statusText = document.getElementById('status-text');
+
+            if (mode === 'free') {
+                btnFree.className = "tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition cursor-pointer flex items-center space-x-2 shadow-md shadow-indigo-600/30";
+                btnPro.className = "tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-yellow-400 hover:bg-yellow-500/10 transition cursor-pointer flex items-center space-x-2";
+                actionBtnText.innerText = "Ücretsiz İçerik Üret";
+                outputTitle.innerText = "Ücretsiz Üretim ve Kanca Raporu";
+                statusText.innerText = "Durum: Ücretsiz Sürüm Aktif (Modül 1-50)";
+                document.getElementById('outputArea').innerText = "Ücretsiz Kanca Motoru aktif. Konunuzu girip temel viral kancalar üretebilirsiniz.";
+            } else {
+                // Pro sekmesine tıklandığında kilit vurulur ve ödeme ekranına yönlendirilir
+                btnPro.className = "tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-yellow-500 text-slate-950 font-bold transition cursor-pointer flex items-center space-x-2 shadow-md shadow-yellow-500/30";
+                btnFree.className = "tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2";
+                
+                document.getElementById('outputArea').innerText = `🔒 [PRO KİLİTLİ ALAN - 1000+ MODÜL]\n\nBu alanı kullanabilmek için PRO sürüme geçmeniz gerekmektedir.\n\n- 30 Günlük Otomatik İçerik Fabrikası\n- 20 Dilde Küresel Çeviri Motoru\n- Gelişmiş Viral Potansiyel Skorlama\n\nEkranın sağ üstündeki "PRO'YA GEÇ ($4.99)" butonuna tıklayarak anında erişim sağlayabilirsiniz!`;
+                outputTitle.innerText = "PRO Quantum Modül Havuzu (Kilitli)";
+                statusText.innerText = "Durum: Pro Abonelik Gerekli 🔒";
+                
+                // Ödeme penceresini tetikle
+                openCheckout();
             }
-        ];
+        }
 
-        let currentTabIdx = 0;
+        function runEngine() {
+            const topic = document.getElementById('topicInput').value.trim() || "Yapay Zeka";
+            
+            if (currentMode === 'free') {
+                const output = `✨ [ÜCRETSİZ VİRAL KANCA RAPORU] ✨
+--------------------------------------------------
+> Hedef Konu: ${topic}
+> Aktif Modüller: Temel Kancalar (1-50)
 
-        function switchTab(index) {
-            currentTabIdx = index;
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach((btn, idx) => {
-                if (idx === index) {
-                    btn.className = "tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition cursor-pointer flex items-center space-x-2 shadow-md shadow-indigo-600/30";
-                } else {
-                    btn.className = "tab-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2";
-                }
-            });
+- Kanca 1: "Çoğu insan ${topic} konusunda tam olarak bu hatayı yaptığı için kaybediyor."
+- Kanca 2: "Bunu öğrendikten sonra ${topic} ile ilgili bakış açın tamamen değişecek."
+- Standart Hashtagler: #${topic.replace(/\s+/g, '')} #viralhook #kesfet #trending
 
-            const cat = categories[index];
-            document.getElementById('categoryHeader').innerText = cat.title;
-            const container = document.getElementById('toolListContainer');
-            container.innerHTML = '';
-            cat.tools.forEach(tool => {
-                const div = document.createElement('div');
-                div.className = "p-2 bg-darkBg/60 border border-borderCol rounded-lg text-slate-300 flex items-center space-x-2 text-[11px]";
-                div.innerHTML = `<i class="fa-solid fa-circle-check text-indigo-400 text-[10px]"></i><span>${tool}</span>`;
-                container.appendChild(div);
-            });
+🚀 [İpucu: 30 günlük tam otomatik içerik matrisi ve 1000+ gelişmiş modül için Pro sürüme geçebilirsiniz!]`;
+                document.getElementById('outputArea').innerText = output;
+            } else {
+                openCheckout();
+            }
+        }
+
+        function openCheckout() {
+            // BURAYA Gumroad veya Lemon Squeezy ödeme linkini ekleyeceksin
+            const paymentUrl = prompt("PRO Sürüm ($4.99) ödeme bağlantınızı buraya ekleyebilirsiniz.\nŞu an test için uyarı veriliyor. Kendi ödeme linkinizi buraya bağlayabilirsiniz:", "https://gumroad.com");
+            if (paymentUrl) {
+                window.open(paymentUrl, '_blank');
+            }
+        }
+
+        function copyOutput() {
+            const text = document.getElementById('outputArea').innerText;
+            navigator.clipboard.writeText(text);
+            alert("Rapor panoya kopyalandı!");
         }
 
         function toggleTheme() {
@@ -285,69 +225,6 @@ Sol taraftan konunuzu, platformunuzu ve yapay zeka modunuzu seçip "1000+ Modül
                 icon.className = "fa-solid fa-moon";
             }
         }
-
-        function runQuantumEngine() {
-            const topic = document.getElementById('topicInput').value.trim() || "Yapay Zeka Teknolojileri";
-            const platform = document.getElementById('platformSelect').value;
-            const mode = document.getElementById('modeSelect').value;
-            const activeCategory = categories[currentTabIdx].title;
-
-            const output = `==================================================
-🚀 [VIRAL HOOK AI PRIME - 1000+ QUANTUM REPORT]
-================================================--
-> Aktif Kategori: ${activeCategory}
-> Hedef Platform: ${platform.toUpperCase()}
-> Analiz Modu: ${mode.toUpperCase()}
-> İşlenen Konu: ${topic}
-
-🎯 [1. KANCA & STORYTELLING MODÜLLERİ (1-100)]
-- Scroll-Stopper 1: "Çoğu insan ${topic} konusunda tam olarak bu hatayı yaptığı için kaybediyor."
-- Scroll-Stopper 2: "Bunu öğrendikten sonra ${topic} ile ilgili bakış açın tamamen değişecek."
-- Storytelling Çerçevesi: Problem -> Algoritmik Kriz -> 3 Adımlı Çözüm Matrisi uygulandı.
-
-📈 [2. SEO & ALGORİTMA OPTİMİZASYONU (101-200)]
-- Mega Niş Etiketler: #${topic.replace(/\s+/g, '')} #viralhook #aiprime #kesfet #trending #growth
-- Keşfet Erişilebilirlik Skoru: %99.8 (Maksimum Algoritma Dostu)
-
-⏰ [3. ZAMANLAMA & OTOMASYON (201-300)]
-- Global En İyi Paylaşım Penceresi: 19:00 - 22:30 (Yerel Saat Optimizasyonu)
-
-📊 [6. ANALİTİK & SKORLAMA (501-600)]
-- Viral Başarı Potansiyeli: 99/100 (Efsanevi Seviye)
-- Tahmini İzleyici Tutma Oranı (Retention): %89.4
-- Telif ve Kural İhlali Riski: %0.0 (Tamamen Güvenli)
-
-🌐 [7. KÜRESEL ÇEVİRİ & YERELLEŞTİRME (601-700)]
-- 20 Dünya Diline Eşzamanlı Senkronizasyon Altyapısı Hazır.
-
-==================================================
-✨ 1000+ Quantum Modül Taraması Başarıyla Tamamlandı!`;
-
-            document.getElementById('outputArea').innerText = output;
-            document.getElementById('status-text').innerText = "Durum: 1000+ Modül Başarıyla Çalıştırıldı 🚀";
-        }
-
-        function copyOutput() {
-            const text = document.getElementById('outputArea').innerText;
-            navigator.clipboard.writeText(text);
-            alert("1000+ Modüllü Quantum Rapor Panoya Kopyalandı!");
-        }
-
-        function speakText() {
-            const text = document.getElementById('outputArea').innerText;
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'tr-TR';
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("Tarayıcınız sesli okumayı desteklemiyor.");
-            }
-        }
-
-        window.onload = function() {
-            switchTab(0);
-        };
     </script>
 </body>
 </html>
