@@ -3,64 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saf Yerel Metin Üretici</title>
+    <title>Viral Hook AI - Saf Yerel Sürüm</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen p-6 font-sans">
     <div class="max-w-3xl mx-auto space-y-6">
         <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl">
-            <h1 class="text-xl font-bold text-cyan-400 mb-2">🛡️ %100 Saf Çevrimdışı Üretici</h1>
-            <p class="text-xs text-slate-400 mb-4">Bu sistem internet veya API kullanmaz. Tamamen tarayıcında çalışır.</p>
+            <h1 class="text-xl font-bold text-cyan-400 mb-2">🚀 Viral Hook AI (GitHub Saf Yerel Sürüm)</h1>
+            <p class="text-xs text-slate-400 mb-4">Bu sayfa GitHub üzerinden çalışır. Kesinlikle API anahtarı istemez.</p>
             
             <div class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1">Konu / Niş:</label>
-                    <input type="text" id="userInput" value="Yapay Zeka ve Yazılım" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 text-white">
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Niş / Konu:</label>
+                    <input type="text" id="konuInput" value="Yapay Zeka ve Yazılım" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 text-white">
                 </div>
-                <button onclick="uret()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 rounded-xl transition text-sm">
-                    API Olmadan Üret
+                <button onclick="hookUret()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 rounded-xl transition text-sm cursor-pointer">
+                    Anında Kanca Üret
                 </button>
             </div>
         </div>
 
         <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl">
-            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Çıktı Ekranı:</h2>
-            <div id="sonuc" class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-sm text-cyan-300 font-mono whitespace-pre-wrap min-h-[200px]">
-                Üretim bekleniyor...
+            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Üretilen Sonuç:</h2>
+            <div id="sonucAlani" class="bg-slate-950 border border-slate-800 p-4 rounded-xl text-sm text-cyan-300 font-mono whitespace-pre-wrap min-h-[180px]">
+                Butona basarak içerik üretmeye başlayın...
             </div>
         </div>
     </div>
 
     <script>
-        const sozluk1 = [
+        const liste1 = [
             "Çoğu insanın {konu} hakkında yaptığı o büyük hata,",
             "Eğer {konu} ile ilgileniyorsan bu gerçek seni şoke edecek,",
             "Büyüklerin {konu} konusunda senden sakladığı o gizli detay,",
             "Neden 10 kişiden 9'u {konu} konusunda başarısız oluyor?"
         ];
         
-        const sozluk2 = [
-            "Sistemin açıklarını incelediğimizde fark ettik ki,",
-            "Küçük bir ayar değiştirerek sonuçları 5 katına çıkarabilirsin,",
-            "Profesyoneller bu yöntemi yıllardır sessizce kullanıyor,"
+        const liste2 = [
+            "Sistemin açıklarını incelediğimizde fark ettik ki sonuçlar katlanıyor.",
+            "Küçük bir ayar değiştirerek etkileşimi anında 5 katına çıkarabilirsin.",
+            "Profesyoneller bu yöntemi yıllardır sessizce kullanıyor."
         ];
 
-        const sozluk3 = [
-            "Bu bilgiyi kaydet, yarın lazım olacak.",
+        const liste3 = [
+            "Bu bilgiyi kaydet, yarın arayıp da bulamayabilirsin.",
             "Detaylar için profili incele.",
             "Arkadaşlarınla paylaşmayı unutma."
         ];
 
-        function uret() {
-            const konu = document.getElementById('userInput').value || "Genel";
+        function hookUret() {
+            const konu = document.getElementById('konuInput').value || "Genel";
             
-            const r1 = sozluk1[Math.floor(Math.random() * sozluk1.length)].replaceAll('{konu}', konu);
-            const r2 = sozluk2[Math.floor(Math.random() * sozluk2.length)];
-            const r3 = sozluk3[Math.floor(Math.random() * sozluk3.length)];
+            const r1 = liste1[Math.floor(Math.random() * liste1.length)].replaceAll('{konu}', konu);
+            const r2 = liste2[Math.floor(Math.random() * liste2.length)];
+            const r3 = liste3[Math.floor(Math.random() * liste3.length)];
 
-            const metin = `--- YEREL SENTEZ RAPORU ---\n\n1. Kanca:\n"${r1}"\n\n2. Gelişmiş Strateji:\n"${r2}"\n\n3. Kapanış:\n"${r3}"\n\n[Durum]: Harici API çağrısı yapılmadı. %100 Yerel Çalıştı.`;
+            const metin = `--- VİRAL HOOK RAPORU ---\n\n1. Kanca (0-3 Saniye):\n"${r1}"\n\n2. Gelişmiş Strateji:\n"${r2}"\n\n3. Kapanış:\n"${r3}"\n\n[Sistem Durumu]: API Yok, %100 Yerel Tarayıcı Motoru.`;
             
-            document.getElementById('sonuc').innerText = metin;
+            document.getElementById('sonucAlani').innerText = metin;
         }
     </script>
 </body>
