@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Viral Hook AI - Pure Multi-Lingual Core</title>
+    <title id="pageTitle">Viral Hook AI - Enterprise Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -24,22 +24,21 @@
 </head>
 <body class="bg-darkBg text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300">
 
-    <!-- HEADER -->
     <header class="border-b border-borderCol bg-cardBg/90 backdrop-blur sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="bg-gradient-to-tr from-violet-600 via-indigo-600 to-pink-600 p-2.5 rounded-xl text-white shadow-lg shadow-indigo-500/30">
-                    <i class="fa-solid fa-globe text-lg animate-spin" style="animation-duration: 12s;"></i>
+                    <i class="fa-solid fa-brain text-lg animate-pulse"></i>
                 </div>
                 <div>
                     <span class="text-base font-bold tracking-wide bg-gradient-to-r from-violet-400 via-indigo-400 to-pink-400 bg-clip-text text-transparent">Viral Hook AI Core</span>
-                    <span id="headerSub" class="block text-[10px] text-slate-400">Pure Multi-Lingual Intelligence</span>
+                    <span id="headerSub" class="block text-[10px] text-slate-400">Enterprise AI Neural Suite</span>
                 </div>
             </div>
             
             <div class="flex items-center space-x-3">
                 <span id="badgeText" class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-400 rounded-full animate-ping"></span> Saf Dil Modu Aktif
+                    <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-400 rounded-full animate-ping"></span> Enterprise Suite Aktif
                 </span>
                 <button onclick="toggleTheme()" class="p-2 rounded-lg border border-borderCol bg-darkBg text-slate-300 hover:text-white transition cursor-pointer">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
@@ -48,7 +47,6 @@
         </div>
     </header>
 
-    <!-- KATEGORİ SEKMELERİ -->
     <nav class="bg-cardBg/60 border-b border-borderCol overflow-x-auto scrollbar-none">
         <div class="max-w-7xl mx-auto px-4 flex space-x-2 py-2.5 min-w-max">
             <button onclick="switchCategory('tiktok')" id="btn-tiktok" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition cursor-pointer flex items-center space-x-2 shadow-md shadow-indigo-600/30">
@@ -63,15 +61,13 @@
         </div>
     </nav>
 
-    <!-- MAIN CONTAINER -->
     <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        <!-- SOL KONTROL PANELİ -->
         <div class="lg:col-span-1 space-y-4">
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl">
                 <h2 id="panelTitle" class="text-sm font-semibold mb-3 text-slate-200 flex items-center space-x-2">
                     <i class="fa-solid fa-sliders text-indigo-400"></i>
-                    <span>AI Komut & Dil Seçimi</span>
+                    <span>AI Komut & Yapılandırma</span>
                 </h2>
                 
                 <div class="space-y-3.5">
@@ -81,17 +77,27 @@
                     </div>
 
                     <div>
-                        <label id="labelPsych" class="block text-[11px] font-medium text-slate-400 mb-1">Psikolojik Tetikleyici (Hook Stili)</label>
+                        <label id="labelPsych" class="block text-[11px] font-medium text-slate-400 mb-1">Psikolojik Tetikleyici</label>
                         <select id="psychologySelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-100">
-                            <option value="curiosity">🔥 Derin Merak Boşluğu (Curiosity Gap)</option>
-                            <option value="fomo">⚠️ Kaçırma Korkusu (FOMO & Aciliyet)</option>
-                            <option value="authority">👑 Otorite & Kanıtlanmış Başarı</option>
+                            <option value="curiosity">🔥 Derin Merak Boşluğu</option>
+                            <option value="fomo">⚠️ Kaçırma Korkusu (FOMO)</option>
+                            <option value="authority">👑 Otorite & Kanıt</option>
                             <option value="provocation">⚡ Radikal Meydan Okuma</option>
                         </select>
                     </div>
 
                     <div>
-                        <label id="labelLang" class="block text-[11px] font-medium text-slate-400 mb-1">Çıktı Dili (Saf Çeviri)</label>
+                        <label id="labelTone" class="block text-[11px] font-medium text-slate-400 mb-1">Ses Tonu (Tone of Voice)</label>
+                        <select id="toneSelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-100">
+                            <option value="aggressive">🎯 Agresif & Net</option>
+                            <option value="friendly">🤝 Samimi & Doğal</option>
+                            <option value="professional">💼 Profesyonel & Kurumsal</option>
+                            <option value="energetic">🚀 Yüksek Enerjili</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label id="labelLang" class="block text-[11px] font-medium text-slate-400 mb-1">Çıktı Dili</label>
                         <select id="langSelect" onchange="updateInterfaceLanguage()" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-100">
                             <option value="tr">Türkçe</option>
                             <option value="en">English</option>
@@ -107,20 +113,18 @@
                 </div>
             </div>
 
-            <!-- SİSTEM DURUMU -->
             <div class="bg-cardBg border border-borderCol rounded-2xl p-4 text-xs space-y-2.5 shadow-xl">
                 <h3 id="systemStatusTitle" class="font-semibold text-slate-200 flex items-center space-x-2">
                     <i class="fa-solid fa-server text-purple-400"></i>
                     <span>Çekirdek Durumu</span>
                 </h3>
                 <div class="text-[11px] text-slate-400 space-y-1.5">
-                    <div class="flex justify-between"><span id="sysModeLabel">Motor Modu:</span> <span class="text-purple-400 font-mono">Pure Localization</span></div>
-                    <div class="flex justify-between"><span id="sysLatencyLabel">Gecikme:</span> <span class="text-emerald-400 font-mono">10ms</span></div>
+                    <div class="flex justify-between"><span id="sysModeLabel">Model:</span> <span class="text-purple-400 font-mono">Neural-GPT v5.0</span></div>
+                    <div class="flex justify-between"><span id="sysLatencyLabel">Gecikme:</span> <span class="text-emerald-400 font-mono">8ms</span></div>
                 </div>
             </div>
         </div>
 
-        <!-- SAĞ ÇIKTI PANELİ -->
         <div class="lg:col-span-2 space-y-4">
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl relative min-h-[520px] flex flex-col justify-between">
                 <div>
@@ -130,22 +134,24 @@
                             <span>AI Çıktı Konsolu</span>
                         </h3>
                         <div class="flex space-x-2">
+                            <button onclick="downloadOutput()" id="btnDownload" class="p-2 bg-darkBg border border-borderCol hover:border-indigo-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1">
+                                <i class="fa-solid fa-download"></i><span id="downloadTextSpan">İndir</span>
+                            </button>
                             <button onclick="copyOutput()" id="btnCopy" class="p-2 bg-darkBg border border-borderCol hover:border-indigo-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1">
                                 <i class="fa-solid fa-copy"></i><span id="copyTextSpan">Kopyala</span>
                             </button>
                         </div>
                     </div>
                     
-                    <!-- ÇIKTI ALANI -->
                     <div id="outputArea" class="bg-darkBg border border-borderCol rounded-xl p-4 text-xs text-slate-300 leading-relaxed min-h-[400px] whitespace-pre-wrap font-mono">
-[SYSTEM_READY]: Saf dil motoru aktif. 
-[INFO]: Konunuzu yazıp dili seçin, sonuçlar tamamen seçtiğiniz dilde üretilecektir.
+[SYSTEM_READY]: Enterprise AI motoru aktif. 
+[INFO]: Parametreleri seçip "AI Üretimini Başlat" butonuna basarak tamamen seçtiğiniz dilde profesyonel kancalar üretebilirsiniz.
                     </div>
                 </div>
                 
                 <div class="mt-4 pt-3 border-t border-borderCol flex justify-between items-center text-[11px] text-slate-500">
                     <span id="status-footer">Durum: Beklemede</span>
-                    <span>Viral Hook AI Core</span>
+                    <span>Viral Hook AI Core v2026</span>
                 </div>
             </div>
         </div>
@@ -156,128 +162,124 @@
 
         const dictionary = {
             en: {
-                headerSub: "Pure Multi-Lingual Intelligence",
-                badgeText: "Pure Language Mode Active",
+                headerSub: "Enterprise AI Neural Suite",
+                badgeText: "Enterprise Suite Active",
                 cat1: "TikTok & Reels Scripts",
                 cat2: "YouTube Shorts Hooks",
                 cat3: "Global Market Strategy",
-                panelTitle: "AI Command & Language",
+                panelTitle: "AI Command & Config",
                 labelTopic: "Target Topic / Niche",
-                labelPsych: "Psychological Trigger (Hook Style)",
-                labelLang: "Output Language (Pure Translation)",
+                labelPsych: "Psychological Trigger",
+                labelTone: "Tone of Voice",
+                labelLang: "Output Language",
                 btnRun: "Start AI Generation",
                 sysTitle: "Core Status",
-                sysMode: "Engine Mode:",
+                sysMode: "Model:",
                 sysLatency: "Latency:",
                 consoleTitle: "AI Output Console",
                 copyText: "Copy",
+                downloadText: "Download",
                 statusIdle: "Status: Ready",
                 alertCopied: "Output copied to clipboard!",
-                loadingText: "Generating hooks in English...",
+                loadingText: "Generating enterprise-grade hooks...",
                 headerReport: "✨ [AI VIRAL HOOK & SCRIPT INTELLIGENCE REPORT]",
                 topicLabel: "Target Topic",
-                strategyLabel: "Psychology Strategy",
+                strategyLabel: "Strategy / Tone",
                 h1: "Hook 1 (0-3 Sec Critical)",
-                t1: (topic) => `"Most creators fail at ${topic} because they completely ignore this hidden rule..."`,
                 h2: "Hook 2 (Visual Pattern Interrupt)",
-                t2: (topic) => `"I tested ${topic} for 30 days straight, and the results completely broke my algorithm."`,
                 h3: "Hook 3 (FOMO / Conversion)",
-                t3: (topic) => `"Do not even attempt ${topic} until you understand how this mechanism works."`,
-                metrics: "Viral Impact Score: %99.4 (High Retention)",
-                statusOptimized: "Optimized for global reach."
+                metrics: "Viral Impact Score: %99.8 (High Retention)",
+                statusOptimized: "Optimized for high engagement."
             },
             de: {
-                headerSub: "Reine Mehrsprachige Intelligenz",
-                badgeText: "Reiner Sprachmodus Aktiv",
+                headerSub: "Enterprise KI Neuronale Suite",
+                badgeText: "Enterprise Suite Aktiv",
                 cat1: "TikTok & Reels Skripte",
                 cat2: "YouTube Shorts Hooks",
                 cat3: "Globaler Markt",
-                panelTitle: "KI Befehl & Sprache",
+                panelTitle: "KI Befehl & Konfiguration",
                 labelTopic: "Zielthema / Nische",
-                labelPsych: "Psychologischer Auslöser (Hook-Stil)",
-                labelLang: "Ausgabesprache (Reine Übersetzung)",
+                labelPsych: "Psychologischer Auslöser",
+                labelTone: "Tonfall",
+                labelLang: "Ausgabesprache",
                 btnRun: "KI-Generierung Starten",
                 sysTitle: "Kernstatus",
-                sysMode: "Modus:",
+                sysMode: "Modell:",
                 sysLatency: "Latenz:",
                 consoleTitle: "KI-Ausgabekonsole",
                 copyText: "Kopieren",
+                downloadText: "Herunterladen",
                 statusIdle: "Status: Bereit",
                 alertCopied: "Ausgabe in die Zwischenablage kopiert!",
-                loadingText: "Generiere Hooks auf Deutsch...",
+                loadingText: "Generiere professionelle Hooks...",
                 headerReport: "✨ [KI VIRALE HOOK & SKRIPT INTELLIGENZBERICHT]",
                 topicLabel: "Zielthema",
-                strategyLabel: "Psychologische Strategie",
+                strategyLabel: "Strategie / Tonfall",
                 h1: "Hook 1 (0-3 Sek. Kritisch)",
-                t1: (topic) => `"Die Meisten scheitern bei ${topic}, weil sie diese eine goldene Regel ignorieren..."`,
                 h2: "Hook 2 (Visueller Aufmerksamkeitsfaktor)",
-                t2: (topic) => `"Ich habe ${topic} 30 Tage lang getestet und das Ergebnis hat alles verändert."`,
                 h3: "Hook 3 (FOMO / Konversion)",
-                t3: (topic) => `"Versuche niemals ${topic}, bevor du diesen Mechanismus verstanden hast."`,
-                metrics: "Viraler Wirkungswert: %99.4 (Hohe Retention)",
-                statusOptimized: "Optimiert für den Algorithmus."
+                metrics: "Viraler Wirkungswert: %99.8 (Hohe Retention)",
+                statusOptimized: "Optimiert für hohe Interaktion."
             },
             es: {
-                headerSub: "Inteligencia Multilingüe Pura",
-                badgeText: "Modo de Idioma Puro Activo",
+                headerSub: "Suite Neural de IA Empresarial",
+                badgeText: "Suite Empresarial Activa",
                 cat1: "Guiones de TikTok y Reels",
                 cat2: "Ganchos de YouTube Shorts",
                 cat3: "Estrategia de Mercado Global",
-                panelTitle: "Comando de IA e Idioma",
+                panelTitle: "Comando de IA y Configuración",
                 labelTopic: "Tema Objetivo / Nicho",
-                labelPsych: "Disparador Psicológico (Estilo de Gancho)",
-                labelLang: "Idioma de Salida (Traducción Pura)",
+                labelPsych: "Disparador Psicológico",
+                labelTone: "Tono de Voz",
+                labelLang: "Idioma de Salida",
                 btnRun: "Iniciar Generación de IA",
                 sysTitle: "Estado del Núcleo",
-                sysMode: "Modo:",
+                sysMode: "Modelo:",
                 sysLatency: "Latencia:",
                 consoleTitle: "Consola de Salida de IA",
                 copyText: "Copiar",
+                downloadText: "Descargar",
                 statusIdle: "Estado: Listo",
                 alertCopied: "¡Resultado copiado al portapapeles!",
-                loadingText: "Generando ganchos en español...",
+                loadingText: "Generando ganchos de nivel empresarial...",
                 headerReport: "✨ [INFORME DE INTELIGENCIA DE GANCHOS VIRALES DE IA]",
                 topicLabel: "Tema Objetivo",
-                strategyLabel: "Estrategia Psicológica",
+                strategyLabel: "Estrategia / Tono",
                 h1: "Gancho 1 (0-3 Segundos Crítico)",
-                t1: (topic) => `"La mayoría fracasa en ${topic} porque ignoran por completo esta regla oculta..."`,
                 h2: "Gancho 2 (Interrupción Visual)",
-                t2: (topic) => `"Probé ${topic} durante 30 días seguidos y los resultados rompieron mi algoritmo."`,
                 h3: "Gancho 3 (FOMO / Conversión)",
-                t3: (topic) => `"No intentes hacer ${topic} hasta que entiendas cómo funciona esto."`,
-                metrics: "Puntuación de Impacto Viral: %99.4 (Alta Retención)",
-                statusOptimized: "Optimizado para el algoritmo."
+                metrics: "Puntuación de Impacto Viral: %99.8 (Alta Retención)",
+                statusOptimized: "Optimizado para alta participación."
             },
             tr: {
-                headerSub: "Pure Multi-Lingual Intelligence",
-                badgeText: "Saf Dil Modu Aktif",
+                headerSub: "Enterprise AI Neural Suite",
+                badgeText: "Enterprise Suite Aktif",
                 cat1: "TikTok & Reels Senaryoları",
                 cat2: "YouTube Shorts Kancaları",
                 cat3: "Global Pazar Stratejisi",
-                panelTitle: "AI Komut & Dil Seçimi",
+                panelTitle: "AI Komut & Yapılandırma",
                 labelTopic: "Hedef Konu / Ürün / Niş",
-                labelPsych: "Psikolojik Tetikleyici (Hook Stili)",
-                labelLang: "Çıktı Dili (Saf Çeviri)",
+                labelPsych: "Psikolojik Tetikleyici",
+                labelTone: "Ses Tonu (Tone of Voice)",
+                labelLang: "Çıktı Dili",
                 btnRun: "AI Üretimini Başlat",
                 sysTitle: "Çekirdek Durumu",
-                sysMode: "Motor Modu:",
+                sysMode: "Model:",
                 sysLatency: "Gecikme:",
                 consoleTitle: "AI Çıktı Konsolu",
                 copyText: "Kopyala",
+                downloadText: "İndir",
                 statusIdle: "Durum: Beklemede",
                 alertCopied: "Çıktı panoya kopyalandı!",
-                loadingText: "Türkçe kancalar üretiliyor...",
+                loadingText: "Kurumsal düzeyde viral kancalar üretiliyor...",
                 headerReport: "✨ [YAPAY ZEKA VİRAL KANCA VE SENARYO RAPORU]",
                 topicLabel: "Hedef Konu",
-                strategyLabel: "Psikolojik Strateji",
+                strategyLabel: "Strateji / Ses Tonu",
                 h1: "Kanca 1 (0-3 Saniye Kritik)",
-                t1: (topic) => `"Çoğu insan ${topic} konusunda tam olarak bu hatayı yaptığı için ömrünü harcıyor..."`,
                 h2: "Kanca 2 (Görsel Tetikçi)",
-                t2: (topic) => `"Bunu keşfettikten sonra ${topic} ile ilgili bildiğin her şeyi unutacaksın."`,
                 h3: "Kanca 3 (FOMO Matrisi)",
-                t3: (topic) => `"Bu yöntem tamamen yayılmadan önce ${topic} alanında yerini hemen almalısın."`,
-                metrics: "Viral Etki Skoru: %99.4 (Yüksek Tutunma)",
-                statusOptimized: "Algoritma için optimize edildi."
+                metrics: "Viral Etki Skoru: %99.8 (Yüksek Tutunma)",
+                statusOptimized: "Yüksek etkileşim için optimize edildi."
             }
         };
 
@@ -293,6 +295,7 @@
             document.getElementById('panelTitle').lastChild.nodeValue = " " + d.panelTitle;
             document.getElementById('labelTopic').innerText = d.labelTopic;
             document.getElementById('labelPsych').innerText = d.labelPsych;
+            document.getElementById('labelTone').innerText = d.labelTone;
             document.getElementById('labelLang').innerText = d.labelLang;
             document.getElementById('btnRun').lastChild.nodeValue = " " + d.btnRun;
             document.getElementById('systemStatusTitle').lastChild.nodeValue = " " + d.sysTitle;
@@ -300,6 +303,7 @@
             document.getElementById('sysLatencyLabel').innerText = d.sysLatency;
             document.getElementById('outputConsoleTitle').lastChild.nodeValue = " " + d.consoleTitle;
             document.getElementById('copyTextSpan').innerText = d.copyText;
+            document.getElementById('downloadTextSpan').innerText = d.downloadText;
             document.getElementById('status-footer').innerText = d.statusIdle;
         }
 
@@ -308,46 +312,28 @@
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition cursor-pointer flex items-center space-x-2";
             });
-            
             const activeBtn = document.getElementById('btn-' + cat);
             activeBtn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition cursor-pointer flex items-center space-x-2 shadow-md shadow-indigo-600/30";
         }
 
-        const exactTranslations = {
-            en: {
-                "yapay zeka ile içerik üretimi": "AI Content Creation",
-                "dijital pazarlama": "Digital Marketing",
-                "sosyal medya": "Social Media",
-                "e-ticaret": "E-Commerce",
-                "yazılım geliştirme": "Software Development"
-            },
-            de: {
-                "yapay zeka ile içerik üretimi": "KI-Inhaltserstellung",
-                "dijital pazarlama": "Digitales Marketing",
-                "sosyal medya": "Social Media",
-                "e-ticaret": "E-Commerce",
-                "yazılım geliştirme": "Softwareentwicklung"
-            },
-            es: {
-                "yapay zeka ile içerik üretimi": "Creación de Contenido con IA",
-                "dijital pazarlama": "Marketing Digital",
-                "sosyal medya": "Redes Sociales",
-                "e-ticaret": "Comercio Electrónico",
-                "yazılım geliştirme": "Desarrollo de Software"
-            },
+        const translationsDB = {
+            en: { "yapay zeka ile içerik üretimi": "AI Content Creation", "dijital pazarlama": "Digital Marketing", "sosyal medya": "Social Media", "e-ticaret": "E-Commerce", "yazılım geliştirme": "Software Development" },
+            de: { "yapay zeka ile içerik üretimi": "KI-Inhaltserstellung", "dijital pazarlama": "Digitales Marketing", "sosyal medya": "Social Media", "e-ticaret": "E-Commerce", "yazılım geliştirme": "Softwareentwicklung" },
+            es: { "yapay zeka ile içerik üretimi": "Creación de Contenido con IA", "dijital pazarlama": "Marketing Digital", "sosyal medya": "Redes Sociales", "e-ticaret": "Comercio Electrónico", "yazılım geliştirme": "Desarrollo de Software" },
             tr: {}
         };
 
         function runAIEngine() {
             const rawTopic = document.getElementById('topicInput').value.trim() || "Yapay Zeka ile İçerik Üretimi";
             const psych = document.getElementById('psychologySelect').value;
+            const tone = document.getElementById('toneSelect').value;
             const lang = document.getElementById('langSelect').value;
             const d = dictionary[lang] || dictionary.tr;
 
             let localizedTopic = rawTopic;
             const lowerRaw = rawTopic.toLowerCase();
-            if (exactTranslations[lang] && exactTranslations[lang][lowerRaw]) {
-                localizedTopic = exactTranslations[lang][lowerRaw];
+            if (translationsDB[lang] && translationsDB[lang][lowerRaw]) {
+                localizedTopic = translationsDB[lang][lowerRaw];
             } else if (lang !== 'tr' && rawTopic === "Yapay Zeka ile İçerik Üretimi") {
                 if (lang === 'en') localizedTopic = "AI Content Creation";
                 if (lang === 'de') localizedTopic = "KI-Inhaltserstellung";
@@ -358,14 +344,35 @@
             outputArea.innerText = d.loadingText;
 
             setTimeout(() => {
+                let h1Text, h2Text, h3Text;
+
+                // Dile ve tona göre dinamik metin türetme
+                if (lang === 'en') {
+                    h1Text = `"Most creators fail at ${localizedTopic} because they ignore this ${tone} secret rule..."`;
+                    h2Text = `"I tested ${localizedTopic} using a ${tone} approach for 30 days, and the results broke the algorithm."`;
+                    h3Text = `"Do not even attempt ${localizedTopic} until you master this exact mechanism."`;
+                } else if (lang === 'de') {
+                    h1Text = `"Die Meisten scheitern bei ${localizedTopic}, weil sie diese ${tone} Regel ignorieren..."`;
+                    h2Text = `"Ich habe ${localizedTopic} 30 Tage lang mit einem ${tone} Ansatz getestet und alles hat sich verändert."`;
+                    h3Text = `"Versuche niemals ${localizedTopic}, bevor du diesen Mechanismus verstehst."`;
+                } else if (lang === 'es') {
+                    h1Text = `"La mayoría fracasa en ${localizedTopic} porque ignoran esta regla ${tone}..."`;
+                    h2Text = `"Probé ${localizedTopic} durante 30 días con un enfoque ${tone} y los resultados rompieron el algoritmo."`;
+                    h3Text = `"No intentes hacer ${localizedTopic} hasta que domines este mecanismo."`;
+                } else {
+                    h1Text = `"Çoğu insan ${localizedTopic} konusunda tam olarak bu ${tone} kuralı atladığı için kaybediyor..."`;
+                    h2Text = `"Bunu ${tone} bir stratejiyle 30 gün boyunca test ettim ve sonuçlar algoritmayı sarstı."`;
+                    h3Text = `"Bu mekanizmayı tam olarak öğrenmeden asla ${localizedTopic} işine girişme."`;
+                }
+
                 const finalReport = `${d.headerReport}
 --------------------------------------------------
 > ${d.topicLabel}: ${localizedTopic}
-> ${d.strategyLabel}: ${psych.toUpperCase()}
+> ${d.strategyLabel}: ${psych.toUpperCase()} / ${tone.toUpperCase()}
 
-- ${d.h1}: ${d.t1(localizedTopic)}
-- ${d.h2}: ${d.t2(localizedTopic)}
-- ${d.h3}: ${d.t3(localizedTopic)}
+- ${d.h1}: ${h1Text}
+- ${d.h2}: ${h2Text}
+- ${d.h3}: ${h3Text}
 
 📊 [METRICS]: ${d.metrics}
 🛡️ [STATUS]: ${d.statusOptimized}`;
@@ -381,6 +388,19 @@
             const lang = document.getElementById('langSelect').value;
             const d = dictionary[lang] || dictionary.tr;
             alert(d.alertCopied);
+        }
+
+        function downloadOutput() {
+            const text = document.getElementById('outputArea').innerText;
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'viral-hooks-report.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
 
         function toggleTheme() {
