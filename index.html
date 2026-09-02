@@ -1,146 +1,237 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViralPulse Pro - Global</title>
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --accent-color: #6366f1;
-            --accent-hover: #4f46e5;
-            --border-color: #334155;
+    <title>ViralPulse Pro - Content Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#090d16',
+                        cardBg: '#131b2e',
+                        borderCol: '#1e293b'
+                    }
+                }
+            }
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 30px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-        h1 {
-            font-size: 1.5rem;
-            margin: 0;
-        }
-        select {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            outline: none;
-        }
-        .content {
-            margin-bottom: 20px;
-        }
-        p {
-            line-height: 1.6;
-            color: #94a3b8;
-        }
-        button {
-            width: 100%;
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        button:hover {
-            background-color: var(--accent-hover);
-        }
-    </style>
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="bg-darkBg text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300">
 
-    <div class="container">
-        <div class="header">
-            <h1 id="app-title">ViralPulse Pro</h1>
-            <select id="langSelect" onchange="changeLanguage()">
-                <option value="tr">Türkçe</option>
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
-                <option value="de">Deutsch</option>
-                <option value="it">Italiano</option>
-                <option value="pt">Português</option>
-                <option value="ru">Русский</option>
-                <option value="ja">日本語</option>
-                <option value="ko">한국어</option>
-                <option value="zh">中文</option>
-                <option value="ar">العربية</option>
-                <option value="hi">हिन्दी</option>
-                <option value="nl">Nederlands</option>
-                <option value="pl">Polski</option>
-                <option value="sv">Svenska</option>
-                <option value="tr-alt">Azərbaycan</option>
-                <option value="uk">Українська</option>
-                <option value="vi">Tiếng Việt</option>
-                <option value="id">Bahasa Indonesia</option>
-            </select>
+    <!-- HEADER -->
+    <header class="border-b border-borderCol bg-cardBg/50 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-bolt text-xl"></i>
+                </div>
+                <span id="brand-title" class="text-xl font-bold tracking-wide bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">ViralPulse Pro</span>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <!-- Dil Seçici (20 Dil) -->
+                <select id="langSelect" onchange="changeLanguage()" class="bg-darkBg border border-borderCol text-sm rounded-lg px-3 py-2 text-slate-300 focus:outline-none focus:border-indigo-500">
+                    <option value="tr">Türkçe</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                    <option value="pt">Português</option>
+                    <option value="ru">Русский</option>
+                    <option value="ja">日本語</option>
+                    <option value="ko">한국어</option>
+                    <option value="zh">中文</option>
+                    <option value="ar">العربية</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="pl">Polski</option>
+                    <option value="sv">Svenska</option>
+                    <option value="az">Azərbaycan</option>
+                    <option value="uk">Українська</option>
+                    <option value="vi">Tiếng Việt</option>
+                    <option value="id">Bahasa Indonesia</option>
+                </select>
+
+                <!-- Tema Değiştirici -->
+                <button onclick="toggleTheme()" class="p-2.5 rounded-lg border border-borderCol bg-darkBg text-slate-300 hover:text-white transition">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+            </div>
         </div>
-        <div class="content">
-            <p id="app-desc">Küresel ölçekte en son trendleri takip edin ve analiz edin. Tamamen tarayıcınızda çalışan hızlı ve modern araç.</p>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- SOL: Girdi Paneli -->
+        <div class="lg:col-span-1 space-y-6">
+            <div class="bg-cardBg border border-borderCol rounded-2xl p-6 shadow-xl">
+                <h2 id="sec-input-title" class="text-lg font-semibold mb-4 text-slate-200">İçerik Stüdyosu</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label id="lbl-topic" class="block text-xs font-medium text-slate-400 mb-1">Konu / Niş</label>
+                        <input type="text" id="topicInput" placeholder="Örn: Yapay Zeka Trendleri" class="w-full bg-darkBg border border-borderCol rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                    </div>
+
+                    <div>
+                        <label id="lbl-platform" class="block text-xs font-medium text-slate-400 mb-1">Hedef Platform</label>
+                        <select id="platformSelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-indigo-500">
+                            <option value="tiktok">TikTok / Reels</option>
+                            <option value="youtube">YouTube Shorts</option>
+                            <option value="twitter">X / Twitter Thread</option>
+                        </select>
+                    </div>
+
+                    <button onclick="generateContent()" id="btn-generate" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-3 rounded-xl shadow-lg shadow-indigo-600/30 transition flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>İçerik Üret & Analiz Et</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pro Özellikler Matrisi -->
+            <div class="bg-cardBg border border-borderCol rounded-2xl p-6 shadow-xl">
+                <h3 id="sec-pro-features" class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">10 Pro Araç</h3>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="p-2.5 bg-darkBg/50 border border-borderCol rounded-lg text-slate-300 flex items-center space-x-2"><i class="fa-solid fa-chart-line text-indigo-400"></i><span id="feat-1">Dopamine Eğrisi</span></div>
+                    <div class="p-2.5 bg-darkBg/50 border border-borderCol rounded-lg text-slate-300 flex items-center space-x-2"><i class="fa-solid fa-layer-group text-indigo-400"></i><span id="feat-2">Toplu İşlem</span></div>
+                    <div class="p-2.5 bg-darkBg/50 border border-borderCol rounded-lg text-slate-300 flex items-center space-x-2"><i class="fa-solid fa-brain text-indigo-400"></i><span id="feat-3">Yapay Zeka Genişletici</span></div>
+                    <div class="p-2.5 bg-darkBg/50 border border-borderCol rounded-lg text-slate-300 flex items-center space-x-2"><i class="fa-solid fa-bullseye text-indigo-400"></i><span id="feat-4">Kanca Optimizasyonu</span></div>
+                </div>
+            </div>
         </div>
-        <button id="app-btn">Analizi Başlat</button>
-    </div>
+
+        <!-- SAĞ: Çıktı Paneli -->
+        <div class="lg:col-span-2 space-y-6">
+            <div class="bg-cardBg border border-borderCol rounded-2xl p-6 shadow-xl relative min-h-[400px] flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 id="sec-output-title" class="text-lg font-semibold text-slate-200">Üretilen Senaryo & Çıktı</h3>
+                        <div class="flex space-x-2">
+                            <!-- Sesli Okuma Butonu (TTS) -->
+                            <button onclick="speakText()" class="p-2 bg-darkBg border border-borderCol hover:border-indigo-500 rounded-lg text-slate-300 transition" title="Seslendir">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                            <button onclick="copyOutput()" class="p-2 bg-darkBg border border-borderCol hover:border-indigo-500 rounded-lg text-slate-300 transition" title="Kopyala">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="outputArea" class="bg-darkBg border border-borderCol rounded-xl p-4 text-sm text-slate-300 leading-relaxed min-h-[250px] whitespace-pre-wrap">
+                        Sol taraftan konuyu girip "İçerik Üret" butonuna basarak 20 dilde optimize edilmiş profesyonel viral senaryo üretebilirsiniz.
+                    </div>
+                </div>
+                
+                <div class="mt-4 pt-4 border-t border-borderCol flex justify-between items-center text-xs text-slate-500">
+                    <span id="status-text">Durum: Hazır</span>
+                    <span>ViralPulse Engine v3.0</span>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <script>
-        const translations = {
-            tr: { title: "ViralPulse Pro", desc: "Küresel ölçekte en son trendleri takip edin ve analiz edin. Tamamen tarayıcınızda çalışan hızlı ve modern araç.", btn: "Analizi Başlat" },
-            en: { title: "ViralPulse Pro", desc: "Track and analyze the latest global trends. A fast and modern tool running entirely in your browser.", btn: "Start Analysis" },
-            es: { title: "ViralPulse Pro", desc: "Rastrea y analiza las últimas tendencias globales. Una herramienta rápida y moderna que se ejecuta completamente en tu navegador.", btn: "Iniciar Análisis" },
-            fr: { title: "ViralPulse Pro", desc: "Suivez et analysez les dernières tendances mondiales. Un outil rapide et moderne s'exécutant entièrement dans votre navigateur.", btn: "Démarrer l'analyse" },
-            de: { title: "ViralPulse Pro", desc: "Verfolgen Sie die neuesten globalen Trends. Ein schnelles und modernes Tool, das vollständig in Ihrem Browser läuft.", btn: "Analyse starten" },
-            it: { title: "ViralPulse Pro", desc: "Traccia e analizza gli ultimi trend globali. Uno strumento veloce e moderno che funziona interamente nel tuo browser.", btn: "Avvia Analisi" },
-            pt: { title: "ViralPulse Pro", desc: "Acompanhe e analise as últimas tendências globais. Uma ferramenta rápida e moderna executada inteiramente no seu navegador.", btn: "Iniciar Análise" },
-            ru: { title: "ViralPulse Pro", desc: "Отслеживайте и анализируйте последние глобальные тренды. Быстрый и современный инструмент, работающий прямо в браузере.", btn: "Начать анализ" },
-            ja: { title: "ViralPulse Pro", desc: "最新のグローバルなトレンドを追跡・分析します。ブラウザで完全に動作する高速でモダンなツール。", btn: "分析を開始" },
-            ko: { title: "ViralPulse Pro", desc: "최신 글로벌 트렌드를 추적하고 분석하세요. 브라우저에서 완전히 실행되는 빠르고 현대적인 도구.", btn: "분석 시작" },
-            zh: { title: "ViralPulse Pro", desc: "追踪并分析最新的全球趋势。一个完全在您的浏览器中运行的快速且现代的工具。", btn: "开始分析" },
-            ar: { title: "ViralPulse Pro", desc: "تتبع and تحليل أحدث الاتجاهات العالمية. أداة سريعة و حديثة تعمل بالكامل في متصفحك.", btn: "ابدأ التحليل" },
-            hi: { title: "ViralPulse Pro", desc: "नवीनतम वैश्विक रुझानों को ट्रैक और विश्लेषण करें। आपके ब्राउज़र में पूरी तरह से चलने वाला एक तेज़ और आधुनिक टूल।", btn: "विश्लेषण शुरू करें" },
-            nl: { title: "ViralPulse Pro", desc: "Volg en analyseer de nieuwste wereldwijde trends. Een snelle en moderne tool die volledig in uw browser werkt.", btn: "Start Analyse" },
-            pl: { title: "ViralPulse Pro", desc: "Śledź i analizuj najnowsze globalne trendy. Szybkie i nowoczesное narzędzie działające w całości w Twojej przeglądarce.", btn: "Rozpocznij analizę" },
-            sv: { title: "ViralPulse Pro", desc: "Spåra och analysera de senaste globala trenderna. Ett snabbt och modernt verktyg som körs helt i din webbläsare.", btn: "Starta analys" },
-            "tr-alt": { title: "ViralPulse Pro", desc: "Qlobal miqyasda son trendləri izləyin və təhlil edin. Tamamilə brauzerinizdə işləyən sürətli və müasir alət.", btn: "Təhlilə Başla" },
-            uk: { title: "ViralPulse Pro", desc: "Відстежуйте та аналізуйте останні глобальні тренди. Швидкий та сучасний інструмент, що працює прямо у браузері.", btn: "Розпочати аналіз" },
-            vi: { title: "ViralPulse Pro", desc: "Theo dõi và phân tích các xu hướng toàn cầu mới nhất. Công cụ nhanh chóng và hiện đại chạy hoàn toàn trong trình duyệt của bạn.", btn: "Bắt đầu Phân tích" },
-            id: { title: "ViralPulse Pro", desc: "Lacak dan analisis tren global terbaru. Alat cepat dan modern yang berjalan sepenuhnya di peramban Anda.", btn: "Mulai Analisis" }
+        // 20 Dil Sözlüğü
+        const dict = {
+            tr: { brand: "ViralPulse Pro", inputTitle: "İçerik Stüdyosu", lblTopic: "Konu / Niş", lblPlatform: "Hedef Platform", btnGenerate: "İçerik Üret & Analiz Et", proFeatures: "10 Pro Araç", feat1: "Dopamine Eğrisi", feat2: "Toplu İşlem", feat3: "Yapay Zeka Genişletici", feat4: "Kanca Optimizasyonu", outputTitle: "Üretilen Senaryo & Çıktı", defaultOut: "Sol taraftan konuyu girip \"İçerik Üret\" butonuna basarak 20 dilde optimize edilmiş profesyonel viral senaryo üretebilirsiniz.", status: "Durum: Hazır" },
+            en: { brand: "ViralPulse Pro", inputTitle: "Content Studio", lblTopic: "Topic / Niche", lblPlatform: "Target Platform", btnGenerate: "Generate & Analyze", proFeatures: "10 Pro Tools", feat1: "Dopamine Curve", feat2: "Batch Processing", feat3: "AI Expander", feat4: "Hook Optimizer", outputTitle: "Generated Script & Output", defaultOut: "Enter a topic on the left and click 'Generate' to create a pro viral script optimized in 20 languages.", status: "Status: Ready" },
+            es: { brand: "ViralPulse Pro", inputTitle: "Estudio de Contenido", lblTopic: "Tema / Nicho", lblPlatform: "Plataforma Destino", btnGenerate: "Generar y Analizar", proFeatures: "10 Pro Herramientas", feat1: "Curva de Dopamina", feat2: "Procesamiento Lotes", feat3: "Expansor IA", feat4: "Optimizador de Gancho", outputTitle: "Guión y Salida Generada", defaultOut: "Ingresa un tema a la izquierda y haz clic en 'Generar' para crear un guion viral optimizado en 20 idiomas.", status: "Estado: Listo" },
+            fr: { brand: "ViralPulse Pro", inputTitle: "Studio de Contenu", lblTopic: "Sujet / Niche", lblPlatform: "Plateforme Cible", btnGenerate: "Générer & Analyser", proFeatures: "10 Pro Outils", feat1: "Courbe de Dopamine", feat2: "Traitement par Lots", feat3: "Extension IA", feat4: "Optimiseur de Crochet", outputTitle: "Script & Sortie Générés", defaultOut: "Entrez un sujet à gauche et cliquez sur 'Générer' pour créer un script viral optimisé en 20 langues.", status: "Statut: Prêt" },
+            de: { brand: "ViralPulse Pro", inputTitle: "Content Studio", lblTopic: "Thema / Nische", lblPlatform: "Zielplattform", btnGenerate: "Generieren & Analysieren", proFeatures: "10 Pro Tools", feat1: "Dopamin-Kurve", feat2: "Batch-Verarbeitung", feat3: "KI-Erweiterung", feat4: "Hook-Optimierer", outputTitle: "Generiertes Skript", defaultOut: "Geben Sie links ein Thema ein und klicken Sie auf 'Generieren', um ein professionelles virales Skript zu erstellen.", status: "Status: Bereit" },
+            it: { brand: "ViralPulse Pro", inputTitle: "Studio Contenuti", lblTopic: "Argomento / Nicchia", lblPlatform: "Piattaforma", btnGenerate: "Genera e Analizza", proFeatures: "10 Pro Strumenti", feat1: "Curva Dopamina", feat2: "Elaborazione Batch", feat3: "Espansore IA", feat4: "Ottimizzatore Gancio", outputTitle: "Script Generato", defaultOut: "Inserisci un argomento a sinistra e clicca 'Genera' per creare uno script virale ottimizzato in 20 lingue.", status: "Stato: Pronto" },
+            pt: { brand: "ViralPulse Pro", inputTitle: "Estúdio de Conteúdo", lblTopic: "Tópico / Nicho", lblPlatform: "Plataforma Alvo", btnGenerate: "Gerar e Analisar", proFeatures: "10 Ferramentas Pro", feat1: "Curva de Dopamina", feat2: "Processo em Lote", feat3: "Expansor IA", feat4: "Otimizador de Gancho", outputTitle: "Roteiro Gerado", defaultOut: "Insira um tópico à esquerda e clique em 'Gerar' para criar um roteiro viral otimizado em 20 idiomas.", status: "Status: Pranto" },
+            ru: { brand: "ViralPulse Pro", inputTitle: "Контент Студия", lblTopic: "Тема / Ниша", lblPlatform: "Платформа", btnGenerate: "Создать и Анализировать", proFeatures: "10 Про Инструментов", feat1: "Кривая Дофамина", feat2: "Пакетная обработка", feat3: "ИИ Расширитель", feat4: "Оптимизатор хука", outputTitle: "Сгенерированный Скрипт", defaultOut: "Введите тему слева и нажмите 'Создать', чтобы получить оптимизированный сценарий.", status: "Статус: Готов" },
+            ja: { brand: "ViralPulse Pro", inputTitle: "コンテンツスタジオ", lblTopic: "トピック / ニッチ", lblPlatform: "プラットフォーム", btnGenerate: "生成して分析", proFeatures: "10 Proツール", feat1: "ドーパミンカーブ", feat2: "バッチ処理", feat3: "AIエキスパンダー", feat4: "フックオプティマイザー", outputTitle: "生成されたスクリプト", defaultOut: "左側にトピックを入力し、「生成」をクリックして、20言語に最適化されたバイラルスクリプトを作成します。", status: "ステータス: 準備完了" },
+            ko: { brand: "ViralPulse Pro", inputTitle: "콘텐츠 스튜디오", lblTopic: "주제 / 틈새", lblPlatform: "대상 플랫폼", btnGenerate: "생성 및 분석", proFeatures: "10 프로 도구", feat1: "도파민 곡선", feat2: "일괄 처리", feat3: "AI 확장기", feat4: "후크 최적화", outputTitle: "생성된 스크립트", defaultOut: "왼쪽에 주제를 입력하고 '생성'을 클릭하여 20개 언어로 최적화된 바이럴 스크립트를 만드세요.", status: "상태: 준비됨" },
+            zh: { brand: "ViralPulse Pro", inputTitle: "内容工作室", lblTopic: "主题 / 领域", lblPlatform: "目标平台", btnGenerate: "生成与分析", proFeatures: "10大专业工具", feat1: "多巴胺曲线", feat2: "批量处理", feat3: "AI扩展器", feat4: "钩子优化器", outputTitle: "生成的脚本与输出", defaultOut: "在左侧输入主题并点击“生成”，即可创建包含20种语言优化的专业病毒式脚本。", status: "状态：就绪" },
+            ar: { brand: "ViralPulse Pro", inputTitle: "استوديو المحتوى", lblTopic: "الموضوع / المجال", lblPlatform: "المنصة المستهدفة", btnGenerate: "إنشاء وتحليل", proFeatures: "10 أدوات احترافية", feat1: "منحنى الدوبامين", feat2: "المعالجة الدفعية", feat3: "موسع الذكاء الاصطناعي", feat4: "محسن الخطاف", outputTitle: "السيناريو والنتيجة", defaultOut: "أدخل موضوعًا في اليسار وانقر فوق 'إنشاء' لإنشاء نص فيروسي محسن بـ 20 لغة.", status: "الحالة: جاهز" },
+            hi: { brand: "ViralPulse Pro", inputTitle: "कंटेंट स्टूडियो", lblTopic: "विषय / Niche", lblPlatform: "प्लेटफॉर्म", btnGenerate: "उत्पन्न और विश्लेषण करें", proFeatures: "10 प्रो टूल", feat1: "डोपामाइन वक्र", feat2: "बैच प्रोसेसिंग", feat3: "एआई एक्सपेंडर", feat4: "हुक ऑप्टիմਾਈزر", outputTitle: "तैयार स्क्रिप्ट", defaultOut: "बाईं ओर एक विषय दर्ज करें और 20 भाषाओं में अनुकूलित वायरल स्क्रिप्ट बनाने के लिए 'उत्पन्न करें' पर क्लिक करें।", status: "स्थिति: तैयार" },
+            nl: { brand: "ViralPulse Pro", inputTitle: "Content Studio", lblTopic: "Onderwerp / Niche", lblPlatform: "Doelplatform", btnGenerate: "Genereren & Analyseren", proFeatures: "10 Pro Tools", feat1: "Dopamine Curve", feat2: "Batchverwerking", feat3: "AI Vergroter", feat4: "Hook Optimizer", outputTitle: "Gegenereerd Script", defaultOut: "Voer links een onderwerp in en klik op 'Genereren' om een viraalscript te maken.", status: "Status: Klaar" },
+            pl: { brand: "ViralPulse Pro", inputTitle: "Studio Treści", lblTopic: "Temat / Nisz", lblPlatform: "Platforma docelowa", btnGenerate: "Generuj i Analizuj", proFeatures: "10 Narzędzi Pro", feat1: "Krzywa Dopaminowa", feat2: "Przetwarzanie wsadowe", feat3: "Ekspander AI", feat4: "Optymalizator Haka", outputTitle: "Wygenerowany Skrypt", defaultOut: "Wpisz temat po lewej stronie i kliknij 'Generuj', aby stworzyć zoptymalizowany skrypt.", status: "Status: Gotowy" },
+            sv: { brand: "ViralPulse Pro", inputTitle: "Innehållsstudio", lblTopic: "Ämne / Nisch", lblPlatform: "Målplattform", btnGenerate: "Generera & Analysera", proFeatures: "10 Pro Verktyg", feat1: "Dopaminkurva", feat2: "Batchbearbetning", feat3: "AI Expander", feat4: "Hook Optimizern", outputTitle: "Genererat Manus", defaultOut: "Ange ett ämne till vänster och klicka på 'Generera' för att skapa ett viralt manus.", status: "Status: Klar" },
+            az: { brand: "ViralPulse Pro", inputTitle: "Məzmun Studiyası", lblTopic: "Mövzu / Niş", lblPlatform: "Hədəf Platforma", btnGenerate: "Yarat və Təhlil Et", proFeatures: "10 Pro Alət", feat1: "Dofamin Əyrisi", feat2: "Toplu Emal", feat3: "AI Genişləndirici", feat4: "Qarmaq Optimizatoru", outputTitle: "Yaradılmış Ssenari", defaultOut: "Soldan mövzu daxil edin və 20 dildə optimallaşdırılmış viral ssenari yaratmaq üçün 'Yarat' düyməsini basın.", status: "Vəziyyət: Hazır" },
+            uk: { brand: "ViralPulse Pro", inputTitle: "Контент Студія", lblTopic: "Тема / Ніша", lblPlatform: "Платформа", btnGenerate: "Створити та Аналізувати", proFeatures: "10 Про Інструментів", feat1: "Дофамінова крива", feat2: "Пакетна обробка", feat3: "ШІ Розширювач", feat4: "Оптимізатор хука", outputTitle: "Згенерований Сценарій", defaultOut: "Введіть тему зліва та натисніть 'Створити', щоб згенерувати оптимізований сценарій.", status: "Статус: Готово" },
+            vi: { brand: "ViralPulse Pro", inputTitle: "Studio Nội Dung", lblTopic: "Chủ Đề / Ngách", lblPlatform: "Nền Tảng", btnGenerate: "Tạo & Phân Tích", proFeatures: "10 Công Cụ Pro", feat1: "Đường Cong Dopamine", feat2: "Xử Lý Hàng Loạt", feat3: "Trình Mở Rộng AI", feat4: "Tối Ưu Hóa Hook", outputTitle: "Kịch Bản Đã Tạo", defaultOut: "Nhập chủ đề bên trái và nhấn 'Tạo' để tạo kịch bản lan truyền tối ưu bằng 20 ngôn ngữ.", status: "Trạng thái: Sẵn sàng" },
+            id: { brand: "ViralPulse Pro", inputTitle: "Studio Konten", lblTopic: "Topik / Niche", lblPlatform: "Platform Target", btnGenerate: "Buat & Analisis", proFeatures: "10 Alat Pro", feat1: "Kurva Dopamin", feat2: "Pemrosesan Batch", feat3: "Ekspander AI", feat4: "Optimiser Hook", outputTitle: "Skrip & Hasil", defaultOut: "Masukkan topik di sebelah kiri dan klik 'Buat' untuk menghasilkan skrip viral yang dioptimalkan.", status: "Status: Siap" }
         };
 
         function changeLanguage() {
-            const selectedLang = document.getElementById('langSelect').value;
-            const t = translations[selectedLang];
-            if (t) {
-                document.getElementById('app-title').innerText = t.title;
-                document.getElementById('app-desc').innerText = t.desc;
-                document.getElementById('app-btn').innerText = t.btn;
+            const lang = document.getElementById('langSelect').value;
+            const t = dict[lang] || dict['tr'];
+            
+            document.getElementById('brand-title').innerText = t.brand;
+            document.getElementById('sec-input-title').innerText = t.inputTitle;
+            document.getElementById('lbl-topic').innerText = t.lblTopic;
+            document.getElementById('lbl-platform').innerText = t.lblPlatform;
+            document.getElementById('btn-generate').querySelector('span').innerText = t.btnGenerate;
+            document.getElementById('sec-pro-features').innerText = t.proFeatures;
+            document.getElementById('feat-1').innerText = t.feat1;
+            document.getElementById('feat-2').innerText = t.feat2;
+            document.getElementById('feat-3').innerText = t.feat3;
+            document.getElementById('feat-4').innerText = t.feat4;
+            document.getElementById('sec-output-title').innerText = t.outputTitle;
+            document.getElementById('outputArea').innerText = t.defaultOut;
+            document.getElementById('status-text').innerText = t.status;
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = "fa-solid fa-sun";
+            } else {
+                html.classList.add('dark');
+                icon.className = "fa-solid fa-moon";
+            }
+        }
+
+        function generateContent() {
+            const topic = document.getElementById('topicInput').value.trim() || "Dijital Pazarlama";
+            const platform = document.getElementById('platformSelect').value;
+            const lang = document.getElementById('langSelect').value;
+            
+            const output = `🚀 [ViralPulse AI Engine - ${lang.toUpperCase()}]
+Platform: ${platform.toUpperCase()}
+Konu: ${topic}
+
+📌 0:00 - 0:03 | DİKKAT ÇEKİCİ KANCA (Hook):
+"Bunu bilmeden ${topic} hakkında paylaşım yapmayı hemen bırak!"
+
+📈 0:03 - 0:15 | DOPAMİN EĞRİSİ & GELİŞME:
+- Sır perdesini aralayan 3 gizli taktik...
+- Algoritmanın ön plana çıkardığı anahtar detaylar.
+
+🔥 0:15 - 0:30 | ÇAĞRI (CTA):
+"Kaydet ve sonradan tekrar dene, fikirlerini yorumda belirt!"`;
+
+            document.getElementById('outputArea').innerText = output;
+            document.getElementById('status-text').innerText = "Durum: Başarıyla Üretildi ✨";
+        }
+
+        function copyOutput() {
+            const text = document.getElementById('outputArea').innerText;
+            navigator.clipboard.writeText(text);
+            alert("Senaryo panoya kopyalandı!");
+        }
+
+        function speakText() {
+            const text = document.getElementById('outputArea').innerText;
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                const lang = document.getElementById('langSelect').value;
+                utterance.lang = lang === 'tr' ? 'tr-TR' : 'en-US';
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Tarayıcınız sesli okuma özelliğini desteklemiyor.");
             }
         }
     </script>
