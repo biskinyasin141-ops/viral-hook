@@ -29,7 +29,7 @@
     <!-- TOP SYSTEM STATUS BAR -->
     <div class="bg-cardBg border-b border-borderCol text-[10px] font-mono py-1.5 px-4 text-slate-400 flex justify-between items-center overflow-x-auto whitespace-nowrap">
         <div class="flex items-center space-x-4">
-            <span class="flex items-center text-emerald-400"><span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-ping"></span>NEURAL CLUSTER: ACTIVE (GLOBAL_NODE_09)</span>
+            <span class="flex items-center text-emerald-400"><span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-ping"></span>NEURAL CLUSTER: ACTIVE</span>
             <span>LATENCY: <strong class="text-slate-200">8ms</strong></span>
             <span>THROUGHPUT: <strong class="text-cyan-400">4.8 GB/s</strong></span>
         </div>
@@ -53,7 +53,7 @@
             </div>
             <div class="flex items-center space-x-3">
                 <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">
-                    <span class="w-1.5 h-1.5 mr-1.5 bg-cyan-400 rounded-full animate-pulse"></span> ALGORITHM SYNCED
+                    <span class="w-1.5 h-1.5 mr-1.5 bg-cyan-400 rounded-full animate-pulse"></span> MULTI-LANG SYNCED
                 </span>
                 <button onclick="toggleTheme()" class="p-2 rounded-xl border border-borderCol bg-panelBg text-slate-300 hover:text-white transition cursor-pointer">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
@@ -107,7 +107,7 @@
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">SES TONU & KARakter</label>
+                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">SES TONU & KARAKTER</label>
                         <select id="toneSelect" class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
                             <option value="aggressive">🎯 Agresif, Net ve Sarsıcı</option>
                             <option value="mentor">🧠 Bilge Mentor & Vizyoner</option>
@@ -117,11 +117,11 @@
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">ÇIKIŞ DİLİ</label>
+                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">ÇIKIŞ DİLİ (OUTPUT LANGUAGE)</label>
                         <select id="langSelect" class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
-                            <option value="tr">Türkçe (Optimize Edilmiş)</option>
-                            <option value="en">English (Global Reach)</option>
-                            <option value="de">Deutsch (European Market)</option>
+                            <option value="tr">Türkçe</option>
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
                         </select>
                     </div>
 
@@ -172,7 +172,7 @@
                     <!-- CONSOLE TERMINAL OUTPUT -->
                     <div id="outputArea" class="bg-cyberBg border border-borderCol rounded-xl p-5 text-xs text-cyan-300/90 leading-relaxed min-h-[420px] whitespace-pre-wrap font-mono shadow-inner overflow-y-auto">
 [SYSTEM_READY]: Viral Hook Neural Engine v2.6 devrede.
-[STATUS]: Sol paneldeki parametreleri yapılandırıp "Neural Kancaları Üret" butonuna basarak yapay zeka destekli viral senaryoları ve tutma oranı (retention) metriklerini oluşturabilirsiniz.
+[STATUS]: Sol paneldeki parametreleri yapılandırıp "Neural Kancaları Üret" butonuna basarak seçtiğin dilde viral senaryoları oluşturabilirsin.
                     </div>
 
                     <!-- ANALYTICS PROGRESS -->
@@ -210,7 +210,7 @@
         }
 
         function generateViralHooks() {
-            const niche = document.getElementById('nicheInput').value.trim() || "Genel Niş";
+            const niche = document.getElementById('nicheInput').value.trim() || "Digital Growth";
             const trigger = document.getElementById('triggerSelect').value;
             const tone = document.getElementById('toneSelect').value;
             const lang = document.getElementById('langSelect').value;
@@ -220,23 +220,26 @@
             const analyticsBar = document.getElementById('analyticsBar');
             const statusFooter = document.getElementById('status-footer');
 
-            outputArea.innerText = `[NEURAL_CLUSTER]: İşlem başlatıldı...\n[LOG]: '${niche}' konusu için ${trigger.toUpperCase()} vektörleri hesaplanıyor.`;
-            clusterStatus.innerText = "Algoritma Analiz Ediliyor...";
+            outputArea.innerText = `[NEURAL_CLUSTER]: Processing...\n[LOG]: Generating vectors for '${niche}' in [${lang.toUpperCase()}].`;
+            clusterStatus.innerText = "Analyzing Algorithm...";
             analyticsBar.style.width = '40%';
 
             setTimeout(() => {
-                let report = `==================================================
-🚀 [VIRAL HOOK GENERATOR - ${currentMode.toUpperCase()} MATRIX]
-==================================================
-> Target Niche: ${niche}
-> Psychology Matrix: ${trigger.toUpperCase()} | Tone: ${tone.toUpperCase()}
-> Locale: ${lang.toUpperCase()}
+                let report = "";
 
-🔥 [0-3 SANİYE KRİTİK KANCA (HOOK 1 - PATTERN INTERRUPT)]
-"Çoğu insan ${niche} konusundaki bu ölümcül hatayı yaptığı için asla büyüemiyor... Ve büyük ihtimalle sen de yapıyorsun."
+                if (lang === 'tr') {
+                    report = `==================================================
+🚀 [VİRAL KANCA MATRİSİ - ${currentMode.toUpperCase()}]
+==================================================
+> Hedef Niş: ${niche}
+> Psikolojik Strateji: ${trigger.toUpperCase()} | Ses Tonu: ${tone.toUpperCase()}
+> Dil: TÜRKÇE
+
+🔥 [0-3 SANİYE KRİTİK KANCA (HOOK 1)]
+"Çoğu insan ${niche} konusundaki bu ölümcül hatayı yaptığı için asla büyüyemiyor... Ve muhtemelen sen de yapıyorsun."
 
 ⚡ [ORTA KESİT (RETENTION ANCHOR)]
-"Bunu sadece 7 gün boyunca bu ${tone} yaklaşımla test ettik ve izlenme oranlarımız anında tavan yaptı."
+"Bunu sadece 7 gün boyunca test ettik ve izlenme oranlarımız anında tavan yaptı."
 
 🎯 [KAPANIŞ & ÇAĞRI (CTA)]
 "Bu stratejiyi kaçırmamak için kaydet ve profildeki sabitlenmiş videoyu hemen incele."
@@ -244,15 +247,61 @@
 📊 [ALGORİTMA METRİKLERİ]:
 - Retention Index: %99.4 (Ultra-High)
 - Estimated Viral Reach: 500K+ Impressions
-- Latency Overhead: 12ms
+- Latency: 8ms
 ==================================================
-[SUCCESS]: Kancalar başarıyla oluşturuldu ve test edildi.`;
+[SUCCESS]: Kancalar Türkçe olarak başarıyla oluşturuldu.`;
+                } else if (lang === 'de') {
+                    report = `==================================================
+🚀 [VIRALE HOOK MATRIX - ${currentMode.toUpperCase()}]
+==================================================
+> Ziel Nische: ${niche}
+> Strategie: ${trigger.toUpperCase()} | Ton: ${tone.toUpperCase()}
+> Sprache: DEUTSCH
+
+🔥 [0-3 SEKUNDEN KRITISCHE HOOK (HOOK 1)]
+"Die meisten Menschen scheitern bei ${niche}, weil sie diesen fatalen Fehler übersehen..."
+
+⚡ [RETENTION ANKER]
+"Wir haben dies 7 Tage lang getestet und unsere Reichweite ist durch die Decke gegangen."
+
+🎯 [CALL TO ACTION]
+"Speichere dieses Video, um diese Strategie nicht zu verpassen!"
+
+📊 [METRIKEN]:
+- Retention Index: 99.4%
+- Geschätzte Reichweite: 500K+
+==================================================
+[SUCCESS]: Hooks auf Deutsch erfolgreich generiert.`;
+                } else {
+                    report = `==================================================
+🚀 [VIRAL HOOK MATRIX - ${currentMode.toUpperCase()}]
+==================================================
+> Target Niche: ${niche}
+> Psychology: ${trigger.toUpperCase()} | Tone: ${tone.toUpperCase()}
+> Language: ENGLISH
+
+🔥 [0-3 SEC CRITICAL HOOK (HOOK 1)]
+"Why 99% of people fail to scale ${niche} because they miss this exact detail..."
+
+⚡ [RETENTION ANCHOR]
+"We tested this for 7 days and our engagement metrics went straight through the roof."
+
+🎯 [CALL TO ACTION]
+"Save this video right now before you lose this blueprint."
+
+📊 [ALGORITHM METRICS]:
+- Retention Index: 99.4% (Ultra-High)
+- Estimated Viral Reach: 500K+ Impressions
+- Latency: 8ms
+==================================================
+[SUCCESS]: Hooks successfully generated in English.`;
+                }
 
                 outputArea.innerText = report;
                 statusFooter.innerText = `Durum: Başarılı (${lang.toUpperCase()})`;
-                clusterStatus.innerText = "Tamamlandı (12ms, 0 Hata)";
+                clusterStatus.innerText = "Tamamlandı (8ms, 0 Hata)";
                 analyticsBar.style.width = '100%';
-            }, 450);
+            }, 400);
         }
 
         function saveToMemory() {
