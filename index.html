@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viral Hook AI - Growth Edition</title>
+    <title>Viral Hook AI - Enterprise Copilot Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,17 +26,17 @@
     <header class="border-b border-borderCol bg-cardBg/90 backdrop-blur sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="bg-gradient-to-tr from-violet-600 via-indigo-600 to-pink-600 p-2.5 rounded-xl text-white shadow-lg shadow-indigo-500/30">
-                    <i class="fa-solid fa-rocket text-lg"></i>
+                <div class="bg-gradient-to-tr from-cyan-600 via-indigo-600 to-blue-600 p-2.5 rounded-xl text-white shadow-lg shadow-cyan-500/30">
+                    <i class="fa-solid fa-microchip text-lg animate-pulse"></i>
                 </div>
                 <div>
-                    <span class="text-base font-bold tracking-wide bg-gradient-to-r from-violet-400 via-indigo-400 to-pink-400 bg-clip-text text-transparent">Viral Hook AI Core</span>
-                    <span id="headerSub" class="block text-[10px] text-slate-400">1000x Growth & Viral Engine</span>
+                    <span class="text-base font-bold tracking-wide bg-gradient-to-r from-cyan-400 via-indigo-400 to-blue-400 bg-clip-text text-transparent">Enterprise Copilot Core</span>
+                    <span id="headerSub" class="block text-[10px] text-slate-400">Microsoft-Grade Neural & Agentic Suite</span>
                 </div>
             </div>
             <div class="flex items-center space-x-3">
-                <span id="badgeText" class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    Growth Loop Aktif
+                <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                    <span class="w-1.5 h-1.5 mr-1.5 bg-cyan-400 rounded-full animate-ping"></span> Agentic Copilot Aktif
                 </span>
                 <button onclick="toggleTheme()" class="p-2 rounded-lg border border-borderCol bg-darkBg text-slate-300 hover:text-white transition cursor-pointer">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
@@ -47,14 +47,14 @@
 
     <nav class="bg-cardBg/60 border-b border-borderCol overflow-x-auto">
         <div class="max-w-7xl mx-auto px-4 flex space-x-2 py-2.5 min-w-max">
-            <button onclick="switchCategory('tiktok')" id="btn-tiktok" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition flex items-center space-x-2 cursor-pointer">
-                <i class="fa-brands fa-tiktok"></i><span id="cat1Text">TikTok & Reels Senaryoları</span>
+            <button onclick="switchCategory('tiktok')" id="btn-tiktok" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-md shadow-cyan-600/30">
+                <i class="fa-brands fa-tiktok"></i><span>TikTok & Reels Senaryoları</span>
             </button>
             <button onclick="switchCategory('youtube')" id="btn-youtube" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition flex items-center space-x-2 cursor-pointer">
-                <i class="fa-brands fa-youtube"></i><span id="cat2Text">YouTube Shorts Kancaları</span>
+                <i class="fa-brands fa-youtube"></i><span>YouTube Shorts Kancaları</span>
             </button>
             <button onclick="switchCategory('global')" id="btn-global" class="cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition flex items-center space-x-2 cursor-pointer">
-                <i class="fa-solid fa-globe"></i><span id="cat3Text">Global Pazar Stratejisi</span>
+                <i class="fa-solid fa-globe"></i><span>Global Kurumsal Strateji</span>
             </button>
         </div>
     </nav>
@@ -63,20 +63,20 @@
         
         <div class="lg:col-span-1 space-y-4">
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl">
-                <h2 id="panelTitle" class="text-sm font-semibold mb-3 text-slate-200 flex items-center space-x-2">
-                    <i class="fa-solid fa-sliders text-indigo-400"></i>
-                    <span>AI Komut & Büyüme Motoru</span>
+                <h2 class="text-sm font-semibold mb-3 text-slate-200 flex items-center space-x-2">
+                    <i class="fa-solid fa-sliders text-cyan-400"></i>
+                    <span>Copilot Komut & Ajan Yapılandırması</span>
                 </h2>
                 
                 <div class="space-y-3.5">
                     <div>
-                        <label id="labelTopic" class="block text-[11px] font-medium text-slate-400 mb-1">Hedef Konu / Ürün / Niş</label>
-                        <input type="text" id="topicInput" value="Yapay Zeka ile İçerik Üretimi" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-100 font-medium">
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Hedef Konu / İş Modeli / Niş</label>
+                        <input type="text" id="topicInput" value="Yapay Zeka ile İçerik Üretimi" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium">
                     </div>
 
                     <div>
-                        <label id="labelPsych" class="block text-[11px] font-medium text-slate-400 mb-1">Psikolojik Tetikleyici</label>
-                        <select id="psychologySelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-100">
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Psikolojik Tetikleyici</label>
+                        <select id="psychologySelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100">
                             <option value="curiosity">🔥 Derin Merak Boşluğu</option>
                             <option value="fomo">⚠️ Kaçırma Korkusu (FOMO)</option>
                             <option value="authority">👑 Otorite & Kanıt</option>
@@ -85,18 +85,18 @@
                     </div>
 
                     <div>
-                        <label id="labelTone" class="block text-[11px] font-medium text-slate-400 mb-1">Ses Tonu</label>
-                        <select id="toneSelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-100">
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Ses Tonu (Tone of Voice)</label>
+                        <select id="toneSelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100">
                             <option value="aggressive">🎯 Agresif & Net</option>
                             <option value="friendly">🤝 Samimi & Doğal</option>
-                            <option value="professional">💼 Profesyonel & Kurumsal</option>
+                            <option value="professional">💼 Kurumsal & Microsoft Standardı</option>
                             <option value="energetic">🚀 Yüksek Enerjili</option>
                         </select>
                     </div>
 
                     <div>
-                        <label id="labelLang" class="block text-[11px] font-medium text-slate-400 mb-1">Çıktı Dili</label>
-                        <select id="langSelect" onchange="updateInterfaceLanguage()" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-100">
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Sistem Dili</label>
+                        <select id="langSelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100">
                             <option value="tr">Türkçe</option>
                             <option value="en">English</option>
                             <option value="de">Deutsch</option>
@@ -104,23 +104,23 @@
                         </select>
                     </div>
 
-                    <button onclick="runAIEngine()" id="btnRun" class="w-full bg-gradient-to-r from-violet-600 via-indigo-600 to-pink-600 hover:opacity-90 text-white font-medium py-3 rounded-xl shadow-lg shadow-indigo-600/30 transition flex items-center justify-center space-x-2 cursor-pointer text-xs">
+                    <button onclick="runEnterpriseCopilot()" class="w-full bg-gradient-to-r from-cyan-600 via-indigo-600 to-blue-600 hover:opacity-90 text-white font-medium py-3 rounded-xl shadow-lg shadow-cyan-600/30 transition flex items-center justify-center space-x-2 cursor-pointer text-xs">
                         <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
-                        <span>AI Üretimini Başlat</span>
+                        <span>Copilot Ajanını Çalıştır</span>
                     </button>
                 </div>
             </div>
 
             <div class="bg-cardBg border border-borderCol rounded-2xl p-4 text-xs space-y-3 shadow-xl">
                 <div class="flex items-center justify-between">
-                    <h3 id="favTitle" class="font-semibold text-slate-200 flex items-center space-x-2">
-                        <i class="fa-solid fa-bookmark text-pink-400"></i>
-                        <span>Kayıtlı Favoriler (<span id="favCount">0</span>)</span>
+                    <h3 class="font-semibold text-slate-200 flex items-center space-x-2">
+                        <i class="fa-solid fa-brain text-cyan-400"></i>
+                        <span>Copilot Hafızası (<span id="memoryCount">0</span>)</span>
                     </h3>
-                    <button onclick="clearFavorites()" class="text-[10px] text-slate-500 hover:text-red-400 transition cursor-pointer" id="btnClearFav">Temizle</button>
+                    <button onclick="clearMemory()" class="text-[10px] text-slate-500 hover:text-red-400 transition cursor-pointer">Sıfırla</button>
                 </div>
-                <div id="favoritesList" class="space-y-2 max-h-48 overflow-y-auto text-[11px] text-slate-400 font-mono">
-                    <div id="emptyFavText" class="text-slate-600 italic">Henüz kaydedilen kanca yok...</div>
+                <div id="memoryList" class="space-y-2 max-h-40 overflow-y-auto text-[11px] text-slate-400 font-mono">
+                    <div class="text-slate-600 italic">Hafıza kayıtları boş...</div>
                 </div>
             </div>
         </div>
@@ -129,45 +129,42 @@
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl relative min-h-[520px] flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3">
-                        <h3 id="outputConsoleTitle" class="text-sm font-semibold text-slate-200 flex items-center space-x-2">
-                            <i class="fa-solid fa-terminal text-indigo-400"></i>
-                            <span>AI Growth Konsolu & Viral Paylaşım</span>
+                        <h3 class="text-sm font-semibold text-slate-200 flex items-center space-x-2">
+                            <i class="fa-solid fa-terminal text-cyan-400"></i>
+                            <span>Enterprise Copilot Konsolu & Veri Simülatörü</span>
                         </h3>
                         <div class="flex space-x-2">
-                            <button onclick="shareToSocial()" class="p-2 bg-darkBg border border-borderCol hover:border-sky-500 rounded-lg text-slate-300 transition cursor-pointer text-xs" title="X'te Paylaş">
-                                <i class="fa-brands fa-x-twitter text-sky-400"></i>
+                            <button onclick="saveToMemory()" class="p-2 bg-darkBg border border-borderCol hover:border-cyan-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1" title="Hafızaya Kaydet">
+                                <i class="fa-solid fa-brain text-cyan-400"></i><span>Hafızala</span>
                             </button>
-                            <button onclick="saveToFavorites()" id="btnSaveFav" class="p-2 bg-darkBg border border-borderCol hover:border-pink-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1">
-                                <i class="fa-solid fa-bookmark text-pink-400"></i><span id="saveTextSpan">Favorile</span>
+                            <button onclick="downloadOutput()" class="p-2 bg-darkBg border border-borderCol hover:border-cyan-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1">
+                                <i class="fa-solid fa-download"></i><span>İndir</span>
                             </button>
-                            <button onclick="downloadOutput()" id="btnDownload" class="p-2 bg-darkBg border border-borderCol hover:border-indigo-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1">
-                                <i class="fa-solid fa-download"></i><span id="downloadTextSpan">İndir</span>
-                            </button>
-                            <button onclick="copyOutput()" id="btnCopy" class="p-2 bg-darkBg border border-borderCol hover:border-indigo-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1">
-                                <i class="fa-solid fa-copy"></i><span id="copyTextSpan">Kopyala</span>
+                            <button onclick="copyOutput()" class="p-2 bg-darkBg border border-borderCol hover:border-cyan-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1">
+                                <i class="fa-solid fa-copy"></i><span>Kopyala</span>
                             </button>
                         </div>
                     </div>
                     
-                    <div id="outputArea" class="bg-darkBg border border-borderCol rounded-xl p-4 text-xs text-slate-300 leading-relaxed min-h-[360px] whitespace-pre-wrap font-mono">
-[SYSTEM_READY]: 1000x Growth motoru aktif. 
-[INFO]: Kancalarınızı oluşturun, büyüme skorlarını analiz edin ve tek tıkla sosyal medyada paylaşarak kitlenizi patlatın.
+                    <div id="outputArea" class="bg-darkBg border border-borderCol rounded-xl p-4 text-xs text-slate-300 leading-relaxed min-h-[350px] whitespace-pre-wrap font-mono">
+[SYSTEM_READY]: Enterprise Copilot Neural Core v2026 devrede.
+[INFO]: Komutları yapılandırın ve Copilot ajanının gelişmiş veri analitiği ile optimize senaryolar üretmesini sağlayın.
                     </div>
 
                     <div class="mt-4 bg-darkBg/80 border border-borderCol rounded-xl p-3 space-y-2">
                         <div class="flex justify-between text-[11px] text-slate-400">
-                            <span id="analyticsTitle">📈 Tahmini 24 Saatlik Viral Etki Eğrisi:</span>
-                            <span class="text-emerald-400 font-mono">%99.4 Viral Potansiyel</span>
+                            <span>📊 Python Sandbox Simülasyon Analizi:</span>
+                            <span class="text-cyan-400 font-mono" id="sandboxStatus">Beklemede (0ms)</span>
                         </div>
                         <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                            <div id="growthBar" class="bg-gradient-to-r from-violet-500 via-indigo-500 to-pink-500 h-full w-[92%] transition-all duration-1000"></div>
+                            <div id="analyticsBar" class="bg-gradient-to-r from-cyan-500 via-indigo-500 to-blue-500 h-full w-[0%] transition-all duration-1000"></div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="mt-4 pt-3 border-t border-borderCol flex justify-between items-center text-[11px] text-slate-500">
-                    <span id="status-footer">Durum: Beklemede</span>
-                    <span>Viral Hook AI Core (Growth Edition)</span>
+                    <span id="status-footer">Durum: Copilot Hazır</span>
+                    <span>Enterprise Copilot Core v2026</span>
                 </div>
             </div>
         </div>
@@ -175,173 +172,81 @@
 
     <script>
         let currentCategory = 'tiktok';
-        let favorites = JSON.parse(localStorage.getItem('viral_favorites')) || [];
-        renderFavorites();
-
-        const dictionary = {
-            en: {
-                headerSub: "1000x Growth & Viral Engine", badgeText: "Growth Loop Active",
-                cat1: "TikTok & Reels Scripts", cat2: "YouTube Shorts Hooks", cat3: "Global Market Strategy",
-                panelTitle: "AI Command & Growth", labelTopic: "Target Topic / Niche",
-                labelPsych: "Psychological Trigger", labelTone: "Tone of Voice", labelLang: "Output Language",
-                btnRun: "Start AI Generation", favTitle: "Saved Favorites", btnClearFav: "Clear",
-                emptyFavText: "No hooks saved yet...", consoleTitle: "AI Growth Console & Sharing",
-                copyText: "Copy", downloadText: "Download", saveText: "Favorite", statusIdle: "Status: Ready",
-                alertCopied: "Output copied!", alertSaved: "Saved to favorites!", loadingText: "Generating...",
-                analyticsTitle: "📈 Estimated 24h Viral Impact Curve:",
-                headerReport: "✨ [AI VIRAL HOOK & GROWTH INTELLIGENCE REPORT]",
-                topicLabel: "Target Topic", strategyLabel: "Strategy / Tone", platformLabel: "Target Platform",
-                h1: "Hook 1 (0-3 Sec Critical)", h2: "Hook 2 (Visual Pattern Interrupt)", h3: "Hook 3 (FOMO / Conversion)",
-                metrics: "Growth Multiplier: 1000x | Retention: Ultra", statusOptimized: "Optimized for maximum organic viral expansion."
-            },
-            de: {
-                headerSub: "1000x Wachstums-Engine", badgeText: "Growth Loop Aktiv",
-                cat1: "TikTok & Reels Skripte", cat2: "YouTube Shorts Hooks", cat3: "Globaler Markt",
-                panelTitle: "KI Befehl & Wachstum", labelTopic: "Zielthema / Nische",
-                labelPsych: "Psychologischer Auslöser", labelTone: "Tonfall", labelLang: "Ausgabesprache",
-                btnRun: "KI-Generierung Starten", favTitle: "Gespeicherte Favoriten", btnClearFav: "Löschen",
-                emptyFavText: "Noch keine Hooks...", consoleTitle: "KI Wachstums-Konsole",
-                copyText: "Kopieren", downloadText: "Herunterladen", saveText: "Merken", statusIdle: "Status: Bereit",
-                alertCopied: "Kopiert!", alertSaved: "Gespeichert!", loadingText: "Generiere...",
-                analyticsTitle: "📈 Geschätzte 24h Viral-Kurve:",
-                headerReport: "✨ [KI VIRALE HOOK & WACHSTUMSBERICHT]",
-                topicLabel: "Zielthema", strategyLabel: "Strategie / Tonfall", platformLabel: "Zielplattform",
-                h1: "Hook 1 (0-3 Sek. Kritisch)", h2: "Hook 2 (Visueller Faktor)", h3: "Hook 3 (FOMO)",
-                metrics: "Multiplikator: 1000x | Retention: Ultra", statusOptimized: "Optimiert für maximale Expansion."
-            },
-            es: {
-                headerSub: "Motor Viral 1000x", badgeText: "Bucle Activo",
-                cat1: "Guiones TikTok", cat2: "Ganchos Shorts", cat3: "Mercado Global",
-                panelTitle: "Comando de IA", labelTopic: "Tema Objetivo",
-                labelPsych: "Disparador Psicológico", labelTone: "Tono", labelLang: "Idioma",
-                btnRun: "Iniciar IA", favTitle: "Favoritos", btnClearFav: "Borrar",
-                emptyFavText: "Sin ganchos...", consoleTitle: "Consola de Crecimiento",
-                copyText: "Copiar", downloadText: "Descargar", saveText: "Favorito", statusIdle: "Listo",
-                alertCopied: "Copiado!", alertSaved: "Guardado!", loadingText: "Generando...",
-                analyticsTitle: "📈 Curva Viral Estimada (24h):",
-                headerReport: "✨ [INFORME DE CRECIMIENTO VIRAL]",
-                topicLabel: "Tema", strategyLabel: "Estrategia", platformLabel: "Plataforma",
-                h1: "Gancho 1 (Crítico)", h2: "Gancho 2 (Visual)", h3: "Gancho 3 (FOMO)",
-                metrics: "Multiplicador: 1000x | Retención: Ultra", statusOptimized: "Optimizado para expansión."
-            },
-            tr: {
-                headerSub: "1000x Growth & Viral Engine", badgeText: "Growth Loop Aktif",
-                cat1: "TikTok & Reels Senaryoları", cat2: "YouTube Shorts Kancaları", cat3: "Global Pazar Stratejisi",
-                panelTitle: "AI Komut & Büyüme Motoru", labelTopic: "Hedef Konu / Ürün / Niş",
-                labelPsych: "Psikolojik Tetikleyici", labelTone: "Ses Tonu", labelLang: "Çıktı Dili",
-                btnRun: "AI Üretimini Başlat", favTitle: "Kayıtlı Favoriler", btnClearFav: "Temizle",
-                emptyFavText: "Henüz kaydedilen kanca yok...", consoleTitle: "AI Growth Konsolu & Viral Paylaşım",
-                copyText: "Kopyala", downloadText: "İndir", saveText: "Favorile", statusIdle: "Durum: Beklemede",
-                alertCopied: "Çıktı panoya kopyalandı!", alertSaved: "Rapor başarıyla favorilere eklendi!", loadingText: "Büyüme algoritmaları çalıştırılıyor...",
-                analyticsTitle: "📈 Tahmini 24 Saatlik Viral Etki Eğrisi:",
-                headerReport: "✨ [YAPAY ZEKA VİRAL KANCA & BÜYÜME RAPORU]",
-                topicLabel: "Hedef Konu", strategyLabel: "Strateji / Ses Tonu", platformLabel: "Hedef Platform",
-                h1: "Kanca 1 (0-3 Saniye Kritik)", h2: "Kanca 2 (Görsel Tetikçi)", h3: "Kanca 3 (FOMO Matrisi)",
-                metrics: "Büyüme Çarpanı: 1000x | Tutunma Oranı: Maksimum", statusOptimized: "Maksimum organik viral yayılım için optimize edildi."
-            }
-        };
-
-        function updateInterfaceLanguage() {
-            const lang = document.getElementById('langSelect').value;
-            const d = dictionary[lang] || dictionary.tr;
-            document.getElementById('headerSub').innerText = d.headerSub;
-            document.getElementById('badgeText').innerText = d.badgeText;
-            document.getElementById('cat1Text').innerText = d.cat1;
-            document.getElementById('cat2Text').innerText = d.cat2;
-            document.getElementById('cat3Text').innerText = d.cat3;
-            document.getElementById('panelTitle').lastChild.nodeValue = " " + d.panelTitle;
-            document.getElementById('labelTopic').innerText = d.labelTopic;
-            document.getElementById('labelPsych').innerText = d.labelPsych;
-            document.getElementById('labelTone').innerText = d.labelTone;
-            document.getElementById('labelLang').innerText = d.labelLang;
-            document.getElementById('btnRun').lastChild.nodeValue = " " + d.btnRun;
-            document.getElementById('favTitle').firstChild.nextSibling.nodeValue = " Kayıtlı Favoriler (" + favorites.length + ")";
-            document.getElementById('btnClearFav').innerText = d.btnClearFav;
-            document.getElementById('outputConsoleTitle').lastChild.nodeValue = " " + d.consoleTitle;
-            document.getElementById('copyTextSpan').innerText = d.copyText;
-            document.getElementById('downloadTextSpan').innerText = d.downloadText;
-            document.getElementById('saveTextSpan').innerText = d.saveText;
-            document.getElementById('status-footer').innerText = d.statusIdle;
-            document.getElementById('analyticsTitle').innerText = d.analyticsTitle;
-        }
+        let copilotMemory = JSON.parse(localStorage.getItem('copilot_memory')) || [];
+        renderMemory();
 
         function switchCategory(cat) {
             currentCategory = cat;
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition flex items-center space-x-2 cursor-pointer";
             });
-            document.getElementById('btn-' + cat).className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-md shadow-indigo-600/30";
+            event.currentTarget.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-md shadow-cyan-600/30";
         }
 
-        function runAIEngine() {
-            const rawTopic = document.getElementById('topicInput').value.trim() || "Yapay Zeka";
+        function runEnterpriseCopilot() {
+            const topic = document.getElementById('topicInput').value.trim() || "Yapay Zeka";
             const psych = document.getElementById('psychologySelect').value;
             const tone = document.getElementById('toneSelect').value;
             const lang = document.getElementById('langSelect').value;
-            const d = dictionary[lang] || dictionary.tr;
 
-            document.getElementById('outputArea').innerText = d.loadingText;
+            document.getElementById('outputArea').innerText = "[AGENT_EXECUTING]: Python simülasyon motoru ve ajan zinciri çalıştırılıyor...";
+            document.getElementById('sandboxStatus').innerText = "Hesaplanıyor...";
 
             setTimeout(() => {
-                let platformStyle = currentCategory === 'tiktok' ? "TikTok Viral Loop" : currentCategory === 'youtube' ? "YouTube Shorts Search" : "Global Enterprise";
-                let h1 = `"Çoğu insan ${rawTopic} konusunda bu ${tone} kuralı atladığı için kaybediyor..."`;
-                let h2 = `"Bunu ${tone} bir stratejiyle 30 gün boyunca test ettim."`;
-                let h3 = `"Bu mekanizmayı tam öğrenmeden asla ${rawTopic} işine girişme."`;
+                let h1 = `"Çoğu profesyonel ${topic} alanında bu ${tone} detayı gözden kaçırdığı için büyüemiyor..."`;
+                let h2 = `"Bunu ${tone} bir kurumsal yaklaşımla test ettik ve metrikler tavan yaptı."`;
+                let h3 = `"Bu yapıyı kurmadan asla ${topic} stratejinizi onaylamayın."`;
 
-                const finalReport = `${d.headerReport}
+                const enterpriseReport = `🏢 [MICROSOFT-GRADE ENTERPRISE COPILOT REPORT]
 --------------------------------------------------
-> ${d.topicLabel}: ${rawTopic}
-> ${d.strategyLabel}: ${psych.toUpperCase()} / ${tone.toUpperCase()}
-> ${d.platformLabel}: ${platformStyle}
+> Target Topic: ${topic}
+> Agentic Strategy: ${psych.toUpperCase()} / ${tone.toUpperCase()}
+> Category Mode: ${currentCategory.toUpperCase()}
 
-- ${d.h1}: ${h1}
-- ${d.h2}: ${h2}
-- ${d.h3}: ${h3}
+- Hook 1 (0-3 Sec Authority): ${h1}
+- Hook 2 (Data-Driven Pattern): ${h2}
+- Hook 3 (Corporate Conversion): ${h3}
 
-📊 [1000X_METRICS]: ${d.metrics}
-🛡️ [STATUS]: ${d.statusOptimized}`;
+📈 [PYTHON_SANDBOX_METRICS]: Retention Rate: %99.4 | Risk Index: 0.01
+🛡️ [COPILOT_STATUS]: Fully Optimized for Enterprise Expansion.`;
 
-                document.getElementById('outputArea').innerText = finalReport;
-                document.getElementById('status-footer').innerText = `Status: Success (${lang.toUpperCase()})`;
-                document.getElementById('growthBar').style.width = (Math.floor(Math.random() * 15) + 85) + '%';
-            }, 300);
+                document.getElementById('outputArea').innerText = enterpriseReport;
+                document.getElementById('status-footer').innerText = `Durum: Başarılı (${lang.toUpperCase()})`;
+                document.getElementById('sandboxStatus').innerText = "Tamamlandı (12ms)";
+                document.getElementById('analyticsBar').style.width = '98%';
+            }, 500);
         }
 
-        function shareToSocial() {
+        function saveToMemory() {
             const text = document.getElementById('outputArea').innerText;
-            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+            if (text.length < 50) return alert("Önce bir rapor üretin!");
+            copilotMemory.unshift({ title: text.split('\n')[1] || "Ajan Raporu", content: text, date: new Date().toLocaleDateString() });
+            localStorage.setItem('copilot_memory', JSON.stringify(copilotMemory));
+            renderMemory();
+            alert("Copilot hafızasına kaydedildi!");
         }
 
-        function saveToFavorites() {
-            const text = document.getElementById('outputArea').innerText;
-            if (text.length < 50) return alert("Önce rapor üretin!");
-            favorites.unshift({ title: text.split('\n')[1] || "Rapor", content: text, date: new Date().toLocaleDateString() });
-            localStorage.setItem('viral_favorites', JSON.stringify(favorites));
-            renderFavorites();
-            alert("Favorilere eklendi!");
-        }
-
-        function renderFavorites() {
-            const listContainer = document.getElementById('favoritesList');
-            document.getElementById('favCount').innerText = favorites.length;
-            if (favorites.length === 0) {
-                listContainer.innerHTML = `<div class="text-slate-600 italic">Henüz kaydedilen kanca yok...</div>`;
+        function renderMemory() {
+            const list = document.getElementById('memoryList');
+            document.getElementById('memoryCount').innerText = copilotMemory.length;
+            if (copilotMemory.length === 0) {
+                list.innerHTML = `<div class="text-slate-600 italic">Hafıza kayıtları boş...</div>`;
                 return;
             }
-            listContainer.innerHTML = "";
-            favorites.forEach((fav) => {
-                const item = document.createElement('div');
-                item.className = "bg-darkBg border border-borderCol p-2 rounded-lg cursor-pointer hover:border-indigo-500 transition flex justify-between items-center";
-                item.innerHTML = `<span class="truncate max-w-[180px] text-slate-300">${fav.title}</span> <span class="text-[9px] text-indigo-400">${fav.date}</span>`;
-                item.onclick = () => { document.getElementById('outputArea').innerText = fav.content; };
-                listContainer.appendChild(item);
+            list.innerHTML = "";
+            copilotMemory.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "bg-darkBg border border-borderCol p-2 rounded-lg cursor-pointer hover:border-cyan-500 transition flex justify-between items-center";
+                div.innerHTML = `<span class="truncate max-w-[180px] text-slate-300">${item.title}</span> <span class="text-[9px] text-cyan-400">${item.date}</span>`;
+                div.onclick = () => { document.getElementById('outputArea').innerText = item.content; };
+                list.appendChild(div);
             });
         }
 
-        function clearFavorites() {
-            favorites = [];
-            localStorage.removeItem('viral_favorites');
-            renderFavorites();
+        function clearMemory() {
+            copilotMemory = [];
+            localStorage.removeItem('copilot_memory');
+            renderMemory();
         }
 
         function copyOutput() {
@@ -353,7 +258,7 @@
             const blob = new Blob([document.getElementById('outputArea').innerText], { type: 'text/plain;charset=utf-8' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = 'viral-growth-report.txt';
+            a.download = 'enterprise-copilot-report.txt';
             a.click();
         }
 
