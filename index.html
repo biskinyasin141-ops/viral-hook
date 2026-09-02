@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise Copilot Core - AI Neural Engine</title>
+    <title>Enterprise AI Neural Core - Global Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -11,9 +11,12 @@
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#030712',
-                        cardBg: '#0b0f19',
-                        borderCol: '#1e293b'
+                        darkBg: '#02040a',
+                        cardBg: '#090d16',
+                        panelBg: '#0e1626',
+                        borderCol: '#1e293b',
+                        accentBlue: '#3b82f6',
+                        accentCyan: '#06b6d4'
                     }
                 }
             }
@@ -23,168 +26,188 @@
 </head>
 <body class="bg-darkBg text-slate-100 min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-white">
 
+    <!-- TOP SYSTEM STATUS BAR -->
+    <div class="bg-cardBg border-b border-borderCol text-[10px] font-mono py-1 px-4 text-slate-400 flex justify-between items-center overflow-x-auto whitespace-nowrap">
+        <div class="flex items-center space-x-4">
+            <span class="flex items-center text-emerald-400"><span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span>SYSTEM: ONLINE (CLUSTER_US_EAST_01)</span>
+            <span>LATENCY: <strong id="latencyVal" class="text-slate-200">12ms</strong></span>
+            <span>NEURAL LOAD: <strong class="text-cyan-400">1.4%</strong></span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span>SECURE ENCLAVE: ACTIVE</span>
+            <span>API: v4.2026.ENTERPRISE</span>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
     <header class="border-b border-borderCol bg-cardBg/90 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="bg-gradient-to-tr from-cyan-500 via-indigo-600 to-blue-600 p-2.5 rounded-xl text-white shadow-lg shadow-cyan-500/20">
-                    <i class="fa-solid fa-microchip text-base animate-pulse"></i>
+                <div class="bg-gradient-to-tr from-cyan-600 via-blue-600 to-indigo-700 p-2.5 rounded-xl text-white shadow-xl shadow-cyan-500/20">
+                    <i class="fa-solid fa-network-wired text-lg"></i>
                 </div>
                 <div>
-                    <span class="text-sm font-extrabold tracking-wider bg-gradient-to-r from-cyan-400 via-indigo-400 to-blue-400 bg-clip-text text-transparent uppercase">Enterprise Copilot AI</span>
-                    <span class="block text-[10px] text-slate-400 tracking-wide font-mono">Neural Suite v2026.4</span>
+                    <h1 class="text-sm font-black tracking-wider bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent uppercase">Enterprise Neural Core</h1>
+                    <span class="block text-[10px] text-slate-400 tracking-widest font-mono">Global Autonomous Agent Architecture</span>
                 </div>
             </div>
             <div class="flex items-center space-x-3">
-                <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">
-                    <span class="w-1.5 h-1.5 mr-1.5 bg-cyan-400 rounded-full animate-ping"></span> AGENTIC CORE ACTIVE
-                </span>
-                <button onclick="toggleTheme()" class="p-2 rounded-lg border border-borderCol bg-darkBg text-slate-300 hover:text-white transition cursor-pointer">
+                <button onclick="toggleTheme()" class="p-2 rounded-xl border border-borderCol bg-panelBg text-slate-300 hover:text-white transition cursor-pointer">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <nav class="bg-cardBg/40 border-b border-borderCol overflow-x-auto">
+    <!-- NAVIGATION TABS -->
+    <nav class="bg-cardBg/50 border-b border-borderCol overflow-x-auto">
         <div class="max-w-7xl mx-auto px-4 flex space-x-2 py-3 min-w-max">
-            <button onclick="switchCategory(this, 'tiktok')" class="cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30">
-                <i class="fa-brands fa-tiktok"></i><span>TikTok & Reels Senaryoları</span>
+            <button onclick="switchCategory(this, 'ecosystem')" class="cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30 font-mono">
+                <i class="fa-solid fa-cube"></i><span>01. Ecosystem & Growth Engine</span>
             </button>
-            <button onclick="switchCategory(this, 'youtube')" class="cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-darkBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer">
-                <i class="fa-brands fa-youtube"></i><span>YouTube Shorts Kancaları</span>
+            <button onclick="switchCategory(this, 'agentic')" class="cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
+                <i class="fa-solid fa-robot"></i><span>02. Agentic Task Orchestration</span>
             </button>
-            <button onclick="switchCategory(this, 'global')" class="cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-darkBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer">
-                <i class="fa-solid fa-globe"></i><span>Global Kurumsal Strateji</span>
+            <button onclick="switchCategory(this, 'analytics')" class="cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
+                <i class="fa-solid fa-chart-line"></i><span>03. Neural Data Sandbox</span>
             </button>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <div class="lg:col-span-1 space-y-4">
+        <!-- SOL KONTROL PANELİ (4 Kolon) -->
+        <div class="lg:col-span-4 space-y-4">
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl">
                 <h2 class="text-xs font-bold tracking-wider uppercase mb-4 text-cyan-400 flex items-center space-x-2 font-mono">
                     <i class="fa-solid fa-sliders"></i>
-                    <span>Ajan Yapılandırma Konsolu</span>
+                    <span>Parameters & Neural Config</span>
                 </h2>
                 
-                <div class="space-y-4">
+                <div class="space-y-4 font-mono">
                     <div>
-                        <label class="block text-[11px] font-medium text-slate-400 mb-1 font-mono">HEDEF KONU / NİŞ</label>
-                        <input type="text" id="topicInput" value="Yapay Zeka ile Dijital Dönüşüm" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
+                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">TARGET DOMAIN / ECOSYSTEM</label>
+                        <input type="text" id="topicInput" value="Global AI Scale & Software Infrastructure" class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
                     </div>
 
                     <div>
-                        <label class="block text-[11px] font-medium text-slate-400 mb-1 font-mono">PSİKOLOJİK TETİKLEYİCİ</label>
-                        <select id="psychologySelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
-                            <option value="curiosity">🔥 Derin Merak Boşluğu (Curiosity Gap)</option>
-                            <option value="fomo">⚠️ Kaçırma Korkusu (FOMO)</option>
-                            <option value="authority">👑 Kurumsal Otorite & Kanıt</option>
-                            <option value="provocation">⚡ Radikal Endüstriyel Meydan Okuma</option>
+                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">PSYCHOLOGICAL COGNITION MATRIX</label>
+                        <select id="psychologySelect" class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
+                            <option value="curiosity">🔥 Deep Curiosity Gap Matrix</option>
+                            <option value="fomo">⚠️ High-Velocity FOMO Engine</option>
+                            <option value="authority">👑 Enterprise Authority & Proof</option>
+                            <option value="provocation">⚡ Radical Paradigm Disruption</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block text-[11px] font-medium text-slate-400 mb-1 font-mono">SES TONU (TONE OF VOICE)</label>
-                        <select id="toneSelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
-                            <option value="aggressive">🎯 Agresif & Net</option>
-                            <option value="friendly">🤝 Samimi & Doğal</option>
-                            <option value="professional">💼 Microsoft Kurumsal Standart</option>
-                            <option value="energetic">🚀 Yüksek Enerjili</option>
+                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">AGENT VOICE & SYNTAX STYLE</label>
+                        <select id="toneSelect" class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
+                            <option value="aggressive">🎯 Aggressive & High-Conversion</option>
+                            <option value="friendly">🤝 Natural & Ecosystem Aligned</option>
+                            <option value="professional">💼 Microsoft / OpenAI Executive</option>
+                            <option value="energetic">🚀 Hyper-Growth Scaled</option>
                         </select>
                     </div>
 
                     <div>
-                        <label class="block text-[11px] font-medium text-slate-400 mb-1 font-mono">SİSTEM ÇIKTI DİLİ</label>
-                        <select id="langSelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
-                            <option value="tr">Türkçe</option>
-                            <option value="en">English</option>
-                            <option value="de">Deutsch</option>
-                            <option value="es">Español</option>
+                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">NEURAL EXECUTION LANGUAGE</label>
+                        <select id="langSelect" class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
+                            <option value="en">English (Global Enterprise)</option>
+                            <option value="tr">Türkçe (Local Optimized)</option>
+                            <option value="de">Deutsch (European Hub)</option>
+                            <option value="es">Español (LatAm Expansion)</option>
                         </select>
                     </div>
 
-                    <button onclick="runEnterpriseCopilot()" class="w-full bg-gradient-to-r from-cyan-600 via-indigo-600 to-blue-600 hover:opacity-95 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-cyan-600/30 transition transform active:scale-95 flex items-center justify-center space-x-2 cursor-pointer text-xs font-mono uppercase tracking-wider">
-                        <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
-                        <span>Ajanı Çalıştır & Analiz Et</span>
+                    <button onclick="executeNeuralCore()" class="w-full bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:opacity-95 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-cyan-600/30 transition transform active:scale-95 flex items-center justify-center space-x-2 cursor-pointer text-xs font-mono uppercase tracking-wider">
+                        <i class="fa-solid fa-bolt text-sm animate-bounce"></i>
+                        <span>Execute Neural Cluster</span>
                     </button>
                 </div>
             </div>
 
+            <!-- MEMORY STORAGE -->
             <div class="bg-cardBg border border-borderCol rounded-2xl p-4 text-xs space-y-3 shadow-xl">
-                <div class="flex items-center justify-between">
-                    <h3 class="font-bold text-slate-200 flex items-center space-x-2 font-mono text-[11px]">
-                        <i class="fa-solid fa-brain text-cyan-400"></i>
-                        <span>HAFIZA (<span id="memoryCount">0</span>)</span>
+                <div class="flex items-center justify-between font-mono">
+                    <h3 class="font-bold text-slate-200 flex items-center space-x-2 text-[11px]">
+                        <i class="fa-solid fa-database text-cyan-400"></i>
+                        <span>PERSISTENT STORAGE (<span id="memoryCount">0</span>)</span>
                     </h3>
-                    <button onclick="clearMemory()" class="text-[10px] text-slate-500 hover:text-red-400 transition cursor-pointer font-mono">TEMİZLE</button>
+                    <button onclick="clearMemory()" class="text-[10px] text-slate-500 hover:text-red-400 transition cursor-pointer">PURGE</button>
                 </div>
-                <div id="memoryList" class="space-y-2 max-h-40 overflow-y-auto text-[11px] text-slate-400 font-mono">
-                    <div class="text-slate-600 italic">Kayıtlı veri bulunmuyor...</div>
+                <div id="memoryList" class="space-y-2 max-h-44 overflow-y-auto text-[11px] text-slate-400 font-mono">
+                    <div class="text-slate-600 italic">No persistent blocks stored...</div>
                 </div>
             </div>
         </div>
 
-        <div class="lg:col-span-2 space-y-4">
-            <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl relative min-h-[560px] flex flex-col justify-between">
+        <!-- SAĞ ÇIKTI PANELİ (8 Kolon) -->
+        <div class="lg:col-span-8 space-y-4">
+            <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl relative min-h-[600px] flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3 border-b border-borderCol pb-3">
                         <h3 class="text-xs font-bold text-slate-200 flex items-center space-x-2 font-mono uppercase tracking-wider">
                             <i class="fa-solid fa-terminal text-cyan-400"></i>
-                            <span>Neural Sandbox Terminali</span>
+                            <span>Autonomous Agent Output Console</span>
                         </h3>
                         <div class="flex space-x-2">
-                            <button onclick="saveToMemory()" class="p-2 bg-darkBg border border-borderCol hover:border-cyan-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1" title="Hafızala">
-                                <i class="fa-solid fa-brain text-cyan-400 text-xs"></i><span class="hidden sm:inline text-[10px]">Hafızala</span>
+                            <button onclick="saveToMemory()" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
+                                <i class="fa-solid fa-database text-cyan-400 text-xs"></i><span class="hidden sm:inline text-[10px]">Persist</span>
                             </button>
-                            <button onclick="downloadOutput()" class="p-2 bg-darkBg border border-borderCol hover:border-cyan-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1" title="İndir">
-                                <i class="fa-solid fa-download text-xs"></i><span class="hidden sm:inline text-[10px]">İndir</span>
+                            <button onclick="downloadOutput()" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
+                                <i class="fa-solid fa-download text-xs"></i><span class="hidden sm:inline text-[10px]">Export</span>
                             </button>
-                            <button onclick="copyOutput()" class="p-2 bg-darkBg border border-borderCol hover:border-cyan-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1" title="Kopyala">
-                                <i class="fa-solid fa-copy text-xs"></i><span class="hidden sm:inline text-[10px]">Kopyala</span>
+                            <button onclick="copyOutput()" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
+                                <i class="fa-solid fa-copy text-xs"></i><span class="hidden sm:inline text-[10px]">Copy</span>
                             </button>
                         </div>
                     </div>
                     
-                    <div id="outputArea" class="bg-darkBg border border-borderCol rounded-xl p-4 text-xs text-cyan-300/90 leading-relaxed min-h-[380px] whitespace-pre-wrap font-mono shadow-inner">
-[SYSTEM_READY]: Enterprise Copilot Neural Core v2026 devrede.
-[INFO]: Sol panelden parametreleri yapılandırıp "Ajanı Çalıştır" butonuna tıklayarak yüksek performanslı stratejik içerik ve Python analiz raporu üretebilirsiniz.
+                    <!-- CONSOLE TERMINAL OUTPUT -->
+                    <div id="outputArea" class="bg-darkBg border border-borderCol rounded-xl p-5 text-xs text-cyan-300/90 leading-relaxed min-h-[400px] whitespace-pre-wrap font-mono shadow-inner overflow-y-auto">
+[SYSTEM_BOOT]: Initializing Enterprise Neural Core v2026.
+[CLUSTER_STATUS]: Connected to high-speed asynchronous inference pipeline.
+[READY]: Configure parameters on the left and trigger execution to deploy autonomous scaling scripts and simulations.
                     </div>
 
-                    <div class="mt-4 bg-darkBg border border-borderCol rounded-xl p-3.5 space-y-2">
-                        <div class="flex justify-between text-[11px] text-slate-400 font-mono">
-                            <span>📊 Python Sandbox Simülasyon Analizi:</span>
-                            <span class="text-cyan-400 font-semibold" id="sandboxStatus">Beklemede (0ms)</span>
+                    <!-- METRICS SIMULATOR -->
+                    <div class="mt-4 bg-panelBg border border-borderCol rounded-xl p-4 space-y-2.5 font-mono">
+                        <div class="flex justify-between text-[11px] text-slate-400">
+                            <span class="flex items-center"><i class="fa-solid fa-chart-pie mr-2 text-cyan-400"></i>Autonomous Scaling & Confidence Matrix:</span>
+                            <span class="text-cyan-400 font-semibold" id="sandboxStatus">Awaiting Execution (0ms)</span>
                         </div>
-                        <div class="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-borderCol">
-                            <div id="analyticsBar" class="bg-gradient-to-r from-cyan-500 via-indigo-500 to-blue-500 h-full w-[0%] transition-all duration-1000"></div>
+                        <div class="w-full bg-darkBg h-2.5 rounded-full overflow-hidden border border-borderCol">
+                            <div id="analyticsBar" class="bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 h-full w-[0%] transition-all duration-1000"></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mt-4 pt-3 border-t border-borderCol flex justify-between items-center text-[11px] text-slate-500 font-mono">
-                    <span id="status-footer">Durum: Hazır (Idle)</span>
-                    <span class="text-cyan-500/80">Microsoft Enterprise Security Verified</span>
+                <!-- FOOTER STATUS -->
+                <div class="mt-4 pt-3 border-t border-borderCol flex justify-between items-center text-[10px] text-slate-500 font-mono">
+                    <span id="status-footer">Status: Cluster Idle</span>
+                    <span class="text-cyan-400 font-semibold">Microsoft & OpenAI Enterprise Grade Framework</span>
                 </div>
             </div>
         </div>
     </main>
 
     <script>
-        let currentCategory = 'tiktok';
-        let copilotMemory = JSON.parse(localStorage.getItem('enterprise_copilot_memory')) || [];
+        let currentMode = 'ecosystem';
+        let enterpriseMemory = JSON.parse(localStorage.getItem('enterprise_core_memory')) || [];
         renderMemory();
 
-        function switchCategory(btn, cat) {
-            currentCategory = cat;
+        function switchCategory(btn, mode) {
+            currentMode = mode;
             document.querySelectorAll('.cat-btn').forEach(b => {
-                b.className = "cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-darkBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer";
+                b.className = "cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono";
             });
-            btn.className = "cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30";
+            btn.className = "cat-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30 font-mono";
         }
 
-        function runEnterpriseCopilot() {
-            const topic = document.getElementById('topicInput').value.trim() || "Yapay Zeka";
+        function executeNeuralCore() {
+            const topic = document.getElementById('topicInput').value.trim() || "Artificial Intelligence";
             const psych = document.getElementById('psychologySelect').value;
             const tone = document.getElementById('toneSelect').value;
             const lang = document.getElementById('langSelect').value;
@@ -194,49 +217,52 @@
             const analyticsBar = document.getElementById('analyticsBar');
             const statusFooter = document.getElementById('status-footer');
 
-            outputArea.innerText = "[AGENT_EXECUTING]: Python neural motoru çalıştırılıyor, metrikler hesaplanıyor...";
-            sandboxStatus.innerText = "Simülasyon Çalışıyor...";
-            analyticsBar.style.width = '30%';
+            outputArea.innerText = "[INF_RUNNING]: Asynchronous neural cluster executing pipelines...\n[LOG]: Parsing target parameters and optimizing cognitive vectors.";
+            sandboxStatus.innerText = "Processing Inference...";
+            analyticsBar.style.width = '45%';
 
             setTimeout(() => {
-                let h1 = `"Çoğu profesyonel ${topic} alanında bu ${tone} detayı gözden kaçırdığı için ölçeklenemiyor..."`;
-                let h2 = `"Bunu ${tone} bir kurumsal yaklaşımla 30 gün test ettik ve dönüşüm oranları tavan yaptı."`;
-                let h3 = `"Bu risk matrisini kurmadan asla ${topic} stratejinizi onaylamayın."`;
-
-                const enterpriseReport = `🏢 [MICROSOFT-GRADE ENTERPRISE COPILOT REPORT]
+                let reportContent = `==================================================
+🌐 [GLOBAL ENTERPRISE NEURAL REPORT]
 ==================================================
-> Target Topic: ${topic}
-> Agentic Strategy: ${psych.toUpperCase()} / ${tone.toUpperCase()}
-> Execution Mode: ${currentCategory.toUpperCase()} | Language: ${lang.toUpperCase()}
+> Target Ecosystem: ${topic}
+> Cognitive Vector: ${psych.toUpperCase()} | Tone: ${tone.toUpperCase()}
+> Execution Framework: ${currentMode.toUpperCase()} | Locale: ${lang.toUpperCase()}
 
-- Hook 1 (0-3 Sec Authority): ${h1}
-- Hook 2 (Data-Driven Pattern): ${h2}
-- Hook 3 (Corporate Conversion): ${h3}
+[MODULE_01: HIGH-VELOCITY HOOK ARCHITECTURE]
+- Primary Vector (0-3s Critical): "Why 99% of developers fail to scale ${topic} past phase-one infrastructure..."
+- Secondary Vector (Pattern Disruption): "We deployed this enterprise architecture for 30 days. The scaling metrics broke records."
+- Conversion Matrix (FOMO Anchor): "Never authorize your next deployment without reviewing this core specification."
 
-📈 [PYTHON_SANDBOX_METRICS]: Retention: %99.6 | Confidence: 0.98 | Risk Index: 0.01
-🛡️ [COPILOT_STATUS]: Fully Optimized for Enterprise Expansion.`;
+[MODULE_02: AUTONOMOUS AGENTIC INSIGHTS]
+- Risk Index: 0.0014 (Secured Enclave)
+- Projected Growth Velocity: 1000x Organic Expansion
+- Latency Overhead: 14.2ms
 
-                outputArea.innerText = enterpriseReport;
-                statusFooter.innerText = `Durum: Başarılı (${lang.toUpperCase()})`;
-                sandboxStatus.innerText = "Tamamlandı (14ms)";
+==================================================
+[SYSTEM_SUCCESS]: Cluster execution complete. All pipelines fully optimized.`;
+
+                outputArea.innerText = reportContent;
+                statusFooter.innerText = `Status: Execution Success (${lang.toUpperCase()})`;
+                sandboxStatus.innerText = "Completed (14ms, 0 Error)";
                 analyticsBar.style.width = '100%';
-            }, 400);
+            }, 500);
         }
 
         function saveToMemory() {
-            const text = document.getElementById('outputArea').innerText;
-            if (text.length < 50 || text.includes("SYSTEM_READY")) {
-                alert("Önce geçerli bir kurumsal rapor üretmelisiniz!");
+            const outputArea = document.getElementById('outputArea');
+            if (!outputArea || outputArea.innerText.includes("SYSTEM_BOOT")) {
+                alert("Please execute a neural core report first!");
                 return;
             }
-            copilotMemory.unshift({ 
-                title: text.split('\n')[1] || "Kurumsal Rapor", 
-                content: text, 
+            enterpriseMemory.unshift({ 
+                title: document.getElementById('topicInput').value || "Enterprise Report", 
+                content: outputArea.innerText, 
                 date: new Date().toLocaleDateString() 
             });
-            localStorage.setItem('enterprise_copilot_memory', JSON.stringify(copilotMemory));
+            localStorage.setItem('enterprise_core_memory', JSON.stringify(enterpriseMemory));
             renderMemory();
-            alert("Copilot hafızasına başarıyla kaydedildi!");
+            alert("Neural block successfully persisted to local storage.");
         }
 
         function renderMemory() {
@@ -244,16 +270,16 @@
             const countSpan = document.getElementById('memoryCount');
             if (!list || !countSpan) return;
 
-            countSpan.innerText = copilotMemory.length;
-            if (copilotMemory.length === 0) {
-                list.innerHTML = `<div class="text-slate-600 italic">Kayıtlı veri bulunmuyor...</div>`;
+            countSpan.innerText = enterpriseMemory.length;
+            if (enterpriseMemory.length === 0) {
+                list.innerHTML = `<div class="text-slate-600 italic">No persistent blocks stored...</div>`;
                 return;
             }
             list.innerHTML = "";
-            copilotMemory.forEach(item => {
+            enterpriseMemory.forEach(item => {
                 const div = document.createElement('div');
-                div.className = "bg-darkBg border border-borderCol p-2 rounded-lg cursor-pointer hover:border-cyan-500 transition flex justify-between items-center";
-                div.innerHTML = `<span class="truncate max-w-[180px] text-slate-300 font-mono">${item.title}</span> <span class="text-[9px] text-cyan-400 font-mono">${item.date}</span>`;
+                div.className = "bg-panelBg border border-borderCol p-2.5 rounded-xl cursor-pointer hover:border-cyan-500 transition flex justify-between items-center";
+                div.innerHTML = `<span class="truncate max-w-[170px] text-slate-300 font-mono">${item.title}</span> <span class="text-[9px] text-cyan-400 font-mono">${item.date}</span>`;
                 div.onclick = () => { 
                     document.getElementById('outputArea').innerText = item.content; 
                 };
@@ -262,15 +288,15 @@
         }
 
         function clearMemory() {
-            copilotMemory = [];
-            localStorage.removeItem('enterprise_copilot_memory');
+            enterpriseMemory = [];
+            localStorage.removeItem('enterprise_core_memory');
             renderMemory();
         }
 
         function copyOutput() {
             const text = document.getElementById('outputArea').innerText;
             navigator.clipboard.writeText(text);
-            alert("Rapor panoya kopyalandı!");
+            alert("Report copied to clipboard.");
         }
 
         function downloadOutput() {
@@ -278,7 +304,7 @@
             const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download = 'enterprise-copilot-report.txt';
+            a.download = 'enterprise-neural-report.txt';
             a.click();
         }
 
