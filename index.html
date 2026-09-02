@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viral Hook AI - Multi-Lingual Enterprise</title>
+    <title>Viral Hook AI - Pure Multi-Lingual Core</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,17 +29,17 @@
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="bg-gradient-to-tr from-violet-600 via-indigo-600 to-pink-600 p-2.5 rounded-xl text-white shadow-lg shadow-indigo-500/30">
-                    <i class="fa-solid fa-earth-europe text-lg animate-spin" style="animation-duration: 10s;"></i>
+                    <i class="fa-solid fa-globe text-lg animate-spin" style="animation-duration: 12s;"></i>
                 </div>
                 <div>
                     <span class="text-base font-bold tracking-wide bg-gradient-to-r from-violet-400 via-indigo-400 to-pink-400 bg-clip-text text-transparent">Viral Hook AI Core</span>
-                    <span class="block text-[10px] text-slate-400">Full Multi-Lingual Neural Suite</span>
+                    <span class="block text-[10px] text-slate-400">Pure Multi-Lingual Intelligence</span>
                 </div>
             </div>
             
             <div class="flex items-center space-x-3">
                 <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-400 rounded-full animate-ping"></span> Çeviri Motoru Aktif
+                    <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-400 rounded-full animate-ping"></span> Saf Çeviri Modu Aktif
                 </span>
                 <button onclick="toggleTheme()" class="p-2 rounded-lg border border-borderCol bg-darkBg text-slate-300 hover:text-white transition cursor-pointer">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
@@ -71,7 +71,7 @@
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl">
                 <h2 class="text-sm font-semibold mb-3 text-slate-200 flex items-center space-x-2">
                     <i class="fa-solid fa-sliders text-indigo-400"></i>
-                    <span>AI Komut & Çeviri Ayarları</span>
+                    <span>AI Komut & Dil Seçimi</span>
                 </h2>
                 
                 <div class="space-y-3.5">
@@ -91,18 +91,18 @@
                     </div>
 
                     <div>
-                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Çıktı Dili (Gerçek Zamanlı Çeviri)</label>
+                        <label class="block text-[11px] font-medium text-slate-400 mb-1">Çıktı Dili (Saf Çeviri)</label>
                         <select id="langSelect" class="w-full bg-darkBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-indigo-500 text-slate-100">
-                            <option value="tr">Türkçe (Turkish)</option>
-                            <option value="en">English (Global)</option>
-                            <option value="de">Deutsch (German)</option>
-                            <option value="es">Español (Spanish)</option>
+                            <option value="tr">Türkçe</option>
+                            <option value="en">English</option>
+                            <option value="de">Deutsch</option>
+                            <option value="es">Español</option>
                         </select>
                     </div>
 
                     <button onclick="runAIEngine()" class="w-full bg-gradient-to-r from-violet-600 via-indigo-600 to-pink-600 hover:opacity-90 text-white font-medium py-3 rounded-xl shadow-lg shadow-indigo-600/30 transition flex items-center justify-center space-x-2 cursor-pointer text-xs">
                         <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
-                        <span>AI Çeviri ve Üretimi Başlat</span>
+                        <span>AI Üretimini Başlat</span>
                     </button>
                 </div>
             </div>
@@ -111,12 +111,11 @@
             <div class="bg-cardBg border border-borderCol rounded-2xl p-4 text-xs space-y-2.5 shadow-xl">
                 <h3 class="font-semibold text-slate-200 flex items-center space-x-2">
                     <i class="fa-solid fa-server text-purple-400"></i>
-                    <span>Çevirmen Çekirdeği</span>
+                    <span>Çekirdek Durumu</span>
                 </h3>
                 <div class="text-[11px] text-slate-400 space-y-1.5">
-                    <div class="flex justify-between"><span>Çeviri Modülü:</span> <span class="text-purple-400 font-mono">Active Multi-Lang Engine</span></div>
-                    <div class="flex justify-between"><span>Desteklenen Diller:</span> <span class="text-indigo-400 font-mono">TR, EN, DE, ES</span></div>
-                    <div class="flex justify-between"><span>Durum:</span> <span class="text-emerald-400 font-mono">Senkronize</span></div>
+                    <div class="flex justify-between"><span>Motor Modu:</span> <span class="text-purple-400 font-mono">Pure Localization</span></div>
+                    <div class="flex justify-between"><span>Gecikme:</span> <span class="text-emerald-400 font-mono">10ms</span></div>
                 </div>
             </div>
         </div>
@@ -128,7 +127,7 @@
                     <div class="flex items-center justify-between mb-3">
                         <h3 id="outputHeaderTitle" class="text-sm font-semibold text-slate-200 flex items-center space-x-2">
                             <i class="fa-solid fa-terminal text-indigo-400"></i>
-                            <span>AI Çeviri Konsolu</span>
+                            <span>AI Çıktı Konsolu</span>
                         </h3>
                         <div class="flex space-x-2">
                             <button onclick="copyOutput()" class="p-2 bg-darkBg border border-borderCol hover:border-indigo-500 rounded-lg text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1">
@@ -139,13 +138,13 @@
                     
                     <!-- ÇIKTI ALANI -->
                     <div id="outputArea" class="bg-darkBg border border-borderCol rounded-xl p-4 text-xs text-slate-300 leading-relaxed min-h-[400px] whitespace-pre-wrap font-mono">
-[SYSTEM_READY]: Çoklu dil çeviri motoru aktif. 
-[INFO]: Konunuzu yazın, istediğiniz dili seçin ve "AI Çeviri ve Üretimi Başlat" butonuna basın. Raporun tamamı seçtiğiniz dile tam olarak çevrilecektir.
+[SYSTEM_READY]: Saf dil motoru aktif. 
+[INFO]: Konunuzu yazıp dili seçin, sonuçlar tamamen seçtiğiniz dilde üretilecektir.
                     </div>
                 </div>
                 
                 <div class="mt-4 pt-3 border-t border-borderCol flex justify-between items-center text-[11px] text-slate-500">
-                    <span id="status-footer">Durum: Beklemede (Çevirmen Hazır)</span>
+                    <span id="status-footer">Durum: Beklemede</span>
                     <span>Viral Hook AI Core</span>
                 </div>
             </div>
@@ -164,129 +163,100 @@
             const activeBtn = document.getElementById('btn-' + cat);
             activeBtn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-indigo-600 text-white transition cursor-pointer flex items-center space-x-2 shadow-md shadow-indigo-600/30";
             
-            document.getElementById('status-footer').innerText = `Kategori Aktif: ${cat.toUpperCase()}`;
+            document.getElementById('status-footer').innerText = `Active Category: ${cat.toUpperCase()}`;
         }
 
-        // Genişletilmiş Çeviri ve Anlam Sözlüğü
-        const dictionaryDB = {
+        // Tamamen o dile özel saf kalıp havuzu (Parantez karmaşası yok)
+        const pureTemplates = {
             en: {
-                "yapay zeka ile içerik üretimi": "AI Content Creation",
-                "dijital pazarlama": "Digital Marketing",
-                "sosyal medya": "Social Media",
-                "e-ticaret": "E-Commerce",
-                "yazılım geliştirme": "Software Development",
-                "girişimcilik": "Entrepreneurship"
+                loading: "Generating hooks in English...",
+                header: "✨ [AI VIRAL HOOK & SCRIPT INTELLIGENCE REPORT]",
+                topic: "Target Topic",
+                strategy: "Psychology Strategy",
+                h1: "Hook 1 (0-3 Sec Critical)",
+                t1: (topic) => `"Most creators fail at ${topic} because they completely ignore this hidden rule..."`,
+                h2: "Hook 2 (Visual Pattern Interrupt)",
+                t2: (topic) => `"I tested ${topic} for 30 days straight, and the results completely broke my algorithm."`,
+                h3: "Hook 3 (FOMO / Conversion)",
+                t3: (topic) => `"Do not even attempt ${topic} until you understand how this mechanism works."`,
+                metrics: "Viral Impact Score: %99.4 (High Retention)",
+                status: "Optimized for global reach."
             },
             de: {
-                "yapay zeka ile içerik üretimi": "KI-Inhaltserstellung",
-                "dijital pazarlama": "Digitales Marketing",
-                "sosyal medya": "Social Media",
-                "e-ticaret": "E-Commerce",
-                "yazılım geliştirme": "Softwareentwicklung",
-                "girişimcilik": "Unternehmertum"
+                loading: "Generiere Hooks auf Deutsch...",
+                header: "✨ [KI VIRALE HOOK & SKRIPT INTELLIGENZBERICHT]",
+                topic: "Zielthema",
+                strategy: "Psychologische Strategie",
+                h1: "Hook 1 (0-3 Sek. Kritisch)",
+                t1: (topic) => `"Die Meisten scheitern bei ${topic}, weil sie diese eine goldene Regel ignorieren..."`,
+                h2: "Hook 2 (Visueller Aufmerksamkeitsfaktor)",
+                t2: (topic) => `"Ich habe ${topic} 30 Tage lang getestet und das Ergebnis hat alles verändert."`,
+                h3: "Hook 3 (FOMO / Konversion)",
+                t3: (topic) => `"Versuche niemals ${topic}, bevor du diesen Mechanismus verstanden hast."`,
+                metrics: "Viraler Wirkungswert: %99.4 (Hohe Retention)",
+                status: "Optimiert für den Algorithmus."
             },
             es: {
-                "yapay zeka ile içerik üretimi": "Creación de Contenido con IA",
-                "dijital pazarlama": "Marketing Digital",
-                "sosyal medya": "Redes Sociales",
-                "e-ticaret": "Comercio Electrónico",
-                "yazılım geliştirme": "Desarrollo de Software",
-                "girişimcilik": "Emprendimiento"
+                loading: "Generando ganchos en español...",
+                header: "✨ [INFORME DE INTELIGENCIA DE GANCHOS VIRALES DE IA]",
+                topic: "Tema Objetivo",
+                strategy: "Estrategia Psicológica",
+                h1: "Gancho 1 (0-3 Segundos Crítico)",
+                t1: (topic) => `"La mayoría fracasa en ${topic} porque ignoran por completo esta regla oculta..."`,
+                h2: "Gancho 2 (Interrupción Visual)",
+                t2: (topic) => `"Probé ${topic} durante 30 días seguidos y los resultados rompieron mi algoritmo."`,
+                h3: "Gancho 3 (FOMO / Conversión)",
+                t3: (topic) => `"No intentes hacer ${topic} hasta que entiendas cómo funciona esto."`,
+                metrics: "Puntuación de Impacto Viral: %99.4 (Alta Retención)",
+                status: "Optimizado para el algoritmo."
+            },
+            tr: {
+                loading: "Türkçe kancalar üretiliyor...",
+                header: "✨ [YAPAY ZEKA VİRAL KANCA VE SENARYO RAPORU]",
+                topic: "Hedef Konu",
+                strategy: "Psikolojik Strateji",
+                h1: "Kanca 1 (0-3 Saniye Kritik)",
+                t1: (topic) => `"Çoğu insan ${topic} konusunda tam olarak bu hatayı yaptığı için ömrünü harcıyor..."`,
+                h2: "Kanca 2 (Görsel Tetikçi)",
+                t2: (topic) => `"Bunu keşfettikten sonra ${topic} ile ilgili bildiğin her şeyi unutacaksın."`,
+                h3: "Kanca 3 (FOMO Matrisi)",
+                t3: (topic) => `"Bu yöntem tamamen yayılmadan önce ${topic} alanında yerini hemen almalısın."`,
+                metrics: "Viral Etki Skoru: %99.4 (Yüksek Tutunma)",
+                status: "Algoritma için optimize edildi."
             }
         };
 
-        function smartTranslate(topic, targetLang) {
-            if (targetLang === 'tr') return topic;
-            const cleanTopic = topic.toLowerCase().trim();
-            if (dictionaryDB[targetLang] && dictionaryDB[targetLang][cleanTopic]) {
-                return dictionaryDB[targetLang][cleanTopic];
-            }
-            // Sözlükte bulunmayan kelimeler için otomatik etiketleme
-            if (targetLang === 'en') return topic + " (Global Edition)";
-            if (targetLang === 'de') return topic + " (DACH Edition)";
-            if (targetLang === 'es') return topic + " (Edición Global)";
-            return topic;
-        }
-
         function runAIEngine() {
-            const rawTopic = document.getElementById('topicInput').value.trim() || "Yapay Zeka ile İçerik Üretimi";
+            const topic = document.getElementById('topicInput').value.trim() || "Content Creation";
             const psych = document.getElementById('psychologySelect').value;
             const lang = document.getElementById('langSelect').value;
+            const t = pureTemplates[lang] || pureTemplates.tr;
 
             const outputArea = document.getElementById('outputArea');
-            outputArea.innerText = `[TRANSLATING]: Konu ve rapor şablonu "${lang.toUpperCase()}" diline çevriliyor...`;
+            outputArea.innerText = `[AI_PROCESSING]: ${t.loading}`;
 
             setTimeout(() => {
-                const translatedTopic = smartTranslate(rawTopic, lang);
-                let finalReport = "";
-
-                if (lang === 'en') {
-                    finalReport = `✨ [AI VIRAL HOOK & SCRIPT INTELLIGENCE REPORT]
+                const finalReport = `${t.header}
 --------------------------------------------------
-> Target Topic: ${translatedTopic}
-> Psychology Strategy: ${psych.toUpperCase()}
-> Language: ENGLISH (Global Market)
+> ${t.topic}: ${topic}
+> ${t.strategy}: ${psych.toUpperCase()}
 
-- Hook 1 (0-3 Sec Critical): "Most creators fail at ${translatedTopic} because they completely ignore this hidden rule..."
-- Hook 2 (Visual Pattern Interrupt): "I tested ${translatedTopic} for 30 days straight, and the results completely broke my algorithm."
-- Hook 3 (FOMO / Conversion): "Do not even attempt ${translatedTopic} until you understand how this mechanism works."
+- ${t.h1}: ${t.t1(topic)}
+- ${t.h2}: ${t.t2(topic)}
+- ${t.h3}: ${t.t3(topic)}
 
-📊 [AI METRICS]: Viral Impact Score: %99.4 (High Retention)
-🛡️ [STATUS]: Optimized for ${currentCategory.toUpperCase()} algorithm.`;
-                } 
-                else if (lang === 'de') {
-                    finalReport = `✨ [KI VIRALE HOOK & SKRIPT INTELLIGENZBERICHT]
---------------------------------------------------
-> Zielthema: ${translatedTopic}
-> Psychologische Strategie: ${psych.toUpperCase()}
-> Sprache: DEUTSCH (DACH Region)
-
-- Hook 1 (0-3 Sek. Kritisch): "Die Meisten scheitern bei ${translatedTopic}, weil sie diese eine goldene Regel ignorieren..."
-- Hook 2 (Visueller Aufmerksamkeitsfaktor): "Ich habe ${translatedTopic} 30 Tage lang getestet und das Ergebnis hat alles verändert."
-- Hook 3 (FOMO / Konversion): "Versuche niemals ${translatedTopic}, bevor du diesen Mechanismus verstanden hast."
-
-📊 [KI METRIKEN]: Viraler Wirkungswert: %99.4 (Hohe Retention)
-🛡️ [STATUS]: Optimiert für den ${currentCategory.toUpperCase()} Algorithmus.`;
-                } 
-                else if (lang === 'es') {
-                    finalReport = `✨ [INFORME DE INTELIGENCIA DE GANCHOS VIRALES DE IA]
---------------------------------------------------
-> Tema Objetivo: ${translatedTopic}
-> Estrategia Psicológica: ${psych.toUpperCase()}
-> Idioma: ESPAÑOL (Global)
-
-- Gancho 1 (0-3 Segundos Crítico): "La mayoría fracasa en ${translatedTopic} porque ignoran por completo esta regla oculta..."
-- Gancho 2 (Interrupción Visual): "Probé ${translatedTopic} durante 30 días seguidos y los resultados rompieron mi algoritmo."
-- Gancho 3 (FOMO / Conversión): "No intentes hacer ${translatedTopic} hasta que entiendas cómo funciona esto."
-
-📊 [MÉTRICAS DE IA]: Puntuación de Impacto Viral: %99.4 (Alta Retención)
-🛡️ [ESTADO]: Optimizado para el algoritmo de ${currentCategory.toUpperCase()}.`;
-                } 
-                else {
-                    // Türkçe
-                    finalReport = `✨ [YAPAY ZEKA VİRAL KANCA VE SENARYO RAPORU]
---------------------------------------------------
-> Hedef Konu: ${rawTopic}
-> Psikolojik Strateji: ${psych.toUpperCase()}
-> Dil: TÜRKÇE (Yerel Pazar)
-
-- Kanca 1 (0-3 Saniye): "Çoğu insan ${rawTopic} konusunda tam olarak bu hatayı yaptığı için ömrünü harcıyor..."
-- Kanca 2 (Görsel Tetikçi): "Bunu keşfettikten sonra ${rawTopic} ile ilgili bildiğin her şeyi unutacaksın."
-- Kanca 3 (FOMO Matrisi): "Bu yöntem tamamen yayılmadan önce ${rawTopic} alanında yerini hemen almalısın."
-
-📊 [AI METRİKLERİ]: Viral Etki Skoru: %99.4 (Yüksek Tutunma)
-🛡️ [DURUM]: ${currentCategory.toUpperCase()} algoritması için optimize edildi.`;
-                }
+📊 [METRICS]: ${t.metrics}
+🛡️ [STATUS]: ${t.status}`;
 
                 outputArea.innerText = finalReport;
-                document.getElementById('status-footer').innerText = `Durum: Çeviri Başarılı (${lang.toUpperCase()})`;
+                document.getElementById('status-footer').innerText = `Status: Success (${lang.toUpperCase()})`;
             }, 500);
         }
 
         function copyOutput() {
-            const text = document.getElementById('outputArea'].innerText;
+            const text = document.getElementById('outputArea').innerText;
             navigator.clipboard.writeText(text);
-            alert("Çevrilen rapor panoya kopyalandı!");
+            alert("Çıktı panoya kopyalandı!");
         }
 
         function toggleTheme() {
