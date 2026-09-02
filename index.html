@@ -22,28 +22,16 @@
 
     <div class="max-w-xl w-full bg-zinc-900/90 backdrop-blur-xl border border-zinc-800/80 rounded-3xl p-6 shadow-2xl relative">
         
+        <!-- Üst Kontroller -->
         <div class="absolute top-5 right-5 flex items-center gap-2">
             <select id="langSelect" onchange="changeLanguage()" class="bg-zinc-800 border border-zinc-700 text-zinc-300 text-xs rounded-xl px-2.5 py-1.5 focus:outline-none focus:border-brand-500 cursor-pointer">
                 <option value="tr">🇹🇷 Türkçe</option>
                 <option value="en">🇬🇧 English</option>
                 <option value="de">🇩🇪 Deutsch</option>
+                <option value="az">🇦🇿 Azərbaycan</option>
                 <option value="fr">🇫🇷 Français</option>
                 <option value="es">🇪🇸 Español</option>
-                <option value="it">🇮🇹 Italiano</option>
-                <option value="pt">🇵🇹 Português</option>
                 <option value="ru">🇷🇺 Русский</option>
-                <option value="ja">🇯🇵 日本語</option>
-                <option value="ko">🇰🇷 한국어</option>
-                <option value="zh">🇨🇳 中文</option>
-                <option value="hi">🇮🇳 हिन्दी</option>
-                <option value="ar">🇸🇦 العربية</option>
-                <option value="nl">🇳🇱 Nederlands</option>
-                <option value="pl">🇵🇱 Polski</option>
-                <option value="sv">🇸🇪 Svenska</option>
-                <option value="az">🇦🇿 Azərbaycan</option>
-                <option value="id">🇮🇩 Indonesia</option>
-                <option value="vi">🇻🇳 Tiếng Việt</option>
-                <option value="el">🇬🇷 Ελληνικά</option>
             </select>
 
             <div class="flex gap-1.5 bg-zinc-800/80 p-1 rounded-xl border border-zinc-700">
@@ -54,16 +42,18 @@
         </div>
 
         <div class="text-center mb-6 pt-2">
-            <span id="badgeColor" class="bg-red-500/10 text-red-500 text-[11px] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider border border-red-500/20">ViralPulse Pro Studio v12.1</span>
+            <span id="badgeColor" class="bg-red-500/10 text-red-500 text-[11px] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider border border-red-500/20">ViralPulse Pro Studio v12.2</span>
             <h1 id="mainTitle" class="text-2xl font-black mt-3 tracking-tight">Algoritmayı Tamamen Hackle 🚀</h1>
-            <p id="mainSubtitle" class="text-zinc-400 text-xs mt-1">20+ Dil desteği, gerçek zamanlı ses motoru ve yapay zeka analiz raporu.</p>
+            <p id="mainSubtitle" class="text-zinc-400 text-xs mt-1">Çoklu dil desteği, gerçek zamanlı ses motoru ve yapay zeka analiz raporu.</p>
         </div>
 
+        <!-- Sekmeler -->
         <div class="grid grid-cols-2 gap-2 mb-5 bg-zinc-950/60 p-1.5 rounded-2xl border border-zinc-800">
             <button onclick="switchTab('generator')" id="genTabBtn" class="py-2.5 text-xs font-bold rounded-xl bg-red-600 text-white transition-all shadow-md">⚡ Kanca Üretici</button>
             <button onclick="switchTab('analyzer')" id="analyzerTabBtn" class="py-2.5 text-xs font-semibold rounded-xl text-zinc-400 hover:text-white transition-all">🎯 Kanca Analiz Et</button>
         </div>
 
+        <!-- SEKME 1: ÜRETİCİ -->
         <div id="generatorSection" class="space-y-4">
             <div>
                 <label id="lblPlatform" class="block text-[11px] font-bold text-zinc-400 mb-1.5 uppercase tracking-wider">Hedef Platform</label>
@@ -97,26 +87,28 @@
             <div>
                 <div class="flex justify-between items-center mb-1.5">
                     <label id="lblIdea" class="block text-[11px] font-bold text-zinc-400 uppercase tracking-wider">İçerik Konun / Nişin Nedir?</label>
-                    <button onclick="fillRandomIdea()" id="btnRandom" class="text-[11px] text-red-400 hover:text-red-300 font-medium">💡 Rastgele Fikir</button>
+                    <button onclick="fillRandomIdea()" id="btnRandom" class="text-[11px] text-red-400 hover:text-red-300 font-medium cursor-pointer">💡 Rastgele Fikir</button>
                 </div>
                 <input type="text" id="ideaInput" placeholder="Örn: E-ticaret, motivasyon, yazılım..." class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl px-4 py-3 text-zinc-200 focus:outline-none focus:border-red-500 text-xs">
             </div>
 
-            <button onclick="generateUltimateHook()" id="generateBtn" class="w-full bg-red-600 hover:bg-red-500 font-bold py-3.5 rounded-2xl transition-all shadow-lg text-xs tracking-wider uppercase text-white">
+            <button onclick="generateUltimateHook()" id="generateBtn" class="w-full bg-red-600 hover:bg-red-500 font-bold py-3.5 rounded-2xl transition-all shadow-lg text-xs tracking-wider uppercase text-white cursor-pointer">
                 Pro Matrisi Çalıştır ⚡
             </button>
         </div>
 
+        <!-- SEKME 2: ANALİZÖR -->
         <div id="analyzerSection" class="space-y-4 hidden">
             <div>
                 <label id="lblCustomHook" class="block text-[11px] font-bold text-zinc-400 mb-1.5 uppercase tracking-wider">Kendi Kancanı Test Et</label>
                 <textarea id="customHookInput" placeholder="Analiz edilmesini istediğin kancayı buraya yapıştır..." class="w-full bg-zinc-950 border border-zinc-800 rounded-2xl p-4 text-xs text-zinc-200 focus:outline-none focus:border-blue-500 resize-none h-28"></textarea>
             </div>
-            <button onclick="analyzeCustomHook()" id="analyzeBtn" class="w-full bg-blue-600 hover:bg-blue-500 font-bold py-3.5 rounded-2xl transition-all shadow-lg text-xs tracking-wider uppercase text-white">
+            <button onclick="analyzeCustomHook()" id="analyzeBtn" class="w-full bg-blue-600 hover:bg-blue-500 font-bold py-3.5 rounded-2xl transition-all shadow-lg text-xs tracking-wider uppercase text-white cursor-pointer">
                 Yapay Zeka Analizini Başlat 🎯
             </button>
         </div>
 
+        <!-- SONUÇ BÖLÜMÜ -->
         <div id="resultArea" class="mt-6 hidden space-y-3">
             <div id="scoreBox" class="bg-zinc-950/80 border border-zinc-800 rounded-2xl p-3 flex justify-between items-center text-xs">
                 <span id="scoreLabelText" class="text-zinc-400 font-medium">🔥 Tahmini Viral Etki Skoru:</span>
@@ -129,9 +121,9 @@
                 <label id="outputLabel" class="block text-[11px] font-bold text-zinc-400 uppercase tracking-wider">Üretilen Kanca:</label>
                 <div class="flex items-center gap-3">
                     <span id="charCount" class="text-[10px] text-zinc-500">0 karakter</span>
-                    <button onclick="speakCurrentHook()" id="speakBtn" class="text-xs text-blue-400 hover:text-blue-300 font-bold flex items-center gap-1" title="Sesli Dinle">🔊 Dinle</button>
-                    <button onclick="saveToFavorites()" id="favBtn" class="text-xs text-yellow-400 hover:text-yellow-300 font-bold flex items-center gap-1" title="Favorile">⭐ Favorile</button>
-                    <button onclick="copyCurrentHook()" id="copyBtn" class="text-xs text-red-400 hover:text-red-300 font-bold">📋 Kopyala</button>
+                    <button onclick="speakCurrentHook()" id="speakBtn" class="text-xs text-blue-400 hover:text-blue-300 font-bold flex items-center gap-1 cursor-pointer" title="Sesli Dinle">🔊 Dinle</button>
+                    <button onclick="saveToFavorites()" id="favBtn" class="text-xs text-yellow-400 hover:text-yellow-300 font-bold flex items-center gap-1 cursor-pointer" title="Favorile">⭐ Favorile</button>
+                    <button onclick="copyCurrentHook()" id="copyBtn" class="text-xs text-red-400 hover:text-red-300 font-bold cursor-pointer">📋 Kopyala</button>
                 </div>
             </div>
             
@@ -140,7 +132,7 @@
             <div id="tagSection" class="hidden">
                 <div class="flex justify-between items-center mb-1">
                     <label id="lblTagsTitle" class="block text-[10px] font-bold text-zinc-400 uppercase tracking-wider"># Optimizasyon Etiketleri:</label>
-                    <button onclick="copyTags()" id="btnCopyTags" class="text-[10px] text-red-400 hover:text-red-300 font-semibold">📋 Etiketleri Kopyala</button>
+                    <button onclick="copyTags()" id="btnCopyTags" class="text-[10px] text-red-400 hover:text-red-300 font-semibold cursor-pointer">📋 Etiketleri Kopyala</button>
                 </div>
                 <div id="tagOutput" class="bg-zinc-950/60 border border-zinc-800 rounded-xl p-2.5 text-[11px] text-zinc-300 font-mono"></div>
             </div>
@@ -158,8 +150,8 @@
 
             <div id="lockSection" class="bg-zinc-950/70 border border-zinc-800/80 rounded-2xl p-4 text-center mt-2">
                 <p id="lockText" class="text-xs text-zinc-300 mb-3">Sınırsız matris motoru kilidini açmak için aracı WhatsApp'ta paylaş:</p>
-                <button id="shareBtn" onclick="handleRealWhatsAppShare()" class="w-full bg-emerald-600 hover:bg-emerald-500 font-bold py-3 rounded-xl transition-all text-xs flex items-center justify-center gap-2 text-white shadow-lg">
-                    📢 WhatsApp'ta Gerçekten Paylaş & Kilidi Kaldır
+                <button id="shareBtn" onclick="handleRealWhatsAppShare()" class="w-full bg-emerald-600 hover:bg-emerald-500 font-bold py-3 rounded-xl transition-all text-xs flex items-center justify-center gap-2 text-white shadow-lg cursor-pointer">
+                    📢 WhatsApp'ta Paylaş & Kilidi Kaldır
                 </button>
             </div>
         </div>
@@ -172,30 +164,29 @@
         let currentTagsText = "";
         let currentLang = "tr";
 
-        // Tam Kapsamlı 20 Dil Sözlüğü (Tüm butonlar ve etiketler dahil)
         const translations = {
             tr: { 
-                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v12.1", h1: "Algoritmayı Tamamen Hackle 🚀", sub: "20+ Dil desteği, gerçek zamanlı ses motoru ve yapay zeka analiz raporu.", 
+                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v12.2", h1: "Algoritmayı Tamamen Hackle 🚀", sub: "Çoklu dil desteği, gerçek zamanlı ses motoru ve yapay zeka analiz raporu.", 
                 genTab: "⚡ Kanca Üretici", anaTab: "🎯 Kanca Analiz Et", lblPlatform: "Hedef Platform", lblTone: "Anlatım Tonu", lblStyle: "Kanca Yapısı", lblIdea: "İçerik Konun / Nişin Nedir?", 
                 placeholderIdea: "Örn: E-ticaret, motivasyon, yazılım...", btnRandom: "💡 Rastgele Fikir", genBtn: "Pro Matrisi Çalıştır ⚡", 
                 lblCustomHook: "Kendi Kancanı Test Et", placeholderHook: "Analiz edilmesini istediğin kancayı buraya yapıştır...", anaBtn: "Yapay Zeka Analizini Başlat 🎯", 
                 scoreLabel: "🔥 Tahmini Viral Etki Skoru:", outputLabel: "Üretilen Kanca:", speak: "🔊 Dinle", fav: "⭐ Favorile", copy: "📋 Kopyala", copied: "✅ Kopyalandı!", 
                 lblTagsTitle: "# Optimizasyon Etiketleri:", btnCopyTags: "📋 Etiketleri Kopyala", lblHistory: "📜 Geçmiş:", lblFavorites: "⭐ Favorilerim:", emptyFav: "Henüz favori yok",
-                lockText: "Sınırsız matris motoru kilidini açmak için aracı WhatsApp'ta paylaş:", shareBtn: "📢 WhatsApp'ta Gerçekten Paylaş & Kilidi Kaldır",
+                lockText: "Sınırsız matris motoru kilidini açmak için aracı WhatsApp'ta paylaş:", shareBtn: "📢 WhatsApp'ta Paylaş & Kilidi Kaldır",
                 alertIdea: "Lütfen bir fikir veya niş yazın!", alertHook: "Lütfen analiz edilecek metni yazın!", favAdded: "⭐ Favorilere eklendi!", tagsCopied: "Etiketler kopyalandı! 🏷️", copiedText: "Metin panoya kopyalandı! 🚀", unlockedMsg: "🎉 Teşekkürler! Sınırsız Pro Motor başarıyla aktif edildi."
             },
             en: { 
-                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v12.1", h1: "Hack the Algorithm 🚀", sub: "20+ languages, live speech engine & AI analysis report.", 
+                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v12.2", h1: "Hack the Algorithm 🚀", sub: "Multi-language support, live speech engine & AI analysis report.", 
                 genTab: "⚡ Hook Generator", anaTab: "🎯 Test Hook", lblPlatform: "Target Platform", lblTone: "Tone of Voice", lblStyle: "Hook Structure", lblIdea: "What is your content idea/niche?", 
                 placeholderIdea: "e.g., E-commerce, motivation, software...", btnRandom: "💡 Random Idea", genBtn: "Run Pro Matrix ⚡", 
                 lblCustomHook: "Test Your Own Hook", placeholderHook: "Paste the hook you want to analyze here...", anaBtn: "Start AI Analysis 🎯", 
                 scoreLabel: "🔥 Estimated Viral Impact Score:", outputLabel: "Generated Hook:", speak: "🔊 Listen", fav: "⭐ Favorite", copy: "📋 Copy", copied: "✅ Copied!", 
                 lblTagsTitle: "# Optimization Tags:", btnCopyTags: "📋 Copy Tags", lblHistory: "📜 History:", lblFavorites: "⭐ Favorites:", emptyFav: "No favorites yet",
-                lockText: "Share on WhatsApp to unlock the unlimited matrix engine:", shareBtn: "📢 Share on WhatsApp & Unlock Instantly",
+                lockText: "Share on WhatsApp to unlock the unlimited matrix engine:", shareBtn: "📢 Share on WhatsApp & Unlock",
                 alertIdea: "Please write an idea or niche!", alertHook: "Please enter a hook to analyze!", favAdded: "⭐ Added to favorites!", tagsCopied: "Tags copied! 🏷️", copiedText: "Text copied to clipboard! 🚀", unlockedMsg: "🎉 Thank you! Unlimited Pro Engine successfully activated."
             },
             de: { 
-                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v12.1", h1: "Hacke den Algorithmus 🚀", sub: "20+ Sprachen, Live-Sprachengine & KI-Analysebericht.", 
+                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v12.2", h1: "Hacke den Algorithmus 🚀", sub: "Mehrsprachige Unterstützung, Live-Sprachengine & KI-Analysebericht.", 
                 genTab: "⚡ Hook Generator", anaTab: "🎯 Hook Testen", lblPlatform: "Zielplattform", lblTone: "Tonfall", lblStyle: "Hook-Struktur", lblIdea: "Was ist deine Content-Idee?", 
                 placeholderIdea: "z.B. E-Commerce, Motivation...", btnRandom: "💡 Zufällige Idee", genBtn: "Pro Matrix Starten ⚡", 
                 lblCustomHook: "Eigene Hook Testen", placeholderHook: "Füge hier deine Hook ein...", anaBtn: "KI-Analyse Starten 🎯", 
@@ -205,8 +196,339 @@
                 alertIdea: "Bitte schreibe eine Idee!", alertHook: "Bitte gib eine Hook zum Analysieren ein!", favAdded: "⭐ Zu Favoriten hinzugefügt!", tagsCopied: "Tags kopiert! 🏷️", copiedText: "Text in Zwischenablage kopiert! 🚀", unlockedMsg: "🎉 Danke! Unbegrenzte Pro-Engine aktiviert."
             },
             az: { 
-                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v12.1", h1: "Alqoritmi Tamamilə Hack Et 🚀", sub: "20+ dil dəstəyi, səs mühərriki və süni intellekt analizi.", 
+                title: "ViralPulse Pro - Global Studio", badge: "ViralPulse Pro Studio v12.2", h1: "Alqoritmi Tamamilə Hack Et 🚀", sub: "Çoxdilli dəstək, səs mühərriki və süni intellekt analizi.", 
                 genTab: "⚡ Qarmaq Yaradıcı", anaTab: "🎯 Qarmağı Test Et", lblPlatform: "Hədəf Platforma", lblTone: "Danışıq Tonu", lblStyle: "Qarmaq Strukturu", lblIdea: "Məzmun ideyanız nədir?", 
                 placeholderIdea: "Məs: E-ticarət, motivasiya...", btnRandom: "💡 Təsadüfi İdeya", genBtn: "Pro Matrisi İşə Sal ⚡", 
                 lblCustomHook: "Öz Qarmağını Test Et", placeholderHook: "Test etmək istədiyiniz qarmağı bura yapışdırın...", anaBtn: "Süni İntellekt Analizi 🎯", 
-                scoreLabel: "🔥 Təxmini Viral T
+                scoreLabel: "🔥 Təxmini Viral Təsir Hesabı:", outputLabel: "Yaradılan Qarmaq:", speak: "🔊 Dinlə", fav: "⭐ Seçilmişlərə At", copy: "📋 Kopyala", copied: "✅ Kopyalandı!", 
+                lblTagsTitle: "# Optimizasiya Etiketləri:", btnCopyTags: "📋 Etiketləri Kopyala", lblHistory: "📜 Keçmiş:", lblFavorites: "⭐ Seçilmişlər:", emptyFav: "Hələ kiçik seçilmiş yoxdur",
+                lockText: "Limitsiz mühərrikin kilidini açmaq üçün WhatsApp-da paylaşın:", shareBtn: "📢 WhatsApp-da Paylaş və Kilidi Aç",
+                alertIdea: "Zəhmət olmasa bir ideya yazın!", alertHook: "Zəhmət olmasa təhlil üçün qarmaq daxil edin!", favAdded: "⭐ Seçilmişlərə əlavə edildi!", tagsCopied: "Etiketlər kopyalandı! 🏷️", copiedText: "Mətn kopyalandı! 🚀", unlockedMsg: "🎉 Təşəkkürlər! Limitsiz Pro Mühərrik aktiv edildi."
+            },
+            fr: { title: "ViralPulse Pro", badge: "v12.2 PRO", h1: "Piratage d'Algorithme 🚀", sub: "Support multilingue & IA.", genTab: "⚡ Générateur", anaTab: "🎯 Testeur", lblPlatform: "Plateforme", lblTone: "Ton", lblStyle: "Structure", lblIdea: "Votre idée ?", placeholderIdea: "ex: E-commerce...", btnRandom: "💡 Idée Aléatoire", genBtn: "Lancer ⚡", lblCustomHook: "Tester votre Hook", placeholderHook: "Collez votre hook ici...", anaBtn: "Analyser 🎯", scoreLabel: "🔥 Score Viral :", outputLabel: "Hook Généré :", speak: "🔊 Écouter", fav: "⭐ Favori", copy: "📋 Copier", copied: "✅ Copié !", lblTagsTitle: "# Tags :", btnCopyTags: "📋 Copier Tags", lblHistory: "📜 Historique :", lblFavorites: "⭐ Favoris :", emptyFav: "Vide", lockText: "Partagez sur WhatsApp pour déverrouiller :", shareBtn: "📢 Partager & Déverrouiller", alertIdea: "Écrivez une idée !", alertHook: "Entrez un hook !", favAdded: "⭐ Ajouté !", tagsCopied: "Tags copiés !", copiedText: "Copié !", unlockedMsg: "Déverrouillé !" },
+            es: { title: "ViralPulse Pro", badge: "v12.2 PRO", h1: "Hackea el Algoritmo 🚀", sub: "Soporte multilingüe e IA.", genTab: "⚡ Generador", anaTab: "🎯 Analizador", lblPlatform: "Plataforma", lblTone: "Tono", lblStyle: "Estructura", lblIdea: "¿Tu idea?", placeholderIdea: "ej: E-commerce...", btnRandom: "💡 Idea Aleatoria", genBtn: "Ejecutar ⚡", lblCustomHook: "Prueba tu gancho", placeholderHook: "Pega tu gancho aquí...", anaBtn: "Analizar 🎯", scoreLabel: "🔥 Puntuación:", outputLabel: "Gancho:", speak: "🔊 Escuchar", fav: "⭐ Favorito", copy: "📋 Copiar", copied: "✅ ¡Copiado!", lblTagsTitle: "# Etiquetas:", btnCopyTags: "📋 Copiar", lblHistory: "📜 Historial:", lblFavorites: "⭐ Favoritos:", emptyFav: "Vacío", lockText: "Comparte en WhatsApp para desbloquear:", shareBtn: "📢 Compartir y Desbloquear", alertIdea: "¡Escribe una idea!", alertHook: "¡Ingresa un gancho!", favAdded: "⭐ ¡Añadido!", tagsCopied: "¡Copiado!", copiedText: "¡Copiado!", unlockedMsg: "¡Desbloqueado!" },
+            ru: { title: "ViralPulse Pro", badge: "v12.2 PRO", h1: "Взломай Алгоритм 🚀", sub: "Многоязычная поддержка и ИИ.", genTab: "⚡ Генератор", anaTab: "🎯 Тест", lblPlatform: "Платформа", lblTone: "Тон", lblStyle: "Структура", lblIdea: "Ваша идея?", placeholderIdea: "например, E-commerce...", btnRandom: "💡 Случайная идея", genBtn: "Запустить ⚡", lblCustomHook: "Проверить хук", placeholderHook: "Вставьте хук сюда...", anaBtn: "Анализ 🎯", scoreLabel: "🔥 Оценка:", outputLabel: "Хук:", speak: "🔊 Слушать", fav: "⭐ Избранное", copy: "📋 Копировать", copied: "✅ Скопировано!", lblTagsTitle: "# Теги:", btnCopyTags: "📋 Копировать теги", lblHistory: "📜 История:", lblFavorites: "⭐ Избранное:", emptyFav: "Пусто", lockText: "Поделитесь в WhatsApp для разблокировки:", shareBtn: "📢 Поделиться и разблокировать", alertIdea: "Введите идею!", alertHook: "Введите хук!", favAdded: "⭐ Добавлено!", tagsCopied: "Теги скопированы!", copiedText: "Скопировано!", unlockedMsg: "Разблокировано!" }
+        };
+
+        const sampleIdeas = {
+            tr: ["Sıfırdan e-ticaret", "Yapay zeka parası", "Erken kalkma rutini", "Sosyal medya büyümesi", "Evde spor"],
+            en: ["Starting e-commerce", "AI money printing", "Morning routine", "Social media growth", "Home workouts"],
+            de: ["E-Commerce starten", "Geld mit KI", "Morgenroutine", "Social Media Wachstum", "Heimtraining"],
+            az: ["E-kommersiyaya başlamaq", "Süni intellektlə pul", "Erkən oyanmaq", "Sosial media böyüməsi", "Evdə məşq"],
+            fr: ["E-commerce", "Argent avec l'IA", "Routine matinale", "Croissance réseaux"],
+            es: ["E-commerce", "Dinero con IA", "Rutina matutina", "Crecimiento en redes"],
+            ru: ["Электронная коммерция", "Деньги с ИИ", "Утренняя рутина", "Рост в соцсетях"]
+        };
+
+        function changeLanguage() {
+            currentLang = document.getElementById('langSelect').value;
+            const t = translations[currentLang] || translations['en'];
+            
+            document.getElementById('pageTitle').innerText = t.title;
+            document.getElementById('badgeColor').innerText = t.badge;
+            document.getElementById('mainTitle').innerText = t.h1;
+            document.getElementById('mainSubtitle').innerText = t.sub;
+            document.getElementById('genTabBtn').innerText = t.genTab;
+            document.getElementById('analyzerTabBtn').innerText = t.anaTab;
+            document.getElementById('lblPlatform').innerText = t.lblPlatform;
+            document.getElementById('lblTone').innerText = t.lblTone;
+            document.getElementById('lblStyle').innerText = t.lblStyle;
+            document.getElementById('lblIdea').innerText = t.lblIdea;
+            document.getElementById('ideaInput').placeholder = t.placeholderIdea;
+            document.getElementById('btnRandom').innerText = t.btnRandom;
+            document.getElementById('generateBtn').innerText = t.genBtn;
+            document.getElementById('lblCustomHook').innerText = t.lblCustomHook;
+            document.getElementById('customHookInput').placeholder = t.placeholderHook;
+            document.getElementById('analyzeBtn').innerText = t.anaBtn;
+            document.getElementById('scoreLabelText').innerText = t.scoreLabel;
+            document.getElementById('outputLabel').innerText = t.outputLabel;
+            document.getElementById('speakBtn').innerText = t.speak;
+            document.getElementById('favBtn').innerText = t.fav;
+            document.getElementById('copyBtn').innerText = t.copy;
+            document.getElementById('lblTagsTitle').innerText = t.lblTagsTitle;
+            document.getElementById('btnCopyTags').innerText = t.btnCopyTags;
+            document.getElementById('lblHistory').innerText = t.lblHistory;
+            document.getElementById('lblFavorites').innerText = t.lblFavorites;
+            document.getElementById('shareBtn').innerHTML = t.shareBtn;
+            
+            if(!isUnlocked) {
+                document.getElementById('lockText').innerText = t.lockText;
+            }
+            renderFavorites();
+        }
+
+        function fillRandomIdea() {
+            const list = sampleIdeas[currentLang] || sampleIdeas['en'];
+            document.getElementById('ideaInput').value = list[Math.floor(Math.random() * list.length)];
+        }
+
+        window.onload = function() {
+            renderFavorites();
+            checkLockStatus();
+        };
+
+        function checkLockStatus() {
+            const lockSection = document.getElementById('lockSection');
+            if(isUnlocked) {
+                lockSection.classList.add('hidden');
+            } else {
+                lockSection.classList.remove('hidden');
+            }
+        }
+
+        function switchTab(tab) {
+            const genSec = document.getElementById('generatorSection');
+            const anaSec = document.getElementById('analyzerSection');
+            const genBtn = document.getElementById('genTabBtn');
+            const anaBtn = document.getElementById('analyzerTabBtn');
+
+            if(tab === 'generator') {
+                genSec.classList.remove('hidden');
+                anaSec.classList.add('hidden');
+                genBtn.className = "py-2.5 text-xs font-bold rounded-xl bg-red-600 text-white transition-all shadow-md";
+                anaBtn.className = "py-2.5 text-xs font-semibold rounded-xl text-zinc-400 hover:text-white transition-all";
+            } else {
+                genSec.classList.add('hidden');
+                anaSec.classList.remove('hidden');
+                anaBtn.className = "py-2.5 text-xs font-bold rounded-xl bg-blue-600 text-white transition-all shadow-md";
+                genBtn.className = "py-2.5 text-xs font-semibold rounded-xl text-zinc-400 hover:text-white transition-all";
+            }
+        }
+
+        function setTheme(theme) {
+            const body = document.getElementById('bodyBg');
+            const btn = document.getElementById('generateBtn');
+            const anaBtn = document.getElementById('analyzeBtn');
+            const badge = document.getElementById('badgeColor');
+
+            if(theme === 'purple') {
+                body.className = "bg-[#0b0414] text-zinc-100 min-h-screen flex flex-col items-center justify-center p-4 transition-all duration-500 font-sans";
+                btn.className = "w-full bg-purple-600 hover:bg-purple-500 font-bold py-3.5 rounded-2xl transition-all shadow-lg text-xs tracking-wider uppercase text-white cursor-pointer";
+                anaBtn.className = "w-full bg-purple-600 hover:bg-purple-500 font-bold py-3.5 rounded-2xl transition-all shadow-lg text-xs tracking-wider uppercase text-white cursor-pointer";
+                badge.className = "bg-purple-500/10 text-purple-400 text-[11px] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider border border-purple-500/20";
+            } else if(theme === 'emerald') {
+                body.className = "bg-[#02140c] text-zinc-100 min-h-screen flex flex-col items-center justify-center p-4 transition-all duration-500 font-sans";
+                btn.className = "w-full bg-emerald-600 hover:bg-emerald-500 font-bold py-3.5 rounded-2xl transition-all shadow-lg text-xs tracking-wider uppercase text-white cursor-pointer";
+                anaBtn.className = "w-full bg-emerald-600 hover:bg-emerald-500 font-bold py-3.5 rounded-2xl transition-all shadow-lg text-xs tracking-wider uppercase text-white cursor-pointer";
+                badge.className = "bg-emerald-500/10 text-emerald-400 text-[11px] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider border border-emerald-500/20";
+            } else {
+                body.className = "bg-zinc-950 text-zinc-100 min-h-screen flex flex-col items-center justify-center p-4 transition-all duration-500 font-sans";
+                btn.className = "w-full bg-red-600 hover:bg-red-500 font-bold py-3.5 rounded-2xl transition-all shadow-lg text-xs tracking-wider uppercase text-white cursor-pointer";
+                anaBtn.className = "w-full bg-blue-600 hover:bg-blue-500 font-bold py-3.5 rounded-2xl transition-all shadow-lg text-xs tracking-wider uppercase text-white cursor-pointer";
+                badge.className = "bg-red-500/10 text-red-500 text-[11px] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider border border-red-500/20";
+            }
+        }
+
+        const matrixData = {
+            tr: {
+                openings: [
+                    "Bunu kimseye söylemem gerekiyordu ama {idea} konusundaki bu gizli detay",
+                    "Gece yarısı fark ettiğim o kritik ayrıntı: {idea} gerçeğini",
+                    "Sektördeki herkesin gizlemeye çalıştığı {idea} olayı nihayet",
+                    "Bilmen gereken ama bizden saklanan {idea} sırrı aslında"
+                ],
+                actions: ["kökten değiştirerek", "beklenmedik sonuçlar doğurarak", "tüm bilinenleri alt üst ederek"],
+                closings: ["bugünden itibaren her şeyi farklı görmenizi sağlayacak.", "ilk günden sonuç almanızı garantiliyor."]
+            },
+            en: {
+                openings: [
+                    "I wasn't supposed to share this, but this secret detail about {idea}",
+                    "The tiny detail I noticed at midnight regarding {idea}",
+                    "The {idea} truth that everyone in the industry tries to hide"
+                ],
+                actions: ["completely shattering standard rules", "turning traditional plans upside down"],
+                closings: ["will make you see everything differently from today.", "guarantees results right from day one."]
+            }
+        };
+
+        function generateUltimateHook() {
+            const idea = document.getElementById('ideaInput').value.trim();
+            const platform = document.getElementById('platformSelect').value;
+            const t = translations[currentLang] || translations['en'];
+
+            if(!idea) {
+                alert(t.alertIdea);
+                return;
+            }
+
+            const resultArea = document.getElementById('resultArea');
+            const hookOutput = document.getElementById('hookOutput');
+            const viralScoreText = document.getElementById('viralScoreText');
+            const tagSection = document.getElementById('tagSection');
+            const tagOutput = document.getElementById('tagOutput');
+            const proReportBox = document.getElementById('proReportBox');
+
+            resultArea.classList.remove('hidden');
+            proReportBox.classList.add('hidden');
+
+            const langObj = matrixData[currentLang] || matrixData['en'];
+            const randomOpen = langObj.openings[Math.floor(Math.random() * langObj.openings.length)];
+            const randomAction = langObj.actions[Math.floor(Math.random() * langObj.actions.length)];
+            const randomClose = langObj.closings[Math.floor(Math.random() * langObj.closings.length)];
+
+            const finalHook = `${randomOpen} ${randomAction} ${randomClose}`.replace(/{idea}/g, `"${idea}"`);
+            
+            hookOutput.value = finalHook;
+            updateCharCount(finalHook);
+
+            const cleanWord = idea.replace(/[^a-zA-Z0-9]/g, "");
+            currentTagsText = `#${cleanWord} #${platform} #viral #foryou #trending`;
+            tagOutput.innerText = currentTagsText;
+            tagSection.classList.remove('hidden');
+
+            viralScoreText.innerText = `%${Math.floor(Math.random() * 6) + 94} Viral Güç 🔥`;
+            addToHistory(finalHook);
+        }
+
+        function analyzeCustomHook() {
+            const customHook = document.getElementById('customHookInput').value.trim();
+            const t = translations[currentLang] || translations['en'];
+
+            if(!customHook) {
+                alert(t.alertHook);
+                return;
+            }
+
+            const resultArea = document.getElementById('resultArea');
+            const hookOutput = document.getElementById('hookOutput');
+            const viralScoreText = document.getElementById('viralScoreText');
+            const tagSection = document.getElementById('tagSection');
+            const proReportBox = document.getElementById('proReportBox');
+
+            resultArea.classList.remove('hidden');
+            hookOutput.value = customHook;
+            updateCharCount(customHook);
+            tagSection.classList.add('hidden');
+
+            let score = 91;
+            let report = "💡 **AI Psikoloji Raporu:** Metin güçlü bir merak kancası (`curiosity gap`) barındırıyor.";
+            
+            if(customHook.length < 20) {
+                score = 68;
+                report = "⚠️ **AI Uyarı:** Kanca çok kısa. İzleyicide dopamin etkisi yaratmak için biraz daha gizem ekleyin.";
+            }
+
+            viralScoreText.innerText = `%${score} Dopamin Skoru 🎯`;
+            proReportBox.innerHTML = report;
+            proReportBox.classList.remove('hidden');
+
+            addToHistory(customHook);
+        }
+
+        function updateCharCount(text) {
+            const charText = currentLang === 'tr' ? 'karakter' : currentLang === 'de' ? 'Zeichen' : 'chars';
+            document.getElementById('charCount').innerText = `${text.length} ${charText}`;
+        }
+
+        function addToHistory(text) {
+            if(!historyArray.includes(text)) {
+                historyArray.unshift(text);
+                if(historyArray.length > 5) historyArray.pop();
+            }
+            updateHistoryUI();
+        }
+
+        function updateHistoryUI() {
+            const historyList = document.getElementById('historyList');
+            if(historyArray.length > 0) {
+                historyList.innerHTML = historyArray.map(item => `
+                    <div class="bg-zinc-950 border border-zinc-800 rounded-xl p-2 text-[10px] text-zinc-300 flex justify-between items-center gap-2">
+                        <span class="truncate">${item}</span>
+                        <button onclick="copySpecific('${item.replace(/'/g, "\\'")}')" class="text-red-400 hover:text-red-300 font-bold shrink-0 cursor-pointer">📋</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function saveToFavorites() {
+            const text = document.getElementById('hookOutput').value;
+            const t = translations[currentLang] || translations['en'];
+            if(!text || favoritesArray.includes(text)) return;
+            favoritesArray.unshift(text);
+            localStorage.setItem('viralFavoritesPro', JSON.stringify(favoritesArray));
+            renderFavorites();
+            alert(t.favAdded);
+        }
+
+        function renderFavorites() {
+            const favList = document.getElementById('favoritesList');
+            const t = translations[currentLang] || translations['en'];
+            if(favoritesArray.length > 0) {
+                favList.innerHTML = favoritesArray.map((item, index) => `
+                    <div class="bg-zinc-950 border border-zinc-800 rounded-xl p-2 text-[10px] text-zinc-300 flex justify-between items-center gap-2">
+                        <span class="truncate">${item}</span>
+                        <button onclick="removeFavorite(${index})" class="text-yellow-400 hover:text-yellow-300 font-bold shrink-0 cursor-pointer">❌</button>
+                    </div>
+                `).join('');
+            } else {
+                favList.innerHTML = `<span class="text-[10px] text-zinc-600">${t.emptyFav}</span>`;
+            }
+        }
+
+        function removeFavorite(index) {
+            favoritesArray.splice(index, 1);
+            localStorage.setItem('viralFavoritesPro', JSON.stringify(favoritesArray));
+            renderFavorites();
+        }
+
+        function copyCurrentHook() {
+            const text = document.getElementById('hookOutput').value;
+            const t = translations[currentLang] || translations['en'];
+            if(!text) return;
+            navigator.clipboard.writeText(text);
+            const btn = document.getElementById('copyBtn');
+            const original = btn.innerText;
+            btn.innerText = t.copied;
+            setTimeout(() => btn.innerText = original, 1500);
+        }
+
+        function copyTags() {
+            const t = translations[currentLang] || translations['en'];
+            if(!currentTagsText) return;
+            navigator.clipboard.writeText(currentTagsText);
+            alert(t.tagsCopied);
+        }
+
+        function copySpecific(text) {
+            const t = translations[currentLang] || translations['en'];
+            navigator.clipboard.writeText(text);
+            alert(t.copiedText);
+        }
+
+        function speakCurrentHook() {
+            const text = document.getElementById('hookOutput').value;
+            if(!text) return;
+            
+            if (!('speechSynthesis' in window)) {
+                alert("Tarayıcınız ses sentezini desteklemiyor.");
+                return;
+            }
+
+            window.speechSynthesis.cancel();
+
+            setTimeout(() => {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 1.0;
+                utterance.pitch = 1.0;
+                
+                const langMap = { tr: 'tr-TR', en: 'en-US', de: 'de-DE', fr: 'fr-FR', es: 'es-ES', ru: 'ru-RU', az: 'az-AZ' };
+                utterance.lang = langMap[currentLang] || 'tr-TR';
+
+                window.speechSynthesis.speak(utterance);
+            }, 50);
+        }
+
+        function handleRealWhatsAppShare() {
+            const t = translations[currentLang] || translations['en'];
+            const shareText = encodeURIComponent("🚀 ViralPulse Pro - Yapay Zeka Kanca Üreticisi:\n" + window.location.href);
+            
+            window.open(`https://api.whatsapp.com/send?text=${shareText}`, '_blank');
+
+            isUnlocked = true;
+            localStorage.setItem('viralPulseUnlocked', 'true');
+            checkLockStatus();
+            alert(t.unlockedMsg);
+        }
+    </script>
+</body>
+</html>
