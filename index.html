@@ -39,7 +39,7 @@
             
             <div class="flex items-center space-x-3">
                 <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-400 rounded-full animate-ping"></span> Saf Çeviri Modu Aktif
+                    <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-400 rounded-full animate-ping"></span> Saf Dil Modu Aktif
                 </span>
                 <button onclick="toggleTheme()" class="p-2 rounded-lg border border-borderCol bg-darkBg text-slate-300 hover:text-white transition cursor-pointer">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
@@ -166,13 +166,20 @@
             document.getElementById('status-footer').innerText = `Active Category: ${cat.toUpperCase()}`;
         }
 
-        // Tamamen o dile özel saf kalıp havuzu (Parantez karmaşası yok)
-        const pureTemplates = {
+        // Tamamen o dile özel saf kelime çevirileri ve kalıplar (Parantez yok, saf dil)
+        const exactTranslations = {
             en: {
+                topics: {
+                    "yapay zeka ile içerik üretimi": "AI Content Creation",
+                    "dijital pazarlama": "Digital Marketing",
+                    "sosyal medya": "Social Media",
+                    "e-ticaret": "E-Commerce",
+                    "yazılım geliştirme": "Software Development"
+                },
                 loading: "Generating hooks in English...",
                 header: "✨ [AI VIRAL HOOK & SCRIPT INTELLIGENCE REPORT]",
-                topic: "Target Topic",
-                strategy: "Psychology Strategy",
+                topicLabel: "Target Topic",
+                strategyLabel: "Psychology Strategy",
                 h1: "Hook 1 (0-3 Sec Critical)",
                 t1: (topic) => `"Most creators fail at ${topic} because they completely ignore this hidden rule..."`,
                 h2: "Hook 2 (Visual Pattern Interrupt)",
@@ -183,10 +190,17 @@
                 status: "Optimized for global reach."
             },
             de: {
+                topics: {
+                    "yapay zeka ile içerik üretimi": "KI-Inhaltserstellung",
+                    "dijital pazarlama": "Digitales Marketing",
+                    "sosyal medya": "Social Media",
+                    "e-ticaret": "E-Commerce",
+                    "yazılım geliştirme": "Softwareentwicklung"
+                },
                 loading: "Generiere Hooks auf Deutsch...",
                 header: "✨ [KI VIRALE HOOK & SKRIPT INTELLIGENZBERICHT]",
-                topic: "Zielthema",
-                strategy: "Psychologische Strategie",
+                topicLabel: "Zielthema",
+                strategyLabel: "Psychologische Strategie",
                 h1: "Hook 1 (0-3 Sek. Kritisch)",
                 t1: (topic) => `"Die Meisten scheitern bei ${topic}, weil sie diese eine goldene Regel ignorieren..."`,
                 h2: "Hook 2 (Visueller Aufmerksamkeitsfaktor)",
@@ -197,10 +211,17 @@
                 status: "Optimiert für den Algorithmus."
             },
             es: {
+                topics: {
+                    "yapay zeka ile içerik üretimi": "Creación de Contenido con IA",
+                    "dijital pazarlama": "Marketing Digital",
+                    "sosyal medya": "Redes Sociales",
+                    "e-ticaret": "Comercio Electrónico",
+                    "yazılım geliştirme": "Desarrollo de Software"
+                },
                 loading: "Generando ganchos en español...",
                 header: "✨ [INFORME DE INTELIGENCIA DE GANCHOS VIRALES DE IA]",
-                topic: "Tema Objetivo",
-                strategy: "Estrategia Psicológica",
+                topicLabel: "Tema Objetivo",
+                strategyLabel: "Estrategia Psicológica",
                 h1: "Gancho 1 (0-3 Segundos Crítico)",
                 t1: (topic) => `"La mayoría fracasa en ${topic} porque ignoran por completo esta regla oculta..."`,
                 h2: "Gancho 2 (Interrupción Visual)",
@@ -211,10 +232,11 @@
                 status: "Optimizado para el algoritmo."
             },
             tr: {
+                topics: {},
                 loading: "Türkçe kancalar üretiliyor...",
                 header: "✨ [YAPAY ZEKA VİRAL KANCA VE SENARYO RAPORU]",
-                topic: "Hedef Konu",
-                strategy: "Psikolojik Strateji",
+                topicLabel: "Hedef Konu",
+                strategyLabel: "Psikolojik Strateji",
                 h1: "Kanca 1 (0-3 Saniye Kritik)",
                 t1: (topic) => `"Çoğu insan ${topic} konusunda tam olarak bu hatayı yaptığı için ömrünü harcıyor..."`,
                 h2: "Kanca 2 (Görsel Tetikçi)",
@@ -227,30 +249,41 @@
         };
 
         function runAIEngine() {
-            const topic = document.getElementById('topicInput').value.trim() || "Content Creation";
+            const rawTopic = document.getElementById('topicInput').value.trim() || "Yapay Zeka ile İçerik Üretimi";
             const psych = document.getElementById('psychologySelect').value;
             const lang = document.getElementById('langSelect').value;
-            const t = pureTemplates[lang] || pureTemplates.tr;
+            const pack = exactTranslations[lang] || exactTranslations.tr;
+
+            // Konuyu seçilen dile göre tam çevir (Eğer sözlükte varsa, yoksa orijinali veya düzgün çeviriyi al)
+            let localizedTopic = rawTopic;
+            const lowerRaw = rawTopic.toLowerCase();
+            if (pack.topics && pack.topics[lowerRaw]) {
+                localizedTopic = pack.topics[lowerRaw];
+            } else if (lang !== 'tr' && rawTopic === "Yapay Zeka ile İçerik Üretimi") {
+                if (lang === 'en') localizedTopic = "AI Content Creation";
+                if (lang === 'de') localizedTopic = "KI-Inhaltserstellung";
+                if (lang === 'es') localizedTopic = "Creación de Contenido con IA";
+            }
 
             const outputArea = document.getElementById('outputArea');
-            outputArea.innerText = `[AI_PROCESSING]: ${t.loading}`;
+            outputArea.innerText = pack.loading;
 
             setTimeout(() => {
-                const finalReport = `${t.header}
+                const finalReport = `${pack.header}
 --------------------------------------------------
-> ${t.topic}: ${topic}
-> ${t.strategy}: ${psych.toUpperCase()}
+> ${pack.topicLabel}: ${localizedTopic}
+> ${pack.strategyLabel}: ${psych.toUpperCase()}
 
-- ${t.h1}: ${t.t1(topic)}
-- ${t.h2}: ${t.t2(topic)}
-- ${t.h3}: ${t.t3(topic)}
+- ${pack.h1}: ${pack.t1(localizedTopic)}
+- ${pack.h2}: ${pack.t2(localizedTopic)}
+- ${pack.h3}: ${pack.t3(localizedTopic)}
 
-📊 [METRICS]: ${t.metrics}
-🛡️ [STATUS]: ${t.status}`;
+📊 [METRICS]: ${pack.metrics}
+🛡️ [STATUS]: ${pack.status}`;
 
                 outputArea.innerText = finalReport;
                 document.getElementById('status-footer').innerText = `Status: Success (${lang.toUpperCase()})`;
-            }, 500);
+            }, 400);
         }
 
         function copyOutput() {
