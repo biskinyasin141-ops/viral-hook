@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr" class="dark">
 <head>
@@ -30,13 +29,13 @@
     <!-- TOP SYSTEM STATUS BAR -->
     <div class="bg-cardBg border-b border-borderCol text-[10px] font-mono py-1.5 px-4 text-slate-400 flex justify-between items-center overflow-x-auto whitespace-nowrap">
         <div class="flex items-center space-x-4">
-            <span class="flex items-center text-emerald-400"><span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-ping"></span>NEURAL CLUSTER: ACTIVE</span>
-            <span>LATENCY: <strong class="text-slate-200">8ms</strong></span>
-            <span>THROUGHPUT: <strong class="text-cyan-400">4.8 GB/s</strong></span>
+            <span class="flex items-center text-emerald-400"><span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-ping"></span>NEURAL CLUSTER: LIVE API ACTIVE</span>
+            <span>LATENCY: <strong class="text-slate-200">140ms</strong></span>
+            <span>MODEL: <strong class="text-cyan-400">GPT-4o-Mini</strong></span>
         </div>
         <div class="flex items-center space-x-4">
             <span>SECURE ENCLAVE: SHA-256</span>
-            <span class="text-cyan-400 font-bold">VIRAL ENGINE v2.6</span>
+            <span class="text-cyan-400 font-bold">VIRAL ENGINE v2.6 LIVE</span>
         </div>
     </div>
 
@@ -49,12 +48,12 @@
                 </div>
                 <div>
                     <h1 class="text-sm font-black tracking-wider bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent uppercase">Viral Hook AI Core</h1>
-                    <span class="block text-[10px] text-slate-400 tracking-widest font-mono">Autonomous Content Neural Network</span>
+                    <span class="block text-[10px] text-slate-400 tracking-widest font-mono">Autonomous Live Neural Network</span>
                 </div>
             </div>
             <div class="flex items-center space-x-3">
-                <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">
-                    <span class="w-1.5 h-1.5 mr-1.5 bg-cyan-400 rounded-full animate-pulse"></span> MULTI-LANG SYNCED
+                <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
+                    <span class="w-1.5 h-1.5 mr-1.5 bg-emerald-400 rounded-full animate-pulse"></span> LIVE API SYNCED
                 </span>
                 <button onclick="toggleTheme()" class="p-2 rounded-xl border border-borderCol bg-panelBg text-slate-300 hover:text-white transition cursor-pointer">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
@@ -93,6 +92,11 @@
                 
                 <div class="space-y-4 font-mono">
                     <div>
+                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">OPENAI API ANAHTARI (API KEY)</label>
+                        <input type="password" id="apiKeyInput" placeholder="sk-..." class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition shadow-inner">
+                    </div>
+
+                    <div>
                         <label class="block text-[10px] font-semibold text-slate-400 mb-1">NİŞ / HEDEF KİTLE KONUSU</label>
                         <input type="text" id="nicheInput" value="Yapay Zeka ile Otomasyon ve Para Kazanma" class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition shadow-inner">
                     </div>
@@ -126,9 +130,9 @@
                         </select>
                     </div>
 
-                    <button onclick="generateViralHooks()" class="w-full bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:opacity-95 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-cyan-600/30 transition transform active:scale-95 flex items-center justify-center space-x-2 cursor-pointer text-xs font-mono uppercase tracking-wider">
+                    <button onclick="generateViralHooksLive()" class="w-full bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:opacity-95 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-cyan-600/30 transition transform active:scale-95 flex items-center justify-center space-x-2 cursor-pointer text-xs font-mono uppercase tracking-wider">
                         <i class="fa-solid fa-wand-magic-sparkles text-sm animate-bounce"></i>
-                        <span>Neural Kancaları Üret</span>
+                        <span>Canlı Yapay Zeka ile Üret</span>
                     </button>
                 </div>
             </div>
@@ -172,8 +176,8 @@
                     
                     <!-- CONSOLE TERMINAL OUTPUT -->
                     <div id="outputArea" class="bg-cyberBg border border-borderCol rounded-xl p-5 text-xs text-cyan-300/90 leading-relaxed min-h-[420px] whitespace-pre-wrap font-mono shadow-inner overflow-y-auto">
-[SYSTEM_READY]: Viral Hook Neural Engine v2.6 devrede.
-[STATUS]: Sol paneldeki dilde seçim yaparak kancaları oluşturabilirsiniz.
+[SYSTEM_READY]: Viral Hook Neural Engine v2.6 (LIVE API MODE) hazır.
+[STATUS]: OpenAI API anahtarını girerek gerçek zamanlı yapay zeka içerik üretimi başlatabilirsin.
                     </div>
 
                     <!-- ANALYTICS PROGRESS -->
@@ -191,7 +195,7 @@
                 <!-- FOOTER STATUS -->
                 <div class="mt-4 pt-3 border-t border-borderCol flex justify-between items-center text-[10px] text-slate-500 font-mono">
                     <span id="status-footer">Durum: Hazır (Idle)</span>
-                    <span class="text-cyan-400 font-semibold">Autonomous Viral Architecture Verified</span>
+                    <span class="text-cyan-400 font-semibold">Autonomous Live API Connected</span>
                 </div>
             </div>
         </div>
@@ -210,44 +214,8 @@
             btn.className = "mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30 font-mono";
         }
 
-        // ÇOK DİLLİ SÖZLÜK YAPISI (DICTIONARY MAPPING)
-        const dict = {
-            tr: {
-                header: "VİRAL KANCA MATRİSİ",
-                hookTitle: "0-3 SANİYE KRİTİK KANCA (HOOK 1)",
-                hookText: `Çoğu insan "${nichePlaceholder}" konusundaki bu ölümcül hatayı yaptığı için asla büyüyemiyor... Ve muhtemelen sen de yapıyorsun.`,
-                anchorTitle: "ORTA KESİT (RETENTION ANCHOR)",
-                anchorText: "Bunu sadece 7 gün boyunca test ettik ve izlenme oranlarımız anında tavan yaptı.",
-                ctaTitle: "KAPANIŞ & ÇAĞRI (CTA)",
-                ctaText: "Bu stratejiyi kaçırmamak için kaydet ve profildeki sabitlenmiş videoyu hemen incele.",
-                metrics: "ALGORİTMA METRİKLERİ",
-                success: "Kancalar Türkçe olarak başarıyla oluşturuldu."
-            },
-            en: {
-                header: "VIRAL HOOK MATRIX",
-                hookTitle: "0-3 SEC CRITICAL HOOK (HOOK 1)",
-                hookText: `Why 99% of people fail to scale "${nichePlaceholder}" because they miss this exact detail...`,
-                anchorTitle: "RETENTION ANCHOR",
-                anchorText: "We tested this for 7 days and our engagement metrics went straight through the roof.",
-                ctaTitle: "CALL TO ACTION",
-                ctaText: "Save this video right now before you lose this blueprint.",
-                metrics: "ALGORITHM METRICS",
-                success: "Hooks successfully generated in English."
-            },
-            de: {
-                header: "VIRALE HOOK MATRIX",
-                hookTitle: "0-3 SEKUNDEN KRITISCHE HOOK (HOOK 1)",
-                hookText: `Die meisten Menschen scheitern bei "${nichePlaceholder}", weil sie diesen fatalen Fehler übersehen...`,
-                anchorTitle: "RETENTION ANKER",
-                anchorText: "Wir haben dies 7 Tage lang getestet und unsere Reichweite ist durch die Decke gegangen.",
-                ctaTitle: "CALL TO ACTION",
-                ctaText: "Speichere dieses Video, um diese Strategie nicht zu verpassen!",
-                metrics: "METRIKEN",
-                success: "Hooks auf Deutsch erfolgreich generiert."
-            }
-        };
-
-        function generateViralHooks() {
+        async function generateViralHooksLive() {
+            const apiKey = document.getElementById('apiKeyInput').value.trim();
             const niche = document.getElementById('nicheInput').value.trim() || "Digital Growth";
             const trigger = document.getElementById('triggerSelect').value;
             const tone = document.getElementById('toneSelect').value;
@@ -258,86 +226,55 @@
             const analyticsBar = document.getElementById('analyticsBar');
             const statusFooter = document.getElementById('status-footer');
 
-            outputArea.innerText = `[NEURAL_CLUSTER]: Processing...\n[LOG]: Generating vectors in [${lang.toUpperCase()}].`;
-            clusterStatus.innerText = "Analyzing Algorithm...";
-            analyticsBar.style.width = '40%';
+            if (!apiKey) {
+                alert("Lütfen geçerli bir OpenAI API Anahtarı girin!");
+                return;
+            }
 
-            setTimeout(() => {
-                let report = "";
+            outputArea.innerText = `[NEURAL_CLUSTER]: OpenAI API'ye bağlanılıyor...\n[LOG]: '${niche}' için ${lang.toUpperCase()} dilinde canlı prompt işleniyor.`;
+            clusterStatus.innerText = "Yapay Zeka Yanıt Bekliyor...";
+            analyticsBar.style.width = '50%';
 
-                if (lang === 'tr') {
-                    report = `==================================================
-🚀 [VİRAL KANCA MATRİSİ - ${currentMode.toUpperCase()}]
-==================================================
-> Hedef Niş: ${niche}
-> Psikolojik Strateji: ${trigger.toUpperCase()} | Ses Tonu: ${tone.toUpperCase()}
-> Dil: TÜRKÇE
+            const promptText = `Sen profesyonel bir sosyal medya viral büyüme uzmanısın. Şu parametrelere göre ${currentMode.toUpperCase()} formatında etkileyici viral kancalar ve senaryo raporu hazırla:
+- Niş/Konu: ${niche}
+- Psikolojik Tetikleyici: ${trigger}
+- Ses Tonu: ${tone}
+- Çıkış Dili: ${lang} (Kesinlikle seçilen bu dilde yaz)
 
-🔥 [0-3 SANİYE KRİTİK KANCA (HOOK 1)]
-"Çoğu insan ${niche} konusundaki bu ölümcül hatayı yaptığı için asla büyüyemiyor... Ve muhtemelen sen de yapıyorsun."
+Çıktıyı profesyonel bir terminal raporu formatında, 0-3 saniye kancası, orta kesit ve CTA içerecek şekilde detaylı ver.</`;
 
-⚡ [ORTA KESİT (RETENTION ANCHOR)]
-"Bunu sadece 7 gün boyunca test ettik ve izlenme oranlarımız anında tavan yaptı."
+            try {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-4o-mini',
+                        messages: [{ role: 'user', content: promptText }],
+                        temperature: 0.7
+                    })
+                });
 
-🎯 [KAPANIŞ & ÇAĞRI (CTA)]
-"Bu stratejiyi kaçırmamak için kaydet ve profildeki sabitlenmiş videoyu hemen incele."
+                const data = await response.json();
 
-📊 [ALGORİTMA METRİKLERİ]:
-- Retention Index: %99.4 (Ultra-High)
-- Estimated Viral Reach: 500K+ Impressions
-==================================================
-[SUCCESS]: Kancalar Türkçe olarak oluşturuldu.`;
-                } else if (lang === 'de') {
-                    report = `==================================================
-🚀 [VIRALE HOOK MATRIX - ${currentMode.toUpperCase()}]
-==================================================
-> Ziel Nische: ${niche}
-> Strategie: ${trigger.toUpperCase()} | Ton: ${tone.toUpperCase()}
-> Sprache: DEUTSCH
-
-🔥 [0-3 SEKUNDEN KRITISCHE HOOK (HOOK 1)]
-"Die meisten Menschen scheitern bei ${niche}, weil sie diesen fatalen Fehler übersehen..."
-
-⚡ [RETENTION ANKER]
-"Wir haben dies 7 Tage lang getestet und unsere Reichweite ist durch die Decke gegangen."
-
-🎯 [CALL TO ACTION]
-"Speichere dieses Video, um diese Strategie nicht zu verpassen!"
-
-📊 [METRIKEN]:
-- Retention Index: 99.4%
-- Geschätzte Reichweite: 500K+
-==================================================
-[SUCCESS]: Hooks auf Deutsch generiert.`;
-                } else {
-                    report = `==================================================
-🚀 [VIRAL HOOK MATRIX - ${currentMode.toUpperCase()}]
-==================================================
-> Target Niche: ${niche}
-> Psychology: ${trigger.toUpperCase()} | Tone: ${tone.toUpperCase()}
-> Language: ENGLISH
-
-🔥 [0-3 SEC CRITICAL HOOK (HOOK 1)]
-"Why 99% of people fail to scale ${niche} because they miss this exact detail..."
-
-⚡ [RETENTION ANCHOR]
-"We tested this for 7 days and our engagement metrics went straight through the roof."
-
-🎯 [CALL TO ACTION]
-"Save this video right now before you lose this blueprint."
-
-📊 [ALGORITHM METRICS]:
-- Retention Index: 99.4% (Ultra-High)
-- Estimated Viral Reach: 500K+ Impressions
-==================================================
-[SUCCESS]: Hooks successfully generated in English.`;
+                if (data.error) {
+                    throw new Error(data.error.message);
                 }
 
-                outputArea.innerText = report;
-                statusFooter.innerText = `Durum: Başarılı (${lang.toUpperCase()})`;
-                clusterStatus.innerText = "Tamamlandı (8ms, 0 Hata)";
+                const resultText = data.choices[0].message.content;
+                outputArea.innerText = resultText;
+                statusFooter.innerText = `Durum: Başarılı (LIVE API - ${lang.toUpperCase()})`;
+                clusterStatus.innerText = "Tamamlandı (Canlı Yapay Zeka)";
                 analyticsBar.style.width = '100%';
-            }, 400);
+
+            } catch (error) {
+                outputArea.innerText = `[HATA]: Yapay zeka isteği başarısız oldu.\n[DETAY]: ${error.message}`;
+                clusterStatus.innerText = "Bağlantı Hatası";
+                analyticsBar.style.width = '0%';
+                statusFooter.innerText = "Durum: Hata Oluştu";
+            }
         }
 
         function saveToMemory() {
@@ -400,7 +337,7 @@
         }
 
         function toggleTheme() {
-            document.documentElement.classList.toggle('dark');
+            document.documentElement.classList.classList?.toggle('dark') || document.documentElement.classList.toggle('dark');
         }
     </script>
 </body>
