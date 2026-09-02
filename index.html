@@ -180,17 +180,30 @@
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 btn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-darkBg border border-borderCol text-slate-300 hover:text-white transition flex items-center space-x-2 cursor-pointer";
             });
-            event.currentTarget.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-md shadow-cyan-600/30";
+            const activeBtn = document.getElementById('btn-' + cat);
+            if(activeBtn) {
+                activeBtn.className = "cat-btn px-4 py-2 text-xs font-medium rounded-lg bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-md shadow-cyan-600/30";
+            }
         }
 
         function runEnterpriseCopilot() {
-            const topic = document.getElementById('topicInput').value.trim() || "Yapay Zeka";
-            const psych = document.getElementById('psychologySelect').value;
-            const tone = document.getElementById('toneSelect').value;
-            const lang = document.getElementById('langSelect').value;
+            const topicInputElem = document.getElementById('topicInput');
+            const psychElem = document.getElementById('psychologySelect');
+            const toneElem = document.getElementById('toneSelect');
+            const langElem = document.getElementById('langSelect');
+            
+            const topic = topicInputElem ? topicInputElem.value.trim() : "Yapay Zeka";
+            const psych = psychElem ? psychElem.value : "curiosity";
+            const tone = toneElem ? toneElem.value : "professional";
+            const lang = langElem ? langElem.value : "tr";
 
-            document.getElementById('outputArea').innerText = "[AGENT_EXECUTING]: Python simülasyon motoru ve ajan zinciri çalıştırılıyor...";
-            document.getElementById('sandboxStatus').innerText = "Hesaplanıyor...";
+            const outputArea = document.getElementById('outputArea');
+            const sandboxStatus = document.getElementById('sandboxStatus');
+            const analyticsBar = document.getElementById('analyticsBar');
+            const statusFooter = document.getElementById('status-footer');
+
+            if (outputArea) outputArea.innerText = "[AGENT_EXECUTING]: Python simülasyon motoru ve ajan zinciri çalıştırılıyor...";
+            if (sandboxStatus) sandboxStatus.innerText = "Hesaplanıyor...";
 
             setTimeout(() => {
                 let h1 = `"Çoğu profesyonel ${topic} alanında bu ${tone} detayı gözden kaçırdığı için büyüemiyor..."`;
@@ -210,17 +223,24 @@
 📈 [PYTHON_SANDBOX_METRICS]: Retention Rate: %99.4 | Risk Index: 0.01
 🛡️ [COPILOT_STATUS]: Fully Optimized for Enterprise Expansion.`;
 
-                document.getElementById('outputArea').innerText = enterpriseReport;
-                document.getElementById('status-footer').innerText = `Durum: Başarılı (${lang.toUpperCase()})`;
-                document.getElementById('sandboxStatus').innerText = "Tamamlandı (12ms)";
-                document.getElementById('analyticsBar').style.width = '98%';
-            }, 500);
+                if (outputArea) outputArea.innerText = enterpriseReport;
+                if (statusFooter) statusFooter.innerText = `Durum: Başarılı (${lang.toUpperCase()})`;
+                if (sandboxStatus) sandboxStatus.innerText = "Tamamlandı (12ms)";
+                if (analyticsBar) analyticsBar.style.width = '98%';
+            }, 300);
         }
 
         function saveToMemory() {
-            const text = document.getElementById('outputArea').innerText;
+            const outputArea = document.getElementById('outputArea');
+            if (!outputArea) return;
+            const text = outputArea.innerText;
             if (text.length < 50) return alert("Önce bir rapor üretin!");
-            copilotMemory.unshift({ title: text.split('\n')[1] || "Ajan Raporu", content: text, date: new Date().toLocaleDateString() });
+            
+            copilotMemory.unshift({ 
+                title: text.split('\n')[1] || "Ajan Raporu", 
+                content: text, 
+                date: new Date().toLocaleDateString() 
+            });
             localStorage.setItem('copilot_memory', JSON.stringify(copilotMemory));
             renderMemory();
             alert("Copilot hafızasına kaydedildi!");
@@ -228,7 +248,10 @@
 
         function renderMemory() {
             const list = document.getElementById('memoryList');
-            document.getElementById('memoryCount').innerText = copilotMemory.length;
+            const countSpan = document.getElementById('memoryCount');
+            if (!list || !countSpan) return;
+
+            countSpan.innerText = copilotMemory.length;
             if (copilotMemory.length === 0) {
                 list.innerHTML = `<div class="text-slate-600 italic">Hafıza kayıtları boş...</div>`;
                 return;
@@ -238,7 +261,10 @@
                 const div = document.createElement('div');
                 div.className = "bg-darkBg border border-borderCol p-2 rounded-lg cursor-pointer hover:border-cyan-500 transition flex justify-between items-center";
                 div.innerHTML = `<span class="truncate max-w-[180px] text-slate-300">${item.title}</span> <span class="text-[9px] text-cyan-400">${item.date}</span>`;
-                div.onclick = () => { document.getElementById('outputArea').innerText = item.content; };
+                div.onclick = () => { 
+                    const outputArea = document.getElementById('outputArea');
+                    if (outputArea) outputArea.innerText = item.content; 
+                };
                 list.appendChild(div);
             });
         }
@@ -250,12 +276,16 @@
         }
 
         function copyOutput() {
-            navigator.clipboard.writeText(document.getElementById('outputArea').innerText);
+            const outputArea = document.getElementById('outputArea');
+            if (!outputArea) return;
+            navigator.clipboard.writeText(outputArea.innerText);
             alert("Panoya kopyalandı!");
         }
 
         function downloadOutput() {
-            const blob = new Blob([document.getElementById('outputArea').innerText], { type: 'text/plain;charset=utf-8' });
+            const outputArea = document.getElementById('outputArea');
+            if (!outputArea) return;
+            const blob = new Blob([outputArea.innerText], { type: 'text/plain;charset=utf-8' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = 'enterprise-copilot-report.txt';
