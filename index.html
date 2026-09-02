@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="tr" class="dark">
 <head>
@@ -26,6 +27,7 @@
 </head>
 <body class="bg-cyberBg text-slate-100 min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-white">
 
+    <!-- TOP SYSTEM STATUS BAR -->
     <div class="bg-cardBg border-b border-borderCol text-[10px] font-mono py-1.5 px-4 text-slate-400 flex justify-between items-center overflow-x-auto whitespace-nowrap">
         <div class="flex items-center space-x-4">
             <span class="flex items-center text-emerald-400"><span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-ping"></span>NEURAL CLUSTER: ACTIVE</span>
@@ -38,6 +40,7 @@
         </div>
     </div>
 
+    <!-- MAIN HEADER -->
     <header class="border-b border-borderCol bg-cardBg/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
@@ -60,6 +63,7 @@
         </div>
     </header>
 
+    <!-- NAVIGATION TABS -->
     <nav class="bg-cardBg/50 border-b border-borderCol overflow-x-auto">
         <div class="max-w-7xl mx-auto px-4 flex space-x-2 py-3 min-w-max">
             <button onclick="switchMode(this, 'tiktok')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30 font-mono">
@@ -74,8 +78,10 @@
         </div>
     </nav>
 
+    <!-- MAIN CONTAINER -->
     <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
         
+        <!-- SOL KONTROL PANELİ -->
         <div class="lg:col-span-4 space-y-4">
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none"></div>
@@ -127,6 +133,7 @@
                 </div>
             </div>
 
+            <!-- HAFIZA PANELİ -->
             <div class="bg-cardBg border border-borderCol rounded-2xl p-4 text-xs space-y-3 shadow-xl">
                 <div class="flex items-center justify-between font-mono">
                     <h3 class="font-bold text-slate-200 flex items-center space-x-2 text-[11px]">
@@ -141,6 +148,7 @@
             </div>
         </div>
 
+        <!-- SAĞ ÇIKTI PANELİ -->
         <div class="lg:col-span-8 space-y-4">
             <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl relative min-h-[620px] flex flex-col justify-between">
                 <div>
@@ -162,11 +170,13 @@
                         </div>
                     </div>
                     
+                    <!-- CONSOLE TERMINAL OUTPUT -->
                     <div id="outputArea" class="bg-cyberBg border border-borderCol rounded-xl p-5 text-xs text-cyan-300/90 leading-relaxed min-h-[420px] whitespace-pre-wrap font-mono shadow-inner overflow-y-auto">
 [SYSTEM_READY]: Viral Hook Neural Engine v2.6 devrede.
-[STATUS]: Sol paneldeki parametreleri yapılandırıp "Neural Kancaları Üret" butonuna basarak seçtiğin dilde viral senaryoları oluşturabilirsin.
+[STATUS]: Sol paneldeki dilde seçim yaparak kancaları oluşturabilirsiniz.
                     </div>
 
+                    <!-- ANALYTICS PROGRESS -->
                     <div class="mt-4 bg-panelBg border border-borderCol rounded-xl p-4 space-y-2.5 font-mono">
                         <div class="flex justify-between text-[11px] text-slate-400">
                             <span class="flex items-center"><i class="fa-solid fa-chart-line mr-2 text-cyan-400"></i>Viral Tutunma ve Algoritma Skoru:</span>
@@ -178,6 +188,7 @@
                     </div>
                 </div>
                 
+                <!-- FOOTER STATUS -->
                 <div class="mt-4 pt-3 border-t border-borderCol flex justify-between items-center text-[10px] text-slate-500 font-mono">
                     <span id="status-footer">Durum: Hazır (Idle)</span>
                     <span class="text-cyan-400 font-semibold">Autonomous Viral Architecture Verified</span>
@@ -199,8 +210,45 @@
             btn.className = "mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30 font-mono";
         }
 
+        // ÇOK DİLLİ SÖZLÜK YAPISI (DICTIONARY MAPPING)
+        const dict = {
+            tr: {
+                header: "VİRAL KANCA MATRİSİ",
+                hookTitle: "0-3 SANİYE KRİTİK KANCA (HOOK 1)",
+                hookText: `Çoğu insan "${nichePlaceholder}" konusundaki bu ölümcül hatayı yaptığı için asla büyüyemiyor... Ve muhtemelen sen de yapıyorsun.`,
+                anchorTitle: "ORTA KESİT (RETENTION ANCHOR)",
+                anchorText: "Bunu sadece 7 gün boyunca test ettik ve izlenme oranlarımız anında tavan yaptı.",
+                ctaTitle: "KAPANIŞ & ÇAĞRI (CTA)",
+                ctaText: "Bu stratejiyi kaçırmamak için kaydet ve profildeki sabitlenmiş videoyu hemen incele.",
+                metrics: "ALGORİTMA METRİKLERİ",
+                success: "Kancalar Türkçe olarak başarıyla oluşturuldu."
+            },
+            en: {
+                header: "VIRAL HOOK MATRIX",
+                hookTitle: "0-3 SEC CRITICAL HOOK (HOOK 1)",
+                hookText: `Why 99% of people fail to scale "${nichePlaceholder}" because they miss this exact detail...`,
+                anchorTitle: "RETENTION ANCHOR",
+                anchorText: "We tested this for 7 days and our engagement metrics went straight through the roof.",
+                ctaTitle: "CALL TO ACTION",
+                ctaText: "Save this video right now before you lose this blueprint.",
+                metrics: "ALGORITHM METRICS",
+                success: "Hooks successfully generated in English."
+            },
+            de: {
+                header: "VIRALE HOOK MATRIX",
+                hookTitle: "0-3 SEKUNDEN KRITISCHE HOOK (HOOK 1)",
+                hookText: `Die meisten Menschen scheitern bei "${nichePlaceholder}", weil sie diesen fatalen Fehler übersehen...`,
+                anchorTitle: "RETENTION ANKER",
+                anchorText: "Wir haben dies 7 Tage lang getestet und unsere Reichweite ist durch die Decke gegangen.",
+                ctaTitle: "CALL TO ACTION",
+                ctaText: "Speichere dieses Video, um diese Strategie nicht zu verpassen!",
+                metrics: "METRIKEN",
+                success: "Hooks auf Deutsch erfolgreich generiert."
+            }
+        };
+
         function generateViralHooks() {
-            const niche = document.getElementById('nicheInput').value.trim() || "Dijital Büyüme";
+            const niche = document.getElementById('nicheInput').value.trim() || "Digital Growth";
             const trigger = document.getElementById('triggerSelect').value;
             const tone = document.getElementById('toneSelect').value;
             const lang = document.getElementById('langSelect').value;
@@ -210,8 +258,8 @@
             const analyticsBar = document.getElementById('analyticsBar');
             const statusFooter = document.getElementById('status-footer');
 
-            outputArea.innerText = `[NEURAL_CLUSTER]: İşlem başlatıldı...\n[LOG]: '${niche}' konusu için ${trigger.toUpperCase()} vektörleri hesaplanıyor.`;
-            clusterStatus.innerText = "Algoritma Analiz Ediliyor...";
+            outputArea.innerText = `[NEURAL_CLUSTER]: Processing...\n[LOG]: Generating vectors in [${lang.toUpperCase()}].`;
+            clusterStatus.innerText = "Analyzing Algorithm...";
             analyticsBar.style.width = '40%';
 
             setTimeout(() => {
@@ -223,7 +271,7 @@
 ==================================================
 > Hedef Niş: ${niche}
 > Psikolojik Strateji: ${trigger.toUpperCase()} | Ses Tonu: ${tone.toUpperCase()}
-> Seçilen Dil: TÜRKÇE
+> Dil: TÜRKÇE
 
 🔥 [0-3 SANİYE KRİTİK KANCA (HOOK 1)]
 "Çoğu insan ${niche} konusundaki bu ölümcül hatayı yaptığı için asla büyüyemiyor... Ve muhtemelen sen de yapıyorsun."
@@ -237,9 +285,8 @@
 📊 [ALGORİTMA METRİKLERİ]:
 - Retention Index: %99.4 (Ultra-High)
 - Estimated Viral Reach: 500K+ Impressions
-- Latency: 8ms
 ==================================================
-[SUCCESS]: Kancalar Türkçe olarak başarıyla oluşturuldu.`;
+[SUCCESS]: Kancalar Türkçe olarak oluşturuldu.`;
                 } else if (lang === 'de') {
                     report = `==================================================
 🚀 [VIRALE HOOK MATRIX - ${currentMode.toUpperCase()}]
@@ -261,7 +308,7 @@
 - Retention Index: 99.4%
 - Geschätzte Reichweite: 500K+
 ==================================================
-[SUCCESS]: Hooks auf Deutsch erfolgreich generiert.`;
+[SUCCESS]: Hooks auf Deutsch generiert.`;
                 } else {
                     report = `==================================================
 🚀 [VIRAL HOOK MATRIX - ${currentMode.toUpperCase()}]
@@ -282,7 +329,6 @@
 📊 [ALGORITHM METRICS]:
 - Retention Index: 99.4% (Ultra-High)
 - Estimated Viral Reach: 500K+ Impressions
-- Latency: 8ms
 ==================================================
 [SUCCESS]: Hooks successfully generated in English.`;
                 }
@@ -339,4 +385,23 @@
         }
 
         function copyOutput() {
-            con
+            const text = document.getElementById('outputArea').innerText;
+            navigator.clipboard.writeText(text);
+            alert("Rapor panoya kopyalandı!");
+        }
+
+        function downloadOutput() {
+            const text = document.getElementById('outputArea').innerText;
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'viral-hook-matrix.txt';
+            a.click();
+        }
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
