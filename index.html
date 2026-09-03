@@ -56,7 +56,7 @@
                 <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">
                     <span class="w-1.5 h-1.5 mr-1.5 bg-cyan-400 rounded-full animate-pulse"></span> GLOBAL DEPLOY READY
                 </span>
-                <button onclick="playBeep(); toggleTheme();" class="p-2 rounded-xl border border-borderCol bg-panelBg text-slate-300 hover:text-white transition cursor-pointer">
+                <button onclick="toggleTheme()" class="p-2 rounded-xl border border-borderCol bg-panelBg text-slate-300 hover:text-white transition cursor-pointer">
                     <i id="themeIcon" class="fa-solid fa-moon"></i>
                 </button>
             </div>
@@ -66,19 +66,19 @@
     <!-- NAVIGATION PLATFORM TABS -->
     <nav class="bg-cardBg/50 border-b border-borderCol overflow-x-auto">
         <div class="max-w-7xl mx-auto px-4 flex space-x-2 py-3 min-w-max">
-            <button onclick="playBeep(); switchMode(this, 'tiktok')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30 font-mono">
+            <button onclick="switchMode(this, 'tiktok')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30 font-mono">
                 <i class="fa-brands fa-tiktok"></i><span>01. TikTok & Reels Hook Engine</span>
             </button>
-            <button onclick="playBeep(); switchMode(this, 'youtube')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
+            <button onclick="switchMode(this, 'youtube')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
                 <i class="fa-brands fa-youtube"></i><span>02. YouTube Shorts 10X Retention</span>
             </button>
-            <button onclick="playBeep(); switchMode(this, 'twitter')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
+            <button onclick="switchMode(this, 'twitter')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
                 <i class="fa-solid fa-feather-pointed"></i><span>03. X / Twitter Viral Disruptor</span>
             </button>
-            <button onclick="playBeep(); switchMode(this, 'linkedin')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
+            <button onclick="switchMode(this, 'linkedin')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
                 <i class="fa-brands fa-linkedin"></i><span>04. LinkedIn B2B Authority</span>
             </button>
-            <button onclick="playBeep(); switchMode(this, 'analytics')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
+            <button onclick="switchMode(this, 'analytics')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
                 <i class="fa-solid fa-chart-line"></i><span>05. Global Telemetry & SEO Hub</span>
             </button>
         </div>
@@ -133,7 +133,7 @@
                         </select>
                     </div>
 
-                    <button type="button" onclick="playBeep(); generateViralHook();" class="w-full bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 hover:opacity-95 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-cyan-600/30 transition transform active:scale-95 flex items-center justify-center space-x-2 cursor-pointer text-xs font-mono uppercase tracking-wider">
+                    <button type="button" onclick="generateViralHook()" class="w-full bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 hover:opacity-95 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-cyan-600/30 transition transform active:scale-95 flex items-center justify-center space-x-2 cursor-pointer text-xs font-mono uppercase tracking-wider">
                         <i class="fa-solid fa-bolt text-sm animate-spin"></i>
                         <span>100M+ Viral Hook Sentezle</span>
                     </button>
@@ -168,13 +168,13 @@
                             <span>Viral Hook AI Terminal Sandbox</span>
                         </h3>
                         <div class="flex space-x-2">
-                            <button type="button" onclick="playBeep(); saveToMemory();" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
+                            <button type="button" onclick="saveToMemory()" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
                                 <i class="fa-solid fa-floppy-disk text-cyan-400 text-xs"></i><span class="hidden sm:inline text-[10px]">Vault'a Kaydet</span>
                             </button>
-                            <button type="button" onclick="playBeep(); downloadOutput();" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
+                            <button type="button" onclick="downloadOutput()" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
                                 <i class="fa-solid fa-download text-xs"></i><span class="hidden sm:inline text-[10px]">İndir</span>
                             </button>
-                            <button type="button" onclick="playBeep(); copyOutput();" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
+                            <button type="button" onclick="copyOutput()" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
                                 <i class="fa-solid fa-copy text-xs"></i><span class="hidden sm:inline text-[10px]">Kopyala</span>
                             </button>
                         </div>
@@ -217,22 +217,6 @@
         }
         renderMemory();
 
-        function playBeep() {
-            try {
-                const ctx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(880, ctx.currentTime);
-                gain.gain.setValueAtTime(0.02, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.08);
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                osc.start();
-                osc.stop(ctx.currentTime + 0.08);
-            } catch(e) {}
-        }
-
         function switchMode(btn, mode) {
             currentMode = mode;
             document.querySelectorAll('.mode-btn').forEach(b => {
@@ -241,7 +225,6 @@
             btn.className = "mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30 font-mono";
             
             if(mode === 'analytics') {
-                document.getElementById('outputAreaлогу') ? '' : null;
                 document.getElementById('outputArea').innerText = `======================================================================
 📊 [GLOBAL TELEMETRY & SEO INTELLIGENCE HUB]
 ======================================================================
@@ -250,6 +233,8 @@
 > Zero API Dependency: 100% Client-Side Quantum Security
 > System Health: Optimal Enterprise Cluster Operation
 ======================================================================`;
+            } else {
+                document.getElementById('outputArea').innerText = `[MODE_SWITCH]: ${mode.toUpperCase()} Motoruna geçildi. Niş ayarınızı yaparak 100M+ kanca üretmeye başlayabilirsiniz.`;
             }
         }
 
