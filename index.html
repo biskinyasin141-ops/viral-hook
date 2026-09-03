@@ -1,461 +1,233 @@
 <!DOCTYPE html>
-<html lang="tr" class="dark">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viral Hook AI - Global Enterprise OS v2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        cyberBg: '#020617',
-                        cardBg: '#090d16',
-                        panelBg: '#0f172a',
-                        borderCol: '#1e293b',
-                        neonCyan: '#06b6d4',
-                        neonBlue: '#3b82f6',
-                        neonPurple: '#a855f7'
-                    }
-                }
-            }
+    <title>Viral Hook AI - Ultimate Enterprise Edition v2026</title>
+    <style>
+        :root {
+            --bg-color: #030712;
+            --card-bg: #0f172a;
+            --border-color: #1e293b;
+            --text-main: #f3f4f6;
+            --text-muted: #94a3b8;
+            --accent-cyan: #38bdf8;
+            --accent-purple: #a855f7;
+            --btn-gradient: linear-gradient(to right, #0284c7, #9333ea);
         }
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+        body { background: var(--bg-color); color: var(--text-main); padding: 16px; min-height: 100vh; display: flex; justify-content: center; align-items: center; }
+        .wrapper { width: 100%; max-width: 600px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7); }
+        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 14px; }
+        .header h1 { font-size: 18px; font-weight: 800; background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .badge { font-size: 10px; background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.2); font-weight: bold; letter-spacing: 0.5px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+        .form-group { margin-bottom: 14px; }
+        .form-group.full { grid-column: span 2; }
+        label { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        input, select { width: 100%; padding: 12px 14px; background: #020617; border: 1px solid #334155; color: #fff; border-radius: 10px; font-size: 13px; outline: none; transition: border-color 0.2s; }
+        input:focus, select:focus { border-color: var(--accent-cyan); }
+        .gen-btn { width: 100%; margin-top: 6px; padding: 14px; background: var(--btn-gradient); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; transition: opacity 0.2s, transform 0.1s; }
+        .gen-btn:hover { opacity: 0.9; }
+        .gen-btn:active { transform: scale(0.98); }
+        .output-container { margin-top: 18px; }
+        .output-box { background: #020617; border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; font-size: 13px; color: var(--accent-cyan); white-space: pre-wrap; line-height: 1.6; min-height: 140px; }
+        .btn-row { display: flex; gap: 10px; margin-top: 10px; }
+        .action-btn { flex: 1; padding: 10px; background: #1e293b; color: #cbd5e1; border: 1px solid #334155; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 12px; transition: background 0.2s, color 0.2s; }
+        .action-btn:hover { background: #334155; color: #fff; }
+        .vault-section { margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 14px; }
+        .vault-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .vault-list { max-height: 100px; overflow-y: auto; font-size: 12px; color: var(--text-muted); }
+        .vault-item { background: #020617; padding: 6px 10px; border-radius: 6px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #1e293b; }
+    </style>
 </head>
-<body class="bg-cyberBg text-slate-100 min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-white">
+<body>
 
-    <!-- SYSTEM STATUS BAR -->
-    <div class="bg-cardBg border-b border-borderCol text-[10px] font-mono py-1.5 px-4 text-slate-400 flex justify-between items-center overflow-x-auto whitespace-nowrap">
-        <div class="flex items-center space-x-4">
-            <span class="flex items-center text-emerald-400"><span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-ping"></span>GLOBAL ENGINE: v2026 ULTIMATE ONLINE</span>
-            <span>API REQ: <strong class="text-cyan-400">NONE (100% OFFLINE SECURE)</strong></span>
-            <span>LATENCY: <strong class="text-slate-200">0.05ms</strong></span>
+    <div class="wrapper">
+        <div class="header">
+            <h1>Viral Hook AI</h1>
+            <span class="badge">ULTIMATE v2026</span>
         </div>
-        <div class="flex items-center space-x-4">
-            <span>SECURE ENCLAVE: QUANTUM SHA-512</span>
-            <span class="text-cyan-400 font-bold">ENTERPRISE EDITION</span>
+        
+        <div class="form-group full">
+            <label>Niş / İçerik Konusu</label>
+            <input type="text" id="niche" value="Yapay Zeka ve Otomasyon">
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Psikolojik Tetikleyici</label>
+                <select id="trigger">
+                    <option value="curiosity">🔥 Derin Merak Boşluğu</option>
+                    <option value="fomo">⚡ Agresif FOMO</option>
+                    <option value="secret">💎 Gizli Sırlar</option>
+                    <option value="challenge">🛑 Sert Uyarı / İtiraz</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Çıkış Dili</label>
+                <select id="lang">
+                    <option value="tr">Türkçe</option>
+                    <option value="en">English</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="gen-btn" onclick="generateHook()">🚀 100M+ Hook Sentezle</button>
+
+        <div class="output-container">
+            <div class="output-box" id="output">Sistem tamamen hazır. Kanca üretmek için yukarıdaki butona tıklayın...</div>
+            <div class="btn-row">
+                <button class="action-btn" onclick="copyHook()">📋 Panoya Kopyala</button>
+                <button class="action-btn" onclick="saveToVault()">💾 Vault'a Kaydet</button>
+            </div>
+        </div>
+
+        <div class="vault-section">
+            <div class="vault-title">
+                <span>Kayıtlı Hafıza (Vault)</span>
+                <span id="vaultCount" style="color: var(--accent-cyan);">0 Kayıt</span>
+            </div>
+            <div class="vault-list" id="vaultList">
+                <div style="font-style: italic; color: #475569;">Henüz kayıt yok...</div>
+            </div>
         </div>
     </div>
 
-    <!-- MAIN HEADER -->
-    <header class="border-b border-borderCol bg-cardBg/90 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="bg-gradient-to-tr from-cyan-500 via-blue-600 to-purple-600 p-2.5 rounded-xl text-white shadow-lg shadow-cyan-500/30">
-                    <i class="fa-solid fa-globe text-lg animate-pulse"></i>
-                </div>
-                <div>
-                    <h1 class="text-sm font-black tracking-wider bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent uppercase">Viral Hook AI Global</h1>
-                    <span class="block text-[10px] text-slate-400 tracking-widest font-mono">Autonomous 100M+ View Content Generation Suite</span>
-                </div>
-            </div>
-            <div class="flex items-center space-x-3">
-                <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-[10px] font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono">
-                    <span class="w-1.5 h-1.5 mr-1.5 bg-cyan-400 rounded-full animate-pulse"></span> GLOBAL DEPLOY READY
-                </span>
-                <button onclick="toggleTheme()" class="p-2 rounded-xl border border-borderCol bg-panelBg text-slate-300 hover:text-white transition cursor-pointer">
-                    <i id="themeIcon" class="fa-solid fa-moon"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- NAVIGATION PLATFORM TABS -->
-    <nav class="bg-cardBg/50 border-b border-borderCol overflow-x-auto">
-        <div class="max-w-7xl mx-auto px-4 flex space-x-2 py-3 min-w-max">
-            <button onclick="switchMode(this, 'tiktok')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30 font-mono">
-                <i class="fa-brands fa-tiktok"></i><span>01. TikTok & Reels Hook Engine</span>
-            </button>
-            <button onclick="switchMode(this, 'youtube')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
-                <i class="fa-brands fa-youtube"></i><span>02. YouTube Shorts 10X Retention</span>
-            </button>
-            <button onclick="switchMode(this, 'twitter')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
-                <i class="fa-solid fa-feather-pointed"></i><span>03. X / Twitter Viral Disruptor</span>
-            </button>
-            <button onclick="switchMode(this, 'linkedin')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
-                <i class="fa-brands fa-linkedin"></i><span>04. LinkedIn B2B Authority</span>
-            </button>
-            <button onclick="switchMode(this, 'analytics')" class="mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono">
-                <i class="fa-solid fa-chart-line"></i><span>05. Global Telemetry & SEO Hub</span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- MAIN CONTAINER -->
-    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        <!-- SOL KONTROL PANELİ -->
-        <div class="lg:col-span-4 space-y-4">
-            <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none"></div>
-                
-                <h2 class="text-xs font-bold tracking-wider uppercase mb-4 text-cyan-400 flex items-center space-x-2 font-mono">
-                    <i class="fa-solid fa-sliders"></i>
-                    <span>Global Prompt Matrix Core</span>
-                </h2>
-                
-                <div class="space-y-4 font-mono">
-                    <div>
-                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">NİŞ / İÇERİK KONUSU</label>
-                        <input type="text" id="nicheInput" value="Yapay Zeka ve Dijital Otomasyon" class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition shadow-inner">
-                    </div>
-
-                    <div>
-                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">PSİKOLOJİK TETİKLEYİCİ (100M+ FORMÜLÜ)</label>
-                        <select id="triggerSelect" class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
-                            <option value="curiosity">🔥 Derin Merak Boşluğu (Curiosity Gap Ultra)</option>
-                            <option value="fomo">⚠️ Agresif FOMO & Zaman Sınırı</option>
-                            <option value="provocation">⚡ Radikal Endüstriyel İsyan Matrisi</option>
-                            <option value="secret">💎 Gizli İçeriden Sırlar (Insider Access)</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">SES TONU & DUYGU</label>
-                        <select id="toneSelect" class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
-                            <option value="aggressive">🎯 Agresif, Net ve Sarsıcı</option>
-                            <option value="mentor">🧠 Bilge Mentor & Vizyoner</option>
-                            <option value="energetic">🚀 Hiper-Enerjik & Heyecanlı</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-[10px] font-semibold text-slate-400 mb-1">ÇIKIŞ DİLİ</label>
-                        <select id="langSelect" class="w-full bg-panelBg border border-borderCol rounded-xl px-3.5 py-2.5 text-xs focus:outline-none focus:border-cyan-500 text-slate-100 font-medium transition">
-                            <option value="tr">Türkçe</option>
-                            <option value="en">English</option>
-                            <option value="de">Deutsch</option>
-                            <option value="fr">Français</option>
-                            <option value="es">Español</option>
-                        </select>
-                    </div>
-
-                    <button type="button" onclick="generateViralHook()" class="w-full bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 hover:opacity-95 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-cyan-600/30 transition transform active:scale-95 flex items-center justify-center space-x-2 cursor-pointer text-xs font-mono uppercase tracking-wider">
-                        <i class="fa-solid fa-bolt text-sm animate-spin"></i>
-                        <span>100M+ Viral Hook Sentezle</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- VAULT & SAVED HOOKS -->
-            <div class="bg-cardBg border border-borderCol rounded-2xl p-4 text-xs space-y-3 shadow-xl">
-                <div class="flex items-center justify-between font-mono">
-                    <h3 class="font-bold text-slate-200 flex items-center space-x-2 text-[11px]">
-                        <i class="fa-solid fa-vault text-cyan-400"></i>
-                        <span>GLOBAL VAULT (<span id="memoryCount">0</span>)</span>
-                    </h3>
-                    <div class="space-x-1">
-                        <button type="button" onclick="exportVaultJSON()" class="text-[10px] text-cyan-400 hover:underline cursor-pointer">JSON</button>
-                        <button type="button" onclick="clearMemory()" class="text-[10px] text-red-400 hover:underline cursor-pointer">SİL</button>
-                    </div>
-                </div>
-                <div id="memoryList" class="space-y-2 max-h-48 overflow-y-auto text-[11px] text-slate-400 font-mono">
-                    <div class="text-slate-600 italic">Vault boş. Üretilen kancalar buraya depolanır...</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SAĞ ÇIKTI PANELİ -->
-        <div class="lg:col-span-8 space-y-4">
-            <div class="bg-cardBg border border-borderCol rounded-2xl p-5 shadow-2xl relative min-h-[660px] flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-3 border-b border-borderCol pb-3">
-                        <h3 class="text-xs font-bold text-slate-200 flex items-center space-x-2 font-mono uppercase tracking-wider">
-                            <i class="fa-solid fa-terminal text-cyan-400"></i>
-                            <span>Viral Hook AI Terminal Sandbox</span>
-                        </h3>
-                        <div class="flex space-x-2">
-                            <button type="button" onclick="saveToMemory()" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
-                                <i class="fa-solid fa-floppy-disk text-cyan-400 text-xs"></i><span class="hidden sm:inline text-[10px]">Vault'a Kaydet</span>
-                            </button>
-                            <button type="button" onclick="downloadOutput()" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
-                                <i class="fa-solid fa-download text-xs"></i><span class="hidden sm:inline text-[10px]">İndir</span>
-                            </button>
-                            <button type="button" onclick="copyOutput()" class="p-2 bg-panelBg border border-borderCol hover:border-cyan-500 rounded-xl text-slate-300 transition cursor-pointer text-xs flex items-center space-x-1 font-mono">
-                                <i class="fa-solid fa-copy text-xs"></i><span class="hidden sm:inline text-[10px]">Kopyala</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- TERMINAL OUTPUT -->
-                    <div id="outputArea" class="bg-cyberBg border border-borderCol rounded-xl p-5 text-xs text-cyan-300/90 leading-relaxed min-h-[440px] whitespace-pre-wrap font-mono shadow-inner overflow-y-auto">
-[GLOBAL_SYS_INIT]: Viral Hook AI Global Enterprise v2026 başarıyla yüklendi.
-[STATUS]: 100M+ İzlenme Algoritması aktif. Niş alanınızı girerek dünyanın her yerinde patlayacak içerik vektörleri üretmeye başlayın.
-                    </div>
-
-                    <!-- PROGRESS & TELEMETRY -->
-                    <div class="mt-4 bg-panelBg border border-borderCol rounded-xl p-4 space-y-2.5 font-mono">
-                        <div class="flex justify-between text-[11px] text-slate-400">
-                            <span class="flex items-center"><i class="fa-solid fa-chart-pie mr-2 text-cyan-400"></i>Algoritma Tutunma Tahmin Skoru:</span>
-                            <span class="text-cyan-400 font-semibold" id="clusterStatus">Hazır (0.05ms)</span>
-                        </div>
-                        <div class="w-full bg-cyberBg h-2.5 rounded-full overflow-hidden border border-borderCol">
-                            <div id="analyticsBar" class="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 h-full w-[0%] transition-all duration-1000"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-4 pt-3 border-t border-borderCol flex justify-between items-center text-[10px] text-slate-500 font-mono">
-                    <span id="status-footer">Durum: Global Enterprise Aktif</span>
-                    <span class="text-cyan-400 font-semibold">Viral Hook AI v2026 Ultimate</span>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- ADVANCED JAVASCRIPT ENGINE -->
     <script>
-        let currentMode = 'tiktok';
-        let hookMemory = [];
-        try {
-            hookMemory = JSON.parse(localStorage.getItem('viral_hook_ai_global_vault')) || [];
-        } catch(e) {
-            hookMemory = [];
-        }
-        renderMemory();
-
-        function switchMode(btn, mode) {
-            currentMode = mode;
-            document.querySelectorAll('.mode-btn').forEach(b => {
-                b.className = "mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-panelBg border border-borderCol text-slate-400 hover:text-white transition flex items-center space-x-2 cursor-pointer font-mono";
-            });
-            btn.className = "mode-btn px-4 py-2 text-xs font-semibold rounded-xl bg-cyan-600 text-white transition flex items-center space-x-2 cursor-pointer shadow-lg shadow-cyan-600/30 font-mono";
-            
-            if(mode === 'analytics') {
-                document.getElementById('outputArea').innerText = `======================================================================
-📊 [GLOBAL TELEMETRY & SEO INTELLIGENCE HUB]
-======================================================================
-> Total Processed Global Vectors: 18,490,210+
-> Average Retention Multiplier: +490% (S-Tier)
-> Zero API Dependency: 100% Client-Side Quantum Security
-> System Health: Optimal Enterprise Cluster Operation
-======================================================================`;
-            } else {
-                document.getElementById('outputArea').innerText = `[MODE_SWITCH]: ${mode.toUpperCase()} Motoruna geçildi. Niş ayarınızı yaparak 100M+ kanca üretmeye başlayabilirsiniz.`;
-            }
-        }
-
-        const globalDatabases = {
+        const database = {
             tr: {
-                hooks: [
-                    "Çoğu insan {niche} alanındaki bu ölümcül hatayı yaptığı için asla 100M izlenmeye ulaşamıyor...",
-                    "Eğer {niche} ile ilgileniyorsan, önümüzdeki 3 saniye içinde öğreneceğin bu sır tüm ezberleri kökten bozacak.",
-                    "Büyük şirketlerin {niche} konusunda senden sakladığı o gizli algoritma açığı nihayet ifşa oldu.",
-                    "Neden 10 kişiden 9'u {niche} konusunda tamamen yanlış yolda ilerliyor? Cevap seni sarsacak."
+                curiosity: [
+                    "Çoğu insan {niche} alanındaki bu ölümcül hatayı yaptığı için asla büyüemiyor...",
+                    "Eğer {niche} ile ilgileniyorsan, önümüzdeki 3 saniye içinde öğreneceğin bu bilgi tüm ezberleri bozacak.",
+                    "Büyük içerik üreticilerinin {niche} hakkında senden sakladığı o gizli yöntem nihayet açıklandı.",
+                    "Neden 10 kişiden 9'u {niche} konusunda yanlış yoldan gidiyor? İşte cevabı."
                 ],
-                anchors: [
-                    "Bu protokolü test ettiğimiz anda, izlenme süreleri tavan yaptı ve kitle ekrana kilitlendi.",
-                    "Algoritmaların arka kapılarını incelediğimizde, bu stratejinin izlenmeleri doğrudan patlattığını gördük.",
-                    "Sıradan içerik üreticileri bunu asla bilmez; profesyoneller ise imparatorluğunu bunun üzerine kurar."
+                fomo: [
+                    "Eğer bugün {niche} stratejini güncellemezsen, önümüzdeki ay tamamen silinip gideceksin.",
+                    "Herkes {niche} alanındaki bu devrimi konuşuyor ama sen hala geriden takip ediyorsun.",
+                    "Bu {niche} açığı kapanmadan hemen önce kesinlikle görmen gereken bir video."
                 ],
-                ctas: [
-                    "Bu videoyu hemen kaydet, yarın arayıp da bulamayabilirsin.",
-                    "Profildeki projeyi incele ve bu otomasyonu kendi avantajına kullan.",
-                    "Daha fazla küresel strateji için takip et ve arkadaşına gönder."
+                secret: [
+                    "Yıllardır kimsenin söylemeye cesaret edemediği o gerçek {niche} sırrı...",
+                    "Sadece en üst düzey profesyonellerin bildiği gizli {niche} optimizasyon taktiği.",
+                    "Sıfırdan başlayıp {niche} alanında zirveye çıkanların uyguladığı tek kural."
                 ],
-                hashtags: "#viral #100milyon #trend #{nicheclean} #keşfet"
+                challenge: [
+                    "Eğer {niche} konusunda gerçekten iddialıysan, bu videoyu sonuna kadar izle.",
+                    "Dur! {niche} yapmaya devam etmeden önce bu uyarıyı mutlaka dinlemelisin.",
+                    "Biri çıkıp {niche} hakkında bu acı gerçeği söylemeliydi, o yüzden ben söylüyorum."
+                ]
             },
             en: {
-                hooks: [
-                    "Why 99% of people in {niche} fail because they miss this exact fatal algorithmic detail...",
+                curiosity: [
+                    "Why 99% of people in {niche} fail because they miss this exact fatal detail...",
                     "If you are into {niche}, the next 3 seconds will completely destroy everything you thought you knew.",
-                    "The hidden blueprint that top creators in {niche} use behind closed doors is finally revealed.",
-                    "Stop scrolling if you want to master {niche} before everyone else catches up."
+                    "The hidden blueprint that top creators in {niche} use behind closed doors is finally revealed."
                 ],
-                anchors: [
-                    "We deployed this protocol and retention rates skyrocketed by over 490%.",
-                    "Looking deep into the core mechanics, this specific hook triggers instant curiosity loops.",
-                    "Amateurs ignore this, but elite creators build multi-million empires on this framework."
+                fomo: [
+                    "If you don't update your {niche} strategy today, you'll be completely left behind next month.",
+                    "Everyone is talking about this {niche} revolution while you are still standing still."
                 ],
-                ctas: [
-                    "Save this video right now before this viral blueprint gets patched.",
-                    "Check the link in bio to deploy your own automated system instantly.",
-                    "Follow for more advanced global frameworks and algorithmic breakdowns."
+                secret: [
+                    "The ultimate {niche} secret that elite experts refuse to share publicly...",
+                    "The exact insider framework used to scale {niche} from absolute zero."
                 ],
-                hashtags: "#viral #fyp #trending #{nicheclean} #growthhacking"
+                challenge: [
+                    "If you actually think you're good at {niche}, prove it by watching this.",
+                    "Stop everything you are doing in {niche} and listen to this warning."
+                ]
             },
             de: {
-                hooks: [
-                    "Warum 99% der Menschen in {niche} scheitern, weil sie dieses fatale Detail übersehen...",
+                curiosity: [
+                    "Warum 99% der Menschen in {niche} scheitern, weil sie dieses Detail übersehen...",
                     "Wenn du dich für {niche} interessierst, wird dieses Video alles verändern."
                 ],
-                anchors: [
-                    "Wir haben diesen Ansatz getestet und die Metriken explodierten sofort."
+                fomo: [
+                    "Wenn du deine {niche} Strategie heute nicht änderst, wirst du bald abgehängt."
                 ],
-                ctas: [
-                    "Speichere dieses Video sofort ab und teile es mit Freunden."
+                secret: [
+                    "Das streng geheime {niche} Insider-Wissen, das dir niemand verrät."
                 ],
-                hashtags: "#viral #fy #trending #{nicheclean}"
-            },
-            fr: {
-                hooks: [
-                    "Pourquoi 99% des gens échouent dans {niche} à cause de ce détail fatal...",
-                    "Si vous vous intéressez à {niche}, cette méthode va tout changer."
-                ],
-                anchors: [
-                    "Nous avons testé ce protocole et les résultats ont été instantanés."
-                ],
-                ctas: [
-                    "Enregistrez cette vidéo dès maintenant."
-                ],
-                hashtags: "#viral #fyp #pourtoi #{nicheclean}"
-            },
-            es: {
-                hooks: [
-                    "Por qué el 99% de la gente fracasa en {niche} debido a este detalle algorítmico...",
-                    "Si te interesa {niche}, los próximos 3 segundos cambiarán tu perspectiva para siempre."
-                ],
-                anchors: [
-                    "Implementamos este protocolo y las métricas se dispararon un 490%."
-                ],
-                ctas: [
-                    "Guarda este video ahora mismo antes de que lo borren."
-                ],
-                hashtags: "#viral #parati #tendencia #{nicheclean}"
+                challenge: [
+                    "Stopp! Bevor du weitermachst, höre dir diese Warnung über {niche} an."
+                ]
             }
         };
 
-        function generateViralHook() {
-            const nicheEl = document.getElementById('nicheInput');
-            const triggerEl = document.getElementById('triggerSelect');
-            const toneEl = document.getElementById('toneSelect');
-            const langEl = document.getElementById('langSelect');
+        let lastGeneratedText = "";
+        let vault = [];
 
-            const niche = nicheEl ? nicheEl.value.trim() : "Dijital Büyüme";
-            const trigger = triggerEl ? triggerEl.value : "curiosity";
-            const tone = toneEl ? toneEl.value : "aggressive";
-            const lang = langEl ? langEl.value : "tr";
+        try {
+            const saved = localStorage.getItem('viral_vault_data');
+            if (saved) vault = JSON.parse(saved);
+        } catch(e) { vault = []; }
+        renderVault();
 
-            const outputArea = document.getElementById('outputArea');
-            const clusterStatus = document.getElementById('clusterStatus');
-            const analyticsBar = document.getElementById('analyticsBar');
-            const statusFooter = document.getElementById('status-footer');
+        function generateHook() {
+            const nicheVal = document.getElementById('niche').value.trim() || "Genel Konu";
+            const triggerVal = document.getElementById('trigger').value;
+            const langVal = document.getElementById('lang').value;
 
-            if (!outputArea) return;
+            const langDB = database[langVal] || database['tr'];
+            const categoryArray = langDB[triggerVal] || langDB['curiosity'];
+            const randomTemplate = categoryArray[Math.floor(Math.random() * categoryArray.length)];
+            const rawHook = randomTemplate.replace(/{niche}/g, nicheVal);
 
-            outputArea.innerText = `[GLOBAL_ENGINE]: Küresel matris taranıyor...\n[TARGET]: [${niche}] nişi için 100M+ izlenme formülü sentezleniyor.`;
-            if(clusterStatus) clusterStatus.innerText = "Yapay Zeka Vektörleri Hesaplanıyor...";
-            if(analyticsBar) analyticsBar.style.width = '75%';
+            lastGeneratedText = `"${rawHook}"`;
 
-            setTimeout(() => {
-                const db = globalDatabases[lang] || globalDatabases['tr'];
-                const randomHook = db.hooks[Math.floor(Math.random() * db.hooks.length)].replace(/{niche}/g, niche);
-                const randomAnchor = db.anchors[Math.floor(Math.random() * db.anchors.length)];
-                const randomCta = db.ctas[Math.floor(Math.random() * db.ctas.length)];
-                const cleanNicheTag = niche.replace(/\s+/g, '').toLowerCase();
-                const tags = db.hashtags.replace(/{nicheclean}/g, cleanNicheTag);
+            const outputReport = 
+`🎯 ÜRETİLEN VİRAL KANCA (${langVal.toUpperCase()}):
+--------------------------------------------------
+${lastGeneratedText}
 
-                let report = `======================================================================
-🚀 [GLOBAL VIRAL HOOK AI - MODE: ${currentMode.toUpperCase()}]
-======================================================================
-> Target Niche: ${niche}
-> Psychological Trigger: ${trigger.toUpperCase()}
-> Tone Profile: ${tone.toUpperCase()}
-> Language Engine: ${lang.toUpperCase()} (100% Client-Side Enterprise)
+💡 STRATEJİ: İlk 3 saniyede bu cümleyi ekranda büyük fontla tut ve arkaya tempolu dinamik bir müzik ekle!`;
 
-🔥 [0-3 SECONDS: 100M+ CRITICAL HOOK (VECTOR 1)]
-"${randomHook}"
-
-⚡ [RETENTION & ALGORITHMIC ANCHOR (VECTOR 2)]
-"${randomAnchor}"
-
-🎯 [CALL TO ACTION & MONETIZATION (VECTOR 3)]
-"${randomCta}"
-
-🏷️ [SEO & HASHTAG MATRIX]:
-${tags}
-
-📊 [GLOBAL PERFORMANCE TELEMETRY]:
-- Projected Reach: 100,000,000+ Impressions
-- Viral Velocity: S-Tier Maximum Global
-- Retention Rate: 99.99% (Optimized)
-======================================================================
-[SUCCESS]: Küresel viral rapor başarıyla derlendi.`;
-
-                outputArea.innerText = report;
-                if(statusFooter) statusFooter.innerText = `Durum: Başarılı (Global Matris - ${lang.toUpperCase()})`;
-                if(clusterStatus) clusterStatus.innerText = "Tamamlandı (0.05ms, 100M+ Skor)";
-                if(analyticsBar) analyticsBar.style.width = '100%';
-            }, 250);
+            document.getElementById('output').innerText = outputReport;
         }
 
-        function saveToMemory() {
-            const outputArea = document.getElementById('outputArea');
-            if (!outputArea || outputArea.innerText.includes("GLOBAL_SYS_INIT")) {
-                alert("Önce aktif bir viral rapor üretmelisiniz!");
+        function copyHook() {
+            if (!lastGeneratedText) {
+                alert("Önce kanca üretmelisiniz!");
                 return;
             }
-            hookMemory.unshift({ 
-                title: document.getElementById('nicheInput').value || "Global Hook", 
-                content: outputArea.innerText, 
-                date: new Date().toLocaleString() 
+            navigator.clipboard.writeText(lastGeneratedText).then(() => {
+                alert("Kanca başarıyla panoya kopyalandı!");
             });
-            try {
-                localStorage.setItem('viral_hook_ai_global_vault', JSON.stringify(hookMemory));
-            } catch(e) {}
-            renderMemory();
-            alert("Rapor başarıyla Global Vault'a kaydedildi!");
         }
 
-        function renderMemory() {
-            const list = document.getElementById('memoryList');
-            const countSpan = document.getElementById('memoryCount');
-            if (!list || !countSpan) return;
-            countSpan.innerText = hookMemory.length;
-            if (hookMemory.length === 0) {
-                list.innerHTML = `<div class="text-slate-600 italic">Vault boş. Üretilen kancalar buraya depolanır...</div>`;
+        function saveToVault() {
+            if (!lastGeneratedText) {
+                alert("Kaydedilecek bir kanca yok!");
                 return;
             }
-            list.innerHTML = "";
-            hookMemory.forEach((item, index) => {
+            vault.unshift({ text: lastGeneratedText, time: new Date().toLocaleTimeString() });
+            if (vault.length > 5) vault.pop(); // Son 5 kaydı tut
+            try {
+                localStorage.setItem('viral_vault_data', JSON.stringify(vault));
+            } catch(e) {}
+            renderVault();
+            alert("Vault hafızasına başarıyla kaydedildi!");
+        }
+
+        function renderVault() {
+            const listEl = document.getElementById('vaultList');
+            const countEl = document.getElementById('vaultCount');
+            countEl.innerText = `${vault.length} Kayıt`;
+
+            if (vault.length === 0) {
+                listEl.innerHTML = `<div style="font-style: italic; color: #475569;">Henüz kayıt yok...</div>`;
+                return;
+            }
+
+            listEl.innerHTML = "";
+            vault.forEach((item, index) => {
                 const div = document.createElement('div');
-                div.className = "bg-panelBg border border-borderCol p-2.5 rounded-xl cursor-pointer hover:border-cyan-500 transition flex justify-between items-center";
-                div.innerHTML = `<span class="truncate max-w-[160px] text-slate-300 font-mono">${index + 1}. ${item.title}</span> <span class="text-[9px] text-cyan-400 font-mono">${item.date.split(',')[0]}</span>`;
-                div.onclick = () => { document.getElementById('outputArea').innerText = item.content; };
-                list.appendChild(div);
+                div.className = "vault-item";
+                div.innerHTML = `<span style="truncate; max-width: 320px; color: #cbd5e1;">${index + 1}. ${item.text}</span> <span style="font-size: 10px; color: var(--accent-cyan);">${item.time}</span>`;
+                listEl.appendChild(div);
             });
-        }
-
-        function clearMemory() {
-            hookMemory = [];
-            try {
-                localStorage.removeItem('viral_hook_ai_global_vault');
-            } catch(e) {}
-            renderMemory();
-        }
-
-        function exportVaultJSON() {
-            if (hookMemory.length === 0) {
-                alert("Vault boş!");
-                return;
-            }
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(hookMemory, null, 2));
-            const a = document.createElement('a');
-            a.href = dataStr;
-            a.download = 'global-viral-vault.json';
-            a.click();
-        }
-
-        function copyOutput() {
-            const text = document.getElementById('outputArea').innerText;
-            navigator.clipboard.writeText(text);
-            alert("Global rapor panoya kopyalandı!");
-        }
-
-        function downloadOutput() {
-            const text = document.getElementById('outputArea').innerText;
-            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'global-viral-report.txt';
-            a.click();
-        }
-
-        function toggleTheme() {
-            document.documentElement.classList.toggle('dark');
         }
     </script>
 </body>
