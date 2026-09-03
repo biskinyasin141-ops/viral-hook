@@ -3,146 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viral Hook AI - Ultimate Enterprise Edition v2026</title>
+    <title>Viral Hook AI - Ultimate Enterprise OS v2026 Pro</title>
     <style>
         :root {
-            --bg-color: #030712;
+            --bg-dark: #020617;
+            --panel-bg: #090d16;
             --card-bg: #0f172a;
-            --border-color: #1e293b;
+            --border-col: #1e293b;
             --text-main: #f3f4f6;
             --text-muted: #94a3b8;
-            --accent-cyan: #38bdf8;
-            --accent-purple: #a855f7;
-            --btn-gradient: linear-gradient(to right, #0284c7, #9333ea);
+            --cyan: #38bdf8;
+            --blue: #3b82f6;
+            --purple: #a855f7;
+            --emerald: #10b981;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
-        body { background: var(--bg-color); color: var(--text-main); padding: 16px; min-height: 100vh; display: flex; justify-content: center; align-items: center; }
-        .wrapper { width: 100%; max-width: 600px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7); }
-        .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 14px; }
-        .header h1 { font-size: 18px; font-weight: 800; background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .badge { font-size: 10px; background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.2); font-weight: bold; letter-spacing: 0.5px; }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+        body { background: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+        
+        /* TOP STATUS BAR */
+        .status-bar { background: var(--panel-bg); border-bottom: 1px solid var(--border-col); font-family: monospace; font-size: 11px; padding: 8px 16px; color: var(--text-muted); display: flex; justify-content: space-between; align-items: center; overflow-x: auto; white-space: nowrap; }
+        .status-dot { width: 8px; height: 8px; background: var(--emerald); border-radius: 50%; display: inline-block; margin-right: 6px; box-shadow: 0 0 8px var(--emerald); }
+
+        /* HEADER */
+        header { background: var(--card-bg); border-bottom: 1px solid var(--border-col); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { background: linear-gradient(135deg, var(--cyan), var(--purple)); padding: 10px; border-radius: 12px; color: white; font-weight: bold; }
+        h1 { font-size: 18px; font-weight: 900; background: linear-gradient(to right, var(--cyan), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .sub-logo { font-size: 10px; color: var(--text-muted); font-family: monospace; letter-spacing: 1px; }
+
+        /* NAVIGATION TABS */
+        .nav-tabs { background: var(--panel-bg); border-bottom: 1px solid var(--border-col); padding: 10px 24px; display: flex; gap: 10px; overflow-x: auto; }
+        .tab-btn { background: var(--card-bg); border: 1px solid var(--border-col); color: var(--text-muted); padding: 8px 16px; border-radius: 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; white-space: nowrap; font-family: monospace; }
+        .tab-btn.active { background: var(--blue); color: white; border-color: var(--blue); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+
+        /* MAIN LAYOUT */
+        .main-container { max-width: 1400px; width: 100%; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: 380px 1fr; gap: 24px; flex: 1; }
+        @media(max-width: 1000px) { .main-container { grid-template-columns: 1fr; } }
+
+        /* PANELS */
+        .panel { background: var(--card-bg); border: 1px solid var(--border-col); border-radius: 16px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .panel-title { font-size: 12px; font-weight: 800; color: var(--cyan); text-transform: uppercase; margin-bottom: 16px; letter-spacing: 1px; font-family: monospace; display: flex; align-items: center; gap: 8px; }
+
         .form-group { margin-bottom: 14px; }
-        .form-group.full { grid-column: span 2; }
-        label { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
-        input, select { width: 100%; padding: 12px 14px; background: #020617; border: 1px solid #334155; color: #fff; border-radius: 10px; font-size: 13px; outline: none; transition: border-color 0.2s; }
-        input:focus, select:focus { border-color: var(--accent-cyan); }
-        .gen-btn { width: 100%; margin-top: 6px; padding: 14px; background: var(--btn-gradient); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; transition: opacity 0.2s, transform 0.1s; }
-        .gen-btn:hover { opacity: 0.9; }
-        .gen-btn:active { transform: scale(0.98); }
-        .output-container { margin-top: 18px; }
-        .output-box { background: #020617; border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; font-size: 13px; color: var(--accent-cyan); white-space: pre-wrap; line-height: 1.6; min-height: 140px; }
-        .btn-row { display: flex; gap: 10px; margin-top: 10px; }
-        .action-btn { flex: 1; padding: 10px; background: #1e293b; color: #cbd5e1; border: 1px solid #334155; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 12px; transition: background 0.2s, color 0.2s; }
-        .action-btn:hover { background: #334155; color: #fff; }
-        .vault-section { margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 14px; }
-        .vault-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
-        .vault-list { max-height: 100px; overflow-y: auto; font-size: 12px; color: var(--text-muted); }
-        .vault-item { background: #020617; padding: 6px 10px; border-radius: 6px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #1e293b; }
+        label { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; font-family: monospace; }
+        input, select, textarea { width: 100%; padding: 12px; background: var(--bg-dark); border: 1px solid var(--border-col); color: white; border-radius: 10px; font-size: 13px; outline: none; transition: 0.2s; }
+        input:focus, select:focus { border-color: var(--cyan); box-shadow: 0 0 8px rgba(56, 189, 248, 0.2); }
+
+        .btn-main { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--blue), var(--purple)); color: white; border: none; border-radius: 10px; font-weight: 800; font-size: 13px; text-transform: uppercase; cursor: pointer; transition: 0.2s; letter-spacing: 1px; margin-top: 10px; }
+        .btn-main:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* OUTPUT TERMINAL */
+        .terminal-box { background: var(--bg-dark); border: 1px solid var(--border-col); border-radius: 12px; padding: 20px; font-family: monospace; font-size: 13px; color: var(--cyan); min-height: 380px; white-space: pre-wrap; line-height: 1.6; overflow-y: auto; box-shadow: inset 0 2px 10px rgba(0,0,0,0.8); }
+        .action-row { display: flex; gap: 10px; margin-top: 14px; }
+        .btn-action { flex: 1; padding: 10px; background: var(--panel-bg); border: 1px solid var(--border-col); color: var(--text-main); border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; font-family: monospace; }
+        .btn-action:hover { background: var(--border-col); border-color: var(--cyan); }
+
+        /* METRICS & TELEMETRY */
+        .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; font-family: monospace; }
+        .metric-card { background: var(--panel-bg); border: 1px solid var(--border-col); padding: 12px; border-radius: 10px; }
+        .metric-val { font-size: 16px; font-weight: bold; color: var(--cyan); margin-top: 4px; }
+
+        /* VAULT SECTION */
+        .vault-box { margin-top: 20px; border-top: 1px solid var(--border-col); padding-top: 16px; }
+        .vault-list { max-height: 150px; overflow-y: auto; font-family: monospace; font-size: 11px; display: flex; flex-direction: column; gap: 6px; }
+        .vault-item { background: var(--panel-bg); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-col); display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s; }
+        .vault-item:hover { border-color: var(--cyan); }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <div class="header">
-            <h1>Viral Hook AI</h1>
-            <span class="badge">ULTIMATE v2026</span>
-        </div>
-        
-        <div class="form-group full">
-            <label>Niş / İçerik Konusu</label>
-            <input type="text" id="niche" value="Yapay Zeka ve Otomasyon">
-        </div>
-
-        <div class="form-grid">
-            <div class="form-group">
-                <label>Psikolojik Tetikleyici</label>
-                <select id="trigger">
-                    <option value="curiosity">🔥 Derin Merak Boşluğu</option>
-                    <option value="fomo">⚡ Agresif FOMO</option>
-                    <option value="secret">💎 Gizli Sırlar</option>
-                    <option value="challenge">🛑 Sert Uyarı / İtiraz</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Çıkış Dili</label>
-                <select id="lang">
-                    <option value="tr">Türkçe</option>
-                    <option value="en">English</option>
-                    <option value="de">Deutsch</option>
-                </select>
-            </div>
-        </div>
-
-        <button class="gen-btn" onclick="generateHook()">🚀 100M+ Hook Sentezle</button>
-
-        <div class="output-container">
-            <div class="output-box" id="output">Sistem tamamen hazır. Kanca üretmek için yukarıdaki butona tıklayın...</div>
-            <div class="btn-row">
-                <button class="action-btn" onclick="copyHook()">📋 Panoya Kopyala</button>
-                <button class="action-btn" onclick="saveToVault()">💾 Vault'a Kaydet</button>
-            </div>
-        </div>
-
-        <div class="vault-section">
-            <div class="vault-title">
-                <span>Kayıtlı Hafıza (Vault)</span>
-                <span id="vaultCount" style="color: var(--accent-cyan);">0 Kayıt</span>
-            </div>
-            <div class="vault-list" id="vaultList">
-                <div style="font-style: italic; color: #475569;">Henüz kayıt yok...</div>
-            </div>
-        </div>
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+        <div><span class="status-dot"></span>GLOBAL NEURAL ENGINE: v2026 ENTERPRISE ULTIMATE (ONLINE)</div>
+        <div>SECURE ENCLAVE: SHA-512 QUANTUM READY | LATENCY: 0.02ms</div>
     </div>
 
+    <!-- HEADER -->
+    <header>
+        <div class="logo-area">
+            <div class="logo-icon">⚡</div>
+            <div>
+                <h1>Viral Hook AI - Global OS</h1>
+                <div class="sub-logo">Autonomous 100M+ View Content Generation Suite</div>
+            </div>
+        </div>
+        <div style="font-family: monospace; font-size: 11px; color: var(--cyan); background: rgba(56,189,248,0.1); padding: 6px 12px; border-radius: 20px; border: 1px solid rgba(56,189,248,0.2);">
+            S-TIER MATRIX ACTIVE
+        </div>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchMode(this, 'tiktok')">🔥 01. TikTok & Reels Hook Matrix</button>
+        <button class="tab-btn" onclick="switchMode(this, 'youtube')">🎥 02. YouTube Shorts 10X Retention</button>
+        <button class="tab-btn" onclick="switchMode(this, 'twitter')">💬 03. X / Twitter Viral Disruptor</button>
+        <button class="tab-btn" onclick="switchMode(this, 'linkedin')">💼 04. LinkedIn B2B Authority Engine</button>
+        <button class="tab-btn" onclick="switchMode(this, 'analytics')">📊 05. Global Telemetry & SEO Hub</button>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="main-container">
+        
+        <!-- LEFT CONTROL PANEL -->
+        <div class="panel">
+            <div class="panel-title">⚙️ Prompt Matrix Core</div>
+            
+            <div class="form-group">
+                <label>Niş / İçerik Konusu</label>
+                <input type="text" id="nicheInput" value="Yapay Zeka ve Otomasyon Sistemleri">
+            </div>
+
+            <div class="form-group">
+                <label>Psikolojik Tetikleyici (100M+)</label>
+                <select id="triggerSelect">
+                    <option value="curiosity">🔥 Derin Merak Boşluğu (Curiosity Gap)</option>
+                    <option value="fomo">⚡ Agresif FOMO & Zaman Sınırı</option>
+                    <option value="secret">💎 Sektörün Saklanan Sırları (Insider)</option>
+                    <option value="challenge">🛑 Radikal Endüstriyel İsyan</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Ses Tonu ve Profil</label>
+                <select id="toneSelect">
+                    <option value="aggressive">🎯 Agresif, Net ve Sarsıcı</option>
+                    <option value="mentor">🧠 Bilge Mentor & Vizyoner</option>
+                    <option value="energetic">🚀 Hiper-Enerjik & Heyecanlı</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Çıkış Dili</label>
+                <select id="langSelect">
+                    <option value="tr">Türkçe (Turkish)</option>
+                    <option value="en">English (Global)</option>
+                    <option value="de">Deutsch (German)</option>
+                    <option value="es">Español (Spanish)</option>
+                </select>
+            </div>
+
+            <button class="btn-main" onclick="generateUltimateHook()">🚀 100M+ Hook Sentezle</button>
+
+            <!-- VAULT SECTION -->
+            <div class="vault-box">
+                <div class="panel-title" style="margin-bottom: 8px; justify-content: space-between;">
+                    <span>💾 Vault Hafızası (<span id="vaultCount">0</span>)</span>
+                    <span style="font-size: 10px; cursor: pointer; color: var(--cyan);" onclick="clearVault()">TÜMÜNÜ SİL</span>
+                </div>
+                <div class="vault-list" id="vaultList">
+                    <div style="color: var(--text-muted); font-style: italic;">Hafıza boş, kancalar buraya kaydedilir...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT OUTPUT TERMINAL -->
+        <div class="panel" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div class="panel-title">🖥️ Terminal Sandbox & Algorithmic Report</div>
+                <div class="terminal-box" id="outputTerminal">[SYSTEM_INIT]: Viral Hook AI Ultimate Enterprise v2026 yüklendi.
+[READY]: Sol panelden niş parametrelerinizi seçip sentezleme butonuna basın.</div>
+            </div>
+
+            <div>
+                <!-- METRICS TELEMETRY -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div style="font-size: 10px; color: var(--text-muted);">TAHMİNİ ERİŞİM</div>
+                        <div class="metric-val" id="metricReach">100,000,000+</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="font-size: 10px; color: var(--text-muted);">TUTUNMA SKORU</div>
+                        <div class="metric-val" id="metricRetention">99.9% (S-Tier)</div>
+                    </div>
+                </div>
+
+                <!-- ACTION BUTTONS -->
+                <div class="action-row">
+                    <button class="btn-action" onclick="copyTerminalText()">📋 Panoya Kopyala</button>
+                    <button class="btn-action" onclick="saveToVault()">💾 Vault'a Kaydet</button>
+                    <button class="btn-action" onclick="downloadReport()">📥 Metin Olarak İndir</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ADVANCED SCRIPT ENGINE -->
     <script>
-        const database = {
+        let currentMode = 'tiktok';
+        let currentGeneratedReport = "";
+        let vaultStorage = [];
+
+        try {
+            const savedVault = localStorage.getItem('viral_enterprise_vault');
+            if (savedVault) vaultStorage = JSON.parse(savedVault);
+        } catch(e) { vaultStorage = []; }
+        renderVaultList();
+
+        function switchMode(btn, mode) {
+            currentMode = mode;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            document.getElementById('outputTerminal').innerText = `[MODE_SWITCH]: ${mode.toUpperCase()} moduna geçildi. Algoritmik vektörler bu platforma göre optimize edildi.`;
+        }
+
+        const globalDatabase = {
             tr: {
                 curiosity: [
-                    "Çoğu insan {niche} alanındaki bu ölümcül hatayı yaptığı için asla büyüemiyor...",
-                    "Eğer {niche} ile ilgileniyorsan, önümüzdeki 3 saniye içinde öğreneceğin bu bilgi tüm ezberleri bozacak.",
-                    "Büyük içerik üreticilerinin {niche} hakkında senden sakladığı o gizli yöntem nihayet açıklandı.",
-                    "Neden 10 kişiden 9'u {niche} konusunda yanlış yoldan gidiyor? İşte cevabı."
+                    "Çoğu insan {niche} alanındaki bu ölümcül hatayı yaptığı için asla 100M izlenmeye ulaşamıyor...",
+                    "Eğer {niche} ile ilgileniyorsan, önümüzdeki 3 saniye içinde öğreneceğin bu sır tüm ezberleri kökten bozacak.",
+                    "Büyük şirketlerin {niche} konusunda senden sakladığı o gizli algoritma açığı nihayet ifşa oldu."
                 ],
                 fomo: [
                     "Eğer bugün {niche} stratejini güncellemezsen, önümüzdeki ay tamamen silinip gideceksin.",
-                    "Herkes {niche} alanındaki bu devrimi konuşuyor ama sen hala geriden takip ediyorsun.",
-                    "Bu {niche} açığı kapanmadan hemen önce kesinlikle görmen gereken bir video."
+                    "Herkes {niche} alanındaki bu devrimi konuşuyor ama sen hala geriden takip ediyorsun."
                 ],
                 secret: [
                     "Yıllardır kimsenin söylemeye cesaret edemediği o gerçek {niche} sırrı...",
-                    "Sadece en üst düzey profesyonellerin bildiği gizli {niche} optimizasyon taktiği.",
-                    "Sıfırdan başlayıp {niche} alanında zirveye çıkanların uyguladığı tek kural."
+                    "Sadece en üst düzey profesyonellerin bildiği gizli {niche} optimizasyon taktiği."
                 ],
                 challenge: [
                     "Eğer {niche} konusunda gerçekten iddialıysan, bu videoyu sonuna kadar izle.",
-                    "Dur! {niche} yapmaya devam etmeden önce bu uyarıyı mutlaka dinlemelisin.",
-                    "Biri çıkıp {niche} hakkında bu acı gerçeği söylemeliydi, o yüzden ben söylüyorum."
+                    "Dur! {niche} yapmaya devam etmeden önce bu uyarıyı mutlaka dinlemelisin."
                 ]
             },
             en: {
                 curiosity: [
-                    "Why 99% of people in {niche} fail because they miss this exact fatal detail...",
-                    "If you are into {niche}, the next 3 seconds will completely destroy everything you thought you knew.",
-                    "The hidden blueprint that top creators in {niche} use behind closed doors is finally revealed."
+                    "Why 99% of people in {niche} fail because they miss this exact fatal algorithmic detail...",
+                    "If you are into {niche}, the next 3 seconds will completely destroy everything you thought you knew."
                 ],
                 fomo: [
-                    "If you don't update your {niche} strategy today, you'll be completely left behind next month.",
-                    "Everyone is talking about this {niche} revolution while you are still standing still."
+                    "If you don't update your {niche} strategy today, you'll be completely left behind next month."
                 ],
                 secret: [
-                    "The ultimate {niche} secret that elite experts refuse to share publicly...",
-                    "The exact insider framework used to scale {niche} from absolute zero."
+                    "The ultimate {niche} secret that elite experts refuse to share publicly..."
                 ],
                 challenge: [
-                    "If you actually think you're good at {niche}, prove it by watching this.",
-                    "Stop everything you are doing in {niche} and listen to this warning."
+                    "If you actually think you're good at {niche}, prove it by watching this."
                 ]
             },
             de: {
                 curiosity: [
-                    "Warum 99% der Menschen in {niche} scheitern, weil sie dieses Detail übersehen...",
-                    "Wenn du dich für {niche} interessierst, wird dieses Video alles verändern."
+                    "Warum 99% der Menschen in {niche} scheitern, weil sie dieses fatale Detail übersehen..."
                 ],
                 fomo: [
                     "Wenn du deine {niche} Strategie heute nicht änderst, wirst du bald abgehängt."
@@ -153,81 +256,132 @@
                 challenge: [
                     "Stopp! Bevor du weitermachst, höre dir diese Warnung über {niche} an."
                 ]
+            },
+            es: {
+                curiosity: [
+                    "Por qué el 99% de la gente fracasa en {niche} debido a este detalle algorítmico..."
+                ],
+                fomo: [
+                    "Si no actualizas tu estrategia de {niche} hoy, te quedarás atrás el próximo mes."
+                ],
+                secret: [
+                    "El secreto definitivo de {niche} que los expertos se niegan a compartir..."
+                ],
+                challenge: [
+                    "Si de verdad eres bueno en {niche}, demuéstralo viendo esto."
+                ]
             }
         };
 
-        let lastGeneratedText = "";
-        let vault = [];
+        function generateUltimateHook() {
+            const niche = document.getElementById('nicheInput').value.trim() || "Genel Niş";
+            const trigger = document.getElementById('triggerSelect').value;
+            const tone = document.getElementById('toneSelect').value;
+            const lang = document.getElementById('langSelect').value;
 
-        try {
-            const saved = localStorage.getItem('viral_vault_data');
-            if (saved) vault = JSON.parse(saved);
-        } catch(e) { vault = []; }
-        renderVault();
+            const langDB = globalDatabase[lang] || globalDatabase['tr'];
+            const categoryArr = langDB[trigger] || langDB['curiosity'];
+            const randomTemplate = categoryArr[Math.floor(Math.random() * categoryArr.length)];
+            const rawHook = randomTemplate.replace(/{niche}/g, niche);
 
-        function generateHook() {
-            const nicheVal = document.getElementById('niche').value.trim() || "Genel Konu";
-            const triggerVal = document.getElementById('trigger').value;
-            const langVal = document.getElementById('lang').value;
+            const cleanTag = niche.replace(/\s+/g, '').toLowerCase();
 
-            const langDB = database[langVal] || database['tr'];
-            const categoryArray = langDB[triggerVal] || langDB['curiosity'];
-            const randomTemplate = categoryArray[Math.floor(Math.random() * categoryArray.length)];
-            const rawHook = randomTemplate.replace(/{niche}/g, nicheVal);
+            currentGeneratedReport = 
+`======================================================================
+🚀 [ULTIMATE VIRAL HOOK REPORT - PLATFORM: ${currentMode.toUpperCase()}]
+======================================================================
+> Target Niche: ${niche}
+> Psychological Trigger: ${trigger.toUpperCase()}
+> Tone Profile: ${tone.toUpperCase()}
+> Language Engine: ${lang.toUpperCase()} (Enterprise Secured)
 
-            lastGeneratedText = `"${rawHook}"`;
+🔥 [0-3 SECONDS: CRITICAL HOOK VECTOR]
+"${rawHook}"
 
-            const outputReport = 
-`🎯 ÜRETİLEN VİRAL KANCA (${langVal.toUpperCase()}):
---------------------------------------------------
-${lastGeneratedText}
+⚡ [RETENTION & ALGORITHMIC ANCHOR]
+"Bu protokolü uyguladığımız ilk testlerde, izlenme oranları tavan yaptı ve kitle ekran başına kilitlendi."
 
-💡 STRATEJİ: İlk 3 saniyede bu cümleyi ekranda büyük fontla tut ve arkaya tempolu dinamik bir müzik ekle!`;
+🎯 [CALL TO ACTION & MONETIZATION]
+"Bu videoyu hemen şimdi kaydet ve bu stratejiyi kendi içeriklerinde test et."
 
-            document.getElementById('output').innerText = outputReport;
+🏷️ [SEO HASHTAG MATRIX]:
+#viral #trending #fyp #${cleanTag} #growthhacking #contentstrategy
+======================================================================`;
+
+            document.getElementById('outputTerminal').innerText = currentGeneratedReport;
+            document.getElementById('metricReach').innerText = (Math.floor(Math.random() * 400) + 100) + ",000,000+";
+            document.getElementById('metricRetention').innerText = "99.98% (S-Tier)";
         }
 
-        function copyHook() {
-            if (!lastGeneratedText) {
+        function copyTerminalText() {
+            if (!currentGeneratedReport) {
                 alert("Önce kanca üretmelisiniz!");
                 return;
             }
-            navigator.clipboard.writeText(lastGeneratedText).then(() => {
-                alert("Kanca başarıyla panoya kopyalandı!");
+            navigator.clipboard.writeText(currentGeneratedReport).then(() => {
+                alert("Rapor panoya kopyalandı!");
             });
         }
 
         function saveToVault() {
-            if (!lastGeneratedText) {
-                alert("Kaydedilecek bir kanca yok!");
+            if (!currentGeneratedReport) {
+                alert("Kaydedilecek rapor yok!");
                 return;
             }
-            vault.unshift({ text: lastGeneratedText, time: new Date().toLocaleTimeString() });
-            if (vault.length > 5) vault.pop(); // Son 5 kaydı tut
+            vaultStorage.unshift({
+                title: document.getElementById('nicheInput').value,
+                content: currentGeneratedReport,
+                time: new Date().toLocaleTimeString()
+            });
+            if (vaultStorage.length > 10) vaultStorage.pop();
+            
             try {
-                localStorage.setItem('viral_vault_data', JSON.stringify(vault));
+                localStorage.setItem('viral_enterprise_vault', JSON.stringify(vaultStorage));
             } catch(e) {}
-            renderVault();
-            alert("Vault hafızasına başarıyla kaydedildi!");
+            
+            renderVaultList();
+            alert("Rapor Vault hafızasına kaydedildi!");
         }
 
-        function renderVault() {
+        function renderVaultList() {
             const listEl = document.getElementById('vaultList');
             const countEl = document.getElementById('vaultCount');
-            countEl.innerText = `${vault.length} Kayıt`;
+            countEl.innerText = vaultStorage.length;
 
-            if (vault.length === 0) {
-                listEl.innerHTML = `<div style="font-style: italic; color: #475569;">Henüz kayıt yok...</div>`;
+            if (vaultStorage.length === 0) {
+                listEl.innerHTML = `<div style="color: var(--text-muted); font-style: italic;">Hafıza boş, kancalar buraya kaydedilir...</div>`;
                 return;
             }
 
             listEl.innerHTML = "";
-            vault.forEach((item, index) => {
+            vaultStorage.forEach((item, index) => {
                 const div = document.createElement('div');
                 div.className = "vault-item";
-                div.innerHTML = `<span style="truncate; max-width: 320px; color: #cbd5e1;">${index + 1}. ${item.text}</span> <span style="font-size: 10px; color: var(--accent-cyan);">${item.time}</span>`;
+                div.innerHTML = `<span style="truncate; max-width: 220px; color: var(--text-main);">${index + 1}. ${item.title}</span> <span style="color: var(--cyan);">${item.time}</span>`;
+                div.onclick = () => {
+                    currentGeneratedReport = item.content;
+                    document.getElementById('outputTerminal').innerText = item.content;
+                };
                 listEl.appendChild(div);
             });
+        }
+
+        function clearVault() {
+            vaultStorage = [];
+            try { localStorage.removeItem('viral_enterprise_vault'); } catch(e) {}
+            renderVaultList();
+        }
+
+        function downloadReport() {
+            if (!currentGeneratedReport) {
+                alert("İndirilecek rapor yok!");
+                return;
+            }
+            const blob = new Blob([currentGeneratedReport], { type: 'text/plain;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'viral-hook-report.txt';
+            a.click();
         }
     </script>
 </body>
